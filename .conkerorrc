@@ -1,8 +1,5 @@
 // -*- Mode: espresso -*-
 
-// TODO:// * fix indentation in js2-mode
-// * get mozrepl working
-
 interactive("fill-domain", "Fill the minibuffer with the current domain.",
             function (I) {
               var field = I.minibuffer.input_element;
@@ -25,11 +22,9 @@ interactive("instapaper", "Add current page to instapaper",
            });
 
 define_webjump("hub", "http://github.com/search?q=%s");
-define_webjump("twitter", "http://twitter.com/#search?q=%s");
-define_webjump("wikipedia", "http://www.google.com/search?q=wikipedia+%s&btnI=I'm Feeling Lucky");
+define_webjump("w", "http://www.google.com/search?q=wikipedia+%s&btnI=I'm Feeling Lucky");
 define_webjump("mvn", "http://jarvana.com/jarvana/search?search_type=project&project=%s");
-
-add_delicious_webjumps ("technomancy");
+define_webjump("unfuddle", "https://sonian.unfuddle.com/projects/21988/tickets/by_number/%s");
 
 key_bindings_ignore_capslock = true;
 url_remoting_fn = load_url_in_new_buffer;
@@ -41,10 +36,6 @@ download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
 register_user_stylesheet(
   "data:text/css,"+
     escape("#minibuffer, tree.completions, .mode-line { font-family: Inconsolata; font-size: 12pt; }"));
-
-// register_user_stylesheet(
-//     "data:text/css," +
-//         escape ("@-moz-document url-prefix(https://github.com/) .topsearch input { width: 10em; }"));
 
 register_user_stylesheet(
     "data:text/css," +
@@ -60,33 +51,15 @@ interactive("toggle-stylesheets",
                 s[i].disabled = !s[i].disabled;
             });
 
-// Thanks; _why!
-function resize_textarea_up(field) {
-  var h = field.offsetHeight;
-  if (h > 120)
-    field.style.height = (h - 60) + "px";
-}
-function resize_textarea_down(field) {
-  field.style.height = (parseInt(field.offsetHeight) + 60) + "px";
-}
-interactive(
-  "resize-textarea-up",
-  "Resize a textarea to be smaller.",
-  function (I) { call_on_focused_field(I, resize_textarea_up); }
-);
-interactive(
-  "resize-textarea-down",
-  "Resize a textarea to be taller.",
-  function (I) { call_on_focused_field(I, resize_textarea_down); }
-);
-
-define_key(content_buffer_textarea_keymap, "C-up", "resize-textarea-up", $category = "Movement");
-define_key(content_buffer_textarea_keymap, "C-down", "resize-textarea-down", $category = "Movement");
-
 require("page-modes/google-search-results.js");
 auto_mode_list.push([build_url_regex($domain = /google\.com/),
                      google_search_results_mode]);
 
 user_pref('extensions.mozrepl.autoStart', true);
 
-xkcd_add_title = true;
+if ('@hyperstruct.net/mozlab/mozrepl;1' in Cc) {
+  var mozrepl = Cc['@hyperstruct.net/mozlab/mozrepl;1']
+    .getService(Ci.nsIMozRepl);
+  if (! mozrepl.isActive())
+    mozrepl.start(4242);
+}
