@@ -1,7 +1,6 @@
 ---
 - devilspie
 - dwm-tools
-- fetchmail
 - gitk
 - graphviz
 - gsfonts-x11
@@ -10,7 +9,7 @@
 - gstreamer0.10-plugins-bad
 - gstreamer0.10-plugins-ugly
 - imagemagick
-- libfaad2-0
+- libfaad2
 - libnotify-bin
 - libquicktime1
 - mpg321
@@ -21,10 +20,10 @@
 - ttf-liberation
 - ttf-mgopen
 - unclutter
-- wmctrl
+- virtualbox-ose
 - vlc
+- wmctrl
 - xbindkeys
 - xfonts-terminus
-- xulrunner-1.9.1
+- xsel
 - youtube-dl
-- zsnes

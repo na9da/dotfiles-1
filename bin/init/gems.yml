@@ -1,11 +1,5 @@
 ---
-- rack
 - rake
-- mongrel
 - vlad
-- minitest
 - cheat
-- hoe
-- json
-- roastbeef
-- defunkt-github
+- vagrant

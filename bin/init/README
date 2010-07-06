@@ -12,6 +12,7 @@ TODO:
 - sync music, movies, books, photos from another machine
 - panel config
 - lists in gconf.yml to support ctrl:nocaps
+- don't suspend when lid is closed
 
 /usr/share/xsessions/user.desktop:
 
