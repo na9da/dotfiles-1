@@ -1,6 +1,6 @@
 --- 
 :verbose: true
-gem: --no-rdoc --format-executable
+gem: --no-rdoc --no-format-executable
 :bulk_threshold: 1000
 :benchmark: false
 :sources: 

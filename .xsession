@@ -2,7 +2,7 @@
 
 devilspie &
 xbindkeys &
-~/src/js/conkeror/contrib/run-conkeror -daemon &
+~/src/conkeror/contrib/run-conkeror -daemon &
 
 xrdb -merge ~/.Xdefaults
 source ~/.profile
