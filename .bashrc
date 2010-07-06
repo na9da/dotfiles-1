@@ -8,15 +8,12 @@ source ~/.profile
 export PAGER=less
 
 alias emac="emacs -nw -q --no-site-file"
-alias ri="ri -f ansi -T"
-alias devlog="tail -F log/development.log"
 
 alias ll="ls -l -h"
 alias la="ls -a"
 alias l="ls"
 alias lla="ls -a -l"
 alias grep="grep --color=auto"
-alias grepp="ps aux | grep"
 
 # package management
 alias sapti="sudo apt-get install"
@@ -26,25 +23,11 @@ alias saptd="sudo apt-get update"
 alias saptc="apt-cache search"
 alias sapts="apt-cache show"
 
-# gems
-alias sagi="sudo gem install"
-alias sagr="sudo gem uninstall"
-alias sagd="sudo gem source -u"
-alias sagc="gem search --remote"
-
 # git
 alias gst="git status"
 alias gb="git branch --color"
 alias gcm="git commit -a -v"
 alias gco="git checkout"
-
-alias xmlcurl="curl -H Accept:text/xml"
-
-alias ml="ls ~/music"
-
-complete -C ~/bin/rake-complete.rb -o default rake
-
-export EDITOR=emacsclient
 
 # prompt coloring
 # see http://attachr.com/9288 for full-fledged craziness
@@ -63,10 +46,3 @@ fi
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
-
-if [ -f $HOME/.java_profile ]; then
-    source $HOME/.java_profile
-fi
-
-# Hadoop breaks if this is set
-unset CDPATH
