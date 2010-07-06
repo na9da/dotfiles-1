@@ -1,0 +1,5 @@
+(set-register ?n '(file . "~/documents/org/notes.org"))
+(set-register ?s '(file . "~/src/safe/log.org"))
+(set-register ?p '(file . "~/.emacs.d/phil/init.el"))
+(set-register ?x '(file . "~/.xbindkeysrc.scm"))
+(set-register ?g '(file . "~/documents/org/github.org"))
