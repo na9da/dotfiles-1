@@ -50,7 +50,7 @@
 ;;;; Music functions
 
 (map (lambda (binding) (xbindkey (car binding) (cdr binding)))
-     (list '(F5 . "~/bin/music-notify")
+     (list '(F5 . "~/bin/music-show")
            '((Control F5) . "~/bin/music-playlist")
            '(F6 . "~/bin/music-random")
            '(F7 . "~/bin/music-choose")
@@ -59,30 +59,33 @@
            '(F10 . "mpc next")
            '((mod4 F12) . "vlc -f ~/documents/movies/misc/rick.flv"))) ;; tee hee
 
+(xbindkey '(mod4 g) "gmpc")
+
 ;;;; Other launchers
 
-(xbindkey '(mod1 space) "gnome-do")
+;; (xbindkey '(mod1 space) "gnome-do")
 
 (xbindkey '(mod4 e) "emacs")
-(xbindkey '(mod4 f) "firefox")
+
+(xbindkey '(mod4 f) "~/bin/firefox/firefox")
+(xbindkey '(mod4 c) "conkeror")
+(xbindkey '(mod4 r) "chromium-browser")
+(xbindkey '(mod4 h) "chromium-browser --app=http://mail.hagelb.org")
+(xbindkey '(mod4 o) "chromium-browser --app=http://mail.sonian.net")
+(xbindkey '(mod4 t) "chromium-browser --app=http://twitter.com")
+
 (xbindkey '(mod4 s) "f-spot")
-(xbindkey '(mod4 c) "xulrunner-1.9.1 -app ~/src/conkeror/application.ini")
-(xbindkey '(mod4 x) "xournal")
-(xbindkey '(mod4 g) "gmpc")
+
 (xbindkey '(mod4 b) "~/bin/dbook.rb")
 (xbindkey '(mod4 k) "nautilus ~/documents/books")
 (xbindkey '(mod4 m) "nautilus ~/documents/movies")
 (xbindkey '(mod4 n) "nautilus ~/")
-(xbindkey '(mod4 t) "fetchmail")
-(xbindkey '(mod4 l) "java -jar ~/src/jvm/luke-0.9.2.jar")
-(xbindkey '(mod4 grave) "gnome-terminal -e \"screen -xRR\"")
-(xbindkey '(mod4 shift grave) "gnome-terminal")
 
-;;;; Tablet-specific stuff
+(xbindkey '(mod4 u) "echo de71ee7c-1e2c-11df-b551-123138008932 | xsel -i --clipboard")
 
-;; TODO:
-;; XF86RotateWindows - ~/bin/rotate
-;; XF86Launch1 - cellwriter
+;;(xbindkey '(mod4 grave) "gnome-terminal -e \"tmux attach || tmux\"")
+(xbindkey '(mod4 grave) "gnome-terminal")
+(xbindkey '(mod4 x) "killall xbindkeys && xbindkeys")
 
 ;; Chording keys test: Start differents program if only one key is
 ;; pressed or another if two keys are pressed.

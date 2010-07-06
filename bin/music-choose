@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DIR=`cat ~/music/dirs | dmenu`
+if [ $DIR != "" ]; then
+    mpc clear
+    mpc add $DIR
+    mpc toggle
+fi
