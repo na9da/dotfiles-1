@@ -46,3 +46,8 @@ fi
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
+
+function fixagent {
+    export SSH_AUTH_SOCK=$(ls -t1 `find /tmp/ -uid $UID -path \*ssh\* -type s 2> /dev/null` | head -1)
+    ssh-add -l
+}

@@ -11,7 +11,7 @@
            erc-autojoin-timing :ident
            erc-autojoin-channels-alist
            '(("freenode.net" "#emacs" "#clojure" "#seattle.rb" "#leiningen"
-              "#sonian" "#sonian-safe" "#android-dev"))
+              "#sonian" "#sonian-safe" "#android-dev" "#mirah"))
            erc-ignore-list '("sexpbot")
            erc-prompt-for-nickserv-password nil)
      (require 'erc-services)

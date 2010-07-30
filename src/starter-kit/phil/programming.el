@@ -86,3 +86,14 @@
 (setq slime-kill-without-query-p t)
 (put 'slime-lisp-host 'safe-local-variable 'stringp)
 (put 'slime-port 'safe-local-variable 'integerp)
+
+(defun slime-auto-compile ()
+  (when (and slime-mode (slime-connected-p) (slime-current-package))
+    (slime-compile-and-load-file)))
+
+(defun enable-auto-compile ()
+  (make-local-variable 'after-save-hook)
+  (add-hook 'after-save-hook 'slime-auto-compile))
+
+;; auto-compile!
+(add-hook 'clojure-mode-hook 'enable-auto-compile)

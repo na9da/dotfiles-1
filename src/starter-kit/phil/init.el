@@ -16,8 +16,8 @@
 (autoload 'clojure-test-maybe-enable "clojure-test-mode" "" t)
 (add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)
 
-;; (add-to-list 'package-archives
-;;              '("technomancy" . "http://repo.technomancy.us/emacs/") t)
+(add-to-list 'package-archives
+             '("technomancy" . "http://repo.technomancy.us/emacs/") t)
 
 (autoload 'w3m "w3m" "w3m browser" t)
 
@@ -38,3 +38,5 @@
 
 (global-set-key (kbd "C-c C-r") 'remember)
 ;; (global-set-key (kbd "S-M-x") 'smex)
+
+(eshell)
