@@ -67,12 +67,13 @@
 
 (xbindkey '(mod4 e) "emacs")
 
-(xbindkey '(mod4 f) "~/bin/firefox/firefox")
+(xbindkey '(mod4 f) "firefox")
 (xbindkey '(mod4 c) "conkeror")
 (xbindkey '(mod4 r) "chromium-browser")
 (xbindkey '(mod4 h) "chromium-browser --app=http://mail.hagelb.org")
-(xbindkey '(mod4 o) "chromium-browser --app=http://mail.sonian.net")
 (xbindkey '(mod4 t) "chromium-browser --app=http://twitter.com")
+(xbindkey '(mod4 d) "devilspie")
+(xbindkey '(mod4 p) "gnome-display-properties")
 
 (xbindkey '(mod4 s) "f-spot")
 
@@ -85,6 +86,7 @@
 
 ;;(xbindkey '(mod4 grave) "gnome-terminal -e \"tmux attach || tmux\"")
 (xbindkey '(mod4 grave) "gnome-terminal")
+(xbindkey '(mod1 grave) "gnome-terminal")
 (xbindkey '(mod4 x) "killall xbindkeys && xbindkeys")
 
 ;; Chording keys test: Start differents program if only one key is
