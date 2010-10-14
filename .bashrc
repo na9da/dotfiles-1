@@ -33,16 +33,16 @@ alias gco="git checkout"
 # see http://attachr.com/9288 for full-fledged craziness
 if [ `/usr/bin/whoami` = "root" ] ; then
   # root has a red prompt
-  export PS1="\[\033[0;31m\]\u@\h \w \$ \[\033[0m\]"
+  export PS1="\[\033[1;31m\]\u@\h \w \$ \[\033[0m\]"
 elif [ `hostname` = "puyo" -o `hostname` = "enigma" -o `hostname` = "dynabook" ] ; then
   # the hosts I use on a daily basis have blue
-  export PS1="\[\033[0;36m\]\u@\h \w \$ \[\033[0m\]"
-elif [ `hostname` == domU* ]; then
-  # green on Xen VMs (EC2, etc)
-  export PS1="\[\033[0;32m\]\u@\h \w \$ \[\033[0m\]"
+  export PS1="\[\033[1;36m\]\u@\h \w \$ \[\033[0m\]"
+elif [ `hostname` == domU* -o `hostname` = "lucid" -o `hostname` = "vagrant" ]; then
+  # green on VMs (EC2, vbox, etc)
+  export PS1="\[\033[1;32m\]\u@\h \w \$ \[\033[0m\]"
 else
-  # purple by default
-  export PS1="\[\033[0;35m\]\u@\h \w \$ \[\033[0m\]"
+  # purple for unknown hosts
+  export PS1="\[\033[1;35m\]\u@\h \w \$ \[\033[0m\]"
 fi
 
 function fixagent {

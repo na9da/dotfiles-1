@@ -1,5 +1,4 @@
-(if (or (matches (window_name) "macs")
+(if (or (matches (application_name) "macs")
         (matches (application_name) "Terminal")
-        (matches (application_name) "Pidgin")
         (matches (window_name) "rxvt"))
-  (maximize_vertically))
+  (maximize))

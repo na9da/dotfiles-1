@@ -1,17 +1,16 @@
-
-
-(setq gnus-select-method '(nnnil ""))
-(setq gnus-secondary-select-methods '((nnml ""
-                                            (nnml-directory "~/Mail"))))
-
-(setq gnus-home-directory "~/.emacs.d"
+(setq gnus-select-method
+      '(nnimap "Mail"
+               (nnimap-address "localhost")
+               (nnimap-stream network)
+               (nnimap-authenticator login))
+      gnus-home-directory "~/.emacs.d"
       gnus-dribble-directory "~/.emacs.d"
-      gnus-always-read-dribble-file t)
-(setq user-mail-address "phil@hagelb.org")
-(setq user-full-name "Phil Hagelberg")
-(setq gnus-ignored-from-addresses "Phil Hagelberg")
+      gnus-always-read-dribble-file t
+      user-mail-address "phil@hagelb.org"
+      user-full-name "Phil Hagelberg"
+      gnus-ignored-from-addresses "Phil Hagelberg")
 
-;; Now with SSL!
+;; outgoing mail
 (setq smtpmail-starttls-credentials '(("mail.technomancy.us" 587 nil nil))
       smtpmail-smtp-server "mail.technomancy.us"
       smtpmail-default-smtp-server "mail.technomancy.us"
@@ -25,97 +24,107 @@
                                    "send@technomancy.us" ;; throwaway send-only account
                                    "testyy")))
 
-(setq message-kill-buffer-on-exit t)
-(setq gnus-treat-display-smileys nil)
-(setq gnus-message-archive-group "sent")
-(setq gnus-fetch-old-headers 'some)
-(setq nnmail-split-methods 'nnmail-split-fancy)
-(setq nnmail-crosspost nil)
-(setq mail-source-delete-incoming nil)
-(setq gnus-asynchronous t)
+(setq gnus-score-over-mark ?\u2191)          ; \u2191 \u2600
+(setq gnus-score-below-mark ?\u2193)         ; \u2193 \u2602
+(setq gnus-ticked-mark ?\u2691)
+(setq gnus-dormant-mark ?\u2690)
+(setq gnus-expirable-mark ?\u267b)
+(setq gnus-read-mark ?\u2713)
+(setq gnus-del-mark ?\u2717)
+(setq gnus-killed-mark ?\u2620)
+(setq gnus-replied-mark ?\u27f2)
+(setq gnus-forwarded-mark ?\u2933)
+(setq gnus-cached-mark ?\u260d)
+(setq gnus-recent-mark ?\u2605)
+(setq gnus-unseen-mark ?\u2729)
+(setq gnus-unread-mark ?\u2709)
 
-(setq nnmail-split-fancy
-      '(|
-        ;; code
-        (from "unfuddle" "unfuddle")
-        (to "phil@sonian" "sonian")
-        (from "sonian\.net" "sonian")
-        (to "ruby_emacs_dev@yahoogroups\\.com" "emacs-rails")
-        (to "emacs-on-rails" "emacs-rails")
-        (to "obby-users@list.0x539.de" "obby-users")
-        (any "conkeror" "conkeror")
-        (any "swank-clojure" "swank-clojure")
-        (any "clojure-dev" "clojure-dev")
-        (any "clojure" "clojure")
-        (any "compojure" "compojure")
-        (any "seafunc" "seafunc")
-        (any "Nxhtml" "nxhtml")
-        (any "mozlab" "mozlab")
-        (any "emacs-rails" "emacs-rails")
-        (any "gems.*forge" "gems")
-        (to "rubygems-developers@rubyforge.org" "gems")
-        (any "emacs-devel" "emacs-devel")
-        (any "bus-scheme" "bus-scheme")
-        (any "ruby-core" "ruby-core")
-        (from "@amazon\.com" "amazon")
-        (to "magit" "magit")
-        (to "rudel" "rudel")
-        (any "ert-devs" "ert")
-        (any "solr" "solr")
-        (any "couchapp" "couchapp")
-        (any "katta" "katta")
-        (any "tika" "tika")
-        (any "zenspider\\.com" "seattle.rb")
-        (to "incanter" "incanter")
-        (to "clj-processing" "clj-processing")
-        (from "github" "github")
-        (from "Phil Hagelberg.*jira@oss.101tec.com" junk)
+(setq message-kill-buffer-on-exit t
+      gnus-treat-display-smileys nil
+      gnus-message-archive-group "sent"
+      gnus-fetch-old-headers 'some
+      ;; nnmail-split-methods 'nnmail-split-fancy
+      nnmail-crosspost nil
+      mail-source-delete-incoming nil
+      gnus-asynchronous t)
 
-        (to "phil@localhost" "feeds")
+;; (setq nnmail-split-fancy
+;;       '(|
+;;         ;; code
+;;         (from "unfuddle" "unfuddle")
+;;         (to "phil@sonian" "sonian")
+;;         (from "sonian\.net" "sonian")
+;;         (to "obby-users@list.0x539.de" "obby-users")
+;;         (any "conkeror" "conkeror")
+;;         (any "swank-clojure" "swank-clojure")
+;;         (any "clojure-dev" "clojure-dev")
+;;         (any "clojure" "clojure")
+;;         (any "compojure" "compojure")
+;;         (any "seafunc" "seafunc")
+;;         (any "Nxhtml" "nxhtml")
+;;         (any "mozlab" "mozlab")
+;;         (any "emacs-rails" "emacs-rails")
+;;         (any "gems.*forge" "gems")
+;;         (to "rubygems-developers@rubyforge.org" "gems")
+;;         (any "emacs-devel" "emacs-devel")
+;;         (any "bus-scheme" "bus-scheme")
+;;         (any "ruby-core" "ruby-core")
+;;         (from "@amazon\.com" "amazon")
+;;         (to "magit" "magit")
+;;         (to "rudel" "rudel")
+;;         (any "ert-devs" "ert")
+;;         (any "solr" "solr")
+;;         (any "couchapp" "couchapp")
+;;         (any "katta" "katta")
+;;         (any "tika" "tika")
+;;         (any "zenspider\\.com" "seattle.rb")
+;;         (to "incanter" "incanter")
+;;         (to "clj-processing" "clj-processing")
+;;         (from "github" "github")
+;;         (from "Phil Hagelberg.*jira@oss.101tec.com" junk)
 
-        ;; personal
-        (from "agelberg" - "Alisha" "family")
-        (from "Broach" "family")
+;;         (to "phil@localhost" "feeds")
 
-        (any "David Morton" "xpoint")
-        (any "Edward Volz" "xpoint")
-        (any "John Gaitan" "xpoint")
-        (from ".*crosspoint.*" "xpoint")
-        (to "cp-parish-group" "xpoint")
-        (from "hudsonite" "xpoint")
-        (to "parishgroup2@googlegroups\.com" "parish")
-        (to "cplparishgroups@googlegroups\.com" "parish")
+;;         ;; personal
+;;         (from "agelberg" - "Alisha" "family")
+;;         (from "Broach" "family")
 
-        (any "zacchaeus-bounces" junk)
-        (any "zacchaeus.*" "friends")
-        (any ".*hackelford.*" "friends")
-        (any ".*peckham.*" "friends")
-        (any ".*carroll.*" "friends")
-        (any ".*guenther.*" "friends")
-        (any ".*rowley.*" "friends")
-        (any ".*malabuyo.*" "friends")
-        (any ".*holloway.*" "friends")
-        (any "Arko" "friends")
-        (any "Joel Watson" "friends")
+;;         (any "David Morton" "xpoint")
+;;         (any "Edward Volz" "xpoint")
+;;         (any "John Gaitan" "xpoint")
+;;         (from ".*crosspoint.*" "xpoint")
+;;         (to "cp-parish-group" "xpoint")
+;;         (from "hudsonite" "xpoint")
+;;         (to "parishgroup2@googlegroups\.com" "parish")
+;;         (to "cplparishgroups@googlegroups\.com" "parish")
 
-        ;; misc
-        (from "VMWare" junk)
-        (any "cron" junk)
-        (any "Anacron" junk)
-        (from "Inbox Archiver" junk)
-        (any "Meridius" junk)
-        (any "Paris Hilton" junk)
-        (any "cartographer" junk)
-        (from "Joanne Neumann" junk)
-        (any "ocruby" junk)
-        (any "CNN Alerts" junk)
-        (any "ALM Expo 2008" junk)
-        (from "Dianne Des Rochers" junk)
-        "inbox"))
+;;         (any "zacchaeus-bounces" junk)
+;;         (any "zacchaeus.*" "friends")
+;;         (any ".*hackelford.*" "friends")
+;;         (any ".*peckham.*" "friends")
+;;         (any ".*carroll.*" "friends")
+;;         (any ".*guenther.*" "friends")
+;;         (any ".*rowley.*" "friends")
+;;         (any ".*malabuyo.*" "friends")
+;;         (any ".*holloway.*" "friends")
+;;         (any "Arko" "friends")
+;;         (any "Joel Watson" "friends")
 
-(setq mail-sources '((file :path "/var/mail/phil")))
+;;         ;; misc
+;;         (from "VMWare" junk)
+;;         (any "cron" junk)
+;;         (any "Anacron" junk)
+;;         (from "Inbox Archiver" junk)
+;;         (any "Meridius" junk)
+;;         (any "Paris Hilton" junk)
+;;         (any "cartographer" junk)
+;;         (from "Joanne Neumann" junk)
+;;         (any "ocruby" junk)
+;;         (any "CNN Alerts" junk)
+;;         (any "ALM Expo 2008" junk)
+;;         (from "Dianne Des Rochers" junk)
+;;         "inbox"))
 
-(setq imap-ssl-program "openssl s_client -ssl3 -connect %s:%p")
 (setq gnus-agent-expire-days 0)
 (setq gnus-agent-enable-expiration 'DISABLE)
 
@@ -137,15 +146,14 @@
        "%*%{%B%} %s%)"
        "\n"))
 
-(setq gnus-parameters '((".*" (banner . iphone)))) (setq gnus-article-banner-alist '((iphone . "\\(^Sent from my iPhone$\\)")))
-
+(setq gnus-parameters '((".*" (banner . iphone)))
+      gnus-article-banner-alist '((iphone . "\\(^Sent from my iPhone$\\)"))
+      gnus-use-full-window nil)
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
-(setq gnus-use-full-window nil)
 
-(mailcap-add "image/jpeg" "display")
+;; (mailcap-add "image/jpeg" "display")
 
-(if (file-exists-p system-specific-config)
+(if (and (boundp 'system-specific-config)
+         (file-exists-p system-specific-config))
     (load system-specific-config))
-
-(shell-command "fetchmail")
