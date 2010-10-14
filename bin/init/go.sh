@@ -8,6 +8,10 @@ fi
 # Fie upon and hence with you!
 apt-get remove app-install-data-commercial
 
+# Add some PPAs
+add-apt-repository ppa:launchpad/ppa
+add-apt-repository ppa:openjdk/ppa
+
 # get the minimum to bootstrap
 apt-get install git-core git-svn zile build-essential bison subversion autoconf ruby1.8 ri1.8 rdoc1.8 irb1.8 ruby1.8-dev
 apt-get build-dep emacs-snapshot w3m-el
