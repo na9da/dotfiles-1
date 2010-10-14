@@ -9,10 +9,10 @@
            erc-nick '("technomancy" "TeXnomancy")
            erc-ignore-listerc-ignore-list '("Lajla")
            erc-autojoin-timing :ident
+           erc-flood-protect nil
            erc-autojoin-channels-alist
            '(("freenode.net" "#emacs" "#clojure" "#seattle.rb" "#leiningen"
-              "#sonian" "#sonian-safe" "#android-dev" "#mirah"))
-           erc-ignore-list '("sexpbot")
+              "#sonian" "#sonian-safe" "#mirah"))
            erc-prompt-for-nickserv-password nil)
      (require 'erc-services)
      (require 'erc-spelling)
@@ -23,16 +23,6 @@
      (set-face-foreground 'erc-my-nick-face "blue")))
 
 (setq pcomplete-cycle-completions nil)
-
-(defun bitlbee ()
-  (interactive)
-  (require 'erc)
-  (erc :server "192.168.1.2" :nick "phil" :password dirc-password))
-
-(defun irc ()
-  (interactive)
-  (require 'erc)
-  (erc :server "192.168.1.2" :nick "technomancy" :password dirc-password))
 
 (ignore-errors
   (load (expand-file-name "~/.passwords.el"))

@@ -3,11 +3,11 @@
 ;; elisp libraries I run from source checkouts:
 
 (add-to-list 'load-path "/home/phil/src/emacs-w3m")
-;; (add-to-list 'load-path "/home/phil/src/magit")
 (add-to-list 'load-path "/home/phil/src/twittering-mode")
 (add-to-list 'load-path "/home/phil/src/clojure-mode")
+(add-to-list 'load-path "/home/phil/src/epresent")
+(add-to-list 'load-path "/home/phil/src/magit")
 
-;; (autoload 'magit-status "magit" "magit" t)
 (autoload 'twit "twittering-mode" "twitter" t)
 
 (require 'clojure-mode)
@@ -21,9 +21,15 @@
 
 (autoload 'w3m "w3m" "w3m browser" t)
 
-(ignore-errors (load "../../paredit/paredit-beta")
-               (load "../../paredit/paredit-delimiter-space")
-               (load "../../paredit/paredit-semicolon"))
+(autoload 'magit-status "magit" "magic" t)
+
+(autoload 'epresent-run-frame "epresent" "" t)
+(global-set-key [f12] 'epresent-run-frame)
+
+(setq epresent-mode-line-format mode-line-format)
+
+(eval-after-load 'epresent
+  '(set-face-attribute 'epresent-title-face nil :underline nil))
 
 ;; Random stuff
 
