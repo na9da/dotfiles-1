@@ -3,6 +3,7 @@
 - avahi-utils
 - bittorrent
 - build-essential
+- bsdtar
 - curl
 - exuberant-ctags
 - git-core
@@ -11,8 +12,10 @@
 - libavahi-compat-libdnssd1
 - libopenssl-ruby1.8
 - libxml2-dev
+- libevent-dev
 - libxslt1-dev
 - libsqlite3-dev
+- ncurses-term
 - netcat
 - nmap
 - openssh-server
@@ -27,3 +30,4 @@
 - openjdk-6-jdk
 - gnutls-bin
 - s3cmd
+- xterm
