@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+system "music-dirs"
 dirs = File.read(ENV["HOME"] + "/music/dirs").split("\n")
 dir = dirs[(rand * dirs.length).to_i]
 `mpc clear`

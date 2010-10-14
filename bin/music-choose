@@ -1,5 +1,6 @@
 #!/bin/bash
 
+music-dirs
 DIR=`cat ~/music/dirs | dmenu`
 if [ $DIR != "" ]; then
     mpc clear
