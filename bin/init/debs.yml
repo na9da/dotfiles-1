@@ -15,6 +15,7 @@
 - libevent-dev
 - libxslt1-dev
 - libsqlite3-dev
+- molly-guard
 - ncurses-term
 - netcat
 - nmap
