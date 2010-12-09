@@ -7,12 +7,11 @@ should be able to fetch the other required files if it's run by
 itself.
 
 TODO:
-- add multiverse repository
 - get gnome-terminal to not show menubar (through gconf?)
-- sync music, movies, books, photos from another machine
 - panel config
 - lists in gconf.yml to support ctrl:nocaps
 - don't suspend when lid is closed
+- fonts: subpixel, slight hinting, inconsolata as monospace
 
 /usr/share/xsessions/user.desktop:
 

@@ -5,27 +5,25 @@ if [ `/usr/bin/whoami` != "root" ] ; then
     exit 1
 fi
 
-# Fie upon and hence with you!
-apt-get remove app-install-data-commercial
-
 # Add some PPAs
 add-apt-repository ppa:launchpad/ppa
 add-apt-repository ppa:openjdk/ppa
+apt-get update
 
 # get the minimum to bootstrap
-apt-get install git-core git-svn zile build-essential bison subversion autoconf ruby1.8 ri1.8 rdoc1.8 irb1.8 ruby1.8-dev
+apt-get install git-core git-svn zile build-essential bison autoconf ruby1.8 ri1.8 rdoc1.8 irb1.8 ruby1.8-dev mpd
 apt-get build-dep emacs-snapshot w3m-el
 mkdir ~/src
-
-# Gems! from trunk, because we're crazy.
-git svn clone svn+ssh://technomancy@rubyforge.org/var/svn/rubygems/trunk ~/src/rubygems
-ruby ~/src/rubygems/setup.rb
 
 # gotta have my remote X!
 sed -i s/DisallowTCP=true/DisallowTCP=false/ /etc/gdm/gdm.conf
 
 # don't write atimes
 chattr +A /
+
+# other random debs
+wget http://eion.robbmob.com/skype4pidgin.deb
+dpkg -i skype4pidgin.deb
 
 chown -R phil ~
 
