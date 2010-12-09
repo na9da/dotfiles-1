@@ -1,0 +1,10 @@
+#!/bin/sh
+
+TARGET="/media/Chunky Backup"
+
+rsync -r $HOME/music/ "$TARGET"/music/
+rsync -r $HOME/documents/ "$TARGET"/documents/
+rsync -r $HOME/src/ "$TARGET"/src/
+rsync -r $HOME/Photos/ "$TARGET"/Photos/
+
+# TODO: shotwell db
