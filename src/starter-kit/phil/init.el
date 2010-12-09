@@ -6,7 +6,6 @@
 (add-to-list 'load-path "/home/phil/src/twittering-mode")
 (add-to-list 'load-path "/home/phil/src/clojure-mode")
 (add-to-list 'load-path "/home/phil/src/epresent")
-(add-to-list 'load-path "/home/phil/src/magit")
 
 (autoload 'twit "twittering-mode" "twitter" t)
 
@@ -16,12 +15,7 @@
 (autoload 'clojure-test-maybe-enable "clojure-test-mode" "" t)
 (add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)
 
-(add-to-list 'package-archives
-             '("technomancy" . "http://repo.technomancy.us/emacs/") t)
-
 (autoload 'w3m "w3m" "w3m browser" t)
-
-(autoload 'magit-status "magit" "magic" t)
 
 (autoload 'epresent-run-frame "epresent" "" t)
 (global-set-key [f12] 'epresent-run-frame)
@@ -30,6 +24,11 @@
 
 (eval-after-load 'epresent
   '(set-face-attribute 'epresent-title-face nil :underline nil))
+
+;; Clojure confluence
+
+(setq confluence-url "http://dev.clojure.org/confluence/rpc/xmlrpc")
+(global-set-key "\C-xwf" 'confluence-get-page)
 
 ;; Random stuff
 
