@@ -1,0 +1,4 @@
+* find ../lib/ -name "*jar" -exec jar xf {} \;
+* No video on stupid skype
+  sudo apt-get install lib32v4l-0
+  LD_PRELOAD=/usr/lib32/libv4l/v4l1compat.so skype
