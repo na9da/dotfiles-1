@@ -1,23 +1,26 @@
 [general]
+ui = Noninteractive.Basic
 accounts = Gmail
 maxsyncaccounts = 1
 
 [Account Gmail]
+autorefresh = 60
 localrepository = Local
 remoterepository = Remote
+quick = 6
 
 [Repository Local]
 type = IMAP
 remotehost = localhost
-port = 143
+remotepassfile = ~/.dovecotpass
 remoteuser = phil
 
 [Repository Remote]
-type = IMAP
-remotehost = imap.gmail.com
+type = Gmail
 remoteuser = phil@hagelb.org
 remotepassfile = ~/.gmailpass
-ssl = yes
-maxconnections = 1
-realdelete = no
-folderfilter = lambda foldername: foldername in ['INBOX']
+nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
+                               re.sub ('sent_mail', 'sent',
+                               re.sub ('starred', 'flagged',
+                               re.sub (' ', '_', foldername.lower()))))
+folderfilter = lambda foldername: foldername not in '[Gmail]/All Mail'
