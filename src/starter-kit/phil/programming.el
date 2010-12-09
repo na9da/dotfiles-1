@@ -22,6 +22,7 @@
      (define-key java-mode-map (kbd "C-M-h") 'backward-kill-word)))
 
 (add-to-list 'auto-mode-alist '("\\.duby$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.mirah$" . ruby-mode))
 
 (setq slime-net-coding-system 'utf-8-unix)
 
@@ -31,8 +32,18 @@
 (durendal-enable)
 (global-set-key (kbd "C-c C-j") 'durendal-jack-in)
 
+(add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
+
 (setq slime-kill-without-query-p t)
 ;; move to slime
 (put 'slime-lisp-host 'safe-local-variable 'stringp)
 (put 'slime-port 'safe-local-variable 'integerp)
 
+(eval-after-load 'clojure-mode
+  (font-lock-add-keywords 'clojure-mode
+                          '(("\\<comp\\>"
+                             (0
+                              (progn (compose-region
+                                      (match-beginning 0) (match-end 0)
+                                      "∘")
+                                     nil))))))
