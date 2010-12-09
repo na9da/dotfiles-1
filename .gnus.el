@@ -157,3 +157,6 @@
 (if (and (boundp 'system-specific-config)
          (file-exists-p system-specific-config))
     (load system-specific-config))
+
+(require 'epa)
+(setq epa-file-cache-passphrase-for-symmetric-encryption t)
