@@ -70,19 +70,21 @@
 (xbindkey '(mod4 f) "firefox")
 (xbindkey '(mod4 c) "conkeror")
 (xbindkey '(mod4 r) "chromium-browser")
-(xbindkey '(mod4 h) "chromium-browser --app=http://mail.hagelb.org")
-(xbindkey '(mod4 t) "chromium-browser --app=http://twitter.com")
 (xbindkey '(mod4 d) "devilspie")
 (xbindkey '(mod4 p) "gnome-display-properties")
 
-(xbindkey '(mod4 s) "f-spot")
+(xbindkey '(mod4 s) "shotwell")
 
 (xbindkey '(mod4 b) "~/bin/dbook.rb")
 (xbindkey '(mod4 k) "nautilus ~/documents/books")
 (xbindkey '(mod4 m) "nautilus ~/documents/movies")
 (xbindkey '(mod4 n) "nautilus ~/")
 
-(xbindkey '(mod4 u) "echo de71ee7c-1e2c-11df-b551-123138008932 | xsel -i --clipboard")
+(xbindkey '(mod4 t) "~/src/stiler/stiler.py swap")
+(xbindkey '(mod4 shift t) "~/src/stiler/stiler.py cycle")
+(xbindkey '(mod4 v) "~/src/stiler/stiler.py vertical")
+
+(xbindkey '(mod4 u) "uuidgen | xsel -i --clipboard")
 
 ;;(xbindkey '(mod4 grave) "gnome-terminal -e \"tmux attach || tmux\"")
 (xbindkey '(mod4 grave) "gnome-terminal")
