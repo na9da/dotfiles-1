@@ -5,7 +5,7 @@
 ;;   '(add-to-list 'swank-clojure-extra-vm-args
 ;;                 "-agentlib:jdwp=transport=dt_socket,address=8021,server=y,suspend=n"))
 
-(add-hook 'clojure-mode-hook 'turn-on-whitespace)
+(add-hook 'clojure-mode-hook 'esk-turn-on-whitespace)
 
 (setq inferior-lisp-program
       "java -cp /home/phil/src/clojure/clojure.jar clojure.main")
@@ -14,8 +14,8 @@
 (set-default 'tab-width 4)
 (set-default 'c-basic-offset 2)
 
-(add-hook 'xml-mode-hook 'run-coding-hook)
-(add-hook 'java-mode-hook 'run-coding-hook)
+(add-hook 'xml-mode-hook 'esk-run-coding-hook)
+(add-hook 'java-mode-hook 'esk-run-coding-hook)
 
 (eval-after-load 'java-mode
   '(progn
