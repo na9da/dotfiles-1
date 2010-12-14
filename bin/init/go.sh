@@ -8,15 +8,21 @@ fi
 # Add some PPAs
 add-apt-repository ppa:launchpad/ppa
 add-apt-repository ppa:openjdk/ppa
-apt-get update
+
+# grrr... vagrant doesn't work with regular virtualbox; needs Oracle's.
+echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) non-free" > /etc/apt/sources.list.d/virtualbox.list
+wget -O /etc/apt/sources.list.d/medibuntu.list http://www.medibuntu.org/sources.list.d/$(lsb_release -cs).list 
+
+sudo apt-get --quiet update
+wget -O /tmp/vbox.asc http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc
+apt-key add /tmp/vbox.asc
+sudo apt-get --yes --quiet --allow-unauthenticated install medibuntu-keyring
+sudo apt-get --quiet update
 
 # get the minimum to bootstrap
-apt-get install git-core git-svn zile build-essential bison autoconf ruby1.8 ri1.8 rdoc1.8 irb1.8 ruby1.8-dev mpd
+apt-get install git-core zile build-essential mpd ruby-full ruby-dev
 apt-get build-dep emacs-snapshot w3m-el
 mkdir ~/src
-
-# gotta have my remote X!
-sed -i s/DisallowTCP=true/DisallowTCP=false/ /etc/gdm/gdm.conf
 
 # don't write atimes
 chattr +A /
