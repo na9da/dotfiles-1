@@ -29,6 +29,7 @@ alias sapts="aptitude show"
 alias gst="git status"
 alias gb="git branch --color"
 alias gco="git checkout"
+alias glt="git log -n 10"
 
 # prompt coloring
 # see http://attachr.com/9288 for full-fledged craziness
