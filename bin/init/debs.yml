@@ -1,4 +1,5 @@
 ---
+- acpi
 - avahi-discover
 - avahi-utils
 - bittorrent
