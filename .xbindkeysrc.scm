@@ -75,6 +75,9 @@
 
 (xbindkey '(mod4 s) "shotwell")
 
+(xbindkey '(mod4 y) "synergys")
+(xbindkey '(mod4 shift y) "killall synergys")
+
 (xbindkey '(mod4 b) "~/bin/dbook.rb")
 (xbindkey '(mod4 k) "nautilus ~/documents/books")
 (xbindkey '(mod4 m) "nautilus ~/documents/movies")
