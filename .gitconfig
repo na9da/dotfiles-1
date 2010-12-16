@@ -8,3 +8,5 @@
 [github]
 	user = technomancy
 	token = 453530021e7296264d63475b6d06f2ed
+[rerere]
+	enabled = 1
