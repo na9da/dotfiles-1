@@ -14,6 +14,8 @@ alias la="ls -a"
 alias l="ls"
 alias lla="ls -a -l"
 alias grep="grep --color=auto"
+alias gerp="grep --color=auto"
+alias computer,="sudo"
 
 alias $USER="echo \"You're already logged in, genius.\""
 

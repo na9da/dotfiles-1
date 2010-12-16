@@ -1,29 +1,29 @@
-alias glt git log -n 10
-alias cdf mkdir -p
-alias jdk7 export JAVA_CMD=/usr/lib/jvm/java-7-openjdk/jre/bin/java
-alias clojars lein jar && lein pom && scp pom.xml *jar clojars@clojars.org:
-alias gco git checkout $*
-alias gcm git commit -a -v
-alias gb git branch --color $*
-alias gst git status
-alias sagc gem search --remote $*
-alias sagd sudo gem source -u
-alias sagr sudo gem uninstall $*
-alias sagi sudo gem install $*
-alias saptd sudo apt-get update $*
-alias saptu sudo apt-get upgrade $*
-alias saptr sudo apt-get remove $*
-alias sapts apt-cache show $*
-alias saptc apt-cache search $*
-alias sapti sudo apt-get install $*
-alias l ls -a -l $*
-alias la ls -a $*
-alias ll ls -l $*
-alias lh ls -l -h $*
-alias jake jruby -S rake
-alias emacs find-file $1
-alias lcd lein clean && lein deps
-alias lcdt lein clean && lein deps && lein test
-alias client-jvm export JAVA_CMD=/usr/lib/jvm/ia32-java-6-sun/bin/java
-alias tar bsdtar
+alias gerp grep
 alias top proced
+alias client-jvm export JAVA_CMD=/usr/lib/jvm/ia32-java-6-sun/bin/java
+alias lcdt lein clean && lein deps && lein test
+alias lcd lein clean && lein deps
+alias emacs find-file $1
+alias jake jruby -S rake
+alias lh ls -l -h $*
+alias ll ls -l $*
+alias la ls -a $*
+alias l ls -a -l $*
+alias sapti sudo apt-get install $*
+alias saptc apt-cache search $*
+alias sapts apt-cache show $*
+alias saptr sudo apt-get remove $*
+alias saptu sudo apt-get upgrade $*
+alias saptd sudo apt-get update $*
+alias sagi sudo gem install $*
+alias sagr sudo gem uninstall $*
+alias sagd sudo gem source -u
+alias sagc gem search --remote $*
+alias gst git status
+alias gb git branch --color $*
+alias gcm git commit -a -v
+alias gco git checkout $*
+alias clojars lein jar && lein pom && scp pom.xml *jar clojars@clojars.org:
+alias jdk7 export JAVA_CMD=/usr/lib/jvm/java-7-openjdk/jre/bin/java
+alias cdf mkdir -p
+alias glt git log -n 10
