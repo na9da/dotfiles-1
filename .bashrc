@@ -20,12 +20,12 @@ alias computer,="sudo"
 alias $USER="echo \"You're already logged in, genius.\""
 
 # package management
-alias sapti="sudo aptitude install"
-alias saptr="sudo aptitude remove"
-alias saptu="sudo aptitude upgrade"
-alias saptd="sudo aptitude update"
-alias saptc="aptitude search"
-alias sapts="aptitude show"
+alias sapti="sudo apt-get install"
+alias saptr="sudo apt-get remove"
+alias saptu="sudo apt-get upgrade"
+alias saptd="sudo apt-get update"
+alias saptc="apt-cache search"
+alias sapts="apt-cache show"
 
 # git
 alias gst="git status"
