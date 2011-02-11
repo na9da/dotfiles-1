@@ -1,4 +1,4 @@
-// -*- Mode: espresso -*-
+// -*- Mode: js -*-
 
 interactive("fill-domain", "Fill the minibuffer with the current domain.",
             function (I) {
@@ -29,6 +29,9 @@ define_webjump("unfuddle", "https://sonian.unfuddle.com/projects/21988/tickets/b
 define_webjump("safe", "https://agilezen.com/project/12433/story/%s");
 define_webjump("sysadmin", "https://agilezen.com/project/12254/story/%s");
 define_webjump("website", "https://agilezen.com/project/12170/story/%s");
+define_webjump("wondermark", "http://www.ohnorobot.com/index.pl?s=%s&comic=148&show=advanced&b=1&t=1");
+define_webjump("achewood", "http://www.ohnorobot.com/index.pl?s=%s&comic=636&show=advanced&b=1&t=1");
+define_webjump("dino", "http://www.ohnorobot.com/index.pl?s=%s&comic=23&show=advanced&b=1&t=1");
 
 key_bindings_ignore_capslock = true;
 url_remoting_fn = load_url_in_new_buffer;
@@ -115,3 +118,15 @@ if ('@hyperstruct.net/mozlab/mozrepl;1' in Cc) {
   if (! mozrepl.isActive())
     mozrepl.start(4242);
 }
+
+// add favicons
+require("favicon.js");
+add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);
+read_buffer_show_icons = true;
+ 
+// we'd like to see the # of buffers being loaded 
+add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
+ 
+// but really we'd also like to know how many buffers 
+// are present and which is the current
+add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
