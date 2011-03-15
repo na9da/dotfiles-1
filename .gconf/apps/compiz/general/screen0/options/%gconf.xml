@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="outputs" mtime="1300150981" type="list" ltype="string">
+		<li type="string">
+			<stringvalue>1440x900+0+0</stringvalue>
+		</li>
+	</entry>
+	<entry name="vsize" mtime="1300123735" type="int" value="1"/>
+	<entry name="hsize" mtime="1300123735" type="int" value="7"/>
+</gconf>

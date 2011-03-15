@@ -1,4 +1,0 @@
-(if (or (matches (application_name) "macs")
-        (matches (application_name) "Terminal")
-        (matches (window_name) "rxvt"))
-  (maximize))

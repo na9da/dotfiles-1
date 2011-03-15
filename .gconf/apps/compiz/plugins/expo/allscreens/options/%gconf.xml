@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="expo_key" mtime="1300123727" type="string">
+		<stringvalue>Disabled</stringvalue>
+	</entry>
+</gconf>

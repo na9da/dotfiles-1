@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="viewport_y_values" mtime="1300210297" type="list" ltype="int">
+		<li type="int" value="1"/>
+		<li type="int" value="1"/>
+		<li type="int" value="1"/>
+		<li type="int" value="1"/>
+		<li type="int" value="1"/>
+		<li type="int" value="1"/>
+	</entry>
+	<entry name="viewport_x_values" mtime="1300210325" type="list" ltype="int">
+		<li type="int" value="5"/>
+		<li type="int" value="3"/>
+		<li type="int" value="2"/>
+		<li type="int" value="1"/>
+		<li type="int" value="1"/>
+		<li type="int" value="5"/>
+	</entry>
+	<entry name="viewport_matches" mtime="1300210324" type="list" ltype="string">
+		<li type="string">
+			<stringvalue>class=Pidgin</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>title=emacs-safe</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>name=emacs</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>class=Minefield</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>class=Conkeror</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>role=CallWindowForm</stringvalue>
+		</li>
+	</entry>
+</gconf>
