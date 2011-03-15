@@ -48,6 +48,11 @@ register_user_stylesheet(
     "data:text/css," +
         escape (".topsearch input { width: 2em; };"));
 
+register_user_stylesheet(
+  "data:text/css,"+
+    escape("@-moz-document domain(agilezen.com) {#progress a.current { font-weight: bold;" +
+           " text-decoration: underline;}}"));
+
 interactive("toggle-stylesheets",
             "Toggle whether conkeror uses style sheets (CSS) for the " +
             "current buffer.  It is sometimes useful to turn off style " +
@@ -58,6 +63,7 @@ interactive("toggle-stylesheets",
                 s[i].disabled = !s[i].disabled;
             });
 
+require('page-modes/github.js');
 require("page-modes/google-search-results.js");
 auto_mode_list.push([build_url_regex($domain = /google\.com/),
                      google_search_results_mode]);
@@ -130,3 +136,21 @@ add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
 // but really we'd also like to know how many buffers 
 // are present and which is the current
 add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
+
+define_webjump("safelog", function(d) {
+  var dt;
+  if(d) dt = new Date(d);
+  else dt = new Date();
+
+  // I'd alert the user somehow but alert() doesn't work and I don't have a
+  // handle to the minibuffer
+  if(dt == "Invalid Date") dt = new Date(); // really, JavaScript? c'mon...
+
+  month = dt.getMonth()+1;
+  if(month < 10) month = "0"+month;
+
+  dtStr = dt.getFullYear() +"-"+ month + "-" + dt.getDate();
+  return "http://draines.com/sonian/irc/" + dtStr +".subrosa-safe.txt";
+}, $argument = "optional");
+
+webjumps.sl = webjumps.safelog;
