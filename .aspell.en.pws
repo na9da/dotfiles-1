@@ -1,4 +1,4 @@
-personal_ws-1.1 en 59 
+personal_ws-1.1 en 60 
 Compojure
 parens
 http
@@ -25,9 +25,9 @@ JRuby
 screencast
 paren
 TODO
+Clojars
 PeepCode
 peepcode
-Clojars
 rdoc
 clojure
 résumé
@@ -42,14 +42,15 @@ triaged
 prerelease
 multiplayer
 Freenode
-codebase
 bytecode
+codebase
 Eval
 runtime
 namespaces
 lein
 technomancy
 REPL
+checksum
 README
 Debian
 sharded

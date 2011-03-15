@@ -66,6 +66,7 @@
 ;; (xbindkey '(mod1 space) "gnome-do")
 
 (xbindkey '(mod4 e) "emacs")
+(xbindkey '(mod4 shift e) "emacs -f safe")
 
 (xbindkey '(mod4 f) "firefox")
 (xbindkey '(mod4 c) "conkeror")
