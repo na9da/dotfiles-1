@@ -42,6 +42,9 @@
 - nmap
 - openjdk-6-jdk
 - openssh-server
+- pidgin
+- pidgin-blinklight
+- pidgin-libnotify
 - ptunnel
 - rlwrap
 - ruby-full
