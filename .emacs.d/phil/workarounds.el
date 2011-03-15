@@ -4,6 +4,7 @@
 ;; awesome sometimes, but right now more trouble than it's worth
 (setq tramp-mode nil
       tramp-unload-hook nil
+      compilation-scroll-output t ; byte-compilation fails w/o this
       ido-enable-tramp-completion nil)
 
 (add-hook 'eshell-mode-hook

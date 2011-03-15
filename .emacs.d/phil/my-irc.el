@@ -44,11 +44,12 @@
   (replace-regexp-in-string ">" "&gt;" s)))))))
 
 (defun call-libnotify (matched-type nick msg)
-  (let* ((cmsg  (split-string (clean-message msg)))	      
-         (nick   (first (split-string nick "!")))
-         (msg    (mapconcat 'identity (rest cmsg) " ")))
-    (shell-command-to-string
-     (format "notify-send -i /home/phil/src/emacs/etc/images/icons/hicolor/scalable/apps/emacs.svg '%s says:' '%s'"
-	     nick msg))))
+  (ignore-errors
+    (let* ((cmsg  (split-string (clean-message msg)))	      
+           (nick   (first (split-string nick "!")))
+           (msg    (mapconcat 'identity (rest cmsg) " ")))
+      (shell-command-to-string
+       (format "notify-send -i /home/phil/src/emacs/etc/images/icons/hicolor/scalable/apps/emacs.svg '%s says:' '%s'"
+               nick msg)))))
 
 (add-hook 'erc-text-matched-hook 'call-libnotify)

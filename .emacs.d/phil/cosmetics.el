@@ -16,3 +16,10 @@
     (ignore-errors
       (set-default-font (concat "-xos4-terminus-medium-r-normal--"
                                 "16-160-72-72-c-80-iso8859-1"))))
+
+(defun fix-highlight-tango ()
+  (interactive)
+  (set-face-background 'highlight "LightSteelBlue4")
+  (set-face-foreground 'highlight "white"))
+
+(setq org-hide-leading-stars t)
