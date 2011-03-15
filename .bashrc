@@ -17,6 +17,13 @@ alias grep="grep --color=auto"
 alias gerp="grep --color=auto"
 alias computer,="sudo"
 
+alias kni="knife ssh $* -a ec2.public_hostname"
+alias kniu="knife ssh $* uptime -a ec2.public_hostname"
+alias knis="knife ssh role:safe $* -a ec2.public_hostname"
+alias knisu="knife ssh role:safe uptime -a ec2.public_hostname"
+
+alias scpp="scp $* p.hagelb.org:p.hagelb.org/"
+
 alias $USER="echo \"You're already logged in, genius.\""
 
 # package management
@@ -29,7 +36,7 @@ alias sapts="apt-cache show"
 
 # git
 alias gst="git status"
-alias gb="git branch --color"
+alias gb="git branch -v"
 alias gco="git checkout"
 alias glt="git log -n 10"
 
@@ -57,6 +64,11 @@ function fix-agent {
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
+fi
+
+# Leiningen
+if [ -f $HOME/src/leiningen/bash_completion.bash ]; then
+    . $HOME/src/leiningen/bash_completion.bash
 fi
 
 # Upgrade!

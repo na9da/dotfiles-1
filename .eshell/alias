@@ -20,10 +20,14 @@ alias sagr sudo gem uninstall $*
 alias sagd sudo gem source -u
 alias sagc gem search --remote $*
 alias gst git status
-alias gb git branch --color $*
+alias gb git branch -v $*
 alias gcm git commit -a -v
 alias gco git checkout $*
 alias clojars lein jar && lein pom && scp pom.xml *jar clojars@clojars.org:
 alias jdk7 export JAVA_CMD=/usr/lib/jvm/java-7-openjdk/jre/bin/java
 alias cdf mkdir -p
 alias glt git log -n 10
+alias kni knife ssh $* -a ec2.public_hostname
+alias kniu knife ssh $* uptime -a ec2.public_hostname
+alias knis knife ssh "role:safe*" $* -a ec2.public_hostname
+alias knisu knife ssh "role:safe*" uptime -a ec2.public_hostname
