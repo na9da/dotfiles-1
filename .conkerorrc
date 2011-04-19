@@ -25,10 +25,16 @@ define_webjump("hub", "http://github.com/search?q=%s");
 define_webjump("w", "http://www.google.com/search?q=wikipedia+%s&btnI=I'm Feeling Lucky");
 define_webjump("e", "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search");
 define_webjump("mvn", "http://jarvana.com/jarvana/search?search_type=project&project=%s");
-define_webjump("unfuddle", "https://sonian.unfuddle.com/projects/21988/tickets/by_number/%s");
-define_webjump("safe", "https://agilezen.com/project/12433/story/%s");
-define_webjump("sysadmin", "https://agilezen.com/project/12254/story/%s");
-define_webjump("website", "https://agilezen.com/project/12170/story/%s");
+
+define_webjump("safe", "https://agilezen.com/project/12433/story/%s",
+               $alternative="https://agilezen.com/project/12433/board");
+define_webjump("eng", "https://agilezen.com/project/20303/story/%s",
+               $alternative="https://agilezen.com/project/20303/board");
+define_webjump("sysadmin", "https://agilezen.com/project/12254/story/%s",
+               $alternative="https://agilezen.com/project/12254/board");
+define_webjump("website", "https://agilezen.com/project/12170/story/%s",
+               $alternative="https://agilezen.com/project/12170/board");
+
 define_webjump("wondermark", "http://www.ohnorobot.com/index.pl?s=%s&comic=148&show=advanced&b=1&t=1");
 define_webjump("achewood", "http://www.ohnorobot.com/index.pl?s=%s&comic=636&show=advanced&b=1&t=1");
 define_webjump("dino", "http://www.ohnorobot.com/index.pl?s=%s&comic=23&show=advanced&b=1&t=1");
