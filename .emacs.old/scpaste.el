@@ -32,6 +32,8 @@
 ;; appropriate values, and add this to your .emacs file:
 
 ;; (autoload 'scpaste "scpaste" "Paste the current buffer." t nil)
+;; (setq scpaste-http-destination "http://p.hagelb.org"
+;;       scpaste-scp-destination "p.hagelb.org:p.hagelb.org")
 
 ;;; Usage
 
