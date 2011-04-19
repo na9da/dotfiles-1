@@ -22,3 +22,5 @@
   (load "~/src/safe/.elisp/sonian-navigation.el"))
 
 (eshell)
+;; graaaaaaah!
+(with-current-buffer "*eshell*" (setq pcomplete-cycle-completions nil))
