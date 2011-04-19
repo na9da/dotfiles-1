@@ -1,6 +1,7 @@
 alias gerp grep
 alias top proced
 alias client-jvm export JAVA_CMD=/usr/lib/jvm/ia32-java-6-sun/bin/java
+alias server-jvm export JAVA_CMD=/usr/lib/jvm/java-6-openjdk/bin/java
 alias lcdt lein clean && lein deps && lein test
 alias lcd lein clean && lein deps
 alias emacs find-file $1
@@ -20,7 +21,8 @@ alias sagr sudo gem uninstall $*
 alias sagd sudo gem source -u
 alias sagc gem search --remote $*
 alias gst git status
-alias gb git branch -v $*
+alias gb git branch $*
+alias gbv git branch -v $*
 alias gcm git commit -a -v
 alias gco git checkout $*
 alias clojars lein jar && lein pom && scp pom.xml *jar clojars@clojars.org:
