@@ -70,6 +70,8 @@ interactive("toggle-stylesheets",
             });
 
 require('page-modes/github.js');
+undefine_key(github_keymap, "c");
+define_key(github_keymap, "c", "copy");
 require("page-modes/google-search-results.js");
 auto_mode_list.push([build_url_regex($domain = /google\.com/),
                      google_search_results_mode]);
