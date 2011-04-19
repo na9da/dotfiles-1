@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function usage() {
   echo "git-winner by Garry Dolley (http://scie.nti.st)"
@@ -15,7 +15,7 @@ esac
 if [ -n "$1" ]; then
   DATE=$1
 else
-  DATE=$(date +%m-%d-%Y) # Today
+  DATE=01-01-1970
 fi
 
 PLAYERS=$(git shortlog --all --after=$DATE | grep '^\w' | sed 's/\(.*\) ([0-9]*):/\1/')
