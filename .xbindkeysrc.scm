@@ -68,13 +68,15 @@
 (xbindkey '(mod4 e) "emacs")
 (xbindkey '(mod4 shift e) "emacs -f safe")
 
-(xbindkey '(mod4 f) "firefox")
+(xbindkey '(mod4 f) "~/bin/firefox/firefox")
 (xbindkey '(mod4 c) "conkeror")
 (xbindkey '(mod4 r) "chromium-browser")
 (xbindkey '(mod4 d) "devilspie")
 (xbindkey '(mod4 p) "gnome-display-properties")
 
 (xbindkey '(mod4 s) "shotwell")
+
+(xbindkey '(mod4 i) "gnome-terminal --command \"ssh -t x tmux -2 attach\"")
 
 (xbindkey '(mod4 y) "synergys")
 (xbindkey '(mod4 shift y) "killall synergys")
@@ -90,8 +92,8 @@
 
 (xbindkey '(mod4 u) "uuidgen | xsel -i --clipboard")
 
-;;(xbindkey '(mod4 grave) "gnome-terminal -e \"tmux attach || tmux\"")
-(xbindkey '(mod4 grave) "gnome-terminal")
+(xbindkey '(mod4 grave) "gnome-terminal -e \"tmux attach || tmux\"")
+;; (xbindkey '(mod4 grave) "gnome-terminal")
 (xbindkey '(mod1 grave) "gnome-terminal")
 (xbindkey '(mod4 x) "killall xbindkeys && xbindkeys")
 
