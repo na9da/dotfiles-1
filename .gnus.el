@@ -1,8 +1,10 @@
-(setq gnus-select-method
-      '(nnimap "Mail"
-               (nnimap-address "localhost")
-               (nnimap-stream network)
-               (nnimap-authenticator login))
+(setq gnus-select-method '(nnnil "")
+      imap-shell-program "/usr/lib/dovecot/imap"
+      gnus-secondary-select-methods `((nnimap "mail"
+                                              (nnimap-address "localhost")
+                                              (nnimap-stream shell)
+                                              (imap-shell-program ,imap-shell-program)))
+      gnus-directory "~/.emacs.d/news"
       gnus-home-directory "~/.emacs.d"
       gnus-dribble-directory "~/.emacs.d"
       gnus-always-read-dribble-file t

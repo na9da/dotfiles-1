@@ -14,9 +14,6 @@
 (set-default 'tab-width 4)
 (set-default 'c-basic-offset 2)
 
-(add-hook 'xml-mode-hook 'run-coding-hook)
-(add-hook 'java-mode-hook 'run-coding-hook)
-
 (eval-after-load 'java-mode
   '(progn
      (define-key java-mode-map (kbd "C-M-h") 'backward-kill-word)))

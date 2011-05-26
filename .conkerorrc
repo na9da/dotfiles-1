@@ -25,6 +25,7 @@ define_webjump("hub", "http://github.com/search?q=%s");
 define_webjump("w", "http://www.google.com/search?q=wikipedia+%s&btnI=I'm Feeling Lucky");
 define_webjump("e", "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search");
 define_webjump("mvn", "http://jarvana.com/jarvana/search?search_type=project&project=%s");
+define_webjump("rfc", "http://www.ietf.org/rfc/rfc%s.txt");
 
 define_webjump("safe", "https://agilezen.com/project/12433/story/%s",
                $alternative="https://agilezen.com/project/12433/board");

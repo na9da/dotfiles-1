@@ -1,8 +1,9 @@
 (eval-after-load 'ruby-mode
   '(ignore-errors
      '(add-hook 'ruby-mode-hook 'esk-paredit-nonlisp)
-    (require 'inf-ruby)
-    (inf-ruby-keys)))
+     ;; (require 'inf-ruby)
+     ;; (inf-ruby-keys)
+     ))
 
 ;; (eval-after-load 'swank-clojure
 ;;   '(add-to-list 'swank-clojure-extra-vm-args
@@ -54,5 +55,6 @@
   (eshell/cd "~/src/safe")
   (delete-other-windows)
   (split-window-horizontally)
+  (setenv "JAVA_CMD" "/usr/lib/jvm/java-6-openjdk/bin/java")
   (magit-status "~/src/safe/")
   (durendal-jack-in))

@@ -11,6 +11,15 @@
                (read-from-minibuffer "Size: ")))
            "-*-*-*-m-0-*-*")))
 
+(defun terminus (size)
+  (interactive "p")
+  (set-default-font
+   (concat "-xos4-Terminus-normal-normal-normal-*-"
+           (if (stringp size) size
+             (if (= 1 size) "14"
+               (read-from-minibuffer "Size: ")))
+           "-*-*-*-c-80-iso10646-1")))
+
 ;; If we don't have XFT, let's at least pick a decent default.
 (if (< emacs-major-version 23)
     (ignore-errors
@@ -21,5 +30,12 @@
   (interactive)
   (set-face-background 'highlight "LightSteelBlue4")
   (set-face-foreground 'highlight "white"))
+
+(set-face-background 'vertical-border "white")
+(set-face-foreground 'vertical-border "white")
+
+(eval-after-load 'zenburn
+  '(progn (set-face-background 'vertical-border "black")
+          (set-face-foreground 'vertical-border "black")))
 
 (setq org-hide-leading-stars t)

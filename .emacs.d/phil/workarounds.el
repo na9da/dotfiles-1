@@ -22,3 +22,6 @@
 ;; some terminal emulators get confused
 ;; (define-key paredit-mode-map (kbd "<deletechar>") 'paredit-backward-delete)
 ;; (define-key paredit-mode-map (kbd "M-<deletechar>") 'backward-kill-word)
+
+;; current lein master isn't giving any output on swank launch
+(setq clojure-swank-command "cd %s && lein-1.5.2 jack-in %s &")
