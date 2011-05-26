@@ -163,3 +163,12 @@ define_webjump("safelog", function(d) {
 }, $argument = "optional");
 
 webjumps.sl = webjumps.safelog;
+
+interactive("qrcode", "Open QR code of current URL.",
+            function qrcode(I) {
+                I.window.content.location = 'http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=' +
+                    encodeURIComponent(I.window.location.href);
+            });
+
+define_key(content_buffer_normal_keymap, "Z", "qrcode");
+
