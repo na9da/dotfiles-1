@@ -1,26 +1,26 @@
 [general]
-ui = Noninteractive.Basic
+ui = TTY.TTYUI
 accounts = Gmail
-maxsyncaccounts = 1
 
 [Account Gmail]
-autorefresh = 60
+autorefresh = 30
 localrepository = Local
 remoterepository = Remote
-quick = 6
+# quick = 6
 
 [Repository Local]
 type = IMAP
-remotehost = localhost
-remotepassfile = ~/.dovecotpass
-remoteuser = phil
+preauthtunnel = MAIL=maildir:$HOME/Maildir /usr/lib/dovecot/imap
+holdconnectionopen = yes
 
 [Repository Remote]
-type = Gmail
+type = IMAP
+remotehost = imap.gmail.com
 remoteuser = phil@hagelb.org
 remotepassfile = ~/.gmailpass
-nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
-                               re.sub ('sent_mail', 'sent',
-                               re.sub ('starred', 'flagged',
-                               re.sub (' ', '_', foldername.lower()))))
-folderfilter = lambda foldername: foldername not in '[Gmail]/All Mail'
+ssl = yes
+# nametrans = lambda foldername: re.sub ('^\[gmail\]', 'gmail',
+#                                re.sub ('sent_mail', 'sent',
+#                                re.sub ('starred', 'flagged',
+#                                re.sub (' ', '_', foldername.lower()))))
+folderfilter = lambda foldername: foldername not in [ '[Gmail]/All Mail', '[Gmail]/Spam' ]
