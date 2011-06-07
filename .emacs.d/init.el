@@ -2,14 +2,18 @@
 
 ;; Random stuff
 
+(require 'cl)
+
 (setq-default save-place t)
 
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "conkeror")
+      browse-url-generic-program "conkeror"
+      marmalade-server "http://marmalade-repo.org/"
+      custom-file (expand-file-name "~/.emacs.d/custom.el"))
 
 (global-set-key (kbd "C-c q") 'join-line)
 
-(ignore-errors (load "~/src/safe/.elisp/sonian.el"))
+(ignore-errors (load "~/src/safe/.elisp/sonian.el")) ; for work
 
 ;; Packages
 
@@ -21,8 +25,13 @@
 
 (package-initialize)
 
-;; why not?
+(dolist (p '(clojure-mode slime slime-repl clojure-test-mode magit htmlize
+                          scpaste paredit starter-kit starter-kit-lisp
+                          idle-highlight-mode markdown-mode marmalade))
+  (when (not (package-installed-p p))
+    (package-install p)))
 
+;; why not?
 (eshell)
 ;; graaaaaaah! eshell doesn't respect eval-after-load for some reason:
 (with-current-buffer "*eshell*" (setq pcomplete-cycle-completions nil))
