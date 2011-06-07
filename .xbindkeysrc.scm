@@ -76,7 +76,8 @@
 
 (xbindkey '(mod4 s) "shotwell")
 
-(xbindkey '(mod4 i) "gnome-terminal --command \"ssh -t x tmux -2 attach\"")
+;; (xbindkey '(mod4 i) "urxvt -title irc -e ssh -t x tmux -2 attach")
+(xbindkey '(mod4 i) "urxvt -title irc -e ssh x")
 
 (xbindkey '(mod4 y) "synergys")
 (xbindkey '(mod4 shift y) "killall synergys")
@@ -92,9 +93,9 @@
 
 (xbindkey '(mod4 u) "uuidgen | xsel -i --clipboard")
 
-(xbindkey '(mod4 grave) "gnome-terminal -e \"tmux attach || tmux\"")
-;; (xbindkey '(mod4 grave) "gnome-terminal")
-(xbindkey '(mod1 grave) "gnome-terminal")
+(xbindkey '(mod4 grave) "gnome-terminal")
+(xbindkey '(mod1 grave) "urxvt")
+(xbindkey '(mod1 shift grave) "urxvt -bg 0 -fg white")
 (xbindkey '(mod4 x) "killall xbindkeys && xbindkeys")
 
 ;; Chording keys test: Start differents program if only one key is
