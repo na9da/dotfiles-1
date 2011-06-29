@@ -1,0 +1,2 @@
+#!/bin/bash
+find src -name "*clj" | xargs cat > /tmp/sloc.lisp && sloccount /tmp/sloc.lisp
