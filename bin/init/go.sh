@@ -4,32 +4,29 @@ if [ `/usr/bin/whoami` != "root" ] ; then
     echo "You must be root."
     exit 1
 fi
-
-# Add some PPAs
-add-apt-repository ppa:launchpad/ppa
-add-apt-repository ppa:openjdk/ppa
-
-# grrr... vagrant doesn't work with regular virtualbox; needs Oracle's.
-echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" > /etc/apt/sources.list.d/virtualbox.list
-wget -O /etc/apt/sources.list.d/medibuntu.list http://www.medibuntu.org/sources.list.d/$(lsb_release -cs).list 
-
-sudo apt-get --quiet update
-wget -O /tmp/vbox.asc http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc
-apt-key add /tmp/vbox.asc
-sudo apt-get --yes --quiet --allow-unauthenticated install medibuntu-keyring
-sudo apt-get --quiet update
-
 # get the minimum to bootstrap
-apt-get install git-core zile build-essential mpd ruby-full ruby-dev
-apt-get build-dep emacs-snapshot w3m-el
+apt-get install -y git-core zile build-essential mpd ruby-full ruby-dev \
+    python-software-properties
+apt-get build-dep emacs-snapshot
+
+echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
+
+# Virtualbox, since vagrant doesn't work with the free version
+apt-add-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+wget -q -O - http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc | sudo apt-key add -
+cd /tmp
+sudo apt-get install virtualbox-4.0
+wget http://download.virtualbox.org/virtualbox/4.0.8/Oracle_VM_VirtualBox_Extension_Pack-4.0.8-71778.vbox-extpack
+VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-4.0.8-71778.vbox-extpack
+
 mkdir ~/src
 
 # don't write atimes
 chattr +A /
 
 # other random debs
-wget http://eion.robbmob.com/skype4pidgin.deb
-dpkg -i skype4pidgin.deb
+# wget http://eion.robbmob.com/skype4pidgin.deb
+# dpkg -i skype4pidgin.deb
 
 chown -R phil ~
 

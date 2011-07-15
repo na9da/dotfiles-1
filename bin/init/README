@@ -13,9 +13,6 @@ TODO:
 - don't suspend when lid is closed
 - fonts: subpixel, slight hinting, inconsolata as monospace
 
-/usr/share/xsessions/user.desktop:
-
-[Desktop Entry]
-Name=Xsession
-Comment=This runs ~/.xsession
-Exec=/etc/X11/Xsession
+To save manually:
+src, documents, music, Photos, mail (to disk)
+.ssh, .gnupg
