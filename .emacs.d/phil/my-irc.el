@@ -53,3 +53,10 @@
                nick msg)))))
 
 (add-hook 'erc-text-matched-hook 'call-libnotify)
+
+(defun window-register-bottom (r &optional x)
+  (interactive "cJump to register: \nP")
+  (jump-to-register r)
+  (walk-windows (lambda (w) (end-of-buffer))))
+
+(global-set-key (kbd "C-x w") 'window-register-bottom)

@@ -1,10 +1,7 @@
 ;;; broken ido
 (defun ido-directory-too-big-p (arg) nil)
 
-;; awesome sometimes, but right now more trouble than it's worth
-(setq tramp-mode nil
-      tramp-unload-hook nil
-      compilation-scroll-output t ; byte-compilation fails w/o this
+(setq compilation-scroll-output t ; byte-compilation fails w/o this
       ido-enable-tramp-completion nil)
 
 (add-hook 'eshell-mode-hook
@@ -20,6 +17,20 @@
          (flet ((magit-need-refresh (f)))
            (magit-cherry-pick-item))))))
 
-;; some terminal emulators get confused
-;; (define-key paredit-mode-map (kbd "<deletechar>") 'paredit-backward-delete)
-;; (define-key paredit-mode-map (kbd "M-<deletechar>") 'backward-kill-word)
+;; come on guys; autoloads are not rocket science
+(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-zenburn-0.1")
+(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-twilight-0.1")
+(autoload 'color-theme-zenburn "color-theme-zenburn" nil t)
+(autoload 'color-theme-twilight "color-theme-twilight" nil t)
+(add-to-list 'load-path "~/.emacs.d/elpa/yaoddmuse-0.1.1")
+
+(add-hook 'oddmuse-mode-hook
+          (lambda ()
+            (unless (string-match "question" oddmuse-post)
+              (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
+
+;; no clippy plz
+(when (not (package-installed-p 'magit))
+  (package--with-work-buffer
+   "http://tromey.com/elpa/" "magit-0.8.1.el"
+   (package-unpack-single "magit" "0.8.1" "Control Git from Emacs" nil)))

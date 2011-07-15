@@ -1,5 +1,7 @@
 (defalias 'zb 'color-theme-zenburn)
-(defalias 'bb 'color-theme-blackboard)
+(defalias 'tw 'color-theme-twilight)
+(defalias 'sl 'color-theme-solarized)
+
 (defalias 'ff 'find-file)
 
 (defun inconsolata (size)
@@ -20,19 +22,18 @@
                (read-from-minibuffer "Size: ")))
            "-*-*-*-c-80-iso10646-1")))
 
-;; If we don't have XFT, let's at least pick a decent default.
-(if (< emacs-major-version 23)
-    (ignore-errors
-      (set-default-font (concat "-xos4-terminus-medium-r-normal--"
-                                "16-160-72-72-c-80-iso8859-1"))))
-
 ;; lose the stupid pipe chars on the split-screen bar
-
-(set-face-background 'vertical-border "white")
 (set-face-foreground 'vertical-border "white")
 
-(eval-after-load 'zenburn
-  '(progn (set-face-background 'vertical-border "black")
-          (set-face-foreground 'vertical-border "black")))
+(defun fix-zb ()
+  (interactive)
+  (set-face-background 'vertical-border "black")
+  (set-face-foreground 'vertical-border "black")
+  (set-face-foreground 'font-lock-keyword-face "#f0dfaf")
+  (set-face-foreground 'eshell-prompt "turquoise"))
 
-(setq org-hide-leading-stars t)
+(eval-after-load 'color-theme-zenburn
+  '(fix-zb))
+
+(eval-after-load 'hl-line
+  '(set-face-background 'hl-line "darkseagreen2"))

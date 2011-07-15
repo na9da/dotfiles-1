@@ -4,8 +4,6 @@
      (require 'inf-ruby)
      (inf-ruby-keys)))
 
-(add-hook 'clojure-mode-hook 'esk-turn-on-whitespace)
-
 ;; devilspie config
 (add-to-list 'auto-mode-alist '("\\.ds$" . lisp-mode))
 
@@ -13,25 +11,19 @@
 (set-default 'tab-width 4)
 (set-default 'c-basic-offset 2)
 
-(add-hook 'xml-mode-hook 'esk-run-coding-hook)
-(add-hook 'java-mode-hook 'esk-run-coding-hook)
-
 (eval-after-load 'java-mode
   '(define-key java-mode-map (kbd "C-M-h") 'backward-kill-word))
 
 (add-to-list 'auto-mode-alist '("\\.mirah$" . ruby-mode))
 
-(eval-after-load 'slime
-  '(durendal-enable))
-
-(global-set-key (kbd "C-c C-j") 'durendal-jack-in)
-(global-set-key (kbd "C-c g") 'magit-status)
-
 (add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
 
-(setq slime-kill-without-query-p t
-      slime-net-coding-system 'utf-8-unix)
+(setq slime-kill-without-query-p t)
 
 ;; move to slime
 (put 'slime-lisp-host 'safe-local-variable 'stringp)
 (put 'slime-port 'safe-local-variable 'integerp)
+
+(defalias 'tdoe 'toggle-debug-on-error)
+
+(setq confluence-url "http://dev.clojure.org/")

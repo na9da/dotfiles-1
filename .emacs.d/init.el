@@ -11,8 +11,7 @@
       marmalade-server "http://marmalade-repo.org/"
       custom-file (expand-file-name "~/.emacs.d/custom.el"))
 
-(global-set-key (kbd "C-c q") 'join-line)
-
+(ignore-errors (load "~/src/lein/pcmpl-lein.el"))
 (ignore-errors (load "~/src/safe/.elisp/sonian.el")) ; for work
 
 ;; Packages
@@ -21,15 +20,21 @@
   (load-file "/home/phil/.emacs.d/package-23.el"))
 
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (package-initialize)
 
-(dolist (p '(clojure-mode slime slime-repl clojure-test-mode magit htmlize
-                          scpaste paredit starter-kit starter-kit-lisp
-                          idle-highlight-mode markdown-mode marmalade))
+(when (featurep 'smex)
+  (global-set-key (kbd "M-x") 'smex)
+  (smex-initialize))
+
+(dolist (p '(clojure-mode slime slime-repl clojure-test-mode htmlize
+                          scpaste paredit starter-kit starter-kit-lisp smex
+                          idle-highlight-mode marmalade oddmuse scpaste))
   (when (not (package-installed-p p))
     (package-install p)))
+
+(defalias 'guns 'gnus)
 
 ;; why not?
 (eshell)
