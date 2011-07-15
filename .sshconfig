@@ -2,19 +2,18 @@
 
 Host home.hagelb.org
   User phil
-  Port 2222
+  Port 2201
 
-Host dynabook.local
-  Port 2202
+Host a
+  Hostname altair.local
+  Port 2201
+  User sonian
 
 Host p
   HostName p.hagelb.org
   User philhag
 
 Host *hagelb.org
-  User philhag
-
-Host philisha.net
   User philhag
 
 Host technomancy.us
@@ -41,13 +40,9 @@ Host g
   hostname github.com
   user git
 
-Host *.amazonaws.com
-  User ubuntu
-
 # Default
 
 Host *
-  User phil
   KeepAlive yes
   controlmaster auto
   controlpath /tmp/ssh-%r@%h:%p

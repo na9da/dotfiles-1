@@ -66,7 +66,6 @@
 ;; (xbindkey '(mod1 space) "gnome-do")
 
 (xbindkey '(mod4 e) "emacs")
-(xbindkey '(mod4 shift e) "emacs -f safe")
 
 (xbindkey '(mod4 f) "~/bin/firefox/firefox")
 (xbindkey '(mod4 c) "conkeror")
@@ -93,8 +92,7 @@
 
 (xbindkey '(mod4 u) "uuidgen | xsel -i --clipboard")
 
-(xbindkey '(mod4 grave) "gnome-terminal")
-(xbindkey '(mod1 grave) "urxvt")
+(xbindkey '(mod1 grave) "gnome-terminal")
 (xbindkey '(mod1 shift grave) "urxvt -bg 0 -fg white")
 (xbindkey '(mod4 x) "killall xbindkeys && xbindkeys")
 

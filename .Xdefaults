@@ -2,6 +2,8 @@ emacs.font: Inconsolata-12
 Rxvt*scrollBar: False
 urxvt.font: xft:inconsolata:pixelsize=15
 URxvt.perl-lib: /home/phil/src/urxvt-perls
-URxvt.perl-ext-common: url-select
+URxvt.perl-ext-common: url-select,keyboard-select
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.urlLauncher: /home/phil/bin/conkeror
+URxvt.keysym.M-o: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
