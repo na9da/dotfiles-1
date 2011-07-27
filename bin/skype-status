@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+# Update skype status information v0.1
+# Copyright Adrian Bridgett <adrian@smop.co.uk> 14/11/2007
+# Released under GPLv3
+
+require 'dbus'
+
+program_name="skype_status"
+skype_protocol=5
+
+bus = DBus::SessionBus.instance
+service = bus.service("com.Skype.API")
+skype = service.object("/com/Skype")
+skype.introspect
+skype_iface = skype["com.Skype.API"]
+
+msg = if ARGV.empty?
+        `zenity --text-info --editable`
+      else
+        ARGV.join(' ')
+      end
+
+# you must send NAME and PROTOCOL
+# otherwise you will receive ERROR 68 (permission denied)
+skype_iface.Invoke("NAME #{program_name}")
+skype_iface.Invoke("PROTOCOL #{skype_protocol}")
+skype_iface.Invoke("SET PROFILE RICH_MOOD_TEXT #{msg}")
+
+# see also: http://skyper.rubyforge.org/svn/README

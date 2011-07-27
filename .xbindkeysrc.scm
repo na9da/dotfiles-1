@@ -87,6 +87,7 @@
 (xbindkey '(mod4 m) "nautilus ~/documents/movies")
 (xbindkey '(mod4 n) "nautilus ~/")
 
+(xbindkey '(mod4 y) "~/bin/skype-status")
 (xbindkey '(mod4 t) "~/src/stiler/stiler.py swap")
 (xbindkey '(mod4 shift t) "~/src/stiler/stiler.py cycle")
 (xbindkey '(mod4 v) "~/src/stiler/stiler.py vertical")

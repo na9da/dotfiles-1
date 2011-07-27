@@ -21,6 +21,7 @@
 - imagemagick
 - libavahi-compat-libdnssd-dev
 - libavahi-compat-libdnssd1
+- libdbus-ruby
 - libevent-dev
 - libfaad2
 - libnotify-bin
