@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+# Rodentless skype UI.
+# Based on skype-status © 14/11/2007 Adrian Bridgett <adrian@smop.co.uk>
+# http://www.smop.co.uk/blog/index.php/2007/11/14/skype-d-bus-notification/
+
+# Released under GPLv3
+
+begin
+  require 'dbus'
+  system("which dmenu > /dev/null && which zenity > /dev/null") or raise "deps!"
+rescue LoadError, Exception
+  abort "Try this: sudo apt-get install libdbus-ruby suckless-tools zenity"
+end
+
+PROTOCOL = 5
+
+def invoke(command)
+  @skype ||= begin
+               service = DBus::SessionBus.instance.service("com.Skype.API")
+               skype = service.object("/com/Skype")
+               skype.introspect
+               skype["com.Skype.API"].Invoke("NAME #{$0}")
+               skype["com.Skype.API"].Invoke("PROTOCOL #{PROTOCOL}")
+               skype["com.Skype.API"]
+             end
+  @skype.Invoke(command)
+end
+
+def users
+  invoke("SEARCH FRIENDS").first.split(/,? /)[1 .. -1]
+end
+
+case ARGV.shift
+  when /help/
+  abort "Usage: #{$0} status [message] | call [username]"
+
+  when "status"
+  msg = ARGV.empty? ? `zenity --text-info --editable` : ARGV.join(' ')
+  invoke("SET PROFILE RICH_MOOD_TEXT #{msg}")
+
+  when "call"
+  user = ARGV.shift || `echo \"#{users.join("\n")}\" | dmenu`
+  invoke("CALL #{user}") unless user.empty?
+end

@@ -78,16 +78,15 @@
 ;; (xbindkey '(mod4 i) "urxvt -title irc -e ssh -t x tmux -2 attach")
 (xbindkey '(mod4 i) "urxvt -title irc -e ssh x")
 
-(xbindkey '(mod4 y) "synergys")
-(xbindkey '(mod4 shift y) "killall synergys")
-
 (xbindkey '(mod4 b) "~/bin/dbook.rb")
 (xbindkey '(mod1 space) "~/bin/dlaunch.rb")
 (xbindkey '(mod4 k) "nautilus ~/documents/books")
 (xbindkey '(mod4 m) "nautilus ~/documents/movies")
 (xbindkey '(mod4 n) "nautilus ~/")
 
-(xbindkey '(mod4 y) "~/bin/skype-status")
+(xbindkey '(mod4 y) "~/bin/skyyy status")
+(xbindkey '(mod4 a) "~/bin/skyyy call")
+
 (xbindkey '(mod4 t) "~/src/stiler/stiler.py swap")
 (xbindkey '(mod4 shift t) "~/src/stiler/stiler.py cycle")
 (xbindkey '(mod4 v) "~/src/stiler/stiler.py vertical")
