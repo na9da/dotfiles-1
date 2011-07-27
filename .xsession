@@ -1,18 +1,17 @@
 #!/bin/bash
 
-devilspie &
-xbindkeys &
-~/src/conkeror/contrib/run-conkeror -daemon &
-
-xrdb -merge ~/.Xdefaults
 source ~/.profile
 
-setxkbmap -option ctrl:nocaps
-gnome-do &
+devilspie &
+xbindkeys &
+unclutter -idle 0.5 &
+
+xrdb -merge ~/.Xdefaults
+xmodmap -e 'keycode 66 = Control_L'
+xmodmap -e 'clear Lock'
+xmodmap -e 'add Control = Control_L'
+
+echo "xsession" > ~/xses
+gnome-panel &
 
 exec gnome-session
-
-#gnome-settings-daemon &
-#gnome-power-manager &
-#nm-applet &
-#exec awesome

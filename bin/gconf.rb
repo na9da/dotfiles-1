@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env ruby
 require 'yaml'
 
 # gconf settings

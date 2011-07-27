@@ -2,6 +2,11 @@
   global/:
     use_menu_accelerators: false
     use_mnemonics: false
+  profiles/Default/:
+    default_show_menubar: false
+/apps/gnome-power-manager/buttons:
+  lid_ac: false
+  lid_battery: false
 /apps/metacity/:
   general/:
     num_workspaces: 7
@@ -15,8 +20,7 @@
     switch_to_workspace_6: <Control>6
     switch_to_workspace_7: <Control>7
   window_keybindings/:
-    maximize_vertically: <Super>Page_Up
-    maximize_horizontally: <Super>Page_Down
+    maximize_vertically: <Alt><Shift>F10
     toggle_maximized: <Alt>F10
     move_to_corner_nw: <Super>1
     move_to_corner_ne: <Super>2
@@ -34,8 +38,9 @@
 /desktop/gnome/:
   font_rendering/:
     antialiasing: greyscale
-    hinting: medium
+    hinting: slight
   interface/:
     can_change_accels: true
     toolbar_style: icons
     gtk_key_theme: Emacs
+    monospace_font_name: Inconsolata Medium 12
