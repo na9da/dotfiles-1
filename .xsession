@@ -11,7 +11,7 @@ xmodmap -e 'keycode 66 = Control_L'
 xmodmap -e 'clear Lock'
 xmodmap -e 'add Control = Control_L'
 
-echo "xsession" > ~/xses
+ssh-add &
 gnome-panel &
 
 exec gnome-session
