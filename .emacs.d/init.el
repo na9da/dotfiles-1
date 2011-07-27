@@ -24,7 +24,7 @@
 
 (package-initialize)
 
-(when (featurep 'smex)
+(when (require 'smex nil t)
   (global-set-key (kbd "M-x") 'smex)
   (smex-initialize))
 

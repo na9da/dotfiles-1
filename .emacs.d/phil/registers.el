@@ -2,3 +2,4 @@
 (set-register ?s '(file . "~/src/safe/log.org"))
 (set-register ?x '(file . "~/.xbindkeysrc.scm"))
 (set-register ?i '(file . "~/.emacs.d/init.el"))
+(set-register ?k '(file . "~/.ssh/known_hosts"))

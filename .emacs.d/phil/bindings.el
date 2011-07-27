@@ -6,3 +6,7 @@
 
 (global-set-key (kbd "C-c C-j") 'clojure-jack-in)
 (global-set-key (kbd "C-c g") 'magit-status)
+
+(global-set-key (kbd "C-c b")
+                (lambda () (interactive)
+                  (shell-command (format "rake post POST=%s" (car (split-string (buffer-name) "\\."))))))

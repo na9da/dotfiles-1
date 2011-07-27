@@ -1,7 +1,3 @@
-(defalias 'zb 'color-theme-zenburn)
-(defalias 'tw 'color-theme-twilight)
-(defalias 'sl 'color-theme-solarized)
-
 (defalias 'ff 'find-file)
 
 (defun inconsolata (size)
@@ -25,15 +21,20 @@
 ;; lose the stupid pipe chars on the split-screen bar
 (set-face-foreground 'vertical-border "white")
 
-(defun fix-zb ()
+(defun zb ()
   (interactive)
+  (color-theme-zenburn)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
   (set-face-foreground 'font-lock-keyword-face "#f0dfaf")
+  (eval-after-load 'hl-line
+    '(set-face-background 'hl-line "gray17"))
   (set-face-foreground 'eshell-prompt "turquoise"))
 
-(eval-after-load 'color-theme-zenburn
-  '(fix-zb))
+(defun tw ()
+  (interactive)
+  (color-theme-twilight)
+  (set-face-background 'hl-line "black"))
 
 (eval-after-load 'hl-line
   '(set-face-background 'hl-line "darkseagreen2"))
