@@ -1,11 +1,11 @@
 // -*- Mode: js -*-
 
-let (f = get_home_directory()) {
-    f.appendRelativePath(".conkeror.d/passwords.js"); 
-    if(f.exists) {
-        load(f);
-    }
-}
+// let (f = get_home_directory()) {
+//     f.appendRelativePath(".conkeror.d/passwords.js"); 
+//     if(f.exists) {
+//         load(f);
+//     }
+// }
 
 interactive("fill-domain", "Fill the minibuffer with the current domain.",
             function (I) {

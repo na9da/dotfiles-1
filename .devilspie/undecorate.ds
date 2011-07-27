@@ -5,7 +5,8 @@
         (matches (application_name) "conkeror")
         (matches (application_name) "erminal")
         (matches (application_name) "rxvt")
-        (matches (application_name) "chromium"))
+        (matches (application_name) "irc")
+        (matches (application_name) "hromium"))
     (begin
      (undecorate)
      (maximize_vertically)))
