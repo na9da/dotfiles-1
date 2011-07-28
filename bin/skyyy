@@ -27,19 +27,47 @@ def invoke(command)
   @skype.Invoke(command)
 end
 
-def users
-  invoke("SEARCH FRIENDS").first.split(/,? /)[1 .. -1]
+def get(query) # get list
+  invoke(query).first.split(/,? /)[1 .. -1]
 end
 
-case ARGV.shift
+def pick_user
+  ARGV.empty? ? `echo \"#{get("SEARCH FRIENDS").join("\n")}\" | dmenu` : ARGV.join(' ')
+end
+
+def go(command)
+  case command
+  when nil
+    go `echo \"status\ncall\nhangup\ninvite\" | dmenu`
+
   when /help/
-  abort "Usage: #{$0} status [message] | call [username]"
+    abort "Commands: status [MSG], call [USER], invite [USER], hangup"
 
   when "status"
-  msg = ARGV.empty? ? `zenity --text-info --editable` : ARGV.join(' ')
-  invoke("SET PROFILE RICH_MOOD_TEXT #{msg}")
+    msg = ARGV.empty? ? `zenity --text-info --editable` : ARGV.join(' ')
+    invoke("SET PROFILE RICH_MOOD_TEXT #{msg}")
 
   when "call"
-  user = ARGV.shift || `echo \"#{users.join("\n")}\" | dmenu`
-  invoke("CALL #{user}") unless user.empty?
+    user = pick_user
+    invoke("CALL #{user}") unless user.empty?
+
+  when "hangup"
+    get("SEARCH ACTIVECALLS").each {|c| invoke("SET CALL #{c} STATUS FINISHED")}
+
+  when "invite"
+    user = pick_user
+    unless user.empty?
+      original_call = get("SEARCH ACTIVECALLS").first
+      invoke("SET CALL #{original_call} STATUS ONHOLD")
+      invoke("CALL #{user}")
+      invoke("SET CALL #{original_call} STATUS INPROGRESS")
+      new_call = get("SEARCH ACTIVECALLS").last
+      until invoke("GET CALL #{new_call} STATUS").first =~ /INPRORGESS$/
+        sleep 0.1
+      end
+      invoke("SET CALL #{new_call} JOIN_CONFERENCE #{original_call}")
+    end
+  end
 end
+
+go ARGV.shift
