@@ -35,13 +35,22 @@ def pick_user
   ARGV.empty? ? `echo \"#{get("SEARCH FRIENDS").join("\n")}\" | dmenu` : ARGV.join(' ')
 end
 
+def friendly_name(id)
+  invoke("GET CHAT #{id} FRIENDLYNAME").first.split(/FRIENDLYNAME /).last
+end
+
 def go(command)
   case command
   when nil
-    go `echo \"status\ncall\nhangup\ninvite\" | dmenu`
+    go `echo \"answer\nstatus\ncall\nhangup\ninvite\nchat\" | dmenu`
 
   when /help/
-    abort "Commands: status [MSG], call [USER], invite [USER], hangup"
+    abort "Commands: answer, status [MSG], call [USER], invite [USER], hangup"
+
+  when "answer"
+    get("SEARCH ACTIVECALLS").
+      select {|c| invoke("GET CALL #{c} STATUS").first =~ /RINGING$/ }.
+      each {|c| invoke("SET CALL #{c} STATUS INPROGRESS") }
 
   when "status"
     msg = ARGV.empty? ? `zenity --text-info --editable` : ARGV.join(' ')
@@ -54,6 +63,11 @@ def go(command)
   when "hangup"
     get("SEARCH ACTIVECALLS").each {|c| invoke("SET CALL #{c} STATUS FINISHED")}
 
+  when "chat"
+    chats = get("SEARCH MISSEDCHATS").map{|c| [c, friendly_name(c)] }
+    chat_name = `echo \"#{chats.map{|c| c.last }.join("\n")}\" | dmenu`
+    invoke("OPEN CHAT #{chats.detect{|c| c.last == chat_name}.first}")
+
   when "invite"
     user = pick_user
     unless user.empty?
@@ -62,9 +76,10 @@ def go(command)
       invoke("CALL #{user}")
       invoke("SET CALL #{original_call} STATUS INPROGRESS")
       new_call = get("SEARCH ACTIVECALLS").last
-      until invoke("GET CALL #{new_call} STATUS").first =~ /INPRORGESS$/
-        sleep 0.1
-      end
+      # until invoke("GET CALL #{new_call} STATUS").first =~ /INPROGRESS$/
+      #   sleep 0.1
+      # end
+      sleep 1 # TODO: poll until in progress
       invoke("SET CALL #{new_call} JOIN_CONFERENCE #{original_call}")
     end
   end
