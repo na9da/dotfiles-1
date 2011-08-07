@@ -49,6 +49,7 @@ define_webjump("achewood", "http://www.ohnorobot.com/index.pl?s=%s&comic=636&sho
 define_webjump("dino", "http://www.ohnorobot.com/index.pl?s=%s&comic=23&show=advanced&b=1&t=1");
 
 key_bindings_ignore_capslock = true;
+hints_display_url_panel = true;
 url_remoting_fn = load_url_in_new_buffer;
 url_completion_use_history = true;
 url_completion_use_bookmarks = false;
