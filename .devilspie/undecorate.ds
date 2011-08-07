@@ -1,6 +1,5 @@
 (if (or (matches (window_name) "Firefox")
         (matches (window_name) "Minefield")
-        (matches (application_name) "idgin")
         (matches (application_name) "macs")
         (matches (application_name) "conkeror")
         (matches (application_name) "erminal")
@@ -9,4 +8,4 @@
         (matches (application_name) "hromium"))
     (begin
      (undecorate)
-     (maximize_vertically)))
+     (maximize)))

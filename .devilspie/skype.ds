@@ -1,0 +1,7 @@
+(if (matches (application_name) "kype")
+    (begin
+     (undecorate)
+     (set_workspace 5)
+     (if (or (matches (window_role) "MainWindow")
+             (matches (window_role) "Chats"))
+         (maximize_vertically))))
