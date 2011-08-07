@@ -27,13 +27,14 @@
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
   (set-face-foreground 'font-lock-keyword-face "#f0dfaf")
-  (eval-after-load 'hl-line
-    '(set-face-background 'hl-line "gray17"))
+  (require 'hl-line)
+  (set-face-background 'hl-line "gray17")
   (set-face-foreground 'eshell-prompt "turquoise"))
 
 (defun tw ()
   (interactive)
   (color-theme-twilight)
+  (require 'hl-line)
   (set-face-background 'hl-line "black"))
 
 (eval-after-load 'hl-line

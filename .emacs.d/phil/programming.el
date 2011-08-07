@@ -18,6 +18,9 @@
 
 (add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
 
+;; TODO: move to starter-kit
+(add-hook 'emacs-lisp-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+
 (setq slime-kill-without-query-p t)
 
 ;; move to slime
