@@ -21,9 +21,7 @@ apt-get install emacs-snapshot
 apt-add-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
 wget -q -O - http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc | sudo apt-key add -
 cd /tmp
-sudo apt-get install virtualbox-4.0
-wget http://download.virtualbox.org/virtualbox/4.0.8/Oracle_VM_VirtualBox_Extension_Pack-4.0.8-71778.vbox-extpack
-VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-4.0.8-71778.vbox-extpack
+sudo apt-get install virtualbox-4.1
 VBoxManage setproperty machinefolder $HOME/.vbox-vms # you toolbag.
 
 mkdir -p ~/src
