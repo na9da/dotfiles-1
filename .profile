@@ -7,6 +7,5 @@ export JAVA_CMD=/usr/lib/jvm/ia32-java-6-sun/bin/java
 export DEBEMAIL="technomancy@gmail.com"
 export DEBFULLNAME="Phil Hagelberg"
 
-export OPSCODE_USER="sonian_developer"
-export DROPBOX_DIR=$HOME/src/sa-drop # ugh
+export OPSCODE_USER="sonian_devs"
 export SONIAN_DIR=$HOME/src

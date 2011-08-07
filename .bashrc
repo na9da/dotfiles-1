@@ -21,7 +21,7 @@ alias kni="knife ssh $* -a ec2.public_hostname"
 alias kniu="knife ssh $* uptime -a ec2.public_hostname"
 alias knis="knife ssh role:safe $* -a ec2.public_hostname"
 alias knisu="knife ssh role:safe uptime -a ec2.public_hostname"
-alias knisu="knife ssh role:safe \"safectl status\" -a ec2.public_hostname"
+alias kniss="knife ssh role:safe \"safectl status\" -a ec2.public_hostname"
 
 alias scpp="scp $* p.hagelb.org:p.hagelb.org/"
 

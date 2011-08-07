@@ -12,6 +12,5 @@ xmodmap -e 'clear Lock'
 xmodmap -e 'add Control = Control_L'
 
 ssh-add &
-gnome-panel &
 
 exec gnome-session
