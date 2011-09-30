@@ -1,7 +1,8 @@
-personal_ws-1.1 en 60 
+personal_ws-1.1 en 64 
 Compojure
 parens
 http
+Sonian
 rubygems
 Ubuntu
 Elisp
@@ -15,6 +16,7 @@ metadata
 Contrib
 dotfiles
 init
+composability
 refactorings
 rubyist
 Clojure's
@@ -35,6 +37,7 @@ Radagast
 Evrinid
 Evri
 JVM
+Heroku
 src
 Solr
 lucene
@@ -42,9 +45,9 @@ triaged
 prerelease
 multiplayer
 Freenode
-bytecode
 codebase
-Eval
+bytecode
+eval
 runtime
 namespaces
 lein
@@ -58,4 +61,5 @@ classpath
 Hagelberg
 IRB
 IRC
-Leiningen
+leiningen
+plugin

@@ -73,16 +73,18 @@
 (xbindkey '(mod4 d) "devilspie")
 (xbindkey '(mod4 p) "gnome-display-properties")
 
-(xbindkey '(mod4 i) "urxvt -title irc -e ssh x")
+(xbindkey '(mod4 i) "urxvt -title irc -e ssh phil@a")
+(xbindkey '(mod4 u) "urxvt")
 
-(xbindkey '(mod1 space) "dmenu_run")
+(xbindkey '(mod1 space) "ery-run")
+(xbindkey '(mod4 n) "ery-net")
 (xbindkey '(mod4 b) "~/bin/dbook.rb")
 (xbindkey '(mod4 k) "thunar ~/documents/books")
 (xbindkey '(mod4 m) "thunar ~/documents/movies")
 
 (xbindkey '(mod4 y) "~/bin/skyyy")
-
-(xbindkey '(mod4 u) "uuidgen | xsel -i --clipboard")
+(xbindkey '(mod4 shift y) "synergys")
+(xbindkey '(mod4 mod1 y) "killall synergys")
 
 (xbindkey '(mod1 grave) "gnome-terminal")
 (xbindkey '(mod1 shift grave) "urxvt -bg 0 -fg white")

@@ -5,6 +5,7 @@
         (matches (application_name) "erminal")
         (matches (application_name) "rxvt")
         (matches (application_name) "irc")
+        (matches (application_name) "uzbl")
         (matches (application_name) "hromium"))
     (begin
      (undecorate)
