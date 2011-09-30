@@ -3,6 +3,7 @@ export EDITOR="emacsclient"
 export CDPATH=.:$HOME/src
 export ANT_ARGS="-emacs"
 export JAVA_CMD=/usr/lib/jvm/ia32-java-6-sun/bin/java
+export OCAMLPATH=~/.odb/lib
 
 export DEBEMAIL="technomancy@gmail.com"
 export DEBFULLNAME="Phil Hagelberg"

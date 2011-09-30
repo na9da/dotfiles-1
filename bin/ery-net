@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# ssid=`nmcli -f SSID dev wifi | grep -v SSID | erythrina`
+# nmcli con up id $ssid iface wlan0
+
+id=`nmcli -f NAME con | grep -v NAME | erythrina`
+if [ "$id" != "" ]; then
+    nmcli con up id $id
+fi
