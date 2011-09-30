@@ -20,13 +20,13 @@
 
 ;; lose the stupid pipe chars on the split-screen bar
 (set-face-foreground 'vertical-border "white")
+(set-face-background 'vertical-border "white")
 
 (defun zb ()
   (interactive)
-  (color-theme-zenburn)
+  (load-file (expand-file-name "~/.emacs.d/zenburn-theme.el"))
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
-  (set-face-foreground 'font-lock-keyword-face "#f0dfaf")
   (require 'hl-line)
   (set-face-background 'hl-line "gray17")
   (set-face-foreground 'eshell-prompt "turquoise"))
@@ -35,7 +35,10 @@
   (interactive)
   (color-theme-twilight)
   (require 'hl-line)
+  (set-face-attribute 'eshell-prompt nil :foreground "turquoise1")
   (set-face-background 'hl-line "black"))
 
 (eval-after-load 'hl-line
   '(set-face-background 'hl-line "darkseagreen2"))
+
+(defun disapproval () (interactive) (insert "ಠ_ಠ"))

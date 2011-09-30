@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (eval-after-load 'ruby-mode
   '(ignore-errors
      (add-hook 'ruby-mode-hook 'esk-paredit-nonlisp)
@@ -18,10 +20,12 @@
 
 (add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
 
-;; TODO: move to starter-kit
-(add-hook 'emacs-lisp-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+(add-hook 'clojure-mode-hook 'esk-turn-on-whitespace)
 
-(setq slime-kill-without-query-p t)
+(setq slime-kill-without-query-p t
+      confluence-url "http://dev.clojure.org/")
+
+(global-set-key (kbd "C-x f") 'find-file-in-project)
 
 ;; move to slime
 (put 'slime-lisp-host 'safe-local-variable 'stringp)
@@ -29,4 +33,13 @@
 
 (defalias 'tdoe 'toggle-debug-on-error)
 
-(setq confluence-url "http://dev.clojure.org/")
+;; thanks johnw: https://gist.github.com/1198329
+(defun find-grep-in-project (command-args)
+  (interactive
+   (progn
+     (list (read-shell-command "Run find (like this): "
+                               '("git ls-files -z | xargs -0 egrep -nH -e " . 41)
+                               'grep-find-history))))
+  (when command-args
+    (let ((null-device nil)) ; see grep
+      (grep command-args))))
