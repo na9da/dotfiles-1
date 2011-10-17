@@ -1,4 +1,8 @@
-export PATH=$PATH:/sbin:/usr/sbin:$HOME/bin:/bin:/usr/bin:/usr/local/bin:/usr/local/sbin:/var/lib/gems/1.8/bin:/home/phil/.gem/ruby/1.8/bin:$HOME/.lein/bin/:$HOME/src/android/sdk/platform-tools/:$HOME/src/android/sdk/tools/:$HOME/src/mirah/bin/:$HOME/src/jruby/bin/
+export PATH=/usr/local/bin:/sbin:/usr/sbin:$HOME/bin:/bin:/usr/bin
+export PATH=$PATH:/var/lib/gems/1.9.1/bin:/var/lib/gems/1.8/bin:/home/phil/.gem/ruby/1.8/bin
+export PATH=$PATH:$HOME/.lein/bin/:$HOME/src/mirah/bin/:$HOME/src/jruby/bin/
+export PATH=$PATH:$HOME/src/slug-compiler/bin
+
 export EDITOR="emacsclient"
 export CDPATH=.:$HOME/src
 export ANT_ARGS="-emacs"
@@ -7,6 +11,3 @@ export OCAMLPATH=~/.odb/lib
 
 export DEBEMAIL="technomancy@gmail.com"
 export DEBFULLNAME="Phil Hagelberg"
-
-export OPSCODE_USER="sonian_devs"
-export SONIAN_DIR=$HOME/src
