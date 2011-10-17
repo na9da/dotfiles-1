@@ -1,8 +1,8 @@
-personal_ws-1.1 en 64 
+personal_ws-1.1 en 65 
 Compojure
 parens
-http
 Sonian
+http
 rubygems
 Ubuntu
 Elisp
@@ -35,9 +35,9 @@ clojure
 résumé
 Radagast
 Evrinid
+Heroku
 Evri
 JVM
-Heroku
 src
 Solr
 lucene
@@ -45,8 +45,8 @@ triaged
 prerelease
 multiplayer
 Freenode
-codebase
 bytecode
+codebase
 eval
 runtime
 namespaces
@@ -60,6 +60,7 @@ sharded
 classpath
 Hagelberg
 IRB
+Noir
 IRC
 leiningen
 plugin
