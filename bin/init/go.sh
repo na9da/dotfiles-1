@@ -1,41 +1,46 @@
 #!/bin/bash
 
-if [ `/usr/bin/whoami` != "root" ] ; then
+# Bootstrap a fresh Ubuntu install based on my dotfiles and gems/debs lists.
+
+if [ `whoami` != "root" ] ; then
     echo "You must be root."
     exit 1
 fi
 
+if [ ! -f /etc/apt/apt.conf.d/50norecommends ] ; then
+    echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
+fi
+
+echo "deb http://toolbelt.herokuapp.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
+curl http://toolbelt.herokuapp.com/apt/release.key | apt-key add -
+
 # Bootstrap
-apt-get install -y git zile build-essential python-software-properties \
-    ruby-full ruby-dev rubygems
-
-echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
-
-# Needs mah Emacs
-wget -q -O - http://emacs.naquadah.org/key.gpg | apt-key add -
-apt-add-repository "deb http://emacs.naquadah.org/ $(lsb_release -cs)"
 apt-get update
-apt-get install emacs-snapshot
+apt-get install -y git zile build-essential python-software-properties ruby1.9.1-full
 
-# Virtualbox, since vagrant doesn't work with the free version
-apt-add-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
-wget -q -O - http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc | sudo apt-key add -
-cd /tmp
-sudo apt-get install virtualbox-4.1
-VBoxManage setproperty machinefolder $HOME/.vbox-vms # you toolbag.
-
-mkdir -p ~/src
+cp xsession.desktop /usr/share/xsessions/xsession.desktop
 
 # don't write atimes
 chattr +A /
 
-sudo -u phil git clone git@github.com:technomancy/dotfiles.git
+if [ ! -r ~/.dotfiles ]; then
+    sudo -u phil git clone git@github.com:technomancy/dotfiles.git ~/.dotfiles
+fi
 
-mv dotfiles/.* ~
-mv dotfiles/* ~
+for f in $(ls -a ~/.dotfiles) ; do
+    if [ ! -r "~/$f" ] && [ "$f" != "." ] && [ "$f" != ".." ] ; then
+        ln -s "~/.dotfiles/$f" "~/$f"
+    fi
+done
 
 chown -R phil ~
 
-echo "Done bootstrapping, installing debs and gems."
+echo "Done bootstrapping dotfiles."
 
-exec $HOME/bin/init/install
+cd ~/bin/init
+apt-get install $(ruby -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
+
+if [ "$DISPLAY" != "" ] ; then
+    apt-get install $(ruby -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
+    gem install $(ruby -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
+fi

@@ -2,8 +2,5 @@
 
 For fresh installs. Because chef is overkill.
 
-    $ wget j.mp/tech-init && sudo sh tech-init && gconf.rb
+    $ wget j.mp/tech-init && sudo sh tech-init
 
-TODO:
-- panel config
-- honor ~/.xsession programmatically
