@@ -9,7 +9,6 @@
 - gnupg-agent
 - gnutls-bin
 - gsfonts-x11
-- ia32-sun-java6-bin
 - imagemagick
 - libavahi-compat-libdnssd-dev
 - libavahi-compat-libdnssd1
@@ -17,7 +16,6 @@
 - libevent-dev
 - libfaad2
 - libnotify-bin
-- libquicktime1
 - mpc
 - mpd
 - mpg321
