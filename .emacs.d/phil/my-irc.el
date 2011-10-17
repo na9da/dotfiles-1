@@ -1,6 +1,9 @@
 (eval-after-load 'erc
   '(progn
+     (when (not (package-installed-p 'erc-hl-nicks))
+       (package-install 'erc-hl-nicks))
      (setq erc-prompt ">"
+           erc-server-reconnect-timeout 30
            erc-fill-column 75
            erc-max-buffer-size 100000
            erc-hide-list '("JOIN" "PART" "QUIT" "NICK")
@@ -11,8 +14,7 @@
            erc-autojoin-timing :ident
            erc-flood-protect nil
            erc-autojoin-channels-alist
-           '(("freenode.net" "#emacs" "#clojure" "#seattle.rb" "#leiningen"
-              "#sonian" "#sonian-safe" "#mirah"))
+           '(("freenode.net" "#emacs" "#clojure" "#leiningen" "#heroku"))
            erc-prompt-for-nickserv-password nil)
 
      (setq-default erc-ignore-list '("Lajla")
@@ -21,7 +23,7 @@
      (require 'erc-spelling)
      (require 'erc-truncate)
      (erc-services-mode 1)
-     (add-to-list 'erc-modules 'highlight-nicknames 'spelling)
+     (add-to-list 'erc-modules 'hl-nicks 'spelling)
      (add-hook 'erc-connect-pre-hook (lambda (x) (erc-update-modules)))
      (add-hook 'erc-insert-post-hook 'erc-truncate-buffer)
      (set-face-foreground 'erc-input-face "dim gray")
@@ -30,11 +32,11 @@
 (setq pcomplete-cycle-completions nil)
 
 (ignore-errors
-  (load (expand-file-name "~/.passwords.el"))
+  (load (expand-file-name "~/.chorts.el"))
 
   (setq erc-nickserv-passwords
-        `((freenode (("technomancy" . ,freenode-password)
-                     ("TeXnomancy" . ,freenode-password))))))
+        `((freenode (("technomancy" . ,freenode)
+                     ("TeXnomancy" . ,freenode))))))
 
 (defun clean-message (s)
   (setq s (replace-regexp-in-string "'" "&apos;" 
@@ -60,3 +62,8 @@
   (walk-windows (lambda (w) (end-of-buffer))))
 
 (global-set-key (kbd "C-x w") 'window-register-bottom)
+
+(defun campervan ()
+  (interactive)
+  (erc :server "localhost" :port 6667
+       :nick "phil_hagelberg" :password campervan))

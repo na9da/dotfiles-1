@@ -1,14 +1,3 @@
-(defalias 'ff 'find-file)
-
-(defun inconsolata (size)
-  (interactive "p")
-  (set-default-font
-   (concat "-unknown-Inconsolata-normal-normal-normal-*-"
-           (if (stringp size) size
-             (if (= 1 size) "16"
-               (read-from-minibuffer "Size: ")))
-           "-*-*-*-m-0-*-*")))
-
 (defun terminus (size)
   (interactive "p")
   (set-default-font
@@ -29,13 +18,17 @@
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
   (set-face-background 'hl-line "gray17")
+  (set-face-background 'magit-item-highlight "gray17")
   (set-face-foreground 'eshell-prompt "turquoise"))
 
 (defun tw ()
   (interactive)
   (color-theme-twilight)
+  (set-face-background 'vertical-border "black")
+  (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
-  (set-face-attribute 'eshell-prompt nil :foreground "turquoise1")
+  (set-face-foreground 'eshell-prompt "turquoise1")
+  (set-face-background 'magit-item-highlight "black")
   (set-face-background 'hl-line "black"))
 
 (eval-after-load 'hl-line

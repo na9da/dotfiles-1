@@ -18,12 +18,6 @@
 ;; ad-hoc installations
 
 (ignore-errors (load "~/src/lein/pcmpl-lein.el"))
-(ignore-errors (load "~/src/safe/.elisp/sonian.el")) ; for work
-
-(add-hook 'tuareg-mode-hook (lambda ()
-                              (define-key tuareg-mode-map (kbd "C-M-h")
-                                'backward-kill-word)
-                              (run-hooks 'prog-mode-hook)))
 
 (add-to-list 'load-path "~/src/elim/elisp")
 (autoload 'garak "garak" nil t)

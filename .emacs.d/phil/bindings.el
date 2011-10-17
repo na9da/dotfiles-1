@@ -1,12 +1,12 @@
-;; Start eshell or switch to it if it's active.
-(global-set-key (kbd "C-x m") 'eshell)
-
-;; Start a new eshell even if one is active.
-(global-set-key (kbd "C-x M") (lambda () (interactive) (eshell t)))
+(add-hook 'prog-mode-hook
+          (defun my-kill-word-key ()
+            (local-set-key (kbd "C-M-h") 'backward-kill-word)))
 
 (global-set-key (kbd "C-c C-j") 'clojure-jack-in)
-(global-set-key (kbd "C-c g") 'magit-status)
 
 (global-set-key (kbd "C-c b")
                 (lambda () (interactive)
-                  (shell-command (format "rake post POST=%s" (car (split-string (buffer-name) "\\."))))))
+                  (shell-command (format "rake post POST=%s"
+                                         (car (split-string (buffer-name)
+                                                            "\\."))))))
+

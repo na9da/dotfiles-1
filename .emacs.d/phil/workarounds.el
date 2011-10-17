@@ -23,9 +23,3 @@
           (lambda ()
             (unless (string-match "question" oddmuse-post)
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
-
-;; no clippy plz
-(when (not (package-installed-p 'magit))
-  (package--with-work-buffer
-   "http://tromey.com/elpa/" "magit-0.8.1.el"
-   (package-unpack-single "magit" "0.8.1" "Control Git from Emacs" nil)))
