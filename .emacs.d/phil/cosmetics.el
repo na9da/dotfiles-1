@@ -18,7 +18,8 @@
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
   (set-face-background 'hl-line "gray17")
-  (set-face-background 'magit-item-highlight "gray17")
+  (eval-after-load 'magit
+    '(set-face-background 'magit-item-highlight "black"))
   (set-face-foreground 'eshell-prompt "turquoise"))
 
 (defun tw ()
@@ -28,7 +29,8 @@
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
   (set-face-foreground 'eshell-prompt "turquoise1")
-  (set-face-background 'magit-item-highlight "black")
+  (eval-after-load 'magit
+    '(set-face-background 'magit-item-highlight "black"))
   (set-face-background 'hl-line "black"))
 
 (eval-after-load 'hl-line

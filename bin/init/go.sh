@@ -24,27 +24,32 @@ curl http://toolbelt.herokuapp.com/apt/release.key | apt-key add -
 chattr +A /
 
 if [ ! -r ~/.dotfiles ]; then
-    sudo -u phil git clone git@github.com:technomancy/dotfiles.git ~/.dotfiles
+    if [ ssh-add -l ]; then
+        DOTFILES_URL=git@github.com:technomancy/dotfiles.git
+    else
+        DOTFILES_URL=git://github.com/technomancy/dotfiles.git
+    fi
+    ME=phil
+    getent passwd phil || ME=technomancy
+    sudo -u $ME git clone $DOTFILES_URL ~/.dotfiles
 fi
 
-for f in $(ls -a $HOME/.dotfiles) ; do
+for f in $(ls -a ~/.dotfiles) ; do
     if [ ! -r "$HOME/$f" ] && [ "$f" != "." ] && [ "$f" != ".." ] ; then
-        ln -s "$HOME/.dotfiles/$f" "$HOME/$f"
+        # TODO: sort out clobbering default .bashrc, .bash_aliases
+        ln -s "~/.dotfiles/$f" "~/$f"
     fi
 done
-
-cp $HOME/.dotfiles/bin/init/xsession.desktop /usr/share/xsessions/xsession.desktop
-
-chown -R phil ~
 
 echo "Done bootstrapping dotfiles; installing packages via apt-get and rubygems..."
 
 cd ~/bin/init
-apt-get install $(ruby -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
+apt-get install $(ruby1.9.1 -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
 
 if [ "$DISPLAY" != "" ] ; then
-    apt-get install $(ruby -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
-    gem install $(ruby -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
+    apt-get install $(ruby1.9.1 -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
+    gem install $(ruby1.9.1 -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
+    cp xsession.desktop /usr/share/xsessions/xsession.desktop
 fi
 
 echo "All done! Happy hacking."
