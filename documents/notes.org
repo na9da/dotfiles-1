@@ -3,11 +3,13 @@
   sudo apt-get install lib32v4l-0
   LD_PRELOAD=/usr/lib32/libv4l/v4l1compat.so skype
 * pipe to python -m json.tool
-* kick people out of tmux
-** list-clients <= find client
-** detatch-client -t $CLIENT_ID
 * suspend
 ** on resume after pm-suspend, battery light turns on, nothing else
 * network manager CLI: nmcli con up id "Auto technomancy"
 * redo author
   git-filter-branch --env-filter "export GIT_AUTHOR_NAME='New name'; export GIT_AUTHOR_EMAIL='New email'" HEAD
+* eshell: cd =foo # matches foo as regex from history
+* raw lisp mode
+** kill-backward-up-list
+** move-past-close-and-reindent
+* dotfiles bootstrap

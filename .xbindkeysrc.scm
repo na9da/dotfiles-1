@@ -59,11 +59,12 @@
            '(F10 . "mpc next")
            '((mod4 F12) . "vlc -f ~/documents/movies/misc/rick.flv"))) ;; tee hee
 
-(xbindkey '(mod4 g) "gmpc")
-
 ;;;; Other launchers
 
-;; (xbindkey '(mod1 space) "gnome-do")
+(xbindkey '(mod4 g) "gmpc")
+
+(xbindkey '(F12) "notify-send \"$(date)\"")
+(xbindkey '(mod1 F12) "~/bin/notify-battery")
 
 (xbindkey '(mod4 e) "emacs")
 
