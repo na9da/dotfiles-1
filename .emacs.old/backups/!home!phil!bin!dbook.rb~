@@ -1,4 +1,0 @@
-#!/usr/bin/env ruby
-
-books = Dir.glob("~/documents/books")
-system "evince " + `echo "#{books.join("\n")}" | dmenu`

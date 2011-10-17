@@ -1,2 +1,0 @@
-(defun bus-action ()
-  (interactive)
