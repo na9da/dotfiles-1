@@ -1,0 +1,3 @@
+#!/bin/sh
+
+notify-send "$(acpitool | head -n 1 | ruby -e "puts gets.split(/: /).last")"
