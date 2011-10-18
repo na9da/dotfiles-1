@@ -7,6 +7,7 @@ export EDITOR="emacsclient"
 export CDPATH=.:$HOME/src
 export ANT_ARGS="-emacs"
 export OCAMLPATH=~/.odb/lib
+export PAGER=less
 
 export DEBEMAIL="technomancy@gmail.com"
 export DEBFULLNAME="Phil Hagelberg"

@@ -1,79 +1,36 @@
 # .bashrc
 
-# User specific aliases and functions
-source ~/.profile
-
-[ "$EMACS" == "t" ] || alias ls="ls --color"
-
-export PAGER=less
-
-alias e="emacs -nw -Q"
-
-alias ll="ls -l -h"
-alias la="ls -a"
-alias l="ls"
-alias lla="ls -a -l"
-alias grep="grep --color=auto"
-alias gerp="grep --color=auto"
-alias computer,="sudo"
-
-alias kni="knife ssh $* -a ec2.public_hostname"
-alias kniu="knife ssh $* uptime -a ec2.public_hostname"
-alias knis="knife ssh role:safe $* -a ec2.public_hostname"
-alias knisu="knife ssh role:safe uptime -a ec2.public_hostname"
-alias kniss="knife ssh role:safe \"safectl status\" -a ec2.public_hostname"
-alias knisg="knife ssh role:safe \"grep $* /var/log/safe.log\" -a ec2.public_hostname"
-
-alias scpp="scp $* p.hagelb.org:p.hagelb.org/"
-
-alias $USER="echo \"You're already logged in, genius.\""
-
-# package management
-alias sapti="sudo apt-get install"
-alias saptr="sudo apt-get remove"
-alias saptu="sudo apt-get upgrade"
-alias saptd="sudo apt-get update"
-alias saptc="apt-cache search"
-alias sapts="apt-cache show"
-
-# git
-alias gst="git status"
-alias gb="git branch -v"
-alias gco="git checkout"
-alias glt="git log -n 10"
-
 # prompt coloring
 # see http://attachr.com/9288 for full-fledged craziness
 if [ `/usr/bin/whoami` = "root" ] ; then
   # root has a red prompt
-    export PS1="\[\033[1;31m\]\u@\h \w \$ \[\033[0m\]"
+  export PS1="\[\033[1;31m\]\u@\h \w \$ \[\033[0m\]"
 elif [ `hostname` = "puyo" -o `hostname` = "enigma" -o `hostname` = "dynabook" ] ; then
   # the hosts I use on a daily basis have blue
-    export PS1="\[\033[1;36m\]\u@\h \w \$ \[\033[0m\]"
+  export PS1="\[\033[1;36m\]\u@\h \w \$ \[\033[0m\]"
 elif [ `hostname` == domU* -o `hostname` = "lucid" -o `hostname` = "vagrant" ]; then
   # green on VMs (EC2, vbox, etc)
-    export PS1="\[\033[1;32m\]\u@\h \w \$ \[\033[0m\]"
+  export PS1="\[\033[1;32m\]\u@\h \w \$ \[\033[0m\]"
 else
   # purple for unknown hosts
-    export PS1="\[\033[1;35m\]\u@\h \w \$ \[\033[0m\]"
+  export PS1="\[\033[1;35m\]\u@\h \w \$ \[\033[0m\]"
 fi
 
 function fix-agent {
-    export SSH_AUTH_SOCK=$(ls --color=never -t1 `find /tmp/ -uid $UID -path \*ssh\* -type s 2> /dev/null` | head -1)
-    ssh-add -l
+  SOCKETS=`find /tmp/ -uid $UID -path \*ssh\* -type s 2> /dev/null`
+  export SSH_AUTH_SOCK=$(ls --color=never -t1 $SOCKETS | head -1)
+  ssh-add -l
 }
 
-# Source global definitions
+# Source from elsewhere
 if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+  . /etc/bashrc
 fi
 
-# Leiningen
+if [ -f $HOME/.bash_aliases ]; then
+  . $HOME/bash_aliases
+fi
+
 if [ -f $HOME/src/leiningen/bash_completion.bash ]; then
-    . $HOME/src/leiningen/bash_completion.bash
-fi
-
-# Upgrade!
-if [ $TERM = "xterm" ]; then
-    export TERM=xterm-256color
+  . $HOME/src/leiningen/bash_completion.bash
 fi
