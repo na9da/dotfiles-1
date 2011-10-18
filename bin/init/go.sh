@@ -5,12 +5,12 @@
 set -e
 
 if [ `whoami` != "root" ] ; then
-    echo "You must be root."
-    exit 1
+  echo "You must be root."
+  exit 1
 fi
 
 if [ ! -f /etc/apt/apt.conf.d/50norecommends ] ; then
-    echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
+  echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
 fi
 
 # Bootstrap
@@ -24,22 +24,36 @@ curl http://toolbelt.herokuapp.com/apt/release.key | apt-key add -
 chattr +A /
 
 if [ ! -r ~/.dotfiles ]; then
-    if [ ssh-add -l ]; then
-        DOTFILES_URL=git@github.com:technomancy/dotfiles.git
-    else
-        DOTFILES_URL=git://github.com/technomancy/dotfiles.git
-    fi
-    ME=phil
-    getent passwd phil || ME=technomancy
-    sudo -u $ME git clone $DOTFILES_URL ~/.dotfiles
+  if [ ssh-add -l ]; then
+    DOTFILES_URL=git@github.com:technomancy/dotfiles.git
+  else
+    DOTFILES_URL=git://github.com/technomancy/dotfiles.git
+  fi
+  ME=phil
+  getent passwd phil || ME=technomancy
+  sudo -u $ME git clone $DOTFILES_URL ~/.dotfiles
+fi
+
+if [ ! -h $HOME/.bashrc ] ; then
+  rm $HOME/.bashrc # blow away the stock one
+fi
+
+if [ ! -h $HOME/.profile ] ; then
+  rm $HOME/.profile # blow away the stock one
 fi
 
 for f in $(ls -a ~/.dotfiles) ; do
-    if [ ! -r "$HOME/$f" ] && [ "$f" != "." ] && [ "$f" != ".." ] ; then
-        # TODO: sort out clobbering default .bashrc, .bash_aliases
-        ln -s "~/.dotfiles/$f" "~/$f"
-    fi
+  if [ ! -r "$HOME/$f" ] &&
+    [ $f != "." ] && [ $f != ".." ] &&
+    [ "$f" != ".git" ] && [ $f != ".gitignore" ] ; then
+    # TODO: move .gitconfig to dotfiles once ghi is fixed to work w/ token file
+    ln -s "~/.dotfiles/$f" "~/$f"
+  fi
 done
+
+if [ ! -r "$HOME/.ssh/config" ]; then
+  ln -s "~/.dotfiles/.sshconfig" "~/.ssh/config"
+fi
 
 echo "Done bootstrapping dotfiles; installing packages via apt-get and rubygems..."
 
@@ -47,9 +61,9 @@ cd ~/bin/init
 apt-get install $(ruby1.9.1 -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
 
 if [ "$DISPLAY" != "" ] ; then
-    apt-get install $(ruby1.9.1 -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
-    gem install $(ruby1.9.1 -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
-    cp xsession.desktop /usr/share/xsessions/xsession.desktop
+  apt-get install $(ruby1.9.1 -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
+  gem install $(ruby1.9.1 -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
+  cp xsession.desktop /usr/share/xsessions/xsession.desktop
 fi
 
 echo "All done! Happy hacking."
