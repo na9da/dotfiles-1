@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# ssid=`nmcli -f SSID dev wifi | grep -v SSID | erythrina`
-# nmcli con up id $ssid iface wlan0
+ssid=`nmcli -f SSID dev wifi | grep -v SSID | erythrina | cut -f 2 -d "'"`
+nmcli con up id "Auto $ssid" iface wlan0
 
-id=`nmcli -f NAME con | grep -v NAME | erythrina`
-if [ "$id" != "" ]; then
-    nmcli con up id $id
-fi
+# TODO: this will only connect to a network if it's already in your saved history.
