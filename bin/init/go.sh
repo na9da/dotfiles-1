@@ -42,14 +42,9 @@ if [ ! -h $HOME/.profile ] ; then
   rm $HOME/.profile # blow away the stock one
 fi
 
-for f in $(ls -a ~/.dotfiles) ; do
-  if [ ! -r "$HOME/$f" ] &&
-    [ $f != "." ] && [ $f != ".." ] &&
-    [ "$f" != ".git" ] && [ $f != ".gitignore" ] ; then
-    # TODO: move .gitconfig to dotfiles once ghi is fixed to work w/ token file
-    ln -s "~/.dotfiles/$f" "~/$f"
-  fi
-done
+# TODO: move .gitconfig to dotfiles once ghi is fixed to work w/ token file
+
+$HOME/.dotfiles/link-dotfiles
 
 if [ ! -r "$HOME/.ssh/config" ]; then
   ln -s "~/.dotfiles/.sshconfig" "~/.ssh/config"

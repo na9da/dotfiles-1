@@ -1,0 +1,7 @@
+for f in $(ls -a ~/.dotfiles) ; do
+  if [ ! -r "$HOME/$f" ] &&
+    [ $f != "." ] && [ $f != ".." ] &&
+    [ "$f" != ".git" ] && [ $f != ".gitignore" ] ; then
+    ln -s "$HOME/.dotfiles/$f" "$HOME/$f"
+  fi
+done
