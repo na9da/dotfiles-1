@@ -31,14 +31,15 @@ if [ ! -r ~/.dotfiles ]; then
   fi
   ME=phil
   getent passwd phil || ME=technomancy
+  getent passwd technomancy || ME=vagrant
   sudo -u $ME git clone $DOTFILES_URL ~/.dotfiles
 fi
 
-if [ ! -h $HOME/.bashrc ] ; then
+if [ -r $HOME/.bashrc ] && [ ! -h $HOME/.bashrc ] ; then
   rm $HOME/.bashrc # blow away the stock one
 fi
 
-if [ ! -h $HOME/.profile ] ; then
+if [ -r $HOME/.profile ] && [ ! -h $HOME/.profile ] ; then
   rm $HOME/.profile # blow away the stock one
 fi
 
@@ -47,7 +48,7 @@ fi
 $HOME/.dotfiles/link-dotfiles
 
 if [ ! -r "$HOME/.ssh/config" ]; then
-  ln -s "~/.dotfiles/.sshconfig" "~/.ssh/config"
+  ln -s "$HOME/.dotfiles/.sshconfig" "$HOME/.ssh/config"
 fi
 
 echo "Done bootstrapping dotfiles; installing packages via apt-get and rubygems..."
@@ -62,3 +63,6 @@ if [ "$DISPLAY" != "" ] ; then
 fi
 
 echo "All done! Happy hacking."
+
+# TODO: support dyndns
+# wget -q "http://$DYNUSER:$DYNPASS@members.dyndns.org/nic/update?hostname=enigma.dyn-o-saur.com&myip=$IP&wildcard=NOCHG&mx=NOCHG&backmx=NOCHG"
