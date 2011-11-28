@@ -2,12 +2,14 @@ import XMonad
 import XMonad.Config.Gnome
 import XMonad.Actions.CycleWindows
 import qualified Data.Map as M
+import XMonad.Util.EZConfig -- emacs-style keys
 
-myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
-         [ ((mod1Mask, xK_Tab), cycleRecentWindows [xK_Alt_L] xK_Tab xK_Tab)
+newKeys x = foldr M.delete (keys defaultConfig x) (keysToRemove x)
+
+keysToRemove :: XConfig Layout -> [(KeyMask, KeySym)]
+keysToRemove x =
+         [ (mod4Mask              , xK_e )
          ]
-
-newKeys x  = myKeys x `M.union` keys defaultConfig x
 
 -- TODO: fix erythrina to act as a panel
 main = xmonad gnomeConfig

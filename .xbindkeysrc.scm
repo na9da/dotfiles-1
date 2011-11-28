@@ -26,7 +26,6 @@
 
 (xbindkey '(mod4 e) "emacs")
 
-(xbindkey '(mod4 f) "~/bin/firefox/firefox")
 (xbindkey '(mod4 c) "conkeror")
 (xbindkey '(mod4 r) "chromium-browser")
 

@@ -26,6 +26,5 @@ xrdb -merge ~/.Xdefaults
 
 # progs
 conkeror &
-emacs &
 
 exec xmonad
