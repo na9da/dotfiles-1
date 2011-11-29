@@ -28,7 +28,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 if [ -f $HOME/.bash_aliases ]; then
-  . $HOME/bash_aliases
+  . $HOME/.bash_aliases
 fi
 
 if [ -f $HOME/src/leiningen/bash_completion.bash ]; then
