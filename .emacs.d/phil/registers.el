@@ -1,4 +1,4 @@
-(set-register ?n '(file . "~/documents/notes.org"))
+(set-register ?n '(file . "~/.dotfiles/notes.org"))
 (set-register ?t '(file . "~/documents/TODO.org"))
 (set-register ?x '(file . "~/.xbindkeysrc.scm"))
 (set-register ?i '(file . "~/.emacs.d/init.el"))
