@@ -1,6 +1,9 @@
 *elc
 auto-save-list
 backups
+/bin/firefox
+/bin/lein*
+/bin/erythrina
 /.xmonad/xmonad-x86_64-linux
 /.xmonad/xmonad.errors
 /.xmonad/xmonad.hi
