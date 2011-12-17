@@ -16,6 +16,7 @@ xmodmap -e 'add Control = Control_L'
 gnome-settings-daemon &
 gnome-power-manager &
 nm-applet &
+nautilus --no-default-window & # handles mounting of volumes
 
 # utilities
 ssh-add &

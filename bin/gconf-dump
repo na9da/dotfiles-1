@@ -1,0 +1,7 @@
+KEYS=/apps/gnome-terminal
+KEYS="$KEYS /apps/nautilus"
+KEYS="$KEYS /desktop/gnome/font_rendering"
+KEYS="$KEYS /desktop/gnome/interface"
+KEYS="$KEYS /apps/gnome-power-manager/buttons"
+
+gconftool --dump $KEYS > $HOME/.dotfiles/.gconf.xml

@@ -6,7 +6,6 @@
 /.emacs.d/elpa
 /.emacs.d/eshell/history
 /.emacs.d/places
-/.gconf/*
 /.xmonad/xmonad-x86_64-linux
 /.xmonad/xmonad.errors
 /.xmonad/xmonad.hi
