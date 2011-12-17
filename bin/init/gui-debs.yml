@@ -16,6 +16,7 @@
 - libdbus-ruby
 - libevent-dev
 - libfaad2
+- libghc6-xmonad-contrib-dev
 - libnotify-bin
 - libsqlite3-dev
 - libxml2-dev
@@ -23,6 +24,7 @@
 - mpc
 - mpd
 - mpg321
+- ruby1.9.1-dev
 - rxvt-unicode
 - scrot
 - sloccount
@@ -34,5 +36,6 @@
 - wmctrl
 - xbindkeys
 - xfonts-terminus
+- xmonad
 - xsane
 - xsel
