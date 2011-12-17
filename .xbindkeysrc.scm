@@ -6,6 +6,8 @@
            '(F6 . "~/bin/music-random")
            '(F7 . "~/bin/music-choose")
            '(F8 . "mpc toggle")
+           '((shift F8) . "ogg123 ~/documents/ambientShipTNG.ogg")
+           '((mod1 F8) . "killall ogg123")
            '(F9 . "mpc prev")
            '(F10 . "mpc next")
            '((mod4 F12) . "vlc -f ~/documents/movies/misc/rick.flv"))) ;; tee hee
@@ -24,22 +26,25 @@
 
 ;;; main stuff
 
-(xbindkey '(mod4 e) "emacs")
+(xbindkey '(mod4 mod1 e) "emacs")
 
 (xbindkey '(mod4 c) "conkeror")
 (xbindkey '(mod4 r) "chromium-browser")
 
 ;;; utilities
 
-(xbindkey '(mod4 d) "devilspie")
 (xbindkey '(mod4 x) "killall xbindkeys && xbindkeys")
-(xbindkey '(mod4 p) "gnome-display-properties")
+(xbindkey '(mod4 d) "gnome-display-properties")
 (xbindkey '(mod1 grave) "gnome-terminal")
+(xbindkey '(mod4 grave) "gnome-terminal")
 (xbindkey '(mod4 s) "scrot")
 (xbindkey '(mod4 shift s) "scrot -s")
 
-;; (xbindkey '(mod4 mod1 y) "synergys")
-;; (xbindkey '(mod4 shift y) "killall synergys")
+(xbindkey '(mod4 mod1 y) "synergys")
+(xbindkey '(mod4 shift y) "killall synergys")
+
+(xbindkey '(mod4 F11) "setxkbmap -layout us")
+(xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak")
 
 ;;; launchers
 
