@@ -15,7 +15,8 @@ xmodmap -e 'add Control = Control_L'
 # gnome stuff
 gnome-settings-daemon &
 gnome-power-manager &
-nm-applet &
+gnome-panel & # for the wifi control
+gnome-screensaver & # for the lock-screen
 nautilus --no-default-window & # handles mounting of volumes
 
 # utilities

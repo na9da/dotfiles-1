@@ -2,6 +2,9 @@
 
 # Bootstrap a fresh Debian install based on my dotfiles and gems/debs lists.
 
+# No thank you:
+rmdir Desktop Documents Music Pictures Public Templates Videos Downloads
+
 set -e
 
 # don't write atimes
@@ -17,6 +20,8 @@ if [ "$DISPLAY" != "" ] ; then
   gem1.9.1 install --no-rdoc --no-ri $(ruby1.9.1 -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
   cp xsession.desktop /usr/share/xsessions/xsession.desktop
 fi
+
+./heroku.sh
 
 echo "All done! Happy hacking."
 
