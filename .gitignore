@@ -5,7 +5,11 @@
 /.emacs.d/backups
 /.emacs.d/elpa
 /.emacs.d/eshell/history
+/.emacs.d/eshell/lastdir
+/.emacs.d/mail
+/.emacs.d/news
 /.emacs.d/places
+/.emacs.d/url
 /.xmonad/xmonad-x86_64-linux
 /.xmonad/xmonad.errors
 /.xmonad/xmonad.hi
@@ -13,4 +17,3 @@
 /bin/erythrina
 /bin/firefox
 /bin/lein*
-/.emacs.d/eshell/lastdir

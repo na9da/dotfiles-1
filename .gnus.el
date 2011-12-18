@@ -7,6 +7,9 @@
       user-full-name "Phil Hagelberg"
       gnus-ignored-from-addresses "Phil Hagelberg"
 
+      mail-source-directory "~/.emacs.d/mail"
+      message-directory "~/.emacs.d/mail"
+      
       message-kill-buffer-on-exit t
       gnus-treat-display-smileys nil
       gnus-message-archive-group "sent"

@@ -14,11 +14,10 @@
            erc-autojoin-timing :ident
            erc-flood-protect nil
            erc-autojoin-channels-alist
-           '(("freenode.net" "#emacs" "#clojure" "#leiningen" "#heroku"))
+           '(("freenode.net" "#emacs" "#clojure" "#leiningen"))
            erc-prompt-for-nickserv-password nil)
 
-     (setq-default erc-ignore-list '("Lajla")
-                   erc-ignore-reply-list '("Lajla"))
+     (setq-default erc-ignore-list '("Lajla" "pjb" "e1f"))
      (require 'erc-services)
      (require 'erc-spelling)
      (require 'erc-truncate)

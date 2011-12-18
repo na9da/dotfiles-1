@@ -1,24 +1,17 @@
+* TODO
+  - [ ] make erythrina act as a panel
+  - [ ] SSL in campervan
+  - [ ] fix ctrl on layout change
+
 * find ../lib/ -name "*jar" -exec jar xf {} \;
 * No video on stupid skype
   sudo apt-get install lib32v4l-0
   LD_PRELOAD=/usr/lib32/libv4l/v4l1compat.so skype
 * pipe to python -m json.tool
-* suspend
-** on resume after pm-suspend, battery light turns on, nothing else
 * network manager CLI: nmcli con up id "Auto technomancy"
-* redo author
+* redo git author
   git-filter-branch --env-filter "export GIT_AUTHOR_NAME='New name'; export GIT_AUTHOR_EMAIL='New email'" HEAD
 * eshell: cd =foo # matches foo as regex from history
 * raw lisp mode
 ** kill-backward-up-list
 ** move-past-close-and-reindent
-* dotfiles bootstrap
-* Portable Emacs
-  - ./configure --without-x --without-sound --without-xpm \
-    --without-jpeg --without-tiff --without-gif --without-png \
-    --without-rsvg --without-xml2 --without-imagemagick --without-xft \
-    --without-toolkit-scroll-bars --without-gconf --without-dbus \
-    --without-gsettings --without-selinux --without-gnutls --without-gpm \
-    --without-makeinfo --without-compress-info --prefix=/tmp/emacs
-* xmonad setup
-** fix erythrina
