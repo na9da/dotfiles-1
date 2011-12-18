@@ -16,6 +16,8 @@
 (set-default 'tab-width 4)
 (set-default 'c-basic-offset 2)
 
+(add-hook 'prog-mode-hook 'esk-turn-on-whitespace)
+
 (add-hook 'tuareg-mode-hook 'esk-prog-mode-hook)
 
 (add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)

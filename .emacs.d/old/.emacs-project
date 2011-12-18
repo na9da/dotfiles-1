@@ -1,3 +1,0 @@
-;; This is just here so my home dir gets treated like a project.
-;;
-;; maybe put some stuff in here about making find-file-in-project look only for elisp?

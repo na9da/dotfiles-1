@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TARGET="/media/Chunky Backup"
+TARGET="/media/backup"
 
 rsync -r $HOME/music/ "$TARGET"/music/
 rsync -r $HOME/documents/ "$TARGET"/documents/

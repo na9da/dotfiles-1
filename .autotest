@@ -1,4 +1,0 @@
-# -*- ruby -*-
-
-require 'autotest/notify'
-# require 'autotest/emacs'

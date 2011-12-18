@@ -2,6 +2,7 @@
   - [ ] make erythrina act as a panel
   - [ ] SSL in campervan
   - [ ] fix ctrl on layout change
+  - [ ] save from enigma hd: chorts, gpg, media, eshell aliases
 
 * find ../lib/ -name "*jar" -exec jar xf {} \;
 * No video on stupid skype
