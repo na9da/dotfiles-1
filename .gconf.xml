@@ -976,7 +976,7 @@
       <key>preferences/media_autorun_never</key>
       <schema_key>/schemas/apps/nautilus/preferences/media_autorun_never</schema_key>
       <value>
-        <bool>false</bool>
+        <bool>true</bool>
       </value>
     </entry>
     <entry>
