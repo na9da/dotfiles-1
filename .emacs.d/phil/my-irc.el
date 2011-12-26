@@ -21,6 +21,7 @@
      (require 'erc-services)
      (require 'erc-spelling)
      (require 'erc-truncate)
+     (require 'erc-hl-nicks)
      (erc-services-mode 1)
      (add-to-list 'erc-modules 'hl-nicks 'spelling)
      (add-hook 'erc-connect-pre-hook (lambda (x) (erc-update-modules)))
@@ -38,19 +39,21 @@
                      ("TeXnomancy" . ,freenode))))))
 
 (defun clean-message (s)
-  (setq s (replace-regexp-in-string "'" "&apos;" 
-  (replace-regexp-in-string "\"" "&quot;"
-  (replace-regexp-in-string "&" "&amp;" 
-  (replace-regexp-in-string "<" "&lt;"
-  (replace-regexp-in-string ">" "&gt;" s)))))))
+  (let* ((s (replace-regexp-in-string ">" "&gt;" s))
+         (s (replace-regexp-in-string "<" "&lt;" s))
+         (s (replace-regexp-in-string "&" "&amp;" s))
+         (s (replace-regexp-in-string "\"" "&quot;" s))))
+  (replace-regexp-in-string "'" "&apos;" s))
 
 (defun call-libnotify (matched-type nick msg)
   (ignore-errors
-    (let* ((cmsg  (split-string (clean-message msg)))	      
+    (let* ((cmsg  (split-string (clean-message msg)))
            (nick   (first (split-string nick "!")))
            (msg    (mapconcat 'identity (rest cmsg) " ")))
       (shell-command-to-string
-       (format "notify-send -i /home/phil/src/emacs/etc/images/icons/hicolor/scalable/apps/emacs.svg '%s says:' '%s'"
+       (format "notify-send -i %s/%s '%s says:' '%s'"
+               "/home/phil/src/emacs"
+               "etc/images/icons/hicolor/scalable/apps/emacs.svg"
                nick msg)))))
 
 (add-hook 'erc-text-matched-hook 'call-libnotify)
@@ -66,3 +69,17 @@
   (interactive)
   (erc :server "localhost" :port 6667
        :nick "phil_hagelberg" :password campervan))
+
+;; For some reason, campervan doesn't honor autojoin
+(defun campervan-join ()
+  (interactive)
+  (dolist (channel '("#heroku_dev_lounge" "#clojure" "#java_team" "#packaging"))
+    (erc-join-channel channel)))
+
+(defun znc ()
+  (interactive)
+  (erc-tls :server "route.heroku.com" :port 10688 :nick "technomancy"
+           :password freenode))
+
+(autoload 'erc-tls "erc" "" t)
+(autoload 'erc-ssl "erc" "" t)

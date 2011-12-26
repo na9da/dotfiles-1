@@ -9,7 +9,7 @@
 
       mail-source-directory "~/.emacs.d/mail"
       message-directory "~/.emacs.d/mail"
-      
+
       message-kill-buffer-on-exit t
       gnus-treat-display-smileys nil
       gnus-message-archive-group "sent"
@@ -37,7 +37,8 @@
       starttls-extra-arguments '("--insecure")
       smtpmail-auth-credentials '(("mail.technomancy.us"
                                    587
-                                   "send@technomancy.us" ;; throwaway send-only account
+                                   ;; throwaway send-only account
+                                   "send@technomancy.us"
                                    "testyy")))
 
 ;; display chars
@@ -62,6 +63,9 @@
                                        "%{|%}"
                                        "%*%{%B%} %s%)"
                                        "\n"))
+
+(gnus-add-configuration '(article (horizontal 1.0 (summary 0.5 point)
+                                              (article 1.0))))
 
 (gnus-demon-add-handler 'gnus-group-get-new-news 10 t)
 (gnus-demon-init)
