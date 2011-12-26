@@ -5,6 +5,10 @@
 # No thank you:
 rmdir Desktop Documents Music Pictures Public Templates Videos Downloads
 
+# um... dude?
+update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 500
+update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.9.1 500
+
 set -e
 
 # don't write atimes
@@ -13,11 +17,11 @@ chattr +A /
 echo "Installing packages via apt-get and rubygems..."
 
 cd /home/$ME/bin/init
-apt-get install -y $(ruby1.9.1 -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
+apt-get install -y $(ruby -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
 
 if [ "$DISPLAY" != "" ] ; then
-  apt-get install -y $(ruby1.9.1 -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
-  gem1.9.1 install --no-rdoc --no-ri $(ruby1.9.1 -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
+  apt-get install -y $(ruby -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
+  gem install --no-rdoc --no-ri $(ruby -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
   cp xsession.desktop /usr/share/xsessions/xsession.desktop
 fi
 

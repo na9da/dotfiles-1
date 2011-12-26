@@ -19,12 +19,14 @@
 - libghc6-xmonad-contrib-dev
 - libnotify-bin
 - libsqlite3-dev
+- libssl-dev
 - libxml2-dev
 - libxslt1-dev
 - mpc
 - mpd
 - mpg321
 - ruby1.9.1-dev
+- rsync
 - rxvt-unicode
 - scrot
 - sloccount
@@ -33,6 +35,7 @@
 - ttf-liberation
 - unclutter
 - vlc
+- vorbis-tools
 - wmctrl
 - xbindkeys
 - xinput
