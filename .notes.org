@@ -1,8 +1,13 @@
 * TODO
   - [ ] make erythrina act as a panel
   - [ ] SSL in campervan
-  - [ ] fix ctrl on layout change
-  - [ ] save from enigma hd: chorts, gpg, media, eshell aliases
+** Desktoppy stuff
+    - [ ] fix ctrl on layout change
+    - [ ] automate mpd music_directory fix
+    - [ ] grub is hideous
+    - [ ] delay on boot is annoying
+    - [ ] gdm3 is hideous
+    - [ ] automate storage of secrets
 
 * find ../lib/ -name "*jar" -exec jar xf {} \;
 * No video on stupid skype

@@ -15,15 +15,15 @@ xmodmap -e 'add Control = Control_L'
 # gnome stuff
 gnome-settings-daemon &
 gnome-power-manager &
-gnome-panel & # for the wifi control
 gnome-screensaver & # for the lock-screen
+gnome-panel & # for the wifi control
+nm-applet &
 nautilus --no-default-window & # handles mounting of volumes
 
 # utilities
 ssh-add &
 xbindkeys &
 unclutter -idle 1 &
-feh --bg-scale ~/documents/images/rosemary.jpg
 xrdb -merge ~/.Xdefaults
 
 # progs
