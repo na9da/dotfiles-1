@@ -26,7 +26,9 @@
 
 ;; Packages
 
-(require 'package)
+(when (not (require 'package nil t))
+  (require 'package "package-23.el"))
+
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
@@ -35,7 +37,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings
-                                  starter-kit-eshell scpaste
+                                  starter-kit-eshell zenburn-theme
                                   clojure-mode clojure-test-mode
                                   markdown-mode yaml-mode tuareg
                                   marmalade oddmuse scpaste))

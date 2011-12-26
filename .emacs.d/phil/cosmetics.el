@@ -1,19 +1,12 @@
-(defun terminus (size)
-  (interactive "p")
-  (set-default-font
-   (concat "-xos4-Terminus-normal-normal-normal-*-"
-           (if (stringp size) size
-             (if (= 1 size) "14"
-               (read-from-minibuffer "Size: ")))
-           "-*-*-*-c-80-iso10646-1")))
-
 ;; lose the stupid pipe chars on the split-screen bar
 (set-face-foreground 'vertical-border "white")
 (set-face-background 'vertical-border "white")
 
+(setq custom-safe-themes '("71923ce35940ee5f20d9fa19721d7677ce057f08" default))
+
 (defun zb ()
   (interactive)
-  (load-file (expand-file-name "~/.emacs.d/zenburn-theme.el"))
+  (load-theme 'zenburn)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
