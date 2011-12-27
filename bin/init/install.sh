@@ -2,6 +2,10 @@
 
 # Bootstrap a fresh Debian install based on my dotfiles and gems/debs lists.
 
+ME=$1
+
+cd /home/$ME/bin/init
+
 # No thank you:
 rmdir Desktop Documents Music Pictures Public Templates Videos Downloads
 
@@ -16,7 +20,6 @@ chattr +A /
 
 echo "Installing packages via apt-get and rubygems..."
 
-cd /home/$ME/bin/init
 apt-get install -y $(ruby -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
 
 if [ "$DISPLAY" != "" ] ; then

@@ -12,12 +12,14 @@ fi
 echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
 
 apt-get update
-apt-get install -y git zile ruby1.9.1
+apt-get install -y git zile ruby1.9.1 sudo
 
-export ME=phil
-getent passwd phil || \
-	(export ME=technomancy && getent passwd technomancy || \
-	 export ME=vagrant)
+if [ "$ME" = "" ]; then
+  export ME=phil
+  getent passwd phil || \
+    (export ME=technomancy && getent passwd technomancy || \
+     export ME=vagrant)
+fi
 
 usermod -a -G sudo $ME
 
@@ -33,4 +35,4 @@ fi
 
 sudo -u $ME /home/$ME/.dotfiles/bin/link-dotfiles
 
-exec /home/$ME/.dotfiles/bin/init/install.sh
+exec /home/$ME/.dotfiles/bin/init/install.sh $ME
