@@ -18,5 +18,5 @@
 /.xmonad/xmonad.hi
 /.xmonad/xmonad.o
 /bin/erythrina
-/bin/firefox
+/bin/firefox*
 /bin/lein*

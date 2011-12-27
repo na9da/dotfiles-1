@@ -78,8 +78,10 @@
 
 (defun znc ()
   (interactive)
+  (require 'erc)
+  (erc-spelling-enable)
   (erc-tls :server "route.heroku.com" :port 10688 :nick "technomancy"
-           :password freenode))
+           :password (concat "technomancy:" freenode)))
 
 (autoload 'erc-tls "erc" "" t)
 (autoload 'erc-ssl "erc" "" t)
