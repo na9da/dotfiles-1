@@ -3,7 +3,6 @@
   - [ ] SSL in campervan
 ** Desktoppy stuff
     - [ ] fix ctrl on layout change
-    - [ ] automate mpd music_directory fix
     - [ ] grub is hideous
     - [ ] delay on boot is annoying
     - [ ] gdm3 is hideous
@@ -21,3 +20,51 @@
 * raw lisp mode
 ** kill-backward-up-list
 ** move-past-close-and-reindent
+* photo recovery:
+  - start http://www.flickr.com/photos/technomancy/5667656481/
+  - end http://www.flickr.com/photos/technomancy/6135506600/
+  - delete all local tagged "flickrtagged"
+* things that bug me about software I use (a relatively complete list)
+** Debian
+   - grub boot delay
+   - gdm3 theme is meh
+   - mozilla version in squeeze is old
+   - no 32-bit client JVM
+   - no emacs packages newer than 23
+   - installer hardcodes ssid/mount point in /etc (reported)
+** eshell
+   - no tab completion for git branches
+   - sudo commands cannot be interrupted
+** leiningen
+   - version 2 isn't finished
+** conkeror
+   - it isn't emacs
+** gnus
+   - imap is slow
+   - doesn't handle switching network connections very well
+   - no way to report spam without switching to browser
+** bash
+   - no completion for git commands/branches in bash-completion package
+** erc
+   - msg buffers don't reconnect
+   - msg buffers silently discard input when disconnected (reported)
+   - no selective join/part ignore (rcirc has this)
+** znc
+   - doesn't save session state in between restarts
+     (needs to be more than just saving to disk for running on Heroku)
+** swank-clojure
+   - needs restarts for certain types of compilation errors
+   - doesn't offer method completion based on type hints
+** xmonad
+   - haven't found a simple way to toggle system monitor visibility
+   - toggling gnome-panel doesn't recalculate window sizes
+** erythrina
+   - no way to cycle selection
+   - doesn't act like a panel
+   - build is awful (blame ocaml ecosystem)
+** elim
+   - notifications aren't quite right
+   - doesn't support jingle
+** empathy
+   - doesn't seem easy to check config into dotfiles
+   - incoming conversations don't show in conversation window until selected
