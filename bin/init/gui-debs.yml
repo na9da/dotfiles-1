@@ -1,5 +1,7 @@
 ---
 - acpi
+- apt-show-versions
+- aspell-en
 - avahi-discover
 - avahi-utils
 - bittorrent
@@ -11,6 +13,7 @@
 - gnupg-agent
 - gnutls-bin
 - gsfonts-x11
+- htop
 - imagemagick
 - libavahi-compat-libdnssd-dev
 - libavahi-compat-libdnssd1
@@ -35,6 +38,8 @@
 - shotwell
 - suckless-tools
 - synergy
+- telepathy-gabble
+- telepathy-salut
 - ttf-inconsolata
 - ttf-liberation
 - unclutter

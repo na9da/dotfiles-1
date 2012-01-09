@@ -23,14 +23,14 @@ echo "Installing packages via apt-get and rubygems..."
 apt-get install -y $(ruby -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
 
 if [ "$DISPLAY" != "" ] ; then
-  apt-get install -y $(ruby -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
-  gem install --no-rdoc --no-ri $(ruby -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
+  apt-get install -y \
+    $(ruby -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
+  gem install --no-rdoc --no-ri \
+    $(ruby -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
   cp xsession.desktop /usr/share/xsessions/xsession.desktop
+  sed -i s/var\/lib\/mpd\/music/home\/phil\/music/ /etc/mpd.conf
 fi
 
 ./heroku.sh
 
 echo "All done! Happy hacking."
-
-# TODO: support dyndns on pair.io
-# wget -q "http://$DYNUSER:$DYNPASS@members.dyndns.org/nic/update?hostname=enigma.dyn-o-saur.com&myip=$IP&wildcard=NOCHG&mx=NOCHG&backmx=NOCHG"

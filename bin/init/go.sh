@@ -11,8 +11,7 @@ fi
 
 echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
 
-apt-get update
-apt-get install -y git zile ruby1.9.1 sudo
+apt-get update && apt-get install -y git zile ruby1.9.1 sudo
 
 if [ "$ME" = "" ]; then
   export ME=phil
@@ -23,14 +22,13 @@ fi
 
 usermod -a -G sudo $ME
 
+sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/ /etc/default/grub
+update-grub
+
 if [ ! -r /home/$ME/.dotfiles ]; then
   echo "Checking out dotfiles..."
-  if [ "`ssh-add -l`" = "The agent has no identities." ]; then
-    DOTFILES_URL=git://github.com/technomancy/dotfiles.git
-  else
-    DOTFILES_URL=git@github.com:technomancy/dotfiles.git
-  fi
-  sudo -u $ME git clone $DOTFILES_URL /home/$ME/.dotfiles
+  sudo -u $ME git clone git://github.com/technomancy/dotfiles.git \
+    /home/$ME/.dotfiles
 fi
 
 sudo -u $ME /home/$ME/.dotfiles/bin/link-dotfiles
