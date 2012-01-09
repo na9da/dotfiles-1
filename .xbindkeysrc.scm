@@ -33,6 +33,7 @@
 
 ;;; utilities
 
+(xbindkey '(mod4 l) "/home/phil/bin/panel-toggle")
 (xbindkey '(mod4 x) "killall xbindkeys && xbindkeys")
 (xbindkey '(mod4 d) "gnome-display-properties")
 (xbindkey '(mod1 grave) "gnome-terminal")
