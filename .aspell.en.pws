@@ -1,4 +1,4 @@
-personal_ws-1.1 en 66 
+personal_ws-1.1 en 67 
 Compojure
 parens
 Sonian
@@ -46,8 +46,8 @@ triaged
 prerelease
 multiplayer
 Freenode
-codebase
 bytecode
+codebase
 eval
 runtime
 namespaces
@@ -59,6 +59,7 @@ README
 Debian
 sharded
 classpath
+baristas
 Hagelberg
 IRB
 Noir

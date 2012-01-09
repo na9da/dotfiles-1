@@ -36,3 +36,7 @@ fi
 if [ -f $HOME/src/leiningen/bash_completion.bash ]; then
   . $HOME/src/leiningen/bash_completion.bash
 fi
+
+if [ -f /etc/bash_completion.d/git ]; then
+  . /etc/bash_completion.d/git
+fi

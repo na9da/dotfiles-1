@@ -20,3 +20,5 @@
 /bin/erythrina
 /bin/firefox*
 /bin/lein*
+/bin/jdk*
+/.emacs.d/custom.el

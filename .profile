@@ -8,12 +8,7 @@ export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
 export EDITOR="emacsclient"
 export CDPATH=.:$HOME/src
 export ANT_ARGS="-emacs"
-export OCAMLPATH=~/.odb/lib
 export PAGER=less
 
 export DEBEMAIL="technomancy@gmail.com"
 export DEBFULLNAME="Phil Hagelberg"
-
-if [ -x /usr/lib/jvm/ia32-java-6-sun/bin/java ]; then
-    export JAVA_CMD=/usr/lib/jvm/ia32-java-6-sun/bin/java
-fi

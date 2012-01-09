@@ -327,7 +327,7 @@
       <key>profiles/Default/cursor_blink_mode</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/cursor_blink_mode</schema_key>
       <value>
-        <string>system</string>
+        <string>off</string>
       </value>
     </entry>
     <entry>
