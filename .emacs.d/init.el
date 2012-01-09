@@ -13,7 +13,13 @@
       marmalade-server "http://marmalade-repo.org/"
       custom-file (expand-file-name "~/.emacs.d/custom.el")
       ispell-extra-args '("--keyboard=dvorak")
-      ido-handle-duplicate-virtual-buffers 2)
+      ido-handle-duplicate-virtual-buffers 2
+      org-default-notes-file "~/.dotfiles/.notes.org"
+      org-remember-default-headline 'bottom
+      org-completion-use-ido t)
+
+(org-remember-insinuate)
+(global-set-key (kbd "C-c m") 'org-remember)
 
 ;; ad-hoc installations
 
@@ -39,7 +45,8 @@
 (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings
                                   starter-kit-eshell zenburn-theme
                                   clojure-mode clojure-test-mode
-                                  markdown-mode yaml-mode tuareg
+                                  markdown-mode yaml-mode
+                                  tuareg haskell-mode
                                   marmalade oddmuse scpaste))
 
 (dolist (p my-packages)

@@ -10,7 +10,7 @@
                                        "#xmonad" "#84115" "#seajure")))
       rcirc-ignore-list '("pjb" "e1f" "Lajla")
       rcirc-fill-column 75
-      rcirc-buffer-maximum-lines 5000
+      rcirc-buffer-maximum-lines 2000
       rcirc-authinfo `(("freenode" nickserv "technomancy" ,freenode-password)
                        ("heroku" nickserv "technomancy" ,freenode-password)
                        ("freenode" nickserv "TeXnomancy" ,freenode-password)))

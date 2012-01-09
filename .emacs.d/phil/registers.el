@@ -4,3 +4,4 @@
 (set-register ?r '(file . "~/.emacs.d/phil/registers.el"))
 (set-register ?k '(file . "~/.ssh/known_hosts"))
 (set-register ?h '(file . "~/documents/heroku/notes.org"))
+(set-register ?m '(file . "~/.xmonad/xmonad.hs"))

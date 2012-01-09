@@ -27,3 +27,5 @@
           (lambda ()
             (unless (string-match "question" oddmuse-post)
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
+
+(setq-default ispell-program-name "aspell")

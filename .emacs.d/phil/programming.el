@@ -12,15 +12,21 @@
 
 (add-hook 'tuareg-mode-hook 'esk-prog-mode-hook)
 
+(add-hook 'haskell-mode-hook 'esk-prog-mode-hook)
+
 (add-hook 'slime-repl-mode-hook
           (defun clojure-mode-slime-font-lock ()
             (let (font-lock-mode)
               (clojure-mode-font-lock-setup))))
 
 (setq slime-kill-without-query-p t
+      slime-compile-presave? t
       confluence-url "http://dev.clojure.org/")
 
 (defalias 'tdoe 'toggle-debug-on-error)
+
+(eval-after-load 'slime
+  '(define-key slime-mode-map (kbd "C-c C-f") 'clojure-refactoring-prompt))
 
 ;; thanks johnw: https://gist.github.com/1198329
 (defun find-grep-in-project (command-args)
