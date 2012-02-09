@@ -2,7 +2,9 @@
 (set-face-foreground 'vertical-border "white")
 (set-face-background 'vertical-border "white")
 
-(setq custom-safe-themes '("71923ce35940ee5f20d9fa19721d7677ce057f08" default))
+(setq custom-safe-themes
+      '("e94ef3be8297d28df3bd5b381bdc06c12a30fec07bfd3fe98a081688767b9774"
+        "71923ce35940ee5f20d9fa19721d7677ce057f08" default))
 
 (defun zb ()
   (interactive)
@@ -17,6 +19,9 @@
 
 (defun tw ()
   (interactive)
+  ;; lame; hasn't been ported to custom-themes yet
+  (when (not (require 'color-theme nil t))
+    (package-install 'color-theme))
   (color-theme-twilight)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")

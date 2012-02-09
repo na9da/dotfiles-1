@@ -14,13 +14,19 @@
   - start http://www.flickr.com/photos/technomancy/5667656481/
   - end http://www.flickr.com/photos/technomancy/6135506600/
   - delete all local tagged "flickrtagged"
+* org meta-notes
+  - org-insert-link: C-c C-l
 * things that bug me about software I use (a relatively complete list)
 ** Debian
-   - no 32-bit client JVM (wheezy multiarch?)
-   - no emacs packages newer than 23
-   - mozilla version in squeeze is old
+   - many versions way out of date in squeeze
+     - whatever, just use nix
+       - figure out how to compile a 32-bit openjdk
+       - FF on nix doesn't honor GTK theme or timezone
    - powertop watts estimate is off by at least an order of magnitude
+     Apparently [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug%3D497929][fixed upstream]]
    - installer hardcodes ssid/mount point in /etc (reported)
+     http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=502955 (net)
+     http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=646795 (fstab)
 ** eshell
    - no tab completion for git branches
    - sudo commands cannot be interrupted
@@ -29,10 +35,12 @@
 ** conkeror
    - it isn't emacs
    - after six months of usage its history starts slowing down completion
+   - hacker news isn't keyboard-friendly
 ** gnus
    - imap is slow
    - doesn't handle switching network connections very well
    - no way to report spam without switching to browser
+   - search is hard to set up
 ** rcirc
    - colors don't use consistent hashing
 ** znc
@@ -54,3 +62,11 @@
    - incoming conversations don't show in conversation window until selected
 * Thu Jan  5 10:42:26 2012 (http://hivelogic.com/articles/backing-up-flickr/)
   http://hivelogic.com/articles/backing-up-flickr/
+* Tue Jan 10 13:32:30 2012 (dependency:tree equivalent: nix-store -qR --tree /nix/store/)
+  dependency:tree equivalent: nix-store -qR --tree /nix/store/[...]
+* developing against postgres according to pvh:
+  Developing software against a daemonized Postgres is bad practice. Do this instead: 
+  $ initdb pg; createdb -D pg db; postgres -D pg -p 5555
+  Arg, I got too cute trying to run that as a one-liner in Twitter. createdb has to go after postgres starts, and takes a port, not a datadir.
+* multiple xmonad screens
+  http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Layout-IndependentScreens.html

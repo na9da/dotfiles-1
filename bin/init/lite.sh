@@ -14,3 +14,10 @@ done
 
 git config --global user.name "Phil Hagelberg"
 git config --global user.email "technomancy@gmail.com"
+
+# grab elisp packages
+emacs --batch -l .emacs.d/init.el -f kill-emacs
+
+source .bashrc
+
+which tmux-shared && tmux-shared

@@ -1,4 +1,4 @@
 --- 
-install: --no-rdoc --no-ri
+install: --no-rdoc --no-ri --user
 update: --no-rdoc --no-ri
 :benchmark: false

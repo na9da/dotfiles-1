@@ -1,5 +1,10 @@
-export PATH=$PATH:$HOME/.lein/bin
-export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin:/var/lib/gems/1.9.1/bin
+if [ -r /etc/profile.d/nix.sh ] ; then
+    source /etc/profile.d/nix.sh
+fi
+
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.lein/bin:$PATH
+export PATH=$HOME/.gem/ruby/1.9.1/bin:/var/lib/gems/1.9.1/bin:$PATH
 export CDPATH=.:$HOME/src
 
 export EDITOR="emacsclient"

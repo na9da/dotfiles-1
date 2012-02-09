@@ -16,7 +16,9 @@
       ido-handle-duplicate-virtual-buffers 2
       org-default-notes-file "~/.dotfiles/.notes.org"
       org-remember-default-headline 'bottom
-      org-completion-use-ido t)
+      org-completion-use-ido t
+      twittering-username "technomancy"
+      epa-armor t)
 
 (org-remember-insinuate)
 (global-set-key (kbd "C-c m") 'org-remember)

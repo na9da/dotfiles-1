@@ -12,6 +12,7 @@ rmdir Desktop Documents Music Pictures Public Templates Videos Downloads
 # um... dude?
 update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 500
 update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.9.1 500
+update-alternatives --install /usr/bin/irb irb /usr/bin/irb1.9.1 500
 
 set -e
 

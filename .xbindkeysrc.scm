@@ -15,7 +15,7 @@
 ;;; notifications
 
 (xbindkey '(F12) "notify-send \"$(date)\"")
-(xbindkey '(mod1 F12) "~/bin/notify-battery")
+(xbindkey '(mod1 F12) "notify-battery")
 (xbindkey '(shift F12) "notify-send \"$(uptime | cut -f 5 -d :)\"")
 
 ;;; network
@@ -33,10 +33,9 @@
 
 ;;; utilities
 
-(xbindkey '(mod4 l) "/home/phil/bin/panel-toggle")
+(xbindkey '(mod4 shift l) "panel-toggle")
 (xbindkey '(mod4 x) "killall xbindkeys && xbindkeys")
 (xbindkey '(mod4 d) "gnome-display-properties")
-(xbindkey '(mod1 grave) "gnome-terminal")
 (xbindkey '(mod4 grave) "gnome-terminal")
 (xbindkey '(mod4 s) "scrot")
 (xbindkey '(mod4 shift s) "scrot -s")
@@ -44,14 +43,10 @@
 (xbindkey '(mod4 mod1 y) "synergys")
 (xbindkey '(mod4 shift y) "killall synergys")
 
-(xbindkey '(mod4 F11) "setxkbmap -layout us")
-(xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak")
+(xbindkey '(mod4 F11) "setxkbmap -layout us; ctrl-fix")
+(xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak; ctrl-fix")
 
 ;;; launchers
 
-(xbindkey '(mod1 space) "ery-run")
-
-(xbindkey '(mod4 b) "~/bin/dbook.rb")
-(xbindkey '(mod4 m) "nautilus ~/documents/movies")
-
-(xbindkey '(mod4 y) "~/bin/skyyy")
+(xbindkey '(mod4 b) "dbook.rb")
+(xbindkey '(mod4 m) "nautilus $HOME/documents/movies")

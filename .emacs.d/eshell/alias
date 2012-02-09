@@ -1,32 +1,20 @@
-alias h heroku $*
-alias gerp grep
-alias top proced
-alias client-jvm export JAVA_CMD=/usr/lib/jvm/ia32-java-6-sun/bin/java
-alias server-jvm export JAVA_CMD=/usr/lib/jvm/java-6-openjdk/bin/java
-alias emacs find-file $1
-alias vim find-file $1
-alias jake jruby -S rake
-alias lh ls -l -h $*
-alias ll ls -l $*
-alias la ls -a $*
-alias l ls -a -l $*
-alias sapti sudo apt-get install $*
-alias saptc apt-cache search $*
-alias sapts apt-cache show $*
-alias saptr sudo apt-get remove $*
-alias saptu sudo apt-get upgrade $*
-alias saptd sudo apt-get update $*
-alias sagi sudo gem install $*
-alias gst git status
-alias gb git branch $*
-alias gbv git branch -v $*
-alias gcm git commit -a -v
-alias gco git checkout $*
-alias glt git log -n 10
-alias clojars lein jar && lein pom && scp pom.xml *jar clojars@clojars.org:
-alias jdk7 export JAVA_CMD=/usr/lib/jvm/java-7-openjdk/jre/bin/java
-alias kni knife ssh $* -a ec2.public_hostname
-alias kniu knife ssh $* uptime -a ec2.public_hostname
-alias knis knife ssh "role:safe*" $* -a ec2.public_hostname
-alias knisu knife ssh "role:safe*" uptime -a ec2.public_hostname
+alias be bundle exec $*
 alias gsu git submodule update --init --recursive
+alias glt git log -n 10
+alias gco git checkout $*
+alias gbv git branch -v $*
+alias gb git branch $*
+alias gst git status
+alias saptd sudo aptitude update $*
+alias saptr sudo aptitude remove $*
+alias sapti sudo aptitude install $*
+alias sapts apt-cache show $*
+alias saptc apt-cache search $*
+alias l ls -a -l $*
+alias la ls -a $*
+alias ll ls -l $*
+alias lh ls -l -h $*
+alias emacs find-file $1
+alias top proced
+alias gerp grep
+alias h heroku $*

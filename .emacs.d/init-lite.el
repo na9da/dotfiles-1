@@ -9,6 +9,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings
+                                  starter-kit-ruby
                                   starter-kit-eshell clojure-mode scpaste))
 
 (dolist (p my-packages)

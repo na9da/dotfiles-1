@@ -5,8 +5,14 @@
      (inf-ruby-keys)))
 
 ;; unfortunately some codebases use tabs. =(
+;; http://www.emacswiki.org/pics/static/TabsSpacesBoth.png
+
 (set-default 'tab-width 4)
 (set-default 'c-basic-offset 2)
+
+(put 'clojure-test-ns-segment-position 'safe-local-variable 'integerp)
+(put 'clojure-mode-load-command 'safe-local-variable 'stringp)
+(put 'clojure-swank-command 'safe-local-variable 'stringp)
 
 (add-hook 'prog-mode-hook 'esk-turn-on-whitespace)
 
@@ -21,7 +27,8 @@
 
 (setq slime-kill-without-query-p t
       slime-compile-presave? t
-      confluence-url "http://dev.clojure.org/")
+      clojure-swank-command "lein1 jack-in %s"
+      inferior-lisp-command "lein repl")
 
 (defalias 'tdoe 'toggle-debug-on-error)
 
@@ -38,3 +45,19 @@
   (when command-args
     (let ((null-device nil)) ; see grep
       (grep command-args))))
+
+(defun eshell/export-env (&optional env-file)
+  (interactive)
+  (let ((original-buffer (current-buffer)))
+    (with-temp-buffer
+      (insert-file (or env-file ".env"))
+      (goto-char (point-min))
+      (while (< (point) (point-max))
+        (let ((line (substring (thing-at-point 'line) 0 -1)))
+          (with-current-buffer original-buffer
+            (eshell/export line)))
+        (next-line)))))
+
+(defun heroku-repl ()
+  (interactive)
+  (inferior-lisp "heroku run lein repl"))

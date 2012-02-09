@@ -22,7 +22,9 @@ function fix-agent {
   ssh-add -l
 }
 
-source $HOME/bin/tat.sh # tmux completion
+if [ -f $HOME/bin/tat.sh ]; then
+  source $HOME/bin/tat.sh # tmux completion
+fi
 
 # Source from elsewhere
 if [ -f /etc/bashrc ]; then
