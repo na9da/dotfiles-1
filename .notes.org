@@ -20,7 +20,6 @@
 ** Debian
    - many versions way out of date in squeeze
      - whatever, just use nix
-       - figure out how to compile a 32-bit openjdk
        - FF on nix doesn't honor GTK theme or timezone
    - powertop watts estimate is off by at least an order of magnitude
      Apparently [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug%3D497929][fixed upstream]]
@@ -32,6 +31,7 @@
    - sudo commands cannot be interrupted
 ** leiningen
    - version 2 isn't finished
+   - jark support isn't done
 ** conkeror
    - it isn't emacs
    - after six months of usage its history starts slowing down completion
@@ -43,6 +43,10 @@
    - search is hard to set up
 ** rcirc
    - colors don't use consistent hashing
+   - can't maintain a connection to grove.io
+** erc
+   - silently discards input in closed query buffers
+   - won't auth with nickserv against grove.io
 ** znc
    - doesn't save session state in between restarts
      (needs to be more than just saving to disk for running on Heroku)
@@ -51,22 +55,33 @@
 ** xmonad
    - haven't found a simple way to toggle system monitor visibility
    - toggling gnome-panel doesn't recalculate window sizes
+   - with an extra display plugged in, libnotify bubbles show offscreen
 ** erythrina
    - no way to cycle selection
    - build is awful (blame ocaml ecosystem)
+** Virtualbox
+   - OSS version doesn't play nicely with vagrant
+   - designed by toolbags who think creating ~/Virtualbox VMs is OK
+     - VBoxManage setproperty machinefolder $HOME/.vbox-vms
+** ssh
+   - no ~/.ssh/config.d directory
+     https://bugzilla.mindrot.org/show_bug.cgi?id=1613
 ** elim
-   - notifications aren't quite right
    - doesn't support jingle
 ** empathy
    - doesn't seem easy to check config into dotfiles
    - incoming conversations don't show in conversation window until selected
 * Thu Jan  5 10:42:26 2012 (http://hivelogic.com/articles/backing-up-flickr/)
   http://hivelogic.com/articles/backing-up-flickr/
-* Tue Jan 10 13:32:30 2012 (dependency:tree equivalent: nix-store -qR --tree /nix/store/)
-  dependency:tree equivalent: nix-store -qR --tree /nix/store/[...]
+* dependency:tree equivalent
+  nix-store -qR --tree /nix/store/[...]
+* install from nixpkgs checkout
+  nix-env -f . -iA leiningen
 * developing against postgres according to pvh:
   Developing software against a daemonized Postgres is bad practice. Do this instead: 
   $ initdb pg; createdb -D pg db; postgres -D pg -p 5555
   Arg, I got too cute trying to run that as a one-liner in Twitter. createdb has to go after postgres starts, and takes a port, not a datadir.
 * multiple xmonad screens
   http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Layout-IndependentScreens.html
+* Fixing OpenJDK 7 cacerts bug
+  http://my.opera.com/karmazilla/blog/how-to-grab-the-certificate-from-a-website-and-import-it-with-java-keytool

@@ -8,3 +8,4 @@ URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.urlLauncher: /home/phil/bin/conkeror
 URxvt.keysym.M-o: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
+dmenu.font: xft:inconsolata:pixelsize=17

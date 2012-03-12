@@ -20,7 +20,7 @@
 
 ;;; network
 
-(xbindkey '(mod4 n) "ery-net")
+(xbindkey '(mod4 mod1 n) "ery-net")
 (xbindkey '(mod4 shift N)
           "notify-send wifi \"$(nmcli -f SSID dev wifi | grep -v SSID | uniq)\"")
 
