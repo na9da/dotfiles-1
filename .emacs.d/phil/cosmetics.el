@@ -34,4 +34,7 @@
 (eval-after-load 'hl-line
   '(set-face-background 'hl-line "darkseagreen2"))
 
+;; TODO: port to dabbrevs
 (defun disapproval () (interactive) (insert "ಠ_ಠ"))
+(defun eyeroll () (interactive) (insert "◔_◔"))
+(defun tables () (interactive) (insert "（╯°□°）╯︵ ┻━┻"))

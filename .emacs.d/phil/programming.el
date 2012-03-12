@@ -27,7 +27,7 @@
 
 (setq slime-kill-without-query-p t
       slime-compile-presave? t
-      clojure-swank-command "lein1 jack-in %s"
+      clojure-swank-command "lein jack-in %s"
       inferior-lisp-command "lein repl")
 
 (defalias 'tdoe 'toggle-debug-on-error)
@@ -57,6 +57,9 @@
           (with-current-buffer original-buffer
             (eshell/export line)))
         (next-line)))))
+
+(eval-after-load 'inf-ruby
+  '(add-to-list 'inf-ruby-implementations '("bundler" . "bundle console")))
 
 (defun heroku-repl ()
   (interactive)

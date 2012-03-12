@@ -64,8 +64,8 @@
                                        "%*%{%B%} %s%)"
                                        "\n"))
 
-(gnus-add-configuration '(article (horizontal 1.0 (summary 0.5 point)
-                                              (article 1.0))))
+;; (gnus-add-configuration '(article (horizontal 1.0 (summary 0.5 point)
+;;                                               (article 1.0))))
 
 (gnus-demon-add-handler 'gnus-group-get-new-news 10 t)
 (gnus-demon-init)
@@ -87,3 +87,6 @@
 
 (require 'epa)
 (setq epa-file-cache-passphrase-for-symmetric-encryption t)
+
+(add-hook 'gnus-article-prepare-hook
+          (lambda () (gnus-article-hide-citation 1)))
