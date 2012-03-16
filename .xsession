@@ -21,7 +21,6 @@ nautilus --no-default-window & # handles mounting of volumes
 ssh-add &
 xbindkeys &
 unclutter -idle 1 &
-xrdb -merge ~/.Xdefaults
 
 # progs
 conkeror &
