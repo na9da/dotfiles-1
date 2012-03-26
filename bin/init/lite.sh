@@ -13,13 +13,13 @@ else
 fi
 
 mkdir -p ~/.emacs.d
-$HTTP_CLIENT -O ~/.emacs.d/init.el $dotfiles_raw/.emacs.d/init-lite.el
+$HTTP_CLIENT ~/.emacs.d/init.el $dotfiles_raw/.emacs.d/init-lite.el
 
 files=".bashrc .bash_aliases .profile .tmux.conf"
 
 cd ~
 for f in $files; do
-    $HTTP_CLIENT $dotfiles_raw/$f
+    $HTTP_CLIENT $f $dotfiles_raw/$f
 done
 
 git config --global user.name "Phil Hagelberg"
@@ -29,7 +29,8 @@ git config --global user.email "technomancy@gmail.com"
 # grab elisp packages
 emacs --batch -l .emacs.d/init.el -f kill-emacs
 
-source .bashrc
+source ~/.bashrc
+sourec ~/.profile
 
 # not being honored
 export TERM=xterm-256color
