@@ -7,7 +7,7 @@ ME=$1
 cd /home/$ME/bin/init
 
 # No thank you:
-rmdir Desktop Documents Music Pictures Public Templates Videos Downloads
+rmdir Desktop Documents Music Pictures Public Templates Videos Downloads 2> /dev/null
 
 # um... dude?
 update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 500
@@ -32,6 +32,8 @@ if [ "$DISPLAY" != "" ] ; then
   sed -i s/var\/lib\/mpd\/music/home\/phil\/music/ /etc/mpd.conf
 fi
 
-./heroku.sh
+if [ ! -x /usr/bin/heroku ]; then
+  wget -qO- https://toolbelt.heroku.com/install.sh | sh
+fi
 
 echo "All done! Happy hacking."

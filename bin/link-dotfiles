@@ -18,6 +18,7 @@ for f in $(ls -a ~/.dotfiles) ; do
   fi
 done
 
+mkdir -p $HOME/.ssh
 if [ ! -r "$HOME/.ssh/config" ]; then
   ln -s "$HOME/.dotfiles/.sshconfig" "$HOME/.ssh/config"
 fi
