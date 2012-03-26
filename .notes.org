@@ -29,9 +29,7 @@
 ** eshell
    - no tab completion for git branches
    - sudo commands cannot be interrupted
-** leiningen
-   - version 2 isn't finished
-   - jark support isn't done
+   - high-throughput output is slow
 ** conkeror
    - it isn't emacs
    - after six months of usage its history starts slowing down completion
@@ -41,20 +39,14 @@
    - doesn't handle switching network connections very well
    - no way to report spam without switching to browser
    - search is hard to set up
-** rcirc
-   - colors don't use consistent hashing
-   - can't maintain a connection to grove.io
 ** erc
    - silently discards input in closed query buffers
-   - won't auth with nickserv against grove.io
-** znc
-   - doesn't save session state in between restarts
-     (needs to be more than just saving to disk for running on Heroku)
+   - can't ignore idler join/parts only yet
 ** swank-clojure
+   - undocumented, messy codebase
    - needs restarts for certain types of compilation errors
 ** xmonad
    - haven't found a simple way to toggle system monitor visibility
-   - toggling gnome-panel doesn't recalculate window sizes
    - with an extra display plugged in, libnotify bubbles show offscreen
 ** erythrina
    - no way to cycle selection
@@ -66,8 +58,6 @@
 ** ssh
    - no ~/.ssh/config.d directory
      https://bugzilla.mindrot.org/show_bug.cgi?id=1613
-** elim
-   - doesn't support jingle
 ** empathy
    - doesn't seem easy to check config into dotfiles
    - incoming conversations don't show in conversation window until selected

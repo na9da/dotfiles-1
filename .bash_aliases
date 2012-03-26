@@ -16,6 +16,7 @@ alias computer,="sudo"
 
 alias scpp="scp $* p.hagelb.org:p.hagelb.org/"
 
+alias s="ssh"
 alias h="heroku"
 
 # package management

@@ -1,4 +1,4 @@
-personal_ws-1.1 en 75 
+personal_ws-1.1 en 78 
 SHA
 Compojure
 parens
@@ -7,13 +7,16 @@ http
 rubygems
 Ubuntu
 Elisp
+ClojureScript
 namespace
 petabyte
 Leiningen's
 config
-javascript
 bcrypt
+Postgres
+javascript
 clj
+Github
 wikipedia
 metadata
 Contrib
@@ -21,8 +24,8 @@ dotfiles
 init
 composability
 refactorings
-rubyist
 precate
+rubyist
 Clojure's
 precompiled
 Erlang
@@ -32,9 +35,9 @@ screencast
 paren
 TODO
 clojars
-Clojars
 PeepCode
 peepcode
+caffeinated
 rdoc
 clojure
 https
@@ -51,8 +54,8 @@ triaged
 prerelease
 multiplayer
 Freenode
-codebase
 bytecode
+codebase
 eval
 runtime
 namespaces

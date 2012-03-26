@@ -1,5 +1,6 @@
 (setq gnus-select-method '(nnnil "")
       gnus-directory "~/.emacs.d/news"
+      gnus-kill-files-directory "~/.emacs.d/news"
       gnus-home-directory "~/.emacs.d"
       gnus-dribble-directory "~/.emacs.d"
       gnus-always-read-dribble-file t

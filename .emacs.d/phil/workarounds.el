@@ -29,3 +29,6 @@
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
 (setq-default ispell-program-name "aspell")
+
+;; can't figure out how to disable this on a per-document basis
+(setq org-export-with-toc nil)

@@ -58,6 +58,8 @@
             (eshell/export line)))
         (next-line)))))
 
+(defalias 'eshell/ee 'eshell/export-env)
+
 (eval-after-load 'inf-ruby
   '(add-to-list 'inf-ruby-implementations '("bundler" . "bundle console")))
 
