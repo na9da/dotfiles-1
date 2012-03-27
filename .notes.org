@@ -20,12 +20,15 @@
 ** Debian
    - many versions way out of date in squeeze
      - whatever, just use nix
-       - FF on nix doesn't honor GTK theme or timezone
    - powertop watts estimate is off by at least an order of magnitude
      Apparently [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug%3D497929][fixed upstream]]
    - installer hardcodes ssid/mount point in /etc (reported)
      http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=502955 (net)
      http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=646795 (fstab)
+** nix
+   - GTK theme isn't honored by nix programs
+   - ships proprietary crap by default
+     - to find non-flash firefox: nix-env -qaP firefox | grep -v plugins
 ** eshell
    - no tab completion for git branches
    - sudo commands cannot be interrupted
@@ -75,3 +78,4 @@
   http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Layout-IndependentScreens.html
 * Fixing OpenJDK 7 cacerts bug
   http://my.opera.com/karmazilla/blog/how-to-grab-the-certificate-from-a-website-and-import-it-with-java-keytool
+

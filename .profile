@@ -1,5 +1,7 @@
 if [ -r /etc/profile.d/nix.sh ] ; then
     source /etc/profile.d/nix.sh
+elif [ -r /usr/local/etc/profile.d/nix.sh ] ; then
+    source /usr/local/etc/profile.d/nix.sh
 fi
 
 export PATH=$HOME/bin:$PATH

@@ -30,7 +30,7 @@ if [ "$DISPLAY" != "" ] ; then
   # No thank you:
   rm -rf Desktop Documents Music Pictures Public Templates Videos Downloads
 
-  source $(dirname $0)/nix.sh $ME
+  ./nix.sh $ME
 fi
 
 if [ -f /etc/mpd.conf ]; then
@@ -40,5 +40,7 @@ fi
 if [ ! -x /usr/bin/heroku ]; then
   wget -qO- https://toolbelt.heroku.com/install.sh | sh
 fi
+
+sudo -u $ME gconftool --load $HOME/.gconf.xml
 
 echo "All done! Happy hacking."
