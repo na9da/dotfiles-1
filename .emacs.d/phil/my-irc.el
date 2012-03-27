@@ -1,24 +1,25 @@
 ;;; trying out rcirc
 
-(setq rcirc-server-alist `(("route.heroku.com" :port 10688
-                            :encryption tls :nick "technomancy"
-                            :password ,znc-password
-                            :channels ("#emacs" "#clojure"
-                                       "#leiningen" "#seajure"))
-                           ("heroku.irc.grove.io" :port 6697
-                            :encryption tls
-                            :nick "technomancy" :password "heroku"
-                            :channels ("#dx" "#clojure")))
-      rcirc-dim-nicks '("pjb" "e1f")
-      rcirc-ignore-list '("Lajla")
-      rcirc-fill-column 75
-      rcirc-notify-timeout 2
-      rcirc-notify-message "%s: %s"
-      rcirc-buffer-maximum-lines 2000
-      rcirc-authinfo `(("freenode" nickserv "technomancy" ,freenode-password)
-                       ("heroku" nickserv "technomancy" ,freenode-password)
-                       ("freenode" nickserv "TeXnomancy" ,freenode-password)
-                       ("grove.io" nickserv "technomancy" ,grove-password)))
+(ignore-errors
+  (setq rcirc-server-alist `(("route.heroku.com" :port 10688
+                              :encryption tls :nick "technomancy"
+                              :password ,znc-password
+                              :channels ("#emacs" "#clojure"
+                                         "#leiningen" "#seajure"))
+                             ("heroku.irc.grove.io" :port 6697
+                              :encryption tls
+                              :nick "technomancy" :password "heroku"
+                              :channels ("#dx" "#clojure")))
+        rcirc-dim-nicks '("pjb" "e1f")
+        rcirc-ignore-list '("Lajla")
+        rcirc-fill-column 75
+        rcirc-notify-timeout 2
+        rcirc-notify-message "%s: %s"
+        rcirc-buffer-maximum-lines 2000
+        rcirc-authinfo `(("freenode" nickserv "technomancy" ,freenode-password)
+                         ("heroku" nickserv "technomancy" ,freenode-password)
+                         ("freenode" nickserv "TeXnomancy" ,freenode-password)
+                         ("grove.io" nickserv "technomancy" ,grove-password))))
 
 (add-hook 'rcirc-mode-hook 'turn-on-flyspell)
 (add-hook 'rcirc-mode-hook 'rcirc-omit-mode)
