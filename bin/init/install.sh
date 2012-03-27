@@ -2,19 +2,16 @@
 
 # Bootstrap a fresh Debian install based on my dotfiles and gems/debs lists.
 
+set -e -u
+
 ME=$1
 
 cd /home/$ME/bin/init
-
-# No thank you:
-rmdir Desktop Documents Music Pictures Public Templates Videos Downloads 2> /dev/null
 
 # um... dude?
 update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 500
 update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.9.1 500
 update-alternatives --install /usr/bin/irb irb /usr/bin/irb1.9.1 500
-
-set -e
 
 # don't write atimes
 chattr +A /
@@ -29,6 +26,9 @@ if [ "$DISPLAY" != "" ] ; then
   gem install --no-rdoc --no-ri \
     $(ruby -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
   cp xsession.desktop /usr/share/xsessions/xsession.desktop
+
+  # No thank you:
+  rm -rf Desktop Documents Music Pictures Public Templates Videos Downloads
 
   source $(dirname $0)/nix.sh $ME
 fi

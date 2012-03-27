@@ -3,6 +3,7 @@
 # Check out dotfiles and initiate bootstrap
 
 set -e
+set -u
 
 if [ `whoami` != "root" ] ; then
   echo "You must be root."

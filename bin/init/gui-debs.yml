@@ -47,6 +47,7 @@
 - vlc
 - vorbis-tools
 - wmctrl
+- x11-xserver-utils
 - xbindkeys
 - xfonts-terminus
 - xinit

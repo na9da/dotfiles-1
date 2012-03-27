@@ -2,7 +2,7 @@
 
 # Bootstrap a smaller set of dotfiles; should be more cross-platform.
 
-set -e
+set -e -u
 
 dotfiles_raw=https://github.com/technomancy/dotfiles/raw/master
 
