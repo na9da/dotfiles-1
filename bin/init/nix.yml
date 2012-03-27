@@ -1,0 +1,7 @@
+---
+- firefox
+- tmux
+- leiningen
+- openjdk
+- redis
+- emacs-24.0.94

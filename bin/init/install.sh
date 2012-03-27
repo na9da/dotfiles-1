@@ -29,7 +29,12 @@ if [ "$DISPLAY" != "" ] ; then
   gem install --no-rdoc --no-ri \
     $(ruby -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
   cp xsession.desktop /usr/share/xsessions/xsession.desktop
-  sed -i s/var\/lib\/mpd\/music/home\/phil\/music/ /etc/mpd.conf
+
+  source $(dirname $0)/nix.sh $ME
+fi
+
+if [ -f /etc/mpd.conf ]; then
+    sed -i "s/var\/lib\/mpd\/music/home\/phil\/music/" /etc/mpd.conf
 fi
 
 if [ ! -x /usr/bin/heroku ]; then
