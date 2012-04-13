@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+# TODO: need a way to make xmonad float this
+if [ "$DISPLAY" != "" ] ; then
+   filename=`zenity --entry --text="name"`.png
+else
+   filename='%Y-%m-%d_%H:%M:%S.png'
+fi
+
+if [ "$filename" = "" ]; then
+    exit 1
+else
+    scrot /tmp/$filename
+    scp /tmp/$filename p:p
+
+    echo http://p.hagelb.org/$filename | xsel -i -b -p
+    rm /tmp/$filename
+fi
