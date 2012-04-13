@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mpg321 ~/bin/init/tardis.mp3 &
 source ~/.profile
 
 # middle-click-scroll
