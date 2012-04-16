@@ -30,7 +30,7 @@ git config --global user.email "technomancy@gmail.com"
 emacs --batch -l .emacs.d/init.el -f kill-emacs
 
 source ~/.bashrc
-sourec ~/.profile
+source ~/.profile
 
 # not being honored
 export TERM=xterm-256color
