@@ -31,6 +31,15 @@
     '(set-face-background 'magit-item-highlight "black"))
   (set-face-background 'hl-line "black"))
 
+(defun bb ()
+  "Black for use with glasstty in -nw"
+  (interactive)
+  (set-face-background 'vertical-border "bright green")
+  (set-face-foreground 'vertical-border "bright green")
+  (set-face-background 'hl-line "black")
+  (eval-after-load 'magit
+    '(set-face-background 'magit-item-highlight "black")))
+
 (eval-after-load 'hl-line
   '(set-face-background 'hl-line "darkseagreen2"))
 
@@ -38,3 +47,4 @@
 (defun disapproval () (interactive) (insert "ಠ_ಠ"))
 (defun eyeroll () (interactive) (insert "◔_◔"))
 (defun tables () (interactive) (insert "（╯°□°）╯︵ ┻━┻"))
+(defun mu () (interactive) (insert "無"))
