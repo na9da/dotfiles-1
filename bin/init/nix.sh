@@ -11,12 +11,11 @@ esac
 
 if [ ! -x /usr/bin/nix-env ]; then
     cd /tmp
-    wget $NIX_DEB
-    sudo dpkg -i nix_0-1-*.deb
+    wget -O /tmp/nix.deb $NIX_DEB
+    sudo dpkg -i /tmp/nix.deb || true
     sudo apt-get -f install
     nix-channel --add http://nixos.org/releases/nixpkgs/channels/nixpkgs-unstable
     nix-channel --update
-    echo "Nix installed; please source /etc/profile.d/nix.sh"
 fi
 
 # wtf; firefox comes with flash by default. get the no-plugins version

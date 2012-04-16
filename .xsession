@@ -19,6 +19,7 @@ nm-applet &
 nautilus --no-default-window & # handles mounting of volumes
 
 # utilities
+xrdb -merge ~/.Xdefaults
 ssh-add &
 xbindkeys &
 unclutter -idle 1 &

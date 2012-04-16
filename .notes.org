@@ -26,28 +26,32 @@
      http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=502955 (net)
      http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=646795 (fstab)
 ** nix
-   - GTK theme isn't honored by nix programs
    - ships proprietary crap by default
      - to find non-flash firefox: nix-env -qaP firefox | grep -v plugins
-** eshell
-   - no tab completion for git branches
+** Emacs
+   - lisp-2 is awful
+   - no FFI (no browser integration)
+   - no useful associative data type, vectors are useless
+   - no concurrency
+*** eshell
+   - no tab completion for git branches (but just use magit)
    - sudo commands cannot be interrupted
    - high-throughput output is slow
-** conkeror
-   - it isn't emacs
-   - after six months of usage its history starts slowing down completion
-   - hacker news isn't keyboard-friendly
-** gnus
+*** gnus
    - imap is slow
    - doesn't handle switching network connections very well
    - no way to report spam without switching to browser
    - search is hard to set up
-** erc
+*** erc
    - silently discards input in closed query buffers
    - can't ignore idler join/parts only yet
-** swank-clojure
+*** swank-clojure
    - undocumented, messy codebase
    - needs restarts for certain types of compilation errors
+** conkeror
+   - it isn't emacs
+   - after six months of usage its history starts slowing down completion
+   - hacker news isn't keyboard-friendly
 ** xmonad
    - haven't found a simple way to toggle system monitor visibility
    - with an extra display plugged in, libnotify bubbles show offscreen

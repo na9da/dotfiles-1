@@ -1,10 +1,9 @@
 #!/bin/sh
 
-TARGET="/media/backup"
+TARGET=${1:-"/media/backup"}
 
 rsync -r $HOME/music/ "$TARGET"/music/
 rsync -r $HOME/documents/ "$TARGET"/documents/
-rsync -r $HOME/src/ "$TARGET"/src/
 rsync -r $HOME/Photos/ "$TARGET"/Photos/
 
 # TODO: shotwell db
