@@ -83,3 +83,14 @@
 * Fixing OpenJDK 7 cacerts bug
   http://my.opera.com/karmazilla/blog/how-to-grab-the-certificate-from-a-website-and-import-it-with-java-keytool
 
+* Back-burner projects
+  - Clojure -> Emacs Lisp compiler
+  - git proxy for github issues
+  - nrepl.el
+  - snapshots in package.el
+  - flexible require :as in slamhound
+  - logic-driven slamhound (2-way)
+  - clojuresphere in clojars
+  - swarmup
+  - ido-find-file-style var navigation
+  - selective metadata hiding in clojure-mode

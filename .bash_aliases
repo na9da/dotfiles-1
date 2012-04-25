@@ -16,8 +16,14 @@ alias computer,="sudo"
 
 alias scpp="scp $* p.hagelb.org:p.hagelb.org/"
 
-alias s="ssh"
+alias c="curl"
+alias f="find"
+alias g="git"
 alias h="heroku"
+alias l="lein"
+alias m="more"
+alias r="rgrep"
+alias s="ssh"
 
 # package management
 alias sapti="sudo aptitude install"
