@@ -1,4 +1,4 @@
-personal_ws-1.1 en 78 
+personal_ws-1.1 en 79 
 SHA
 Compojure
 parens
@@ -44,6 +44,7 @@ https
 résumé
 Radagast
 Evrinid
+heroku
 Heroku
 Evri
 JVM

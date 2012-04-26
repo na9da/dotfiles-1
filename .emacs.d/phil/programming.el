@@ -66,3 +66,7 @@
 (defun heroku-repl ()
   (interactive)
   (inferior-lisp "heroku run lein repl"))
+
+(defadvice slime-show-description (after select-window-afterwards activate)
+  "Select the description buffer after it runs."
+  (other-window 1 nil))

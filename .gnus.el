@@ -19,6 +19,7 @@
       mail-source-delete-incoming nil
       gnus-asynchronous t
       gnus-agent-expire-days 0
+      gnus-agent-consider-all-articles t
       gnus-agent-enable-expiration 'DISABLE)
 
 (add-to-list 'gnus-secondary-select-methods
@@ -91,3 +92,14 @@
 
 (add-hook 'gnus-article-prepare-hook
           (lambda () (gnus-article-hide-citation 1)))
+
+(defun aar/get-new-news-and-disconnect (&optional arg)
+  "Plug in, send, receive, plug out."
+  (interactive "P")
+  (gnus-group-save-newsrc)
+  (gnus-agent-toggle-plugged t)
+  (gnus-group-send-queue)
+  (gnus-group-get-new-news arg)
+  (gnus-agent-fetch-session)
+  (gnus-group-save-newsrc)
+  (gnus-agent-toggle-plugged nil))

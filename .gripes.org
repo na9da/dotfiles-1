@@ -13,6 +13,7 @@
 ** Emacs
    - lisp-2 is awful
    - no FFI (no browser integration)
+   - no immutability or referential transparency
    - no useful associative data type, vectors are useless
    - no concurrency
 *** eshell
@@ -47,6 +48,6 @@
 ** ssh
    - no ~/.ssh/config.d directory
      https://bugzilla.mindrot.org/show_bug.cgi?id=1613
-** empathy
-   - doesn't seem easy to check config into dotfiles
-   - incoming conversations don't show in conversation window until selected
+** garak
+   - sometimes doesn't come back online after the network comes back up
+   - awkward widget-based menu selection for connecting/sending messages
