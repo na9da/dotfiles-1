@@ -2,7 +2,7 @@
 * No video on stupid skype
   sudo apt-get install lib32v4l-0
   LD_PRELOAD=/usr/lib32/libv4l/v4l1compat.so skype
-* pipe to python -m json.tool
+* json pretty-printing: pipe to python -m json.tool
 * network manager CLI: nmcli con up id "Auto technomancy"
 * redo git author
   git-filter-branch --env-filter "export GIT_AUTHOR_NAME='New name'; export GIT_AUTHOR_EMAIL='New email'" HEAD
@@ -16,61 +16,7 @@
   - delete all local tagged "flickrtagged"
 * org meta-notes
   - org-insert-link: C-c C-l
-* things that bug me about software I use (a relatively complete list)
-** Debian
-   - many versions way out of date in squeeze
-     - whatever, just use nix
-   - powertop watts estimate is off by at least an order of magnitude
-     Apparently [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug%3D497929][fixed upstream]]
-   - installer hardcodes ssid/mount point in /etc (reported)
-     http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=502955 (net)
-     http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=646795 (fstab)
-** nix
-   - ships proprietary crap by default
-     - to find non-flash firefox: nix-env -qaP firefox | grep -v plugins
-** Emacs
-   - lisp-2 is awful
-   - no FFI (no browser integration)
-   - no useful associative data type, vectors are useless
-   - no concurrency
-*** eshell
-   - no tab completion for git branches (but just use magit)
-   - sudo commands cannot be interrupted
-   - high-throughput output is slow
-*** gnus
-   - imap is slow
-   - doesn't handle switching network connections very well
-   - no way to report spam without switching to browser
-   - search is hard to set up
-*** erc
-   - silently discards input in closed query buffers
-   - can't ignore idler join/parts only yet
-*** swank-clojure
-   - undocumented, messy codebase
-   - needs restarts for certain types of compilation errors
-** conkeror
-   - it isn't emacs
-   - after six months of usage its history starts slowing down completion
-   - hacker news isn't keyboard-friendly
-** xmonad
-   - haven't found a simple way to toggle system monitor visibility
-   - with an extra display plugged in, libnotify bubbles show offscreen
-** erythrina
-   - no way to cycle selection
-   - build is awful (blame ocaml ecosystem)
-** Virtualbox
-   - OSS version doesn't play nicely with vagrant
-   - designed by toolbags who think creating ~/Virtualbox VMs is OK
-     - VBoxManage setproperty machinefolder $HOME/.vbox-vms
-** ssh
-   - no ~/.ssh/config.d directory
-     https://bugzilla.mindrot.org/show_bug.cgi?id=1613
-** empathy
-   - doesn't seem easy to check config into dotfiles
-   - incoming conversations don't show in conversation window until selected
-* Thu Jan  5 10:42:26 2012 (http://hivelogic.com/articles/backing-up-flickr/)
-  http://hivelogic.com/articles/backing-up-flickr/
-* dependency:tree equivalent
+* nix dependency:tree equivalent
   nix-store -qR --tree /nix/store/[...]
 * install from nixpkgs checkout
   nix-env -f . -iA leiningen
@@ -78,11 +24,8 @@
   Developing software against a daemonized Postgres is bad practice. Do this instead: 
   $ initdb pg; createdb -D pg db; postgres -D pg -p 5555
   Arg, I got too cute trying to run that as a one-liner in Twitter. createdb has to go after postgres starts, and takes a port, not a datadir.
-* multiple xmonad screens
-  http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Layout-IndependentScreens.html
 * Fixing OpenJDK 7 cacerts bug
   http://my.opera.com/karmazilla/blog/how-to-grab-the-certificate-from-a-website-and-import-it-with-java-keytool
-
 * Back-burner projects
   - Clojure -> Emacs Lisp compiler
   - git proxy for github issues
