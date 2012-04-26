@@ -23,3 +23,5 @@
 /bin/lein*
 /bin/jdk*
 /.emacs.d/custom.el
+/bin/emacs
+/.emacs.d/phil/chorts.el
