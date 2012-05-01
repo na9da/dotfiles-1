@@ -4,12 +4,13 @@
 - aspell-en
 - avahi-discover
 - avahi-utils
+- cryptmount
+- cryptsetup
 - bittorrent
 - devilspie
 - feh
 - gimp
 - gnome-desktop-environment
-- gnome-themes-more
 - gnupg-agent
 - gnutls-bin
 - gsfonts-x11

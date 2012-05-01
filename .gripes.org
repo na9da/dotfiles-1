@@ -51,3 +51,6 @@
 ** garak
    - sometimes doesn't come back online after the network comes back up
    - awkward widget-based menu selection for connecting/sending messages
+** ghi
+   - coloring doesn't work inside Emacs
+   - listing breaks with TERM=dumb

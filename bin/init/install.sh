@@ -23,18 +23,19 @@ apt-get install -y $(ruby -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
 if [ "$DISPLAY" != "" ] ; then
   apt-get install -y \
     $(ruby -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
-  gem install --no-rdoc --no-ri \
-    $(ruby -ryaml -e "puts YAML.load_file('gems.yml').join ' '")
+  gem install --no-rdoc --no-ri bundler ghi bananajour
   cp xsession.desktop /usr/share/xsessions/xsession.desktop
 
   # No thank you:
-  rm -rf Desktop Documents Music Pictures Public Templates Videos Downloads
+  rm -rf ~/Desktop ~/Documents ~/Music ~/Pictures ~/Public \
+      ~/Templates ~/Videos ~/Downloads
 
   ./nix.sh $ME
 fi
 
 if [ -f /etc/mpd.conf ]; then
-    sed -i "s/var\/lib\/mpd\/music/home\/phil\/music/" /etc/mpd.conf
+  sed -i "s/var\/lib\/mpd\/music/home\/phil\/music/" /etc/mpd.conf
+  chown -R $ME /var/lib/*/mpd
 fi
 
 if [ ! -x /usr/bin/heroku ]; then
