@@ -19,7 +19,7 @@
       mail-source-delete-incoming nil
       gnus-asynchronous t
       gnus-agent-expire-days 0
-      gnus-agent-consider-all-articles t
+      gnus-agent-synchronize-flags t
       gnus-agent-enable-expiration 'DISABLE)
 
 (add-to-list 'gnus-secondary-select-methods
@@ -103,3 +103,5 @@
   (gnus-agent-fetch-session)
   (gnus-group-save-newsrc)
   (gnus-agent-toggle-plugged nil))
+
+(define-key gnus-group-mode-map (kbd "g") 'aar/get-new-news-and-disconnect)
