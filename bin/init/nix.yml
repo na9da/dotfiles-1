@@ -1,7 +1,5 @@
 ---
-- firefox
+# needs special handling to avoid plugin crap
+# - firefox
 - tmux
-- leiningen
-- openjdk
-- redis
 - emacs-24.0.94

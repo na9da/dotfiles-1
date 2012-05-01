@@ -5,8 +5,8 @@ set -e -u
 ME=$1
 
 case `uname -a` in
-    *x86_64*) NIX_DEB=http://hydra.nixos.org/build/2337746/download/1/nix_0-1_amd64.deb ;;
-    *) NIX_DEB=http://hydra.nixos.org/build/2337727/download/1/nix_0-1_i386.deb ;;
+    *x86_64*) NIX_DEB=http://hydra.nixos.org/build/565025/download/1/nix_0.16-1_amd64.deb
+    *) NIX_DEB=http://hydra.nixos.org/build/565031/download/1/nix_0.16-1_i386.deb
 esac
 
 if [ ! -x /usr/bin/nix-env ]; then
