@@ -42,6 +42,11 @@ if [ ! -x /usr/bin/heroku ]; then
   wget -qO- https://toolbelt.heroku.com/install.sh | sh
 fi
 
-sudo -u $ME gconftool --load $HOME/.gconf.xml
+sudo -u $ME gconftool --load /home/$ME/.gconf.xml
+
+if [ ! -r /home/$ME/src/conkeror ]; then
+  mkdir -p /home/$ME/src
+  git clone git://github.com/retroj/conkeror.git /home/$ME/src/conkeror
+fi
 
 echo "All done! Happy hacking."
