@@ -55,3 +55,20 @@ but not mobile urls.")
 (eval-after-load 'erc-button
   '(add-to-list 'erc-button-alist
                 '(twitter-url-pattern 0 t browse-mobile-twitter 0) t))
+
+(defun znc ()
+  (interactive)
+  (load-file "~/.chorts/chorts.el.gpg")
+  (erc-tls :server "route.heroku.com" :port 10688
+           :nick "technomancy" :password znc-password))
+
+(defun grove-erc ()
+  (interactive)
+  (load-file "~/.chorts/chorts.el.gpg")
+  (add-to-list 'erc-networks-alist '(grove "irc.grove.io"))
+  (add-to-list 'erc-nickserv-alist
+               '(grove "NickServ!NickServ@services."
+                       "This nickname is registered."
+                       "NickServ" "IDENTIFY" nil))
+  (erc-tls :server "heroku.irc.grove.io" :port 6697
+           :nick "technomancy" :password grove-connect-password))
