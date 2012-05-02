@@ -2,7 +2,7 @@
 
 # Bootstrap a fresh Debian install based on my dotfiles and gems/debs lists.
 
-set -e -u
+set -e
 
 ME=$1
 
