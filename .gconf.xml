@@ -36,6 +36,12 @@
             <value>
               <string>Default</string>
             </value>
+            <value>
+              <string>Profile0</string>
+            </value>
+            <value>
+              <string>Profile1</string>
+            </value>
         </list>
       </value>
     </entry>
@@ -278,7 +284,7 @@
       <key>profiles/Default/background_color</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/background_color</schema_key>
       <value>
-        <string>#FFFFFFFFDDDD</string>
+        <string>#000000000000</string>
       </value>
     </entry>
     <entry>
@@ -390,7 +396,7 @@
       <key>profiles/Default/foreground_color</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/foreground_color</schema_key>
       <value>
-        <string>#000000000000</string>
+        <string>#0000FFFF0000</string>
       </value>
     </entry>
     <entry>
@@ -460,7 +466,7 @@
       <key>profiles/Default/silent_bell</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/silent_bell</schema_key>
       <value>
-        <bool>false</bool>
+        <bool>true</bool>
       </value>
     </entry>
     <entry>
@@ -522,6 +528,438 @@
     <entry>
       <key>profiles/Default/word_chars</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/word_chars</schema_key>
+      <value>
+        <string>-A-Za-z0-9,./?%&amp;#:_=+@~</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/allow_bold</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/background_color</key>
+      <value>
+        <string>#000000000000</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/background_darkness</key>
+      <value>
+        <float>0.5</float>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/background_image</key>
+      <value>
+        <string></string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/background_type</key>
+      <value>
+        <string>solid</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/backspace_binding</key>
+      <value>
+        <string>ascii-del</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/bold_color</key>
+      <value>
+        <string>#000000000000</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/bold_color_same_as_fg</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/cursor_blink_mode</key>
+      <value>
+        <string>off</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/cursor_shape</key>
+      <value>
+        <string>block</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/custom_command</key>
+      <value>
+        <string></string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/default_show_menubar</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/default_size_columns</key>
+      <value>
+        <int>80</int>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/default_size_rows</key>
+      <value>
+        <int>24</int>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/delete_binding</key>
+      <value>
+        <string>escape-sequence</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/exit_action</key>
+      <value>
+        <string>close</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/font</key>
+      <value>
+        <string>Ubuntu Mono 12</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/foreground_color</key>
+      <value>
+        <string>#FFFFFFFFFFFF</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/login_shell</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/palette</key>
+      <value>
+        <string>#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/scroll_background</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/scroll_on_keystroke</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/scroll_on_output</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/scrollback_lines</key>
+      <value>
+        <int>512</int>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/scrollback_unlimited</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/scrollbar_position</key>
+      <value>
+        <string>hidden</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/silent_bell</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/title</key>
+      <value>
+        <string>Terminal</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/title_mode</key>
+      <value>
+        <string>replace</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/update_records</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/use_custom_command</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/use_skey</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/use_system_font</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/use_theme_colors</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/visible_name</key>
+      <value>
+        <string>dark</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile0/word_chars</key>
+      <value>
+        <string>-A-Za-z0-9,./?%&amp;#:_=+@~</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/allow_bold</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/background_color</key>
+      <value>
+        <string>#000000000000</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/background_darkness</key>
+      <value>
+        <float>0.5</float>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/background_image</key>
+      <value>
+        <string></string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/background_type</key>
+      <value>
+        <string>solid</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/backspace_binding</key>
+      <value>
+        <string>ascii-del</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/bold_color</key>
+      <value>
+        <string>#000000000000</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/bold_color_same_as_fg</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/cursor_blink_mode</key>
+      <value>
+        <string>off</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/cursor_shape</key>
+      <value>
+        <string>underline</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/custom_command</key>
+      <value>
+        <string></string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/default_show_menubar</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/default_size_columns</key>
+      <value>
+        <int>80</int>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/default_size_rows</key>
+      <value>
+        <int>24</int>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/delete_binding</key>
+      <value>
+        <string>escape-sequence</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/exit_action</key>
+      <value>
+        <string>close</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/font</key>
+      <value>
+        <string>Glass TTY VT220 Medium 15</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/foreground_color</key>
+      <value>
+        <string>#0000FFFF0000</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/login_shell</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/palette</key>
+      <value>
+        <string>#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/scroll_background</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/scroll_on_keystroke</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/scroll_on_output</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/scrollback_lines</key>
+      <value>
+        <int>512</int>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/scrollback_unlimited</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/scrollbar_position</key>
+      <value>
+        <string>hidden</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/silent_bell</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/title</key>
+      <value>
+        <string>Terminal</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/title_mode</key>
+      <value>
+        <string>replace</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/update_records</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/use_custom_command</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/use_skey</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/use_system_font</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/use_theme_colors</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/visible_name</key>
+      <value>
+        <string>glass</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Profile1/word_chars</key>
       <value>
         <string>-A-Za-z0-9,./?%&amp;#:_=+@~</string>
       </value>
@@ -601,6 +1039,42 @@
       </value>
     </entry>
     <entry>
+      <key>desktop-metadata/16@32@MB@32@Filesystem@46@volume/icon-scale</key>
+      <value>
+        <string>1</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/16@32@MB@32@Filesystem@46@volume/nautilus-icon-position</key>
+      <value>
+        <string>1156,122</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/16@32@MB@32@Filesystem@46@volume/nautilus-icon-position-timestamp</key>
+      <value>
+        <string>1335890458</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/4@46@0@32@GB@32@Filesystem@46@volume/icon-scale</key>
+      <value>
+        <string>1</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/4@46@0@32@GB@32@Filesystem@46@volume/nautilus-icon-position</key>
+      <value>
+        <string>64,322</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/4@46@0@32@GB@32@Filesystem@46@volume/nautilus-icon-position-timestamp</key>
+      <value>
+        <string>1335553858</string>
+      </value>
+    </entry>
+    <entry>
       <key>desktop-metadata/512@32@MB@32@Filesystem@46@volume/icon-scale</key>
       <value>
         <string>1</string>
@@ -619,6 +1093,78 @@
       </value>
     </entry>
     <entry>
+      <key>desktop-metadata/8@46@0@32@GB@32@Filesystem@46@volume/icon-scale</key>
+      <value>
+        <string>1</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/8@46@0@32@GB@32@Filesystem@46@volume/nautilus-icon-position</key>
+      <value>
+        <string>64,322</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/8@46@0@32@GB@32@Filesystem@46@volume/nautilus-icon-position-timestamp</key>
+      <value>
+        <string>1335054438</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/993@32@MB@32@Filesystem@46@volume/icon-scale</key>
+      <value>
+        <string>1</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/993@32@MB@32@Filesystem@46@volume/nautilus-icon-position</key>
+      <value>
+        <string>64,282</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/993@32@MB@32@Filesystem@46@volume/nautilus-icon-position-timestamp</key>
+      <value>
+        <string>1334719894</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/Chunky@32@Backup@46@volume/icon-scale</key>
+      <value>
+        <string>1</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/Chunky@32@Backup@46@volume/nautilus-icon-position</key>
+      <value>
+        <string>64,882</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/Chunky@32@Backup@46@volume/nautilus-icon-position-timestamp</key>
+      <value>
+        <string>1333486490</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/U3@32@System@46@volume/icon-scale</key>
+      <value>
+        <string>1</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/U3@32@System@46@volume/nautilus-icon-position</key>
+      <value>
+        <string>64,422</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/U3@32@System@46@volume/nautilus-icon-position-timestamp</key>
+      <value>
+        <string>1335553858</string>
+      </value>
+    </entry>
+    <entry>
       <key>desktop-metadata/backup@46@volume/icon-scale</key>
       <value>
         <string>1</string>
@@ -627,13 +1173,31 @@
     <entry>
       <key>desktop-metadata/backup@46@volume/nautilus-icon-position</key>
       <value>
-        <string>64,282</string>
+        <string>64,402</string>
       </value>
     </entry>
     <entry>
       <key>desktop-metadata/backup@46@volume/nautilus-icon-position-timestamp</key>
       <value>
-        <string>1324081574</string>
+        <string>1335830325</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/chorts@46@volume/icon-scale</key>
+      <value>
+        <string>1</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/chorts@46@volume/nautilus-icon-position</key>
+      <value>
+        <string>1234,22</string>
+      </value>
+    </entry>
+    <entry>
+      <key>desktop-metadata/chorts@46@volume/nautilus-icon-position-timestamp</key>
+      <value>
+        <string>1335915849</string>
       </value>
     </entry>
     <entry>
@@ -655,6 +1219,12 @@
       </value>
     </entry>
     <entry>
+      <key>desktop-metadata/directory/nautilus-default-view</key>
+      <value>
+        <string>OAFIID:Nautilus_File_Manager_Icon_View</string>
+      </value>
+    </entry>
+    <entry>
       <key>desktop-metadata/directory/nautilus-icon-view-keep-aligned</key>
       <value>
         <string>true</string>
@@ -663,7 +1233,7 @@
     <entry>
       <key>desktop-metadata/directory/nautilus-icon-view-layout-timestamp</key>
       <value>
-        <string>1324159474</string>
+        <string>1335505922</string>
       </value>
     </entry>
     <entry>
@@ -1073,7 +1643,7 @@
     <entry>
       <key>preferences/navigation_window_saved_geometry</key>
       <value>
-        <string>1438x897+0+1</string>
+        <string>294x654+1317+285</string>
       </value>
     </entry>
     <entry>
@@ -1184,7 +1754,7 @@
       <key>preferences/start_with_sidebar</key>
       <schema_key>/schemas/apps/nautilus/preferences/start_with_sidebar</schema_key>
       <value>
-        <bool>true</bool>
+        <bool>false</bool>
       </value>
     </entry>
     <entry>
