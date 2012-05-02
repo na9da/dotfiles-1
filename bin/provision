@@ -1,3 +1,0 @@
-#!/bin/bash
-
-ssh $1 "curl p.hagelb.org/d | tar xzf -"

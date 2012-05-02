@@ -1,2 +1,0 @@
-#!/bin/sh
-exe=`dmenu_path | erythrina` && exec $exe
