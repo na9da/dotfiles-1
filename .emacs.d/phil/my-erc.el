@@ -1,11 +1,11 @@
 (setq erc-prompt ">"
       erc-fill-column 75
-      ;; rcirc's omit-mode is way better than this =\
-      erc-hide-list '("JOIN" "PART" "QUIT" "NICK")
-      erc-track-exclude-types (append '("324" "329" "332" "333"
-                                        "353" "477" "MODE")
-                                      erc-hide-list)
+      erc-header-line-format nil
+      erc-track-exclude-types '("324" "329" "332" "333" "353" "477" "MODE"
+                                "JOIN" "PART" "QUIT" "NICK")
+      erc-lurker-threshold-time 3600
       erc-track-priority-faces-only t
+      erc-join-buffer 'bury
       erc-autojoin-timing :ident
       erc-flood-protect nil
       erc-autojoin-channels-alist
@@ -29,32 +29,15 @@
        ;; DO NOT use the version from marmalade
        (erc-nick-notify-mode t))
      (erc-services-mode 1)
+     (setq erc-complete-functions '(erc-pcomplete erc-button-next))
      (add-to-list 'erc-modules 'hl-nicks)
      (add-to-list 'erc-modules 'spelling)
      (set-face-foreground 'erc-input-face "dim gray")
      (set-face-foreground 'erc-my-nick-face "blue")))
 
-
-;; thanks to leathekd
-(defvar twitter-url-pattern
-  (concat "\\(https?://\\)\\(?:.*\\)?\\(twitter.com/\\)"
-          "\\(?:#!\\)?\\([[:alnum:][:punct:]]+\\)")
-  "Matches regular twitter urls, including those with hashbangs,
-but not mobile urls.")
-
-(defun browse-mobile-twitter (url)
-  "When given a twitter url, browse to the mobile version instead"
-  (string-match twitter-url-pattern url)
-  (let ((protocol (match-string 1 url))
-        (u (match-string 2 url))
-        (path (match-string 3 url)))
-    (browse-url (format "%smobile.%s%s" protocol u path) t)))
-
-;; Need to append otherwise the urls will be picked up by
-;; erc-button-url-regexp. Not sure why that is the case.
-(eval-after-load 'erc-button
-  '(add-to-list 'erc-button-alist
-                '(twitter-url-pattern 0 t browse-mobile-twitter 0) t))
+;; for jlf's local lurker patch
+(add-hook 'erc-connect-pre-hook
+          (lambda () (load-file "/home/phil/src/emacs/lisp/erc/erc.el")))
 
 (defun znc ()
   (interactive)
@@ -62,9 +45,10 @@ but not mobile urls.")
   (erc-tls :server "route.heroku.com" :port 10688
            :nick "technomancy" :password znc-password))
 
-(defun grove-erc ()
+(defun grove ()
   (interactive)
   (load-file "~/.chorts/chorts.el.gpg")
+  (require 'erc)
   (add-to-list 'erc-networks-alist '(grove "irc.grove.io"))
   (add-to-list 'erc-nickserv-alist
                '(grove "NickServ!NickServ@services."
@@ -72,3 +56,6 @@ but not mobile urls.")
                        "NickServ" "IDENTIFY" nil))
   (erc-tls :server "heroku.irc.grove.io" :port 6697
            :nick "technomancy" :password grove-connect-password))
+
+;; set erc-track-priority-faces-only to ignore stuff in boring channels:
+;; https://gist.github.com/481b20e1008106480e4d

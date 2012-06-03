@@ -13,9 +13,6 @@
            (magit-cherry-pick-item))))))
 
 ;; come on guys; autoloads are not rocket science
-(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-twilight-0.1")
-(autoload 'color-theme-twilight "color-theme-twilight" nil t)
-
 (autoload 'marmalade-upload-buffer "marmalade" nil t)
 
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
@@ -31,5 +28,6 @@
 
 (setq-default ispell-program-name "aspell")
 
-;; can't figure out how to disable this on a per-document basis
-(setq org-export-with-toc nil)
+;; TODO: this does nothing
+(add-to-list 'ido-ubiquitous-command-exceptions 'ucs-insert)
+(add-to-list 'ido-ubiquitous-function-exceptions 'read-char-by-name)
