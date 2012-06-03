@@ -28,6 +28,10 @@ define_webjump("emacs", "http://www.google.com/cse?cx=004774160799092323420%3A6-
 define_webjump("mvn", "http://jarvana.com/jarvana/search?search_type=project&project=%s");
 define_webjump("rfc", "http://www.ietf.org/rfc/rfc%s.txt");
 define_webjump("marmalade", "http://marmalade-repo.org/packages?q=%s");
+define_webjump("d", "http://duckduckgo.com?q=%s");
+define_webjump("g", "http://duckduckgo.com?q=%s"); // train those fingers
+define_webjump("google", "http://google.com/search?q=%s");
+define_webjump("t", "http://mobile.twitter.com/search?q=%s");
 
 define_webjump("wondermark", "http://www.ohnorobot.com/index.pl?s=%s&comic=148&show=advanced&b=1&t=1");
 define_webjump("achewood", "http://www.ohnorobot.com/index.pl?s=%s&comic=636&show=advanced&b=1&t=1");
@@ -65,6 +69,8 @@ interactive("toggle-stylesheets",
             });
 
 require("page-modes/google-search-results.js");
+require("page-modes/duckduckgo.js");
+require("page-modes/hackernews.js");
 
 user_pref('extensions.mozrepl.autoStart', true);
 session_pref("font.name.serif.x-western", "Ubuntu Light");
