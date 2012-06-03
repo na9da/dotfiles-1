@@ -44,8 +44,11 @@
 - ttf-inconsolata
 - ttf-kannada-fonts
 - ttf-liberation
+- tor
+- torsocks
 - unclutter
 - vlc
+- vidalia
 - vorbis-tools
 - wmctrl
 - x11-xserver-utils

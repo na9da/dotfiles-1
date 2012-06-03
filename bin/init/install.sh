@@ -11,7 +11,8 @@ cd /home/$ME/bin/init
 # um... dude?
 update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 500
 update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.9.1 500
-update-alternatives --install /usr/bin/irb irb /usr/bin/irb1.9.1 500
+# this causes issues on wheezy
+# update-alternatives --install /usr/bin/irb irb /usr/bin/irb1.9.1 500
 
 # don't write atimes
 chattr +A /
@@ -30,7 +31,7 @@ if [ "$DISPLAY" != "" ] ; then
   rm -rf ~/Desktop ~/Documents ~/Music ~/Pictures ~/Public \
       ~/Templates ~/Videos ~/Downloads
 
-  ./nix.sh $ME
+  # ./nix.sh $ME
 fi
 
 if [ -f /etc/mpd.conf ]; then

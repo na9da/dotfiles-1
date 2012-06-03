@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e -u
+set -e
 
 ME=$1
 
@@ -14,12 +14,13 @@ if [ ! -x /usr/bin/nix-env ]; then
     wget -O /tmp/nix.deb http://hydra.nixos.org/build/$NIX_PATH
     dpkg -i /tmp/nix.deb || true
     apt-get -f install
+    sudo chown -R $ME /nix
     sudo -u $ME nix-channel --add \
         http://nixos.org/releases/nixpkgs/channels/nixpkgs-unstable
     sudo -u $ME nix-channel --update
+else
+    sudo chown -R $ME /nix
 fi
-
-sudo chown -R $ME /nix
 
 if [ -r /etc/profile.d/nix.sh ] ; then
     source /etc/profile.d/nix.sh
@@ -28,6 +29,6 @@ elif [ -r /usr/local/etc/profile.d/nix.sh ] ; then
 fi
 
 # wtf; firefox comes with flash by default. get the no-plugins version
-nix-env -i $(nix-env -qaP firefox | grep -v plugins | head -n 1 | cut -f 2- -d " ")
-nix-env -i $(nix-env -qa emacs | sort | tail -n 1)
-nix-env -i tmux
+sudo -u $ME nix-env -i $(nix-env -qaP firefox | grep -v plugins | head -n 1 | cut -f 2- -d " ")
+sudo -u $ME nix-env -i $(nix-env -qa emacs | sort | tail -n 1)
+sudo -u $ME nix-env -i tmux

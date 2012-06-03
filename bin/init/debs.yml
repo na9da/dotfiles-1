@@ -2,6 +2,7 @@
 - build-essential
 - curl
 - git
+- git-annex
 - molly-guard
 - ncurses-term
 - netcat
