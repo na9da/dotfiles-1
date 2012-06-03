@@ -5,7 +5,7 @@
 if [ `/usr/bin/whoami` = "root" ] ; then
   # root has a red prompt
   export PS1="\[\033[1;31m\]\u@\h \w \$ \[\033[0m\]"
-elif [ `hostname` = "puyo" -o `hostname` = "enigma" -o `hostname` = "dynabook" ] ; then
+elif [ `hostname` = "zuse" -o `hostname` = "enigma" -o `hostname` = "dynabook" ] ; then
   # the hosts I use on a daily basis have blue
   export PS1="\[\033[1;36m\]\u@\h \w \$ \[\033[0m\]"
 elif [ `hostname` == domU* -o `hostname` = "lucid" -o `hostname` = "vagrant" ]; then
@@ -42,3 +42,7 @@ fi
 if [ -f /etc/bash_completion.d/git ]; then
   . /etc/bash_completion.d/git
 fi
+
+# Enter sensitive lines (containing passwords, etc) with a leading
+# space so they don't show up in history.
+HISTCONTROL=ignorespace

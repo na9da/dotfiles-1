@@ -8,6 +8,7 @@ export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.lein/bin:$PATH
 export PATH=$HOME/.gem/ruby/1.9.1/bin:/var/lib/gems/1.9.1/bin:$PATH
 export PATH=/usr/lib/postgresql/8.4/bin:$PATH
+export PATH=/usr/lib/postgresql/9.1/bin:$PATH
 export CDPATH=.:$HOME/src
 
 # plz don't make me sudo
