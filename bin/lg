@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+# A REPL for GNOME Shell
+# Currently lg is broken in debian wheezy
+
+require "readline"
+require "dbus"
+
+service = DBus::SessionBus.instance.service("org.gnome.Shell")
+shell = service.object("/org/gnome/Shell")
+shell.introspect
+interface = shell["org.gnome.Shell"]
+
+while input = Readline.readline("> ", true)
+  success, value = interface.Eval(input)
+  puts value
+end
