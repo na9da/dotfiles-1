@@ -63,9 +63,9 @@
 (eval-after-load 'inf-ruby
   '(add-to-list 'inf-ruby-implementations '("bundler" . "bundle console")))
 
-(defun heroku-repl ()
-  (interactive)
-  (inferior-lisp "heroku run lein repl"))
+(defun heroku-repl (app)
+  (interactive "MApp: ")
+  (inferior-lisp (format "heroku run lein repl -a %s" app)))
 
 (defadvice slime-show-description (after select-window-afterwards activate)
   "Select the description buffer after it runs."

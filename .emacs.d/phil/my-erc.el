@@ -9,10 +9,9 @@
       erc-autojoin-timing :ident
       erc-flood-protect nil
       erc-autojoin-channels-alist
-      '(("freenode.net" "#emacs" "#clojure" "#leiningen" "#seajure"))
+      '(("freenode.net" "#emacs" "#clojure" "#leiningen"
+         "#seajure" "#seafreemob"))
       erc-prompt-for-nickserv-password nil)
-
-(setq-default erc-ignore-list '("Lajla" "pjb" "e1f"))
 
 (delete 'erc-fool-face 'erc-track-faces-priority-list)
 (delete '(erc-nick-default-face erc-fool-face) 'erc-track-faces-priority-list)
@@ -29,7 +28,9 @@
        ;; DO NOT use the version from marmalade
        (erc-nick-notify-mode t))
      (erc-services-mode 1)
+     (erc-truncate-mode 1)
      (setq erc-complete-functions '(erc-pcomplete erc-button-next))
+     (setq-default erc-ignore-list '("Lajla" "pjb" "e1f"))
      (add-to-list 'erc-modules 'hl-nicks)
      (add-to-list 'erc-modules 'spelling)
      (set-face-foreground 'erc-input-face "dim gray")
@@ -37,25 +38,21 @@
 
 ;; for jlf's local lurker patch
 (add-hook 'erc-connect-pre-hook
-          (lambda () (load-file "/home/phil/src/emacs/lisp/erc/erc.el")))
+          (lambda (&rest _)
+            (when (file-readable-p "/home/phil/src/emacs/lisp/erc/erc.el")
+              (load-file "/home/phil/src/emacs/lisp/erc/erc.el")
+              (erc-pcomplete-enable))))
 
 (defun znc ()
   (interactive)
-  (load-file "~/.chorts/chorts.el.gpg")
+  (when (not (boundp 'znc-password))
+    (load-file "~/.chorts/chorts.el.gpg"))
   (erc-tls :server "route.heroku.com" :port 10688
            :nick "technomancy" :password znc-password))
 
-(defun grove ()
+(defun camper ()
   (interactive)
-  (load-file "~/.chorts/chorts.el.gpg")
-  (require 'erc)
-  (add-to-list 'erc-networks-alist '(grove "irc.grove.io"))
-  (add-to-list 'erc-nickserv-alist
-               '(grove "NickServ!NickServ@services."
-                       "This nickname is registered."
-                       "NickServ" "IDENTIFY" nil))
-  (erc-tls :server "heroku.irc.grove.io" :port 6697
-           :nick "technomancy" :password grove-connect-password))
-
-;; set erc-track-priority-faces-only to ignore stuff in boring channels:
-;; https://gist.github.com/481b20e1008106480e4d
+  (when (not (boundp 'camper-password))
+    (load-file "~/.chorts/chorts.el.gpg"))
+  (erc-tls :server "route.heroku.com" :port 48484
+           :nick "technomancy" :password camper-password))
