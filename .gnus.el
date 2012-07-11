@@ -7,6 +7,7 @@
       user-mail-address "phil@hagelb.org"
       user-full-name "Phil Hagelberg"
       gnus-ignored-from-addresses "Phil Hagelberg"
+      gnus-treat-x-pgp-sig t
 
       mail-source-directory "~/.emacs.d/mail"
       message-directory "~/.emacs.d/mail"
@@ -17,31 +18,32 @@
       gnus-fetch-old-headers 'some
       nnmail-crosspost nil
       mail-source-delete-incoming nil
+      gnus-gcc-mark-as-read t
+
+      ;; outgoing
+      send-mail-function 'smtpmail-send-it
+      smtpmail-smtp-server "mail.technomancy.us"
+      smtpmail-smtp-service 587
+      gnus-message-replysign t
+      gnus-posting-styles '(("heroku"
+                             (address "phil.hagelberg@heroku.com")))
+      ;; agent
       gnus-asynchronous t
       gnus-agent-expire-days 0
       gnus-agent-synchronize-flags t
-      gnus-agent-enable-expiration 'DISABLE)
+      gnus-agent-enable-expiration 'DISABLE
 
-(add-to-list 'gnus-secondary-select-methods
-             '(nnimap "gmail"
-                      (nnimap-address "imap.gmail.com")
-                      (nnimap-server-port 993)
-                      (nnimap-stream ssl)))
-
-;; outgoing mail
-(setq smtpmail-starttls-credentials '(("mail.technomancy.us" 587 nil nil))
-      smtpmail-smtp-server "mail.technomancy.us"
-      smtpmail-default-smtp-server "mail.technomancy.us"
-      send-mail-function 'smtpmail-send-it
-      gnus-gcc-mark-as-read t
-      message-send-mail-function 'smtpmail-send-it
-      smtpmail-smtp-service 587
-      starttls-extra-arguments '("--insecure")
-      smtpmail-auth-credentials '(("mail.technomancy.us"
-                                   587
-                                   ;; throwaway send-only account
-                                   "send@technomancy.us"
-                                   "testyy")))
+      ;; accounts
+      gnus-secondary-select-methods
+      '((nnimap "gmail"
+                (nnimap-address "imap.gmail.com")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl))
+        (nnimap "heroku"
+                (nnimap-address "imap.googlemail.com")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl))
+        ))
 
 ;; display chars
 (setq gnus-score-over-mark ?\u2191          ; \u2191 \u2600
@@ -65,9 +67,6 @@
                                        "%{|%}"
                                        "%*%{%B%} %s%)"
                                        "\n"))
-
-;; (gnus-add-configuration '(article (horizontal 1.0 (summary 0.5 point)
-;;                                               (article 1.0))))
 
 (gnus-demon-add-handler 'gnus-group-get-new-news 10 t)
 (gnus-demon-init)
