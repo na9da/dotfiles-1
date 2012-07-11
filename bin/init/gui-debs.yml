@@ -1,5 +1,6 @@
 ---
 - acpi
+- acpitool
 - apt-show-versions
 - aspell-en
 - avahi-discover

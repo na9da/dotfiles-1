@@ -32,3 +32,5 @@ fi
 sudo -u $ME nix-env -i $(nix-env -qaP firefox | grep -v plugins | head -n 1 | cut -f 2- -d " ")
 sudo -u $ME nix-env -i $(nix-env -qa emacs | sort | tail -n 1)
 sudo -u $ME nix-env -i tmux
+
+sudo chown -R $ME /nix
