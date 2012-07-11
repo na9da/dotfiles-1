@@ -27,7 +27,6 @@
    - search is hard to set up
 *** erc
    - silently discards input in closed query buffers
-   - can't ignore idler join/parts only yet
 *** swank-clojure
    - undocumented, messy codebase
    - needs restarts for certain types of compilation errors
@@ -38,9 +37,6 @@
 ** xmonad
    - haven't found a simple way to toggle system monitor visibility
    - with an extra display plugged in, libnotify bubbles show offscreen
-** erythrina
-   - no way to cycle selection
-   - build is awful (blame ocaml ecosystem)
 ** Virtualbox
    - OSS version doesn't play nicely with vagrant
    - designed by toolbags who think creating ~/Virtualbox VMs is OK
@@ -54,3 +50,5 @@
 ** ghi
    - coloring doesn't work inside Emacs
    - listing breaks with TERM=dumb
+** gpg
+   - refuses to forget cached passphrases on sighup
