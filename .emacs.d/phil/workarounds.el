@@ -32,3 +32,6 @@
 ;; TODO: this does nothing
 (add-to-list 'ido-ubiquitous-command-exceptions 'ucs-insert)
 (add-to-list 'ido-ubiquitous-function-exceptions 'read-char-by-name)
+
+;; cl.el byte compiler warnings can suuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuck it!
+(defalias 'byte-compile-cl-warn 'identity)
