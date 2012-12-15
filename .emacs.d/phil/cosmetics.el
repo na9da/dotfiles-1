@@ -2,10 +2,6 @@
 (set-face-foreground 'vertical-border "white")
 (set-face-background 'vertical-border "white")
 
-(setq custom-safe-themes
-      '("e94ef3be8297d28df3bd5b381bdc06c12a30fec07bfd3fe98a081688767b9774"
-        "71923ce35940ee5f20d9fa19721d7677ce057f08" default))
-
 (defun zb ()
   (interactive)
   (load-theme 'zenburn)
@@ -14,22 +10,32 @@
   (require 'hl-line)
   (set-face-background 'hl-line "gray17")
   (eval-after-load 'magit
-    '(set-face-background 'magit-item-highlight "black"))
+    '(progn (set-face-background 'magit-item-highlight "black")
+            (set-face-background 'diff-refine-change "grey10")))
   (set-face-foreground 'eshell-prompt "turquoise"))
 
 (defun tw ()
   (interactive)
-  ;; lame; hasn't been ported to custom-themes yet
-  (when (not (require 'color-theme nil t))
-    (package-install 'color-theme))
-  (color-theme-twilight)
+  (load-theme 'twilight)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
   (set-face-foreground 'eshell-prompt "turquoise1")
   (eval-after-load 'magit
-    '(set-face-background 'magit-item-highlight "black"))
+    '(progn (set-face-background 'magit-item-highlight "black")
+            (set-face-background 'diff-refine-change "grey10")))
   (set-face-background 'hl-line "black"))
+
+(defun mk ()
+  (interactive)
+  (load-theme 'monokai)
+  (set-face-background 'vertical-border "black")
+  (set-face-foreground 'vertical-border "black")
+  (require 'hl-line)
+  (set-face-foreground 'eshell-prompt "turquoise1")
+  (set-face-background 'hl-line "black")
+  (eval-after-load 'magit
+    '(set-face-background 'magit-item-highlight "black")))
 
 (defun bb ()
   "Black for use with glasstty in -nw"
@@ -48,3 +54,14 @@
 (defun eyeroll () (interactive) (insert "◔_◔"))
 (defun tables () (interactive) (insert "（╯°□°）╯︵ ┻━┻"))
 (defun mu () (interactive) (insert "無"))
+
+(when (and window-system (>= emacs-major-version 23))
+  (let ((fontset (face-attribute 'default :fontset))
+        (unifont "-gnu-unifont-medium-r-normal--13-120-75-75-c-0-iso10646-1"))
+    (mapc
+     (lambda (x)
+       (set-fontset-font fontset (car x) (cdr x) nil))
+     `(((#x02000 . #x026ff) . ,unifont )
+       ((#x0210e . #x0210f) . "Unicode")
+       ((#x02700 . #x028ff) . "Unicode")
+       ((#x1f300 . #x1f6ff) . "Unicode"))) ))

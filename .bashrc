@@ -5,7 +5,7 @@
 if [ `/usr/bin/whoami` = "root" ] ; then
   # root has a red prompt
   export PS1="\[\033[1;31m\]\u@\h \w \$ \[\033[0m\]"
-elif [ `hostname` = "puyo" -o `hostname` = "enigma" -o `hostname` = "dynabook" ] ; then
+elif [ `hostname` = "zuse" -o `hostname` = "enigma" -o `hostname` = "dynabook" ] ; then
   # the hosts I use on a daily basis have blue
   export PS1="\[\033[1;36m\]\u@\h \w \$ \[\033[0m\]"
 elif [ `hostname` == domU* -o `hostname` = "lucid" -o `hostname` = "vagrant" ]; then
@@ -21,10 +21,6 @@ function fix-agent {
   export SSH_AUTH_SOCK=$(ls --color=never -t1 $SOCKETS | head -1)
   ssh-add -l
 }
-
-if [ -f $HOME/bin/tat.sh ]; then
-  source $HOME/bin/tat.sh # tmux completion
-fi
 
 # Source from elsewhere
 if [ -f /etc/bashrc ]; then
@@ -42,3 +38,23 @@ fi
 if [ -f /etc/bash_completion.d/git ]; then
   . /etc/bash_completion.d/git
 fi
+
+# Enter sensitive lines (containing passwords, etc) with a leading
+# space so they don't show up in history.
+HISTCONTROL=ignorespace
+
+# currently a tmux bug causes this horrible hack to be necessary.
+# tmux sources .bashrc but not profile for some reason
+if [ "$PROFILE_LOADED" = "" ]; then
+    . $HOME/.profile
+fi
+
+[ -z "$TMUX" ] && export TERM=xterm-256color
+
+# lazy-load this since it's slow
+function cloud () {
+    eval "$(ion-client shell)"
+    cloud $1
+}
+
+export JAVA_CMD=/usr/bin/java

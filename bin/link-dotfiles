@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "Symlinking dotfiles..."
 
 if [ -r $HOME/.bashrc ] && [ ! -h $HOME/.bashrc ] ; then
@@ -18,7 +20,9 @@ for f in $(ls -a ~/.dotfiles) ; do
   fi
 done
 
+mkdir -p $HOME/.config/fbpanel
+ln -s "$HOME/.dotfiles/.fbpanel" "$HOME/.config/fbpanel/default"
+
 mkdir -p $HOME/.ssh
-if [ ! -r "$HOME/.ssh/config" ]; then
-  ln -s "$HOME/.dotfiles/.sshconfig" "$HOME/.ssh/config"
-fi
+cat $HOME/.sshconfig.d/*.conf > $HOME/.ssh/config
+echo "# This file is generated from ~/.sshconfig.d/*.conf" >> $HOME/.ssh/config

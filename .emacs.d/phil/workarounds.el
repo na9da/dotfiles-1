@@ -1,11 +1,14 @@
 (setq compilation-scroll-output t ; byte-compilation fails w/o this
       ido-enable-tramp-completion nil
       vc-follow-symlinks t
+      tags-revert-without-query t ; why would you ever not want this?
+      markdown-command "redcarpet"
       ruby-insert-encoding-magic-comment nil)
 
 ;; plz not to refresh log buffer when I cherry-pick, mkay?
 (eval-after-load 'magit
   '(ignore-errors
+     (setq magit-diff-refine-hunk t)
      (define-key magit-log-mode-map (kbd "A")
        (lambda ()
          (interactive)
@@ -13,9 +16,6 @@
            (magit-cherry-pick-item))))))
 
 ;; come on guys; autoloads are not rocket science
-(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-twilight-0.1")
-(autoload 'color-theme-twilight "color-theme-twilight" nil t)
-
 (autoload 'marmalade-upload-buffer "marmalade" nil t)
 
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
@@ -31,5 +31,9 @@
 
 (setq-default ispell-program-name "aspell")
 
-;; can't figure out how to disable this on a per-document basis
-(setq org-export-with-toc nil)
+;; TODO: this does nothing
+(add-to-list 'ido-ubiquitous-command-exceptions 'ucs-insert)
+(add-to-list 'ido-ubiquitous-function-exceptions 'read-char-by-name)
+
+;; cl.el byte compiler warnings can suuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuck it!
+(defalias 'byte-compile-cl-warn 'identity)

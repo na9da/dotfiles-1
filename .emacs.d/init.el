@@ -20,12 +20,13 @@
       twittering-username "technomancy"
       epa-armor t)
 
+(load custom-file t)
 (org-remember-insinuate)
 (global-set-key (kbd "C-c m") 'org-remember)
 
 ;; ad-hoc installations
 
-(ignore-errors (load "~/src/lein/pcmpl-lein.el"))
+(ignore-errors (load "~/src/leiningen/pcmpl-lein.el"))
 
 (add-to-list 'load-path "~/src/elim/elisp")
 (autoload 'garak "garak" nil t)
@@ -45,11 +46,11 @@
   (package-refresh-contents))
 
 (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings
-                                  starter-kit-eshell zenburn-theme
+                                  starter-kit-eshell
+                                  monokai-theme zenburn-theme
                                   clojure-mode clojure-test-mode
                                   markdown-mode yaml-mode
-                                  tuareg haskell-mode
-                                  marmalade oddmuse scpaste))
+                                  gist marmalade oddmuse scpaste))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))

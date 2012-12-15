@@ -12,6 +12,7 @@ fi
 if [ "$filename" = "" ]; then
     exit 1
 else
+    sleep 0.1
     scrot /tmp/$filename
     scp /tmp/$filename p:p
 

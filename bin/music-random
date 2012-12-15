@@ -2,7 +2,13 @@
 
 system "music-dirs"
 dirs = File.read(ENV["HOME"] + "/music/dirs").split("\n")
+dir = ""
 dir = dirs[(rand * dirs.length).to_i]
 `mpc clear`
 `mpc add #{dir}`
-`mpc play`
+
+if `mpc playlist` == ""
+  system $0
+else
+  `mpc play`
+end

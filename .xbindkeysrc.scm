@@ -9,8 +9,7 @@
            '((shift F8) . "ogg123 ~/documents/ambientShipTNG.ogg")
            '((mod1 F8) . "killall ogg123")
            '(F9 . "mpc prev")
-           '(F10 . "mpc next")
-           '((mod4 F12) . "vlc -f ~/documents/movies/misc/rick.flv"))) ;; tee hee
+           '(F10 . "mpc next")))
 
 ;;; notifications
 
@@ -24,27 +23,13 @@
 (xbindkey '(mod4 shift N)
           "notify-send wifi \"$(nmcli -f SSID dev wifi | grep -v SSID | uniq)\"")
 
-;;; main stuff
-
-(xbindkey '(mod4 mod1 e) "emacs")
-
-(xbindkey '(mod4 c) "conkeror")
-(xbindkey '(mod4 r) "chromium-browser")
-
 ;;; utilities
 
-(xbindkey '(mod4 shift l) "panel-toggle")
-(xbindkey '(mod4 x) "killall xbindkeys && xbindkeys")
 (xbindkey '(mod4 d) "gnome-display-properties")
-(xbindkey '(mod4 grave) "gnome-terminal")
-(xbindkey '(mod4 s) "scrot")
-(xbindkey '(mod4 shift s) "scrot -s")
-
-(xbindkey '(mod4 mod1 y) "synergys")
-(xbindkey '(mod4 shift y) "killall synergys")
-
 (xbindkey '(mod4 F11) "setxkbmap -layout us; ctrl-fix")
 (xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak; ctrl-fix")
+(xbindkey '(mod4 s) "scrot")
+(xbindkey '(mod4 shift s) "scrot -s")
 
 ;;; launchers
 

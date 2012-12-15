@@ -1,1 +1,1 @@
-firefox -app ~/src/conkeror/application.ini $@
+iceweasel -app ~/src/conkeror/application.ini $@

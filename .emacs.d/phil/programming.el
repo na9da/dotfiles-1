@@ -4,6 +4,12 @@
      (add-hook 'ruby-mode-hook 'esk-paredit-nonlisp)
      (inf-ruby-keys)))
 
+(defun esk-turn-on-whitespace ()
+  (when (eq major-mode 'ruby-mode)
+    ;; can't fight it any longer
+    (set (make-local-variable 'whitespace-line-column) 120))
+  (whitespace-mode t))
+
 ;; unfortunately some codebases use tabs. =(
 ;; http://www.emacswiki.org/pics/static/TabsSpacesBoth.png
 
@@ -24,6 +30,10 @@
           (defun clojure-mode-slime-font-lock ()
             (let (font-lock-mode)
               (clojure-mode-font-lock-setup))))
+
+(add-hook 'nrepl-connected-hook
+          (defun add-clojure-mode-eldoc-hook ()
+            (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)))
 
 (setq slime-kill-without-query-p t
       slime-compile-presave? t
@@ -63,10 +73,30 @@
 (eval-after-load 'inf-ruby
   '(add-to-list 'inf-ruby-implementations '("bundler" . "bundle console")))
 
-(defun heroku-repl ()
-  (interactive)
-  (inferior-lisp "heroku run lein repl"))
+(defun heroku-repl (app)
+  (interactive "MApp: ")
+  (inferior-lisp (format "heroku run lein repl -a %s" app)))
 
-(defadvice slime-show-description (after select-window-afterwards activate)
-  "Select the description buffer after it runs."
-  (other-window 1 nil))
+(defun senny-ruby-interpolate ()
+  "In a double quoted string, interpolate."
+  (interactive)
+  (insert "#")
+  (when (and
+         (looking-back "\".*")
+         (looking-at ".*\""))
+    (insert "{}")
+    (backward-char 1)))
+
+(eval-after-load 'ruby-mode
+  '(define-key ruby-mode-map (kbd "#") 'senny-ruby-interpolate))
+
+(add-to-list 'auto-mode-alist '("\\.elm\\'" . haskell-mode))
+
+(defun nrepl-inspect (target)
+  ;; TODO: completion
+  (interactive "MTarget: ")
+  (nrepl-send-string "(require 'clojure.pprint 'clojure.reflect)" 'identity)
+  (let ((form (format "(clojure.pprint/pprint (clojure.reflect/reflect %s))"
+                      target))
+        (inspect-buffer (nrepl-popup-buffer "*nREPL inspect*" t)))
+    (nrepl-send-string form (nrepl-popup-eval-out-handler inspect-buffer))))

@@ -1,0 +1,42 @@
+[general]
+ui = TTY.TTYUI
+accounts = Personal,Heroku
+pythonfile = ~/.offlineimap.py
+
+# Personal
+
+[Account Personal]
+localrepository = LocalPersonal
+remoterepository = Personal
+
+[Repository LocalPersonal]
+type = Maildir
+localfolders = ~/mail/personal
+
+[Repository Personal]
+type = Gmail
+remoteuser = phil@hagelb.org
+remotepasseval = get_authinfo_password("imap.gmail.com", "phil@hagelb.org")
+ssl = yes
+holdconnectionopen = true
+keepalive = 60
+folderfilter = lambda foldername: foldername not in ['[Gmail]/%s' % f for f in ['All Mail', 'Trash', 'Spam', 'Starred', 'Important']]
+
+# Heroku
+
+[Repository LocalHeroku]
+type = Maildir
+localfolders = ~/mail/heroku
+
+[Account Heroku]
+localrepository = LocalHeroku
+remoterepository = Heroku
+
+[Repository Heroku]
+type = Gmail
+remoteuser = phil.hagelberg@heroku.com
+remotepasseval = get_authinfo_password("imap.googlemail.com", "phil.hagelberg@heroku.com")
+ssl = yes
+holdconnectionopen = true
+keepalive = 60
+folderfilter = lambda foldername: foldername not in ['[Gmail]/%s' % f for f in ['All Mail', 'Trash', 'Spam', 'Starred', 'Important']]

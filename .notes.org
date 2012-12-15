@@ -1,7 +1,3 @@
-* find ../lib/ -name "*jar" -exec jar xf {} \;
-* No video on stupid skype
-  sudo apt-get install lib32v4l-0
-  LD_PRELOAD=/usr/lib32/libv4l/v4l1compat.so skype
 * json pretty-printing: pipe to python -m json.tool
 * network manager CLI: nmcli con up id "Auto technomancy"
 * redo git author
@@ -14,8 +10,6 @@
   - start http://www.flickr.com/photos/technomancy/5667656481/
   - end http://www.flickr.com/photos/technomancy/6135506600/
   - delete all local tagged "flickrtagged"
-* org meta-notes
-  - org-insert-link: C-c C-l
 * nix dependency:tree equivalent
   nix-store -qR --tree /nix/store/[...]
 * install from nixpkgs checkout
@@ -24,16 +18,23 @@
   Developing software against a daemonized Postgres is bad practice. Do this instead: 
   $ initdb pg; createdb -D pg db; postgres -D pg -p 5555
   Arg, I got too cute trying to run that as a one-liner in Twitter. createdb has to go after postgres starts, and takes a port, not a datadir.
+  problem: need to recreate /var/run/postgres every time; sucks =\
 * Fixing OpenJDK 7 cacerts bug
   http://my.opera.com/karmazilla/blog/how-to-grab-the-certificate-from-a-website-and-import-it-with-java-keytool
-* Back-burner projects
-  - Clojure -> Emacs Lisp compiler
-  - git proxy for github issues
-  - nrepl.el
-  - snapshots in package.el
-  - flexible require :as in slamhound
-  - logic-driven slamhound (2-way)
-  - clojuresphere in clojars
-  - swarmup
-  - ido-find-file-style var navigation
-  - selective metadata hiding in clojure-mode
+* projects
+** git proxy for github issues
+** snapshots in package.el
+** slamhound
+   - flexible require :as
+** clj-stacktrace
+   - merge with longbottom
+   - selective filtering
+** clojure-mode
+   - selective metadata hiding
+** nrepl.el
+   - drawbridge
+   - live-tracing
+   - debug repl
+   - inspector
+* bump up the idle timeout for screen dimming
+  gsettings set org.gnome.settings-daemon.plugins.power idle-dim-time 30

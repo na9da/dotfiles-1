@@ -1,3 +1,5 @@
+alias nil  $*
+alias gdum git commit --allow-empty -m dummy
 alias be bundle exec $*
 alias gsu git submodule update --init --recursive
 alias glt git log -n 10
@@ -5,6 +7,8 @@ alias gco git checkout $*
 alias gbv git branch -v $*
 alias gb git branch $*
 alias gst git status
+alias gphf git push --force heroku master
+alias gph git push heroku master
 alias saptd sudo aptitude update $*
 alias saptr sudo aptitude remove $*
 alias sapti sudo aptitude install $*
@@ -23,3 +27,4 @@ alias h heroku $*
 alias l lein $*
 alias r rgrep $*
 alias s ssh $*
+alias rtags ctags-exuberant -e --Ruby-kinds=-fFcm -o TAGS -R $*

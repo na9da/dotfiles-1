@@ -1,18 +1,20 @@
 (setq erc-prompt ">"
       erc-fill-column 75
-      ;; rcirc's omit-mode is way better than this =\
-      erc-hide-list '("JOIN" "PART" "QUIT" "NICK")
-      erc-track-exclude-types (append '("324" "329" "332" "333"
-                                        "353" "477" "MODE")
-                                      erc-hide-list)
+      erc-header-line-format nil
+      erc-track-exclude-types '("324" "329" "332" "333" "353" "477" "MODE"
+                                "JOIN" "PART" "QUIT" "NICK")
+      erc-lurker-threshold-time 3600
       erc-track-priority-faces-only t
+      erc-join-buffer 'bury
       erc-autojoin-timing :ident
       erc-flood-protect nil
+      erc-server-send-ping-interval 45
+      erc-server-send-ping-timeout 180
+      erc-server-reconnect-timeout 60
       erc-autojoin-channels-alist
-      '(("freenode.net" "#emacs" "#clojure" "#leiningen" "#seajure"))
+      '(("freenode.net" "#emacs" "#clojure" "#leiningen" "#seajure"
+         "#raxacoricofallapatorius" "#clojuredocs"))
       erc-prompt-for-nickserv-password nil)
-
-(setq-default erc-ignore-list '("Lajla" "pjb" "e1f"))
 
 (delete 'erc-fool-face 'erc-track-faces-priority-list)
 (delete '(erc-nick-default-face erc-fool-face) 'erc-track-faces-priority-list)
@@ -29,46 +31,61 @@
        ;; DO NOT use the version from marmalade
        (erc-nick-notify-mode t))
      (erc-services-mode 1)
+     (erc-truncate-mode 1)
+     (setq erc-complete-functions '(erc-pcomplete erc-button-next))
+     (setq-default erc-ignore-list '("Lajla" "hal" "wingy"))
      (add-to-list 'erc-modules 'hl-nicks)
      (add-to-list 'erc-modules 'spelling)
      (set-face-foreground 'erc-input-face "dim gray")
-     (set-face-foreground 'erc-my-nick-face "blue")))
+     (set-face-foreground 'erc-my-nick-face "blue")
+     (define-key erc-mode-map (kbd "C-u RET") 'browse-last-url-in-brower)))
 
+(defvar erc-hack-applied nil)
 
-;; thanks to leathekd
-(defvar twitter-url-pattern
-  (concat "\\(https?://\\)\\(?:.*\\)?\\(twitter.com/\\)"
-          "\\(?:#!\\)?\\([[:alnum:][:punct:]]+\\)")
-  "Matches regular twitter urls, including those with hashbangs,
-but not mobile urls.")
-
-(defun browse-mobile-twitter (url)
-  "When given a twitter url, browse to the mobile version instead"
-  (string-match twitter-url-pattern url)
-  (let ((protocol (match-string 1 url))
-        (u (match-string 2 url))
-        (path (match-string 3 url)))
-    (browse-url (format "%smobile.%s%s" protocol u path) t)))
-
-;; Need to append otherwise the urls will be picked up by
-;; erc-button-url-regexp. Not sure why that is the case.
-(eval-after-load 'erc-button
-  '(add-to-list 'erc-button-alist
-                '(twitter-url-pattern 0 t browse-mobile-twitter 0) t))
+;; for jlf's local lurker patch
+(add-hook 'erc-connect-pre-hook
+          (lambda (&rest _)
+            (when (and (file-readable-p "/home/phil/src/emacs/lisp/erc/erc.el")
+                       (not erc-hack-applied))
+              (load-file "/home/phil/src/emacs/lisp/erc/erc.el")
+              (setq erc-message-english-s004 "%s" ; work around erc bug
+                    erc-hack-applied t)
+              (erc-pcomplete-enable))))
 
 (defun znc ()
   (interactive)
-  (load-file "~/.chorts/chorts.el.gpg")
+  (when (not (boundp 'znc-password))
+    (load-file "~/.chorts/chorts.el.gpg"))
   (erc-tls :server "route.heroku.com" :port 10688
            :nick "technomancy" :password znc-password))
 
-(defun grove-erc ()
+
+(defun camper ()
   (interactive)
-  (load-file "~/.chorts/chorts.el.gpg")
-  (add-to-list 'erc-networks-alist '(grove "irc.grove.io"))
-  (add-to-list 'erc-nickserv-alist
-               '(grove "NickServ!NickServ@services."
-                       "This nickname is registered."
-                       "NickServ" "IDENTIFY" nil))
-  (erc-tls :server "heroku.irc.grove.io" :port 6697
-           :nick "technomancy" :password grove-connect-password))
+  (when (not (boundp 'camper-password))
+    (load-file "~/.chorts/chorts.el.gpg"))
+  (erc-tls :server "route.heroku.com" :port 45331
+           :nick "hagelberg" :password camper-password)
+  (erc-join-channel "#herokai_lounge")
+  (erc-join-channel "#runtime_room"))
+
+(defun erc-all () (interactive) (znc) (camper))
+
+(defun erc-track-clear ()
+  (interactive)
+  (setq erc-modified-channels-alist nil))
+
+;; (define-key erc-mode-map (kbd "C-c C-M-SPC") 'erc-track-clear)
+
+(defun browse-last-url-in-brower ()
+  (interactive)
+  (save-excursion
+    (let ((ffap-url-regexp
+           (concat
+            "\\("
+            "news\\(post\\)?:\\|mailto:\\|file:"
+            "\\|"
+            "\\(ftp\\|https?\\|telnet\\|gopher\\|www\\|wais\\)://"
+            "\\).")))
+      (ffap-next-url t t))))
+

@@ -7,6 +7,7 @@
    - installer hardcodes ssid/mount point in /etc (reported)
      http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=502955 (net)
      http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=646795 (fstab)
+   - adding a keyboard doesn't honor caps->ctrl mod
 ** nix
    - ships proprietary crap by default
      - to find non-flash firefox: nix-env -qaP firefox | grep -v plugins
@@ -27,30 +28,30 @@
    - search is hard to set up
 *** erc
    - silently discards input in closed query buffers
-   - can't ignore idler join/parts only yet
 *** swank-clojure
    - undocumented, messy codebase
    - needs restarts for certain types of compilation errors
+*** mu4e
+    - doesn't honor .authinfo.gpg
+** offlineimap
+   - ugh
+     - ugh ugh ugh
 ** conkeror
    - it isn't emacs
    - after six months of usage its history starts slowing down completion
-   - hacker news isn't keyboard-friendly
 ** xmonad
    - haven't found a simple way to toggle system monitor visibility
    - with an extra display plugged in, libnotify bubbles show offscreen
-** erythrina
-   - no way to cycle selection
-   - build is awful (blame ocaml ecosystem)
 ** Virtualbox
    - OSS version doesn't play nicely with vagrant
    - designed by toolbags who think creating ~/Virtualbox VMs is OK
      - VBoxManage setproperty machinefolder $HOME/.vbox-vms
+     - needs a manual `sudo modprobe vboxdrv` to work
 ** ssh
    - no ~/.ssh/config.d directory
      https://bugzilla.mindrot.org/show_bug.cgi?id=1613
-** garak
-   - sometimes doesn't come back online after the network comes back up
-   - awkward widget-based menu selection for connecting/sending messages
 ** ghi
    - coloring doesn't work inside Emacs
    - listing breaks with TERM=dumb
+** gpg
+   - refuses to forget cached passphrases on sighup
