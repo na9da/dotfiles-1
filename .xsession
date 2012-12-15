@@ -19,7 +19,7 @@ ssh-add & # this doesn't seem to work
 conkeror &
 
 # desktop
-gnome-panel &
+fbpanel &
 nm-applet &
 gnome-settings-daemon &
 gnome-power-manager &

@@ -20,6 +20,9 @@ for f in $(ls -a ~/.dotfiles) ; do
   fi
 done
 
+mkdir -p $HOME/.config/fbpanel
+ln -s "$HOME/.dotfiles/.fbpanel" "$HOME/.config/fbpanel/default"
+
 mkdir -p $HOME/.ssh
 cat $HOME/.sshconfig.d/*.conf > $HOME/.ssh/config
 echo "# This file is generated from ~/.sshconfig.d/*.conf" >> $HOME/.ssh/config
