@@ -1,12 +1,14 @@
 (setq compilation-scroll-output t ; byte-compilation fails w/o this
       ido-enable-tramp-completion nil
       vc-follow-symlinks t
+      tags-revert-without-query t ; why would you ever not want this?
       markdown-command "redcarpet"
       ruby-insert-encoding-magic-comment nil)
 
 ;; plz not to refresh log buffer when I cherry-pick, mkay?
 (eval-after-load 'magit
   '(ignore-errors
+     (setq magit-diff-refine-hunk t)
      (define-key magit-log-mode-map (kbd "A")
        (lambda ()
          (interactive)

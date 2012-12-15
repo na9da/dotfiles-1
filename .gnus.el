@@ -75,6 +75,7 @@
 (define-key gnus-summary-mode-map "o" (lambda () (interactive)))
 
 (add-hook 'message-mode-hook 'turn-on-flyspell)
+(add-hook 'message-mode-hook 'epa-mail-mode)
 
 (setq gnus-parameters '((".*" (banner . iphone)))
       gnus-article-banner-alist '((iphone . "\\(^Sent from my iPhone$\\)"))

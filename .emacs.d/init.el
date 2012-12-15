@@ -20,7 +20,7 @@
       twittering-username "technomancy"
       epa-armor t)
 
-(load custom-file)
+(load custom-file t)
 (org-remember-insinuate)
 (global-set-key (kbd "C-c m") 'org-remember)
 

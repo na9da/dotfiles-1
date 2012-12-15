@@ -8,9 +8,12 @@
       erc-join-buffer 'bury
       erc-autojoin-timing :ident
       erc-flood-protect nil
+      erc-server-send-ping-interval 45
+      erc-server-send-ping-timeout 180
+      erc-server-reconnect-timeout 60
       erc-autojoin-channels-alist
-      '(("freenode.net" "#emacs" "#clojure" "#leiningen"
-         "#seajure" "#seafreemob"))
+      '(("freenode.net" "#emacs" "#clojure" "#leiningen" "#seajure"
+         "#raxacoricofallapatorius" "#clojuredocs"))
       erc-prompt-for-nickserv-password nil)
 
 (delete 'erc-fool-face 'erc-track-faces-priority-list)
@@ -30,17 +33,23 @@
      (erc-services-mode 1)
      (erc-truncate-mode 1)
      (setq erc-complete-functions '(erc-pcomplete erc-button-next))
-     (setq-default erc-ignore-list '("Lajla" "pjb" "e1f"))
+     (setq-default erc-ignore-list '("Lajla" "hal" "wingy"))
      (add-to-list 'erc-modules 'hl-nicks)
      (add-to-list 'erc-modules 'spelling)
      (set-face-foreground 'erc-input-face "dim gray")
-     (set-face-foreground 'erc-my-nick-face "blue")))
+     (set-face-foreground 'erc-my-nick-face "blue")
+     (define-key erc-mode-map (kbd "C-u RET") 'browse-last-url-in-brower)))
+
+(defvar erc-hack-applied nil)
 
 ;; for jlf's local lurker patch
 (add-hook 'erc-connect-pre-hook
           (lambda (&rest _)
-            (when (file-readable-p "/home/phil/src/emacs/lisp/erc/erc.el")
+            (when (and (file-readable-p "/home/phil/src/emacs/lisp/erc/erc.el")
+                       (not erc-hack-applied))
               (load-file "/home/phil/src/emacs/lisp/erc/erc.el")
+              (setq erc-message-english-s004 "%s" ; work around erc bug
+                    erc-hack-applied t)
               (erc-pcomplete-enable))))
 
 (defun znc ()
@@ -50,9 +59,33 @@
   (erc-tls :server "route.heroku.com" :port 10688
            :nick "technomancy" :password znc-password))
 
+
 (defun camper ()
   (interactive)
   (when (not (boundp 'camper-password))
     (load-file "~/.chorts/chorts.el.gpg"))
-  (erc-tls :server "route.heroku.com" :port 48484
-           :nick "technomancy" :password camper-password))
+  (erc-tls :server "route.heroku.com" :port 45331
+           :nick "hagelberg" :password camper-password)
+  (erc-join-channel "#herokai_lounge")
+  (erc-join-channel "#runtime_room"))
+
+(defun erc-all () (interactive) (znc) (camper))
+
+(defun erc-track-clear ()
+  (interactive)
+  (setq erc-modified-channels-alist nil))
+
+;; (define-key erc-mode-map (kbd "C-c C-M-SPC") 'erc-track-clear)
+
+(defun browse-last-url-in-brower ()
+  (interactive)
+  (save-excursion
+    (let ((ffap-url-regexp
+           (concat
+            "\\("
+            "news\\(post\\)?:\\|mailto:\\|file:"
+            "\\|"
+            "\\(ftp\\|https?\\|telnet\\|gopher\\|www\\|wais\\)://"
+            "\\).")))
+      (ffap-next-url t t))))
+
