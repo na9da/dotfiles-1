@@ -1,4 +1,4 @@
-personal_ws-1.1 en 79 
+personal_ws-1.1 en 82 
 SHA
 Compojure
 parens
@@ -19,10 +19,12 @@ clj
 GitHub
 Github
 wikipedia
+buildpack
 metadata
 Contrib
 dotfiles
 init
+buildpacks
 composability
 refactorings
 precate
@@ -32,6 +34,7 @@ precompiled
 Erlang
 paredit
 JRuby
+syslog
 screencast
 paren
 TODO

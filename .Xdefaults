@@ -1,4 +1,4 @@
-emacs.font: Inconsolata-14
+emacs.font: Inconsolata-13
 Rxvt*scrollBar: False
 urxvt.font: xft:inconsolata:pixelsize=17
 urxvt*letterSpace:-1.0

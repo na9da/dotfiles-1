@@ -1,37 +1,20 @@
 // -*- Mode: js -*-
 
-interactive("fill-domain", "Fill the minibuffer with the current domain.",
-            function (I) {
-                var field = I.minibuffer.input_element;
-                var paths = String(I.window.content.location).split('/');
-                var domain = paths[0] + "/" + paths[1] + "/" + paths[2] + "/";
-                field.value = domain;
-            });
+/// Jumps
 
-define_key(minibuffer_keymap, "C-/", "fill-domain");
-
-interactive("tinyurl", "Create a TinyURL for the current URL",
-            function(I) {
-                I.window.content.location.href = 'http://tinyurl.com/create.php?url=' +
-                    encodeURIComponent(I.window.content.location.href);
-            });
-
-interactive("stache", "Mustachify",
-            function(I) {
-                I.window.content.location.href = 'http://mustachify.me/?src=' +
-                    encodeURIComponent(I.window.content.location.href);
-            });
-
-define_webjump("hub", "http://github.com/search?q=%s");
+define_webjump("hub", "http://github.com/search?q=%s&type=Repositories");
 define_webjump("w", "http://www.google.com/search?q=wikipedia+%s&btnI=I'm Feeling Lucky");
 define_webjump("emacs", "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search");
-define_webjump("mvn", "http://jarvana.com/jarvana/search?search_type=project&project=%s");
+define_webjump("mvn", "http://duckduckgo.com?q=!mvn+%s");
 define_webjump("rfc", "http://www.ietf.org/rfc/rfc%s.txt");
 define_webjump("marmalade", "http://marmalade-repo.org/packages?q=%s");
 define_webjump("d", "http://duckduckgo.com?q=%s");
 define_webjump("g", "http://duckduckgo.com?q=%s"); // train those fingers
 define_webjump("google", "http://google.com/search?q=%s");
 define_webjump("t", "http://mobile.twitter.com/search?q=%s");
+
+define_webjump("dev", "https://devcenter.heroku.com/articles?q=%s");
+define_webjump("sigma", "https://github.com/heroku/sigma/search?q=%s");
 
 define_webjump("wondermark", "http://www.ohnorobot.com/index.pl?s=%s&comic=148&show=advanced&b=1&t=1");
 define_webjump("achewood", "http://www.ohnorobot.com/index.pl?s=%s&comic=636&show=advanced&b=1&t=1");
@@ -70,7 +53,7 @@ interactive("toggle-stylesheets",
 
 require("page-modes/google-search-results.js");
 require("page-modes/duckduckgo.js");
-require("page-modes/hackernews.js");
+// require("page-modes/hackernews.js");
 
 user_pref('extensions.mozrepl.autoStart', true);
 session_pref("font.name.serif.x-western", "Ubuntu Light");
@@ -142,7 +125,23 @@ add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
 // are present and which is the current
 add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
 
-/// qrcode
+/// Commands
+
+interactive("fill-domain", "Fill the minibuffer with the current domain.",
+            function (I) {
+                var field = I.minibuffer.input_element;
+                var paths = String(I.window.content.location).split('/');
+                var domain = paths[0] + "/" + paths[1] + "/" + paths[2] + "/";
+                field.value = domain;
+            });
+
+define_key(minibuffer_keymap, "C-/", "fill-domain");
+
+interactive("tinyurl", "Create a TinyURL for the current URL",
+            function(I) {
+                I.window.content.location.href = 'http://tinyurl.com/create.php?url=' +
+                    encodeURIComponent(I.window.content.location.href);
+            });
 
 interactive("qrcode", "Open QR code of current URL.",
             function qrcode(I) {
@@ -200,12 +199,7 @@ interactive("user-agent", "Pick a user agent from the list of presets",
                 set_user_agent(user_agents[ua]);
             });
 
-var history = Components.classes["@mozilla.org/browser/nav-history-service;1"]
-    .getService(Components.interfaces.nsIBrowserHistory);
-
+// var history = Components.classes["@mozilla.org/browser/nav-history-service;1"]
+//     .getService(Components.interfaces.nsIBrowserHistory);
+//
 // history.removePagesFromHost("host.com", true);
-
-register_user_stylesheet(
-    "data:text/css," +
-        escape ("@-moz-document url-prefix(http://mobile.twitter.com/) "+
-                "body { font: \"Ubuntu light\"; }"));

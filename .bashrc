@@ -22,10 +22,6 @@ function fix-agent {
   ssh-add -l
 }
 
-if [ -f $HOME/bin/tat.sh ]; then
-  source $HOME/bin/tat.sh # tmux completion
-fi
-
 # Source from elsewhere
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
@@ -46,3 +42,19 @@ fi
 # Enter sensitive lines (containing passwords, etc) with a leading
 # space so they don't show up in history.
 HISTCONTROL=ignorespace
+
+# currently a tmux bug causes this horrible hack to be necessary.
+# tmux sources .bashrc but not profile for some reason
+if [ "$PROFILE_LOADED" = "" ]; then
+    . $HOME/.profile
+fi
+
+[ -z "$TMUX" ] && export TERM=xterm-256color
+
+# lazy-load this since it's slow
+function cloud () {
+    eval "$(ion-client shell)"
+    cloud $1
+}
+
+export JAVA_CMD=/usr/bin/java

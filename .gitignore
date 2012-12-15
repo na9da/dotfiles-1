@@ -24,6 +24,7 @@
 /bin/emacs
 /bin/erythrina
 /bin/firefox*
+/bin/chrome-*
 /bin/lein*
 /.sshconfig.d/50-heroku.conf
 /bin/dmenu

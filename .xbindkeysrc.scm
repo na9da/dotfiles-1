@@ -9,12 +9,13 @@
            '((shift F8) . "ogg123 ~/documents/ambientShipTNG.ogg")
            '((mod1 F8) . "killall ogg123")
            '(F9 . "mpc prev")
-           '(F10 . "mpc next")
-           '((mod4 F12) . "vlc -f ~/documents/movies/misc/rick.flv"))) ;; tee hee
+           '(F10 . "mpc next")))
 
 ;;; notifications
 
+(xbindkey '(F12) "notify-send \"$(date)\"")
 (xbindkey '(mod1 F12) "notify-battery")
+(xbindkey '(shift F12) "notify-send \"$(uptime | cut -f 5 -d :)\"")
 
 ;;; network
 
@@ -27,6 +28,8 @@
 (xbindkey '(mod4 d) "gnome-display-properties")
 (xbindkey '(mod4 F11) "setxkbmap -layout us; ctrl-fix")
 (xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak; ctrl-fix")
+(xbindkey '(mod4 s) "scrot")
+(xbindkey '(mod4 shift s) "scrot -s")
 
 ;;; launchers
 
