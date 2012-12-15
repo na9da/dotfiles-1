@@ -21,16 +21,20 @@
   problem: need to recreate /var/run/postgres every time; sucks =\
 * Fixing OpenJDK 7 cacerts bug
   http://my.opera.com/karmazilla/blog/how-to-grab-the-certificate-from-a-website-and-import-it-with-java-keytool
-* Back-burner projects
-  - git proxy for github issues
-  - nrepl.el
-  - snapshots in package.el
-  - flexible require :as in slamhound
-  - logic-driven slamhound (2-way)
-  - clojuresphere in clojars
-  - ido-find-file-style var navigation
-  - selective metadata hiding in clojure-mode
-  - live-tracing
-* want: a binding to disable clicks on the trackpad without disabling scrolling
+* projects
+** git proxy for github issues
+** snapshots in package.el
+** slamhound
+   - flexible require :as
+** clj-stacktrace
+   - merge with longbottom
+   - selective filtering
+** clojure-mode
+   - selective metadata hiding
+** nrepl.el
+   - drawbridge
+   - live-tracing
+   - debug repl
+   - inspector
 * bump up the idle timeout for screen dimming
   gsettings set org.gnome.settings-daemon.plugins.power idle-dim-time 30
