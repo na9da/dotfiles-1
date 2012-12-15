@@ -24,7 +24,7 @@ apt-get install -y $(ruby -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
 if [ "$DISPLAY" != "" ] ; then
   apt-get install -y \
     $(ruby -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
-  sudo -u $ME gem install --user --no-rdoc --no-ri bundler ghi bananajour redcarpet
+  sudo -u $ME gem install --user --no-rdoc --no-ri bundler ghi bananajour redcarpet cheat
   cp xsession.desktop /usr/share/xsessions/xsession.desktop
 
   # No thank you:

@@ -25,6 +25,9 @@ usermod -a -G sudo $ME
 sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/ /etc/default/grub
 update-grub
 
+sed -i s/XKBOPTIONS=""/XKBOPTIONS="ctrl:nocaps"/ /etc/default/keyboard
+dpkg-reconfigure -phigh console-setup
+
 if [ ! -r /home/$ME/.dotfiles ]; then
   echo "Checking out dotfiles..."
   sudo -u $ME git clone git://github.com/technomancy/dotfiles.git \

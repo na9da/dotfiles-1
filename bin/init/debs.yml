@@ -3,10 +3,12 @@
 - curl
 - git
 - git-annex
+- lsof
 - molly-guard
 - ncurses-term
 - netcat
 - openjdk-6-jdk
+- openjdk-6-jre-headless
 - openssh-server
 - rlwrap
 - s3cmd

@@ -9,6 +9,7 @@
 - cryptsetup
 - bittorrent
 - devilspie
+- exuberant-ctags
 - feh
 - gimp
 - gnome-desktop-environment
@@ -31,6 +32,7 @@
 - mpc
 - mpd
 - mpg321
+- pm-utils
 - network-manager-gnome
 - rsync
 - ruby1.9.1-dev
@@ -45,6 +47,12 @@
 - ttf-inconsolata
 - ttf-kannada-fonts
 - ttf-liberation
+- ttf-arphic-gbsn00lp
+- ttf-arphic-bkai00mp
+- ttf-arphic-bsmi00lp
+- ttf-arphic-gkai00mp
+- ttf-arphic-ukai
+- ttf-arphic-uming
 - tor
 - torsocks
 - unclutter
