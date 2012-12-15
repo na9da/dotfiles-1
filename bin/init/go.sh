@@ -22,6 +22,10 @@ fi
 
 usermod -a -G sudo $ME
 
+if [ -r /etc/NetworkManager/NetworkManager.conf ]; then
+    sed -i s/managed=false/managed=true/ /etc/NetworkManager/NetworkManager.conf
+fi
+
 sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/ /etc/default/grub
 update-grub
 

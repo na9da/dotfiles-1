@@ -32,6 +32,7 @@ FIREFOX=$(nix-env -qaP firefox | grep -v plugins | head -n 1 | cut -f 2- -d " ")
 EMACS=$(nix-env -qa emacs | sort | tail -n 1)
 PACKAGES="tmux dmenu $EMACS $FIREFOX"
 
-sudo -u $ME nix-env -i $PACKAGES
-
+mkdir /nix
 sudo chown -R $ME /nix
+
+sudo -u $ME nix-env -i $PACKAGES

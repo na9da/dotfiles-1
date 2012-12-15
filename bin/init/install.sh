@@ -37,17 +37,17 @@ fi
 
 if [ -f /etc/mpd.conf ]; then
   sed -i "s/var\/lib\/mpd\/music/home\/$ME\/music/" /etc/mpd.conf
-  chown -R $ME /var/lib/*/mpd
+  sed -i "s/user\t\t\t\t\"mpd\"/user \"phil\"/" /etc/mpd.conf
+
+  mkdir -p /var/run/mpd && chown -R $ME /var/run/mpd
+  mkdir -p /var/lib/mpd && chown -R $ME /var/lib/mpd
 fi
 
 if [ ! -x /usr/bin/heroku ]; then
-  wget -qO- https://toolbelt.heroku.com/install.sh | sh
+  wget -qO- https://toolbelt.heroku.com/install.sh | bash
 fi
 
 sudo -u $ME gconftool --load /home/$ME/.gconf.xml
-
-# update-alternatives --set desktop-background \
-#     /usr/share/backgrounds/gnome/Spaceflare.jpg
 
 if [ ! -r /home/$ME/src/conkeror ]; then
   mkdir -p /home/$ME/src
