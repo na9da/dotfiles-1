@@ -13,7 +13,6 @@ ctrl-fix
 xrdb ~/.Xdefaults
 xbindkeys &
 unclutter -idle 1 &
-ssh-add & # this doesn't seem to work
 
 # progs
 conkeror &

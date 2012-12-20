@@ -21,7 +21,9 @@ for f in $(ls -a ~/.dotfiles) ; do
 done
 
 mkdir -p $HOME/.config/fbpanel
-ln -s "$HOME/.dotfiles/.fbpanel" "$HOME/.config/fbpanel/default"
+if [ ! -r $HOME/.config/fbpanel/default ]; then
+    ln -s $HOME/.dotfiles/.fbpanel $HOME/.config/fbpanel/default
+fi
 
 mkdir -p $HOME/.ssh
 cat $HOME/.sshconfig.d/*.conf > $HOME/.ssh/config
