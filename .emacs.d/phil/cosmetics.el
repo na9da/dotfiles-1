@@ -1,3 +1,14 @@
+(eval-after-load 'whitespace
+  '(diminish 'whitespace-mode))
+(eval-after-load 'paredit
+  '(diminish 'paredit-mode))
+(eval-after-load 'elisp-slime-nav
+  '(diminish 'elisp-slime-nav-mode))
+(eval-after-load 'eldoc
+  '(diminish 'eldoc-mode))
+(eval-after-load 'diminish ; need to delay till after packages are all loaded
+  '(diminish 'auto-fill-function))
+
 ;; lose the stupid pipe chars on the split-screen bar
 (set-face-foreground 'vertical-border "white")
 (set-face-background 'vertical-border "white")

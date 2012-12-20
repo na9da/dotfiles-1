@@ -50,13 +50,11 @@
                                   monokai-theme zenburn-theme
                                   clojure-mode clojure-test-mode
                                   markdown-mode yaml-mode
-                                  gist marmalade oddmuse scpaste))
+                                  diminish gist marmalade oddmuse scpaste))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-
-(defalias 'guns 'gnus)
 
 ;; why not?
 (eshell)
