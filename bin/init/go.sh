@@ -11,7 +11,7 @@ fi
 
 echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
 
-apt-get update && apt-get install -y git zile ruby1.9.1 sudo
+apt-get update && apt-get install -y git zile sudo
 
 if [ "$ME" = "" ]; then
   export ME=phil
@@ -22,16 +22,20 @@ fi
 
 usermod -a -G sudo $ME
 
+# Allow control over interfaces that the installer hard-codes
 if [ -r /etc/NetworkManager/NetworkManager.conf ]; then
     sed -i s/managed=false/managed=true/ /etc/NetworkManager/NetworkManager.conf
 fi
 
+# Don't wait to boot; just go with the default.
 sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/ /etc/default/grub
 update-grub
 
+# Caps lock is absurd.
 sed -i s/XKBOPTIONS=""/XKBOPTIONS="ctrl:nocaps"/ /etc/default/keyboard
 dpkg-reconfigure -phigh console-setup
 
+# Check repo out
 if [ ! -r /home/$ME/.dotfiles ]; then
   echo "Checking out dotfiles..."
   sudo -u $ME git clone git://github.com/technomancy/dotfiles.git \

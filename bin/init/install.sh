@@ -8,32 +8,27 @@ ME=$1
 
 cd /home/$ME/bin/init
 
-# um... dude?
-update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 500
-update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.9.1 500
-# this causes issues on wheezy
-# update-alternatives --install /usr/bin/irb irb /usr/bin/irb1.9.1 500
-
 # don't write atimes
 chattr +A /
 
 echo "Installing packages via apt-get and rubygems..."
 
-apt-get install -y $(ruby -ryaml -e "puts YAML.load_file('debs.yml').join ' '")
+apt-get install -y $(cat debs | tr '\n' ' ')
 
-if [ "$DISPLAY" != "" ] ; then
-  apt-get install -y \
-    $(ruby -ryaml -e "puts YAML.load_file('gui-debs.yml').join ' '")
-  sudo -u $ME gem install --user --no-rdoc --no-ri bundler ghi bananajour redcarpet cheat
-  cp xsession.desktop /usr/share/xsessions/xsession.desktop
+sudo -u $ME gem install --user --no-rdoc --no-ri bundler ghi bananajour cheat
 
-  # No thank you:
-  rm -rf /home/$ME/Desktop /home/$ME/Documents /home/$ME/Music \
-      /home/$ME/Pictures /home/$ME/Public \ /home/$ME/Templates \
-      /home/$ME/Videos /home/$ME/Downloads
+cp xsession.desktop /usr/share/xsessions/xsession.desktop
 
-  # ./nix.sh $ME
-fi
+# No thank you
+rm -rf /home/$ME/Desktop /home/$ME/Documents /home/$ME/Music \
+    /home/$ME/Pictures /home/$ME/Public \ /home/$ME/Templates \
+    /home/$ME/Videos /home/$ME/Downloads
+
+# um... dude?
+update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 500
+update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.9.1 500
+# this causes issues on wheezy
+# update-alternatives --install /usr/bin/irb irb /usr/bin/irb1.9.1 500
 
 if [ -f /etc/mpd.conf ]; then
   sed -i "s/var\/lib\/mpd\/music/home\/$ME\/music/" /etc/mpd.conf
@@ -48,10 +43,5 @@ if [ ! -x /usr/bin/heroku ]; then
 fi
 
 sudo -u $ME gconftool --load /home/$ME/.gconf.xml
-
-if [ ! -r /home/$ME/src/conkeror ]; then
-  mkdir -p /home/$ME/src
-  git clone git://github.com/retroj/conkeror.git /home/$ME/src/conkeror
-fi
 
 echo "All done! Happy hacking."
