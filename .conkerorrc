@@ -203,3 +203,23 @@ interactive("user-agent", "Pick a user agent from the list of presets",
 //     .getService(Components.interfaces.nsIBrowserHistory);
 //
 // history.removePagesFromHost("host.com", true);
+
+
+// Work around super annoying race condition bug where minibuffer will
+// keep trying to operate on a page even when we've navigated away.
+
+function clean_minibuffer(buffer) {
+    try {
+        isearch-done(buffer.window, false);
+    } catch(e){}
+    try {
+        caret_mode(buffer, false);
+    } catch(e){}
+    try {
+        minibuffer_abort (buffer.window);
+    } catch(e){}
+}
+
+add_hook("buffer_loaded_hook", function(buffer) {
+    clean_minibuffer(buffer);
+});
