@@ -1,4 +1,4 @@
-* things that bug me about software I use (a relatively complete list)
+* Things that bug me about software I use (a relatively complete list)
 ** Debian
    - many versions way out of date in squeeze
      - whatever, just use nix
@@ -7,7 +7,7 @@
    - installer hardcodes ssid/mount point in /etc (reported)
      http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=502955 (net)
      http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=646795 (fstab)
-   - adding a keyboard doesn't honor caps->ctrl mod
+   - adding an additional keyboard doesn't honor caps->ctrl mod
 ** nix
    - ships proprietary crap by default
      - to find non-flash firefox: nix-env -qaP firefox | grep -v plugins
@@ -21,18 +21,12 @@
    - no tab completion for git branches (but just use magit)
    - sudo commands cannot be interrupted
    - high-throughput output is slow
-*** gnus
-   - imap is slow
-   - doesn't handle switching network connections very well
-   - no way to report spam without switching to browser
-   - search is hard to set up
 *** erc
    - silently discards input in closed query buffers
-*** swank-clojure
-   - undocumented, messy codebase
-   - needs restarts for certain types of compilation errors
 *** mu4e
     - doesn't honor .authinfo.gpg
+    - silly bindings (M-RET to follow links??)
+    - every operation in overview updates message window if present
 ** offlineimap
    - ugh
      - ugh ugh ugh
@@ -40,7 +34,6 @@
    - it isn't emacs
    - after six months of usage its history starts slowing down completion
 ** xmonad
-   - haven't found a simple way to toggle system monitor visibility
    - with an extra display plugged in, libnotify bubbles show offscreen
 ** Virtualbox
    - OSS version doesn't play nicely with vagrant
@@ -50,8 +43,21 @@
 ** ssh
    - no ~/.ssh/config.d directory
      https://bugzilla.mindrot.org/show_bug.cgi?id=1613
+** mpd
+   - completely refuses to function when the network is down; won't use lo interface
+** fbpanel
+   - can't toggle visibility with a keystroke
+     - must resort to pointer relocation hacks (swarp), better than nothing
 ** ghi
    - coloring doesn't work inside Emacs
    - listing breaks with TERM=dumb
+   - doesn't provide an actual git repo to operate upon
 ** gpg
    - refuses to forget cached passphrases on sighup
+** network-manager
+   - CLI refuses to connect to new access points
+   - stores known access points in gconf super-nested XML files
+     - cross-references credentials using nonsense made-up gconf numeric ID
+       - gross gross gross
+       - also stupid
+         - and dumb
