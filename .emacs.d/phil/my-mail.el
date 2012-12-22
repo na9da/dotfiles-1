@@ -16,7 +16,9 @@
          ("/[Gmail].All Mail"    . ?a))
       ;; allow for updating mail using 'U' in the main view:
       mu4e-get-mail-command "offlineimap"
-      mu4e-maildir "~/mail/personal")
+      mu4e-maildir "~/mail/personal"
+      mu4e-headers-leave-behavior 'apply
+      mu4e-show-images t)
 
 ;; outgoing
 (setq message-send-mail-function 'smtpmail-send-it
@@ -42,3 +44,13 @@
                                     (require 'epa)
                                     (when (not (boundp 'smtp-password))
                                       (load-file "~/.chorts/chorts.el.gpg"))))
+
+(eval-after-load 'mu4e-headers
+  '(defun mu4e-headers-mark-and-next (mark)
+    "Set mark MARK on the message at point or on all messages in the
+region if there is a region, then move to the next message."
+    (interactive)
+    (mu4e-mark-set mark)
+    ;; ugh; no!
+    ;; (mu4e-headers-next)
+    ))
