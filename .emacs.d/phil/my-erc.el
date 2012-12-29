@@ -23,13 +23,13 @@
   '(progn
      (when (not (package-installed-p 'erc-hl-nicks))
        (package-install 'erc-hl-nicks))
+     (when (not (package-installed-p 'ercn))
+       (package-install 'ercn))
      (require 'erc-spelling)
      (require 'erc-services)
      (require 'erc-truncate)
      (require 'erc-hl-nicks)
-     (ignore-errors
-       ;; DO NOT use the version from marmalade
-       (erc-nick-notify-mode t))
+     (require 'notifications)
      (erc-services-mode 1)
      (erc-truncate-mode 1)
      (setq erc-complete-functions '(erc-pcomplete erc-button-next))
@@ -38,7 +38,11 @@
      (add-to-list 'erc-modules 'spelling)
      (set-face-foreground 'erc-input-face "dim gray")
      (set-face-foreground 'erc-my-nick-face "blue")
-     (define-key erc-mode-map (kbd "C-u RET") 'browse-last-url-in-brower)))
+     (define-key erc-mode-map (kbd "C-u RET") 'browse-last-url-in-brower)
+     (add-hook 'ercn-notify 'ercn-send-notification)))
+
+(defun ercn-send-notification (nick message)
+  (notifications-notify :title (concat nick " said:") :body message))
 
 (defvar erc-hack-applied nil)
 
@@ -59,7 +63,6 @@
   (erc-tls :server "route.heroku.com" :port 10688
            :nick "technomancy" :password znc-password))
 
-
 (defun camper ()
   (interactive)
   (when (not (boundp 'camper-password))
@@ -79,6 +82,7 @@
 
 (defun browse-last-url-in-brower ()
   (interactive)
+  (require 'ffap)
   (save-excursion
     (let ((ffap-url-regexp
            (concat
