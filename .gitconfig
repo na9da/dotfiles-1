@@ -16,4 +16,3 @@
 	remote = heroku
 [github]
 	user = technomancy
-	oauth-token = !gpg --batch -q -d .chorts/github.gpg 2> /dev/null
