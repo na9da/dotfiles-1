@@ -35,5 +35,16 @@
 (add-to-list 'ido-ubiquitous-command-exceptions 'ucs-insert)
 (add-to-list 'ido-ubiquitous-function-exceptions 'read-char-by-name)
 
+;; doesn't have a way to store credentials safely yet
+(eval-after-load 'gh-auth
+  '(when (not (featurep 'chorts))
+    (load-file "~/.chorts/chorts.el.gpg")))
+
+;; default behaviour here is just plain awful
+(add-hook 'nrepl-mode-hook
+             (defun nrepl-fix-buffer-ns ()
+               (when (clojure-find-ns)
+                 (setq nrepl-buffer-ns (clojure-find-ns)))))
+
 ;; cl.el byte compiler warnings can suuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuck it!
 (defalias 'byte-compile-cl-warn 'identity)

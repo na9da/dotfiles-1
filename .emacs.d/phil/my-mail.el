@@ -51,6 +51,7 @@
 region if there is a region, then move to the next message."
     (interactive)
     (mu4e-mark-set mark)
+    (forward-line)
     ;; ugh; no!
     ;; (mu4e-headers-next)
     ))
