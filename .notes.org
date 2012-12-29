@@ -43,3 +43,12 @@
 * mu4e todo
   - boost the gpg-agent cache expiry period?
   - how to view a whole thread from search results?
+* backups
+** TS drive: december 2011
+** chunky backup: music/documents december 2012
+** photos
+   - 2008 on seagate
+   - 2011 on TS drive
+** seagate backup
+   - music
+   - src

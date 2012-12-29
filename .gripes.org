@@ -30,6 +30,8 @@
 ** offlineimap
    - ugh
      - ugh ugh ugh
+     - consider replacing with mbsync
+       https://gist.github.com/c6e213f0b7ccd712e136
 ** conkeror
    - it isn't emacs
    - after six months of usage its history starts slowing down completion
