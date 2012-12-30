@@ -1,3 +1,6 @@
+;; for some reason debian screws this up for hand-compiled emacsen
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+
 (autoload 'mu4e "mu4e" "" t)
 
 ;; incoming
@@ -16,9 +19,9 @@
          ("/[Gmail].All Mail"    . ?a))
       ;; allow for updating mail using 'U' in the main view:
       mu4e-get-mail-command "offlineimap"
-      mu4e-maildir "~/mail/personal"
       mu4e-headers-leave-behavior 'apply
-      mu4e-show-images t)
+      mu4e-show-images t
+      mu4e-maildir (expand-file-name "~/mail"))
 
 ;; outgoing
 (setq message-send-mail-function 'smtpmail-send-it
@@ -30,19 +33,9 @@
       user-full-name  "Phil Hagelberg"
       message-kill-buffer-on-exit t)
 
-(defun mu4e-heroku ()
-  (interactive)
-  (setq user-mail-address "phil.hagelberg@heroku.com"
-        mu4e-maildir "~/mail/heroku")
-  (mu4e))
-
-;; punting on multiple accounts for now
-(setq user-mail-address "phil.hagelberg@heroku.com"
-      mu4e-maildir "~/mail/heroku")
-
 (add-hook 'mu4e-compose-mode-hook (lambda ()
                                     (require 'epa)
-                                    (when (not (boundp 'smtp-password))
+                                    (when (not (featurep 'chorts))
                                       (load-file "~/.chorts/chorts.el.gpg"))))
 
 (eval-after-load 'mu4e-headers

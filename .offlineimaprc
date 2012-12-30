@@ -1,6 +1,6 @@
 [general]
 ui = TTY.TTYUI
-accounts = Personal,Heroku
+accounts = Personal
 pythonfile = ~/.offlineimap.py
 
 # Personal
@@ -11,7 +11,7 @@ remoterepository = Personal
 
 [Repository LocalPersonal]
 type = Maildir
-localfolders = ~/mail/personal
+localfolders = ~/mail/
 
 [Repository Personal]
 type = Gmail
