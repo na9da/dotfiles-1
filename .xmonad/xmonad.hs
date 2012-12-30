@@ -13,4 +13,4 @@ main = xmonad $ gnomeConfig
        , focusFollowsMouse = False
        }
        -- gnome's launcher is crappy compared to dmenu
-       `additionalKeys` [ ((mod4Mask, xK_p), spawn "dmenu_run") ]
+       `additionalKeys` [ ((mod4Mask, xK_r), spawn "dmenu_run") ]

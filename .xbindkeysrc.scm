@@ -30,8 +30,6 @@
 (xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak; ctrl-fix")
 (xbindkey '(mod4 s) "scrot")
 (xbindkey '(mod4 shift s) "scrot -s")
-
-;;; launchers
-
 (xbindkey '(mod4 b) "dbook.rb")
-(xbindkey '(mod4 m) "nautilus $HOME/documents/movies")
+
+(xbindkey '(mod4 m) "emacs")
