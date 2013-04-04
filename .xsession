@@ -11,13 +11,16 @@ ctrl-fix
 
 # utilities
 xrdb ~/.Xdefaults
-xbindkeys &
 unclutter -idle 1 &
+dunst -nb "#000000" &
 
 # progs
 conkeror &
 
-# desktop
+# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=643028
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+# gnome: the good parts
 fbpanel &
 nm-applet &
 gnome-settings-daemon &

@@ -44,4 +44,7 @@ fi
 
 sudo -u $ME gconftool --load /home/$ME/.gconf.xml
 
+# do not want
+apt-get remove gnash gnash-common browser-plugin-gnash || true
+
 echo "All done! Happy hacking."

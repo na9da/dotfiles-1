@@ -6,10 +6,6 @@
 * raw lisp mode
 ** kill-backward-up-list
 ** move-past-close-and-reindent
-* photo recovery:
-  - start http://www.flickr.com/photos/technomancy/5667656481/
-  - end http://www.flickr.com/photos/technomancy/6135506600/
-  - delete all local tagged "flickrtagged"
 * nix dependency:tree equivalent
   nix-store -qR --tree /nix/store/[...]
 * install from nixpkgs checkout
@@ -24,8 +20,6 @@
 * projects
 ** git proxy for github issues
 ** snapshots in package.el
-** slamhound
-   - flexible require :as
 ** clj-stacktrace
    - merge with longbottom
    - selective filtering
@@ -35,14 +29,14 @@
    - drawbridge
    - live-tracing
    - debug repl
-   - inspector
+** javert.el
 ** move znc and camper van to another host
 ** set up bitlbee on said host
-* bump up the idle timeout for screen dimming
-  gsettings set org.gnome.settings-daemon.plugins.power idle-dim-time 30
+** surfer-rosa
 * mu4e todo
   - boost the gpg-agent cache expiry period?
   - how to view a whole thread from search results?
+  - ensure indexer doesn't run until offlineimap is done
 * backups
 ** TS drive: december 2011
 ** chunky backup: music/documents december 2012
@@ -52,3 +46,21 @@
 ** seagate backup
    - music
    - src
+* init
+  - update-alternatives: warning: forcing reinstallation of alternative /usr/bin/ruby1.9.1 because link group ruby is broken
+  - toolbelt install
+  - automate https-everywhere install in conkeror
+* ssh agent reset
+  export SSH_AUTH_SOCK=$(ls -t1 `find /tmp/ -uid $UID -path \*ssh\* -type s 2> /dev/null`|head -1)
+* font showcase
+  http://hellohappy.org/beautiful-web-type/
+* keys
+  Scott Francis
+  0390C045 FF62 B2CD CDD6 6449 0818 2201 F77D 1F57 0390 C045
+* aeropress tips from Seattle Coffee Works
+  200g water @ 205f
+  19g coffee
+  10s pour
+  one stir
+  10s press
+  40s total

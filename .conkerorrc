@@ -27,6 +27,7 @@ url_completion_use_history = true;
 url_completion_use_bookmarks = false;
 can_kill_last_buffer = false;
 download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
+// session_auto_save_auto_load_fn = session_auto_save_load_window_current;
 
 register_user_stylesheet(
     "data:text/css,"+
@@ -223,3 +224,14 @@ function clean_minibuffer(buffer) {
 add_hook("buffer_loaded_hook", function(buffer) {
     clean_minibuffer(buffer);
 });
+
+
+if ('@eff.org/https-everywhere;1' in Cc) {
+    interactive("https-everywhere-options-dialog",
+                "Open the HTTPS Everywhere options dialog.",
+                function (I) {
+                    window_watcher.openWindow(
+                        null, "chrome://https-everywhere/content/preferences.xul",
+                        "", "chrome,titlebar,toolbar,centerscreen,resizable", null);
+                });
+}

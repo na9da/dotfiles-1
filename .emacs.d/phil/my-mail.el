@@ -14,8 +14,12 @@
       ;; the 'All Mail' folder by pressing ``ma''.
       mu4e-maildir-shortcuts
       '( ("/INBOX"               . ?i)
+         ("/emacs"       . ?e)
+         ("/clojure"     . ?c)
+         ("/leiningen"   . ?l)
+         ("/seajure"     . ?j)
+         ("/github"      . ?g)
          ("/[Gmail].Sent Mail"   . ?s)
-         ("/[Gmail].Trash"       . ?t)
          ("/[Gmail].All Mail"    . ?a))
       ;; allow for updating mail using 'U' in the main view:
       mu4e-get-mail-command "offlineimap"

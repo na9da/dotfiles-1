@@ -10,6 +10,7 @@ cryptmount
 cryptsetup
 curl
 chromium-browser
+dunst
 exuberant-ctags
 fbpanel
 feh
@@ -31,9 +32,11 @@ libdbus-ruby
 libevent-dev
 libfaad2
 libghc6-xmonad-contrib-dev
+libgmime-2.6-dev
 libnotify-bin
 libsqlite3-dev
 libssl-dev
+libxapian-dev
 libxml2-dev
 libxslt1-dev
 lsof
@@ -45,8 +48,8 @@ mumble
 ncurses-term
 netcat
 network-manager-gnome
-openjdk-6-jdk
-openjdk-6-jre-headless
+offlineimap
+openjdk-7-jdk
 openssh-server
 powertop
 pm-utils
@@ -88,6 +91,8 @@ vorbis-tools
 wireless-tools
 wmctrl
 x11-xserver-utils
+xapian
+xautolock
 xbindkeys
 xfonts-intl-chinese
 xfonts-terminus

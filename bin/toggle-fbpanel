@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "$(ps awx | grep fbpanel | grep -v grep | grep -v toggle)" = "" ]; then
+    fbpanel
+else
+    killall fbpanel
+fi

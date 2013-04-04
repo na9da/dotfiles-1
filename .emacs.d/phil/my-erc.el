@@ -11,6 +11,7 @@
       erc-server-send-ping-interval 45
       erc-server-send-ping-timeout 180
       erc-server-reconnect-timeout 60
+      erc-server-flood-penalty 1000000
       erc-autojoin-channels-alist
       '(("freenode.net" "#emacs" "#clojure" "#leiningen" "#seajure"
          "#raxacoricofallapatorius" "#clojuredocs"))
@@ -42,6 +43,7 @@
      (add-hook 'ercn-notify 'ercn-send-notification)))
 
 (defun ercn-send-notification (nick message)
+  (setq eee message)
   (notifications-notify :title (concat nick " said:") :body message))
 
 (defvar erc-hack-applied nil)
@@ -67,10 +69,10 @@
   (interactive)
   (when (not (boundp 'camper-password))
     (load-file "~/.chorts/chorts.el.gpg"))
-  (erc-tls :server "route.heroku.com" :port 45331
+  (erc-tls :server "direct.ellenandtristan.com" :port 8081
            :nick "hagelberg" :password camper-password)
   (erc-join-channel "#herokai_lounge")
-  (erc-join-channel "#runtime_room"))
+  (erc-join-channel "#build_and_packaging"))
 
 (defun erc-all () (interactive) (znc) (camper))
 
@@ -93,3 +95,4 @@
             "\\).")))
       (ffap-next-url t t))))
 
+;; (notifications-notify :title "halo" :body "salut")

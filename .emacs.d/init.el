@@ -27,6 +27,7 @@
 ;; ad-hoc installations
 
 (ignore-errors (load "~/src/leiningen/pcmpl-lein.el"))
+;; (ignore-errors (load "~/src/lein.el/lein.el"))
 
 (add-to-list 'load-path "~/src/elim/elisp")
 (autoload 'garak "garak" nil t)
@@ -61,3 +62,11 @@
 ;; graaaaaaah! eshell doesn't respect eval-after-load for some reason:
 (with-current-buffer "*eshell*" (setq pcomplete-cycle-completions nil))
 (set-face-foreground 'eshell-prompt "turquoise")
+
+;; debugging
+
+;; (require 'notifications)
+;; (notifications-notify :title "wat")
+;; (dbus-error "The name org.freedesktop.Notifications was not provided by any .service files")
+
+;; https://aur.archlinux.org/packages.php?ID=53637

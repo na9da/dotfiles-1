@@ -41,7 +41,7 @@ fi
 
 # Enter sensitive lines (containing passwords, etc) with a leading
 # space so they don't show up in history.
-HISTCONTROL=ignorespace
+HISTCONTROL=ignoreboth:erasedups
 
 # currently a tmux bug causes this horrible hack to be necessary.
 # tmux sources .bashrc but not profile for some reason

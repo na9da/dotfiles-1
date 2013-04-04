@@ -13,7 +13,6 @@ Global {
     height = 24
     setdocktype = true
     setpartialstrut = true
-    autohide = true
     roundcorners = false
     MaxElemHeight = 32
 }

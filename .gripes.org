@@ -1,13 +1,17 @@
 * Things that bug me about software I use (a relatively complete list)
-** Debian
-   - many versions way out of date in squeeze
-     - whatever, just use nix
-   - powertop watts estimate is off by at least an order of magnitude
-     Apparently [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug%3D497929][fixed upstream]]
-   - installer hardcodes ssid/mount point in /etc (reported)
-     http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=502955 (net)
-     http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=646795 (fstab)
+** Debian Wheezy
+   - broken permissions in nm-applet
+     http://bugs.debian.org/643028
+   - need to teach network-manager it's OK to use device that was used for installation
+     - sed -i s/managed=false/managed=true/ /etc/NetworkManager/NetworkManager.conf
+     - improvement over squeeze at least
    - adding an additional keyboard doesn't honor caps->ctrl mod
+   - libnotify broken outside gnome
+     - claimed to be fixed, but isn't
+       - http://bugs.debian.org/636435
+       - actual fix
+         - file /usr/share/dbus-1/services/org.freedesktop.Notifications.service
+         - Exec=/usr/lib/notification-daemon/notification-daemon
 ** nix
    - ships proprietary crap by default
      - to find non-flash firefox: nix-env -qaP firefox | grep -v plugins
@@ -17,6 +21,7 @@
    - no immutability or referential transparency
    - no useful associative data type, vectors are useless
    - no concurrency
+   - find-file-at-point does really stupid things sometimes with tramp
 *** eshell
    - no tab completion for git branches (but just use magit)
    - sudo commands cannot be interrupted
@@ -27,6 +32,7 @@
     - doesn't honor .authinfo.gpg
     - silly bindings (M-RET to follow links??)
     - every operation in overview updates message window if present
+      - fixable with advice
 ** offlineimap
    - ugh
      - ugh ugh ugh
@@ -50,6 +56,7 @@
 ** fbpanel
    - can't toggle visibility with a keystroke
      - must resort to pointer relocation hacks (swarp), better than nothing
+   - doesn't reposition properly when a new display is activated
 ** ghi
    - coloring doesn't work inside Emacs
    - listing breaks with TERM=dumb

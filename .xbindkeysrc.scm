@@ -31,5 +31,6 @@
 (xbindkey '(mod4 s) "scrot")
 (xbindkey '(mod4 shift s) "scrot -s")
 (xbindkey '(mod4 b) "dbook.rb")
+(xbindkey '(mod4 f) "toggle-fbpanel")
 
 (xbindkey '(mod4 m) "emacs")

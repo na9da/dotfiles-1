@@ -1,13 +1,13 @@
-(eval-after-load 'whitespace
-  '(diminish 'whitespace-mode))
-(eval-after-load 'paredit
-  '(diminish 'paredit-mode))
-(eval-after-load 'elisp-slime-nav
-  '(diminish 'elisp-slime-nav-mode))
-(eval-after-load 'eldoc
-  '(diminish 'eldoc-mode))
-(eval-after-load 'diminish ; need to delay till after packages are all loaded
-  '(diminish 'auto-fill-function))
+;; (eval-after-load 'whitespace
+;;   '(diminish 'whitespace-mode))
+;; (eval-after-load 'paredit
+;;   '(diminish 'paredit-mode))
+;; (eval-after-load 'elisp-slime-nav
+;;   '(diminish 'elisp-slime-nav-mode))
+;; (eval-after-load 'eldoc
+;;   '(diminish 'eldoc-mode))
+;; (eval-after-load 'diminish ; need to delay till after packages are all loaded
+;;   '(diminish 'auto-fill-function))
 
 ;; lose the stupid pipe chars on the split-screen bar
 (set-face-foreground 'vertical-border "white")
@@ -45,8 +45,17 @@
   (require 'hl-line)
   (set-face-foreground 'eshell-prompt "turquoise1")
   (set-face-background 'hl-line "black")
+  (eval-after-load 'diff-mode
+    '(set-face-background 'diff-refine-change "gray18"))
   (eval-after-load 'magit
     '(set-face-background 'magit-item-highlight "black")))
+
+(defun db ()
+  (interactive)
+  (load-theme 'deeper-blue)
+  (set-face-background 'hl-line "dark slate gray")
+  (eval-after-load 'magit
+    '(progn (set-face-background 'magit-item-highlight "black"))))
 
 (defun bb ()
   "Black for use with glasstty in -nw"
@@ -65,6 +74,7 @@
 (defun eyeroll () (interactive) (insert "◔_◔"))
 (defun tables () (interactive) (insert "（╯°□°）╯︵ ┻━┻"))
 (defun mu () (interactive) (insert "無"))
+(defun rectification () (interactive) (insert "正名"))
 
 (when (and window-system (>= emacs-major-version 23))
   (let ((fontset (face-attribute 'default :fontset))

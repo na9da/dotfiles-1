@@ -1,0 +1,13 @@
+gsettings set org.gnome.nautilus.preferences desktop-is-home-dir true
+gsettings set org.gnome.settings-daemon.plugins.power idle-dim-time 30
+gsettings set org.gnome.settings-daemon.plugins.power lid-close-ac-action blank
+gsettings set org.gnome.desktop.background show-desktop-icons true
+gsettings set org.gnome.nautilus.desktop trash-icon-visible false
+gsettings set org.gnome.nautilus.desktop home-icon-visible false
+gsettings set org.gnome.nautilus.desktop computer-icon-visible false
+
+gsettings set org.gnome.desktop.interface font-name "Ubuntu Light 11"
+gsettings set org.gnome.desktop.interface document-font-name "Ubuntu Light 11"
+gsettings set org.gnome.desktop.interface monospace-font-name "Inconsolata 12"
+gsettings set org.gnome.desktop.interface cursor-size 48
+# TODO: emacs keybinding theme, check out icon theme options

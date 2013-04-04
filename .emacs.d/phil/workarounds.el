@@ -40,11 +40,18 @@
   '(when (not (featurep 'chorts))
     (load-file "~/.chorts/chorts.el.gpg")))
 
-;; default behaviour here is just plain awful
-(add-hook 'nrepl-mode-hook
-             (defun nrepl-fix-buffer-ns ()
-               (when (clojure-find-ns)
-                 (setq nrepl-buffer-ns (clojure-find-ns)))))
+;; could do without the quotations
+(eval-after-load 'nrepl
+  '(setq nrepl-words-of-inspiration
+         (remove-if (lambda (s) (string-match " -" s))
+                    nrepl-words-of-inspiration)))
+
+;; starter kit version has stupid formatting
+(defun insert-date ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
 
 ;; cl.el byte compiler warnings can suuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuck it!
 (defalias 'byte-compile-cl-warn 'identity)
+
+(setenv "GHI_NO_COLOR" "y")
