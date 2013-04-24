@@ -1,20 +1,24 @@
-;; (eval-after-load 'whitespace
-;;   '(diminish 'whitespace-mode))
-;; (eval-after-load 'paredit
-;;   '(diminish 'paredit-mode))
-;; (eval-after-load 'elisp-slime-nav
-;;   '(diminish 'elisp-slime-nav-mode))
-;; (eval-after-load 'eldoc
-;;   '(diminish 'eldoc-mode))
-;; (eval-after-load 'diminish ; need to delay till after packages are all loaded
-;;   '(diminish 'auto-fill-function))
+(eval-after-load 'whitespace
+  '(diminish 'whitespace-mode))
+(eval-after-load 'paredit
+  '(diminish 'paredit-mode))
+(eval-after-load 'elisp-slime-nav
+  '(diminish 'elisp-slime-nav-mode))
+(eval-after-load 'eldoc
+  '(diminish 'eldoc-mode))
+(eval-after-load 'diminish ; need to delay till after packages are all loaded
+  '(diminish 'auto-fill-function))
 
 ;; lose the stupid pipe chars on the split-screen bar
 (set-face-foreground 'vertical-border "white")
 (set-face-background 'vertical-border "white")
 
+;; themes
+
 (defun zb ()
   (interactive)
+  (unless (package-installed-p 'zenburn-theme)
+    (package-install 'zenburn-theme))
   (load-theme 'zenburn)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
@@ -27,6 +31,8 @@
 
 (defun tw ()
   (interactive)
+  (unless (package-installed-p 'twilight-theme)
+    (package-install 'twilight-theme))
   (load-theme 'twilight)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
@@ -39,6 +45,8 @@
 
 (defun mk ()
   (interactive)
+  (unless (package-installed-p 'monokai-theme)
+    (package-install 'monokai-theme))
   (load-theme 'monokai)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
@@ -86,3 +94,29 @@
        ((#x0210e . #x0210f) . "Unicode")
        ((#x02700 . #x028ff) . "Unicode")
        ((#x1f300 . #x1f6ff) . "Unicode"))) ))
+
+;; monochrome? seriously?
+(eval-after-load 'diff-mode
+  '(progn
+     (set-face-foreground 'diff-added "green4")
+     (set-face-foreground 'diff-removed "red3")))
+
+(eval-after-load 'magit
+  '(progn
+     (set-face-foreground 'magit-diff-add "green4")
+     (set-face-foreground 'magit-diff-del "red3")))
+
+;; Display ido results vertically, rather than horizontally
+(setq ido-decorations '("\n-> " "" "\n   " "\n   ..." "[" "]"
+                        " [No match]" " [Matched]" " [Not readable]"
+                        " [Too big]" " [Confirm]"))
+
+(add-hook 'ido-minibuffer-setup-hook
+          (defun ido-disable-line-truncation ()
+            (set (make-local-variable 'truncate-lines) nil)))
+
+(defun jf-ido-define-keys () ;; C-n/p is more intuitive in vertical layout
+  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
+
+(add-hook 'ido-setup-hook 'jf-ido-define-keys)

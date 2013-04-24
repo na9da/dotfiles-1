@@ -2,7 +2,6 @@
       ido-enable-tramp-completion nil
       vc-follow-symlinks t
       tags-revert-without-query t ; why would you ever not want this?
-      markdown-command "redcarpet"
       ruby-insert-encoding-magic-comment nil)
 
 ;; plz not to refresh log buffer when I cherry-pick, mkay?
@@ -20,6 +19,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+(require 'parenface-plus)
 
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -31,23 +31,23 @@
 
 (setq-default ispell-program-name "aspell")
 
-;; TODO: this does nothing
-(add-to-list 'ido-ubiquitous-command-exceptions 'ucs-insert)
-(add-to-list 'ido-ubiquitous-function-exceptions 'read-char-by-name)
-
 ;; doesn't have a way to store credentials safely yet
 (eval-after-load 'gh-auth
   '(when (not (featurep 'chorts))
-    (load-file "~/.chorts/chorts.el.gpg")))
+     (load-file "~/.chorts/chorts.el.gpg")))
 
-;; could do without the quotations
-(eval-after-load 'nrepl
-  '(setq nrepl-words-of-inspiration
-         (remove-if (lambda (s) (string-match " -" s))
-                    nrepl-words-of-inspiration)))
+(defun leathekd-suck-it (suckee)
+  "Insert a comment of appropriate length about what can suck it."
+  (interactive "MWhat can suck it? ")
+  (let ((prefix (concat ";; " suckee " can s"))
+        (postfix "ck it!")
+        (col (current-column)))
+    (insert prefix)
+    (dotimes (_ (- 80 col (length prefix) (length postfix))) (insert "u"))
+    (insert postfix)))
 
 ;; starter kit version has stupid formatting
-(defun insert-date ()
+(defun pnh-insert-date ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))
 

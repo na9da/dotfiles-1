@@ -5,16 +5,14 @@
                                 "JOIN" "PART" "QUIT" "NICK")
       erc-lurker-threshold-time 3600
       erc-track-priority-faces-only t
-      erc-join-buffer 'bury
       erc-autojoin-timing :ident
       erc-flood-protect nil
       erc-server-send-ping-interval 45
       erc-server-send-ping-timeout 180
       erc-server-reconnect-timeout 60
       erc-server-flood-penalty 1000000
-      erc-autojoin-channels-alist
-      '(("freenode.net" "#emacs" "#clojure" "#leiningen" "#seajure"
-         "#raxacoricofallapatorius" "#clojuredocs"))
+      erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#clojure"
+                                     "#leiningen" "#seajure" "#clojuredocs"))
       erc-prompt-for-nickserv-password nil)
 
 (delete 'erc-fool-face 'erc-track-faces-priority-list)
@@ -24,8 +22,6 @@
   '(progn
      (when (not (package-installed-p 'erc-hl-nicks))
        (package-install 'erc-hl-nicks))
-     (when (not (package-installed-p 'ercn))
-       (package-install 'ercn))
      (require 'erc-spelling)
      (require 'erc-services)
      (require 'erc-truncate)
@@ -39,24 +35,8 @@
      (add-to-list 'erc-modules 'spelling)
      (set-face-foreground 'erc-input-face "dim gray")
      (set-face-foreground 'erc-my-nick-face "blue")
-     (define-key erc-mode-map (kbd "C-u RET") 'browse-last-url-in-brower)
-     (add-hook 'ercn-notify 'ercn-send-notification)))
-
-(defun ercn-send-notification (nick message)
-  (setq eee message)
-  (notifications-notify :title (concat nick " said:") :body message))
-
-(defvar erc-hack-applied nil)
-
-;; for jlf's local lurker patch
-(add-hook 'erc-connect-pre-hook
-          (lambda (&rest _)
-            (when (and (file-readable-p "/home/phil/src/emacs/lisp/erc/erc.el")
-                       (not erc-hack-applied))
-              (load-file "/home/phil/src/emacs/lisp/erc/erc.el")
-              (setq erc-message-english-s004 "%s" ; work around erc bug
-                    erc-hack-applied t)
-              (erc-pcomplete-enable))))
+     (define-key erc-mode-map (kbd "C-c C-M-SPC") 'erc-track-clear)
+     (define-key erc-mode-map (kbd "C-u RET") 'browse-last-url-in-brower)))
 
 (defun znc ()
   (interactive)
@@ -65,34 +45,13 @@
   (erc-tls :server "route.heroku.com" :port 10688
            :nick "technomancy" :password znc-password))
 
-(defun camper ()
-  (interactive)
-  (when (not (boundp 'camper-password))
-    (load-file "~/.chorts/chorts.el.gpg"))
-  (erc-tls :server "direct.ellenandtristan.com" :port 8081
-           :nick "hagelberg" :password camper-password)
-  (erc-join-channel "#herokai_lounge")
-  (erc-join-channel "#build_and_packaging"))
-
-(defun erc-all () (interactive) (znc) (camper))
-
 (defun erc-track-clear ()
   (interactive)
   (setq erc-modified-channels-alist nil))
-
-;; (define-key erc-mode-map (kbd "C-c C-M-SPC") 'erc-track-clear)
 
 (defun browse-last-url-in-brower ()
   (interactive)
   (require 'ffap)
   (save-excursion
-    (let ((ffap-url-regexp
-           (concat
-            "\\("
-            "news\\(post\\)?:\\|mailto:\\|file:"
-            "\\|"
-            "\\(ftp\\|https?\\|telnet\\|gopher\\|www\\|wais\\)://"
-            "\\).")))
+    (let ((ffap-url-regexp "\\(https?://\\)."))
       (ffap-next-url t t))))
-
-;; (notifications-notify :title "halo" :body "salut")
