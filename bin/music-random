@@ -2,13 +2,7 @@
 
 system "music-dirs"
 
-dirs = if Time.now.wday != 5
-         File.read(ENV["HOME"] + "/music/dirs").split("\n")
-       else
-         prefix = ENV['HOME'] + "/music/"
-         ds = `find #{prefix}blind.guardian -type d`.split("\n")
-         ds.map {|ds| ds[prefix.size .. -1]}
-       end
+dirs = File.read(ENV["HOME"] + "/music/dirs").split("\n")
 
 dir = dirs[(rand * dirs.length).to_i]
 `mpc clear`

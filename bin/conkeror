@@ -1,1 +1,3 @@
+#!/bin/bash
+
 firefox -app ~/src/conkeror/application.ini $@

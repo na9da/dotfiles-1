@@ -1,3 +1,16 @@
+* Software for which I have one or zero legitimate complaints (hall of fame)
+  - xmonad
+    - with an extra display plugged in, libnotify bubbles show offscreen
+      - (probably actually a libnotify bug; dunst works fine)
+  - dmenu
+  - mpd
+    - completely refuses to function when the network is down; won't use lo interface
+  - ssh
+    - https://bugzilla.mindrot.org/show_bug.cgi?id=1613
+  - tmux
+    - default binding of ctrl-b is stupid
+  - gpg
+    - refuses to forget cached passphrases on sighup
 * Things that bug me about software I use (a relatively complete list)
 ** Debian Wheezy
    - broken permissions in nm-applet
@@ -5,6 +18,7 @@
    - need to teach network-manager it's OK to use device that was used for installation
      - sed -i s/managed=false/managed=true/ /etc/NetworkManager/NetworkManager.conf
      - improvement over squeeze at least
+     - (32) Not authorized to control networking.
    - adding an additional keyboard doesn't honor caps->ctrl mod
    - libnotify broken outside gnome
      - claimed to be fixed, but isn't
@@ -15,6 +29,7 @@
 ** nix
    - ships proprietary crap by default
      - to find non-flash firefox: nix-env -qaP firefox | grep -v plugins
+   - package searching is really stupid
 ** Emacs
    - lisp-2 is awful
    - no FFI (no browser integration)
@@ -24,45 +39,34 @@
    - find-file-at-point does really stupid things sometimes with tramp
 *** eshell
    - no tab completion for git branches (but just use magit)
-   - sudo commands cannot be interrupted
    - high-throughput output is slow
 *** erc
    - silently discards input in closed query buffers
 *** mu4e
     - doesn't honor .authinfo.gpg
     - silly bindings (M-RET to follow links??)
+    - threads are sorted by first message, not last message
     - every operation in overview updates message window if present
       - fixable with advice
-** offlineimap
-   - ugh
-     - ugh ugh ugh
-     - consider replacing with mbsync
-       https://gist.github.com/c6e213f0b7ccd712e136
+** mbsync
+   - no docs
+   - refuses to create maildir; must manually mkdir
+   - no secure password storage
+   - no way to say "trust this cert"
 ** conkeror
    - it isn't emacs
    - after six months of usage its history starts slowing down completion
-** xmonad
-   - with an extra display plugged in, libnotify bubbles show offscreen
 ** Virtualbox
    - OSS version doesn't play nicely with vagrant
    - designed by toolbags who think creating ~/Virtualbox VMs is OK
      - VBoxManage setproperty machinefolder $HOME/.vbox-vms
      - needs a manual `sudo modprobe vboxdrv` to work
-** ssh
-   - no ~/.ssh/config.d directory
-     https://bugzilla.mindrot.org/show_bug.cgi?id=1613
-** mpd
-   - completely refuses to function when the network is down; won't use lo interface
 ** fbpanel
-   - can't toggle visibility with a keystroke
-     - must resort to pointer relocation hacks (swarp), better than nothing
    - doesn't reposition properly when a new display is activated
 ** ghi
    - coloring doesn't work inside Emacs
    - listing breaks with TERM=dumb
    - doesn't provide an actual git repo to operate upon
-** gpg
-   - refuses to forget cached passphrases on sighup
 ** network-manager
    - CLI refuses to connect to new access points
    - stores known access points in gconf super-nested XML files
@@ -70,3 +74,17 @@
        - gross gross gross
        - also stupid
          - and dumb
+   - look into replacing with wpa_supplicant
+     http://www.cyber.com.au/~twb/snarf/wifi.txt
+** racket
+   - hash tables and vectors are quoted by default
+   - hash tables are not functions
+   - opaque structs are very annoying, absolutely inappropriate for HTTP reqs
+   - keywords are not general-purpose
+   - boxes are very low-level
+   - no general-purpose equality predicate
+     - but a lot better than CL/elisp
+   - no docstrings (!!!) docs seem very HTML-centric
+   - geiser
+     - autodoc lists every argument as _
+     - really easy to wedge it by launching a blocking server

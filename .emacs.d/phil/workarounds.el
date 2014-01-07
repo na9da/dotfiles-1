@@ -1,8 +1,14 @@
 (setq compilation-scroll-output t ; byte-compilation fails w/o this
       ido-enable-tramp-completion nil
       vc-follow-symlinks t
+      ediff-window-setup-function 'ediff-setup-windows-plain
       tags-revert-without-query t ; why would you ever not want this?
-      ruby-insert-encoding-magic-comment nil)
+      ruby-insert-encoding-magic-comment nil
+      ;; can't interrupt geiser repls without this
+      geiser-repl-read-only-prompt-p nil)
+
+(delete 'try-expand-dabbrev-from-kill hippie-expand-try-functions-list)
+(delete 'try-expand-line hippie-expand-try-functions-list)
 
 ;; plz not to refresh log buffer when I cherry-pick, mkay?
 (eval-after-load 'magit
@@ -15,8 +21,6 @@
            (magit-cherry-pick-item))))))
 
 ;; come on guys; autoloads are not rocket science
-(autoload 'marmalade-upload-buffer "marmalade" nil t)
-
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 (require 'parenface-plus)
@@ -30,11 +34,6 @@
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
 (setq-default ispell-program-name "aspell")
-
-;; doesn't have a way to store credentials safely yet
-(eval-after-load 'gh-auth
-  '(when (not (featurep 'chorts))
-     (load-file "~/.chorts/chorts.el.gpg")))
 
 (defun leathekd-suck-it (suckee)
   "Insert a comment of appropriate length about what can suck it."

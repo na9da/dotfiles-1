@@ -3,7 +3,5 @@
 (set-register ?i '(file . "~/.emacs.d/init.el"))
 (set-register ?r '(file . "~/.emacs.d/phil/registers.el"))
 (set-register ?k '(file . "~/.ssh/known_hosts"))
-(set-register ?h '(file . "~/documents/heroku/notes.org"))
 (set-register ?m '(file . "~/.xmonad/xmonad.hs"))
 (set-register ?p '(file . "~/.lein/profiles.clj"))
-(set-register ?l '(file . "~/src/lein/todo.org"))

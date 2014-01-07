@@ -1,5 +1,5 @@
 ;; Messages shown upon connecting to nrepl.
-(setq nrepl-words-of-inspiration
+(setq cider-words-of-inspiration
       '("I can show you the world. Shining, shimmering, splendid. Tell me, princess, now when did you last let your heart decide?"
         "I can open your eyes--take you wonder by wonder over, sideways and under on a magic carpet ride."
         "A whole new world--a new fantastic point of view. No one to tell us no or where to go, or say we're only dreaming."

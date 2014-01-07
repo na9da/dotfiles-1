@@ -19,7 +19,6 @@
   http://my.opera.com/karmazilla/blog/how-to-grab-the-certificate-from-a-website-and-import-it-with-java-keytool
 * projects
 ** git proxy for github issues
-** snapshots in package.el
 ** clj-stacktrace
    - merge with longbottom
    - selective filtering
@@ -29,14 +28,12 @@
    - drawbridge
    - live-tracing
    - debug repl
-** javert.el
-** move znc and camper van to another host
-** set up bitlbee on said host
+** lein.el
+** better-defaults
 ** surfer-rosa
 * mu4e todo
   - boost the gpg-agent cache expiry period?
-  - how to view a whole thread from search results?
-  - ensure indexer doesn't run until offlineimap is done
+  - run mbsync in the background
 * backups
 ** TS drive: december 2011
 ** chunky backup: music/documents december 2012
@@ -46,17 +43,10 @@
 ** seagate backup
    - music
    - src
-* init
-  - update-alternatives: warning: forcing reinstallation of alternative /usr/bin/ruby1.9.1 because link group ruby is broken
-  - toolbelt install
-  - automate https-everywhere install in conkeror
 * ssh agent reset
   export SSH_AUTH_SOCK=$(ls -t1 `find /tmp/ -uid $UID -path \*ssh\* -type s 2> /dev/null`|head -1)
 * font showcase
   http://hellohappy.org/beautiful-web-type/
-* keys
-  Scott Francis
-  0390C045 FF62 B2CD CDD6 6449 0818 2201 F77D 1F57 0390 C045
 * aeropress tips from Seattle Coffee Works
   200g water @ 205f
   19g coffee
@@ -64,3 +54,97 @@
   one stir
   10s press
   40s total
+* conkerer
+  - focus arbitrary DOM node: * * ;
+* custom-theme clear
+  (apply 'disable-theme custom-enabled-themes)
+* bitlbee/hipchat:
+  http://www.phase2technology.com/blog/using-hipchat-through-an-irc-client-with-bitlbee/
+
+  register $PASS
+  account add jabber 27879_293162@chat.hipchat.com '$PASS'
+  account hipchat set nick_source full_name
+  account hipchat on
+  chat add hipchat 27879_heroku@conf.hipchat.com #lounge
+  channel #lounge set nick 'Phil Hagelberg'
+
+  repeat for:
+  27879_linux
+  27879_api
+  27879_build__packaging
+  27879_foundation
+  27879_herokai_north
+  27879_runtime
+  27879_security
+* tunes to check out
+  - http://ubiktune.com/releases/ubi045-joshua-morse-waveform-3
+  - https://www.youtube.com/watch?v=hU54BaDJsKg&list=PL758041D2D82928C7
+  - http://binaerpilot.no/ (nordland)
+* seajure routine
+  - mention getting added to the github org
+  - set up cname for syme instance
+* prometheus
+  - model: Cadet NLW302T
+  - volts: 240/208, 60 Hz
+  - Watts: 3000/2250
+  - Amps: 12.5/10.8
+  - activating AIN
+    - echo cape-bone-iio > /sys/devices/bone_capemgr.8/slots # or capemgr.9?
+    - cat /sys/devices/ocp.2/helper.14/AIN1 # etc
+* Headless wifi/DHCP client using WPA2-PSK (or WPA-PSK):
+
+1. apt-get install wpasupplicant
+2. make /etc/network/interfaces look something like this::
+
+     auto lo
+     iface lo inet loopback
+
+     #auto eth0
+     iface eth0 inet dhcp
+
+     auto wlan0
+     iface wlan0 inet manual
+       wpa-roam /etc/wpa_supplicant.conf
+       wpa-roam-default-iface wlan0-default
+
+     iface wlan0-default inet dhcp
+
+3. make /etc/wpa_supplicant.conf look something like this::
+
+     network={
+       ssid="foo"
+       psk="UNPRINTABLE"
+     }
+
+4. as the PSK is clear text, be sure to::
+
+     chown root: /etc/wpa_supplicant.conf
+     chmod 600   /etc/wpa_supplicant.conf
+
+   You may also wish to use wpa_passphrase(8) to hash the SSID and PSK
+   together, making it harder (but not impossible) to convert it back
+   into plain text.
+
+See /usr/share/doc/wpasupplicant/README.Debian.gz for more info.
+
+To debug, try::
+
+    ip link set wlan0 up
+    wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant.conf
+    # wpa_supplicant will run in foreground.  Once it indicates that
+    # it's up, open a second shell and try to talk to the DHCP server
+    # over wlan0:
+    dhclient -v wlan0
+
+To add new ones at like a cafe, you have to do like "wpa_cli scan; sleep 2; wpa_cli scan_results"
+
+http://www.cyber.com.au/~twb/snarf/wifi.txt
+* CLI pull requests: hub pull-request -b avsm:master
+* Alan Kay's reading list
+  http://www.squeakland.org/resources/books/readingList.jsp
+* ergodox mods
+** cd ~/src/ergodox-firmware/src && make LAYOUT=default--layout && ../../teensy_loader_cli/teensy_loader_cli -w -mmcu=at90usb162 firmware.hex 
+** keys to remap
+   - volume up/down unrecognized, use shift+f9, still no dice
+     - xdotool key XF86AudioRaiseVolume
+     - xdotool key XF86AudioLowerVolume

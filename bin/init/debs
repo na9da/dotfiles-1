@@ -41,12 +41,13 @@ libxml2-dev
 libxslt1-dev
 lsof
 molly-guard
+mosh
 mpc
 mpd
 mpg321
 mumble
 ncurses-term
-netcat
+netcat-openbsd
 network-manager-gnome
 offlineimap
 openjdk-7-jdk
@@ -57,7 +58,7 @@ rlwrap
 rsync
 ruby1.9.1-full
 ruby1.9.1-dev
-rxvt-unicode
+rxvt-unicode-256color
 sudo
 s3cmd
 scrot

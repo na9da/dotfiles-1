@@ -4,28 +4,18 @@
 (autoload 'mu4e "mu4e" "" t)
 
 ;; incoming
-(setq mu4e-drafts-folder "/[Gmail].Drafts"
-      mu4e-sent-folder   "/[Gmail].Sent Mail"
-      mu4e-trash-folder  "/[Gmail].Trash"
-      ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
-      mu4e-sent-messages-behavior 'delete
-      ;; you can quickly switch to your Inbox -- press ``ji''
-      ;; then, when you want archive some messages, move them to
-      ;; the 'All Mail' folder by pressing ``ma''.
-      mu4e-maildir-shortcuts
-      '( ("/INBOX"               . ?i)
-         ("/emacs"       . ?e)
-         ("/clojure"     . ?c)
-         ("/leiningen"   . ?l)
-         ("/seajure"     . ?j)
-         ("/github"      . ?g)
-         ("/[Gmail].Sent Mail"   . ?s)
-         ("/[Gmail].All Mail"    . ?a))
+(setq mu4e-maildir-shortcuts '(("/INBOX"        . ?i)
+                               ("/sent"         . ?s)
+                               ("/drafts"       . ?d)
+                               ("/leiningen"    . ?l)
+                               ("/buying"       . ?b)
+                               ("/travel"       . ?t)
+                               ("/old-messages" . ?a))
       ;; allow for updating mail using 'U' in the main view:
-      mu4e-get-mail-command "offlineimap"
+      mu4e-get-mail-command "yes | mbsync -q -q -c <(gpg --batch -q -d ~/.chorts/mbsyncrc.gpg) hagelb"
+      mu4e-html2text-command "elinks -dump"
       mu4e-headers-leave-behavior 'apply
-      mu4e-show-images t
-      mu4e-maildir (expand-file-name "~/mail"))
+      mu4e-show-images t)
 
 ;; outgoing
 (setq message-send-mail-function 'smtpmail-send-it
@@ -36,6 +26,8 @@
       user-mail-address "phil@hagelb.org"
       user-full-name  "Phil Hagelberg"
       message-kill-buffer-on-exit t)
+
+(add-hook 'mu4e-compose-mode-hook 'mml-secure-sign)
 
 (add-hook 'mu4e-compose-mode-hook (lambda ()
                                     (require 'epa)

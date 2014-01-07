@@ -1,11 +1,6 @@
-#if [ -r /etc/profile.d/nix.sh ] ; then
-#    source /etc/profile.d/nix.sh
-#    unset NIX_REMOTE # wups
-#fi
-
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/:$PATH
 export PATH=$HOME/.gem/ruby/1.9.1/bin:/var/lib/gems/1.9.1/bin:$PATH
-export PATH=/usr/lib/postgresql/8.4/bin:$PATH
 export PATH=/usr/lib/postgresql/9.1/bin:$PATH
 
 export CDPATH=.:$HOME/src
@@ -20,3 +15,6 @@ export DEBFULLNAME="Phil Hagelberg"
 
 export PROFILE_LOADED=y # horrible horrible hack
 export GHI_NO_COLOR=y
+
+# TODO: don't do this over scp
+# which opam && eval `opam config -env`

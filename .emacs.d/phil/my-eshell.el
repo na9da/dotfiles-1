@@ -34,4 +34,7 @@
                  (eshell/export line)))
              (next-line)))))
 
+     (eval-after-load 'em-term
+       '(add-to-list 'eshell-visual-commands "ssh"))
+
      (defalias 'eshell/ee 'eshell/export-env)))

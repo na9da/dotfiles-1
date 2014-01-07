@@ -8,6 +8,8 @@
   '(diminish 'eldoc-mode))
 (eval-after-load 'diminish ; need to delay till after packages are all loaded
   '(diminish 'auto-fill-function))
+(eval-after-load 'page-break-lines
+  '(diminish 'page-break-lines-mode))
 
 ;; lose the stupid pipe chars on the split-screen bar
 (set-face-foreground 'vertical-border "white")
@@ -120,3 +122,12 @@
   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
 
 (add-hook 'ido-setup-hook 'jf-ido-define-keys)
+
+(if (<= (display-color-cells) 8)
+  (eval-after-load 'paren-face
+    '(set-face-foreground paren-face "magenta"))
+  (when (string= "fbterm" (getenv "TERM"))
+    (load "term/xterm")
+    (xterm-register-default-colors)))
+
+(setq whitespace-style '(face trailing lines-tail tabs))

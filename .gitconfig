@@ -9,10 +9,15 @@
 [push]
     default = tracking
 [diff "clojure"]
-    xfuncname = "^\\(.*"
+	xfuncname = (^\\(.*|\\s*\\(defn.*)
 [alias]
     shorten = "!sh -c 'curl -i http://git.io -F url=$1' -"
+	git = clone
+	clown = clone
 [heroku]
 	remote = heroku
 [github]
 	user = technomancy
+	oauth-token = 60a0cf15683202727207dc2facea50caf3790d60
+[core]
+	attributesfile = /home/phil/.gitattributes

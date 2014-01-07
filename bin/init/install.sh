@@ -24,18 +24,10 @@ rm -rf /home/$ME/Desktop /home/$ME/Documents /home/$ME/Music \
     /home/$ME/Pictures /home/$ME/Public \ /home/$ME/Templates \
     /home/$ME/Videos /home/$ME/Downloads
 
-# um... dude?
-update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 500
-update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.9.1 500
-# this causes issues on wheezy
-# update-alternatives --install /usr/bin/irb irb /usr/bin/irb1.9.1 500
-
 if [ -f /etc/mpd.conf ]; then
-  sed -i "s/var\/lib\/mpd\/music/home\/$ME\/music/" /etc/mpd.conf
-  sed -i "s/user\t\t\t\t\"mpd\"/user \"phil\"/" /etc/mpd.conf
-
-  mkdir -p /var/run/mpd && chown -R $ME /var/run/mpd
-  mkdir -p /var/lib/mpd && chown -R $ME /var/lib/mpd
+  mkdir /home/$ME/.mpd
+  chown $ME /home/$ME/.mpd
+  cp mpd.conf /etc
 fi
 
 if [ ! -x /usr/bin/heroku ]; then
