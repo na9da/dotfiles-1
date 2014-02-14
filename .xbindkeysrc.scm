@@ -20,6 +20,8 @@
 (xbindkey '(F12) "notify-send \"$(date)\"")
 (xbindkey '(mod1 F12) "notify-battery")
 (xbindkey '(shift F12) "notify-send \"$(uptime | cut -f 5 -d :)\"")
+(xbindkey '(mod1 shift F12) "killall dunst; dunst -nb \"#000000\"")
+
 
 ;;; network
 

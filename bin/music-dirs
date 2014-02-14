@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 path = "#{ENV['HOME']}/music/"
-unless File.exist? "#{path}/dirs"
+unless File.exist? "#{path}/.dirs"
   require "find"
   File.open("#{path}/dirs", "w") do |fp|
     Find.find(path) do |f|

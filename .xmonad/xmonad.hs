@@ -13,6 +13,7 @@ main = xmonad $ gnomeConfig
        , focusFollowsMouse = False
        -- launching this from xsession doesn't set env correctly
        , startupHook = spawn "killall xbindkeys; xbindkeys"
+       , terminal = "urxvt"
        }
        -- gnome's launcher is crappy compared to dmenu
        `additionalKeys` [ ((mod4Mask, xK_r), spawn "dmenu_run") ]
