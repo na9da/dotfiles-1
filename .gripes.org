@@ -29,8 +29,10 @@
 ** nix
    - ships proprietary crap by default
      - to find non-flash firefox: nix-env -qaP firefox | grep -v plugins
+     - guix probably fixes this
    - package searching is really stupid
 ** Emacs
+*** elisp
    - lisp-2 is awful
    - no FFI (no browser integration)
    - no immutability or referential transparency
@@ -46,6 +48,7 @@
     - doesn't honor .authinfo.gpg
     - silly bindings (M-RET to follow links??)
     - threads are sorted by first message, not last message
+      - https://github.com/djcb/mu/issues/164
     - every operation in overview updates message window if present
       - fixable with advice
 ** mbsync
@@ -56,11 +59,7 @@
 ** conkeror
    - it isn't emacs
    - after six months of usage its history starts slowing down completion
-** Virtualbox
-   - OSS version doesn't play nicely with vagrant
-   - designed by toolbags who think creating ~/Virtualbox VMs is OK
-     - VBoxManage setproperty machinefolder $HOME/.vbox-vms
-     - needs a manual `sudo modprobe vboxdrv` to work
+   - some race conditions around focus and page loads
 ** fbpanel
    - doesn't reposition properly when a new display is activated
 ** ghi
@@ -76,15 +75,68 @@
          - and dumb
    - look into replacing with wpa_supplicant
      http://www.cyber.com.au/~twb/snarf/wifi.txt
+** clojure
+   - Namespaces are not actually values or first-class referrable
+   - nil is everywhere and causes bugs that are difficult to find the source
+   - records/protocols cause subtle issues with reloading
+   - chunked sequences can lead to unpredictable laziness behaviour
+   - different mutable java objects can compare as equal
+   - fn objects don't have metadata
+   - AOT is transitive
+   - disregard for basic usability re: stack traces, etc
+   - Regexes are not callable like functions
+   - the reader can return mutable objects out of the box
+   - list? is a useless/misleading predicate
+   - contains? has a misleading name
 ** racket
+   - opaque structs are very annoying, absolutely inappropriate for HTTP reqs
    - hash tables and vectors are quoted by default
    - hash tables are not functions
-   - opaque structs are very annoying, absolutely inappropriate for HTTP reqs
-   - keywords are not general-purpose
-   - boxes are very low-level
-   - no general-purpose equality predicate
-     - but a lot better than CL/elisp
+     - rackjure!
+   - boxes are very low-level (no swap that accepts a change function)
+     - rackjure!
+   - no general-purpose equality predicate, but a lot better than CL/elisp
+     - rackjure!
    - no docstrings (!!!) docs seem very HTML-centric
    - geiser
      - autodoc lists every argument as _
      - really easy to wedge it by launching a blocking server
+** erlang
+*** core language
+    - syntax actually not so bad (for a non-homoiconic language)
+    - very little use of higher-order functions for an FP language
+    - no partial application or function composition makes me sad
+    - having two distinct string types is annoying
+      - especially when the "bad" type is more convenient
+    - no question marks or exclaimation points allowed in atoms/function names
+    - pattern matching is great, but having to match against a record and reconstruct an updated one is lame
+      - would be better to return update(MyRecord, some-field, UpdaterFn)
+        - where UpdaterFn takes the current value and returns and updated one
+        - expressing change as a function of the original value
+        - rather than imperatively "get the value", "transform the value", "set the value"
+    - how is there no automated tool to handle record field additions in code_change?
+*** tooling
+    - no way to "enter" a module from the shell
+      - I guess the root problem here is "it's not actually a repl"?
+    - ctrl-d is sacred; thou shalt not mess with EOF
+    - debian packaging: installing erlang-nox doesn't get you test packages
+      - results in rubbish errors when you try to run tests
+    - dialyzer: why do you have to specify what apps you depend upon when it's already laid out in *.app.src?
+      - still haven't gotten dialyzer working so far
+    - sometimes incorrect/misleading results from erlang:get_stacktrace
+    - ct output is hopelessly verbose; difficult to spot failures
+      - rebar ct has never shown any useful output, ever
+**** emacs support
+     - three different options, each broken in different ways
+     - packaging is a mess
+     - there's surely more but so far I'm only using the most basic functions
+**** rebar
+     - depending on something that's not a tag/sha is crazy
+       - more of a cultural problem than a technical one
+     - three different rebar.config files containing mostly-duplicate data
+       - it's just data! store the base version in one place and merge in the diffs
+     - no way to specify a minimum OTP version
+     - no way to just start a well-defined OTP application (just use bin/myapp?)
+     - skip_deps defaulting to false for tests is annoying
+     - ct task regularly emits no output at all
+     - ct task doesn't bother recompiling source even if it's changed
