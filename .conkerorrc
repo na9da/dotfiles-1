@@ -150,6 +150,16 @@ interactive("qrcode", "Open QR code of current URL.",
 
 define_key(content_buffer_normal_keymap, "Z", "qrcode");
 
+// key bindings
+
+define_key(content_buffer_normal_keymap, "C-i", "browser-focus-next-form-field");
+define_key(content_buffer_form_keymap, "C-i", "browser-focus-next-form-field");
+define_key(content_buffer_text_keymap, "C-i", "browser-focus-next-form-field");
+
+define_key(content_buffer_normal_keymap, "C-I", "browser-focus-previous-form-field");
+define_key(content_buffer_form_keymap, "C-I", "browser-focus-previous-form-field");
+define_key(content_buffer_text_keymap, "C-I", "browser-focus-previous-form-field");
+
 // cookies
 
 require("cookie.js"); // hopefully this would go in modules/cookie.js so this would not be needed
