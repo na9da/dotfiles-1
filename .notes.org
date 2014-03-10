@@ -142,9 +142,3 @@ http://www.cyber.com.au/~twb/snarf/wifi.txt
 * CLI pull requests: hub pull-request -b avsm:master
 * Alan Kay's reading list
   http://www.squeakland.org/resources/books/readingList.jsp
-* ergodox mods
-** cd ~/src/ergodox-firmware/src && make LAYOUT=default--layout && ../../teensy_loader_cli/teensy_loader_cli -w -mmcu=at90usb162 firmware.hex 
-** keys to remap
-   - volume up/down unrecognized, use shift+f9, still no dice
-     - xdotool key XF86AudioRaiseVolume
-     - xdotool key XF86AudioLowerVolume

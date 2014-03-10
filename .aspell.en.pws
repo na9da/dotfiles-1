@@ -1,4 +1,4 @@
-personal_ws-1.1 en 96 
+personal_ws-1.1 en 97 
 SHA
 Compojure
 parens
@@ -16,6 +16,7 @@ bcrypt
 Postgres
 javascript
 clj
+github
 GitHub
 Github
 wikipedia
@@ -48,8 +49,8 @@ caffeinated
 rdoc
 clojure
 microcontroller
-https
 Ergodox
+https
 résumé
 Radagast
 OCaml
@@ -63,11 +64,11 @@ Solr
 lucene
 Chas
 triaged
+Chiang
 prerelease
 multiplayer
 hackable
 freenode
-Freenode
 bytecode
 codebase
 Arduino

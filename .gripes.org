@@ -4,9 +4,8 @@
       - (probably actually a libnotify bug; dunst works fine)
   - dmenu
   - mpd
-    - completely refuses to function when the network is down; won't use lo interface
-  - ssh
-    - https://bugzilla.mindrot.org/show_bug.cgi?id=1613
+  - openssh
+    - no ~/.ssh/config.d dir: https://bugzilla.mindrot.org/show_bug.cgi?id=1613
   - tmux
     - default binding of ctrl-b is stupid
   - gpg
@@ -55,13 +54,11 @@
    - no docs
    - refuses to create maildir; must manually mkdir
    - no secure password storage
-   - no way to say "trust this cert"
+   - no cert pinning
 ** conkeror
    - it isn't emacs
    - after six months of usage its history starts slowing down completion
    - some race conditions around focus and page loads
-** fbpanel
-   - doesn't reposition properly when a new display is activated
 ** ghi
    - coloring doesn't work inside Emacs
    - listing breaks with TERM=dumb
@@ -75,29 +72,32 @@
          - and dumb
    - look into replacing with wpa_supplicant
      http://www.cyber.com.au/~twb/snarf/wifi.txt
+     http://ww.telent.net/2013/6/29/networkmanager_no_more
 ** clojure
    - Namespaces are not actually values or first-class referrable
    - nil is everywhere and causes bugs that are difficult to find the source
    - records/protocols cause subtle issues with reloading
    - chunked sequences can lead to unpredictable laziness behaviour
    - different mutable java objects can compare as equal
-   - fn objects don't have metadata
+   - fn objects don't have metadata (:arglists, etc) by default
    - AOT is transitive
    - disregard for basic usability re: stack traces, etc
    - Regexes are not callable like functions
-   - the reader can return mutable objects out of the box
+   - the reader can return mutable objects out of the box (java.util.Date is an abomination)
    - list? is a useless/misleading predicate
    - contains? has a misleading name
 ** racket
+   - no docstrings (!!!) docs seem very HTML-centric
+   - no way to consistently reflect on argument names
    - opaque structs are very annoying, absolutely inappropriate for HTTP reqs
    - hash tables and vectors are quoted by default
+     - fixed in rackjure
    - hash tables are not functions
      - rackjure!
    - boxes are very low-level (no swap that accepts a change function)
      - rackjure!
    - no general-purpose equality predicate, but a lot better than CL/elisp
      - rackjure!
-   - no docstrings (!!!) docs seem very HTML-centric
    - geiser
      - autodoc lists every argument as _
      - really easy to wedge it by launching a blocking server
@@ -105,7 +105,7 @@
 *** core language
     - syntax actually not so bad (for a non-homoiconic language)
     - very little use of higher-order functions for an FP language
-    - no partial application or function composition makes me sad
+    - no partial application or function composition -> sad panda
     - having two distinct string types is annoying
       - especially when the "bad" type is more convenient
     - no question marks or exclaimation points allowed in atoms/function names
@@ -113,16 +113,16 @@
       - would be better to return update(MyRecord, some-field, UpdaterFn)
         - where UpdaterFn takes the current value and returns and updated one
         - expressing change as a function of the original value
-        - rather than imperatively "get the value", "transform the value", "set the value"
+          - there's a lib for this? need to investigate
     - how is there no automated tool to handle record field additions in code_change?
 *** tooling
     - no way to "enter" a module from the shell
       - I guess the root problem here is "it's not actually a repl"?
     - ctrl-d is sacred; thou shalt not mess with EOF
-    - debian packaging: installing erlang-nox doesn't get you test packages
+    - debian packaging: installing erlang-nox omits test packages
       - results in rubbish errors when you try to run tests
     - dialyzer: why do you have to specify what apps you depend upon when it's already laid out in *.app.src?
-      - still haven't gotten dialyzer working so far
+      - still haven't gotten dialyzer working yet
     - sometimes incorrect/misleading results from erlang:get_stacktrace
     - ct output is hopelessly verbose; difficult to spot failures
       - rebar ct has never shown any useful output, ever
@@ -135,8 +135,8 @@
        - more of a cultural problem than a technical one
      - three different rebar.config files containing mostly-duplicate data
        - it's just data! store the base version in one place and merge in the diffs
+         - weird compilation errors depending on the order you use the config files in
      - no way to specify a minimum OTP version
-     - no way to just start a well-defined OTP application (just use bin/myapp?)
      - skip_deps defaulting to false for tests is annoying
      - ct task regularly emits no output at all
      - ct task doesn't bother recompiling source even if it's changed
