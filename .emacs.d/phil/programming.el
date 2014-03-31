@@ -61,6 +61,7 @@
                                            (insert "{}")
                                            (backward-char 1)))))
 
+
 ;;; clojure
 
 (add-to-list 'load-path "~/src/cider")
@@ -73,6 +74,7 @@
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
+
 ;;; elisp
 
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -84,6 +86,7 @@
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
 
+
 ;;; racket
 
 (add-hook 'scheme-mode-hook 'paredit-mode)
@@ -105,6 +108,7 @@
 (eval-after-load 'scheme-mode
  '(define-key scheme-mode-map (kbd "C-c C-d") 'chicken-doc))
 
+
 ;;; ocaml
 
 (add-to-list 'ido-ignore-files ".byte")
@@ -137,34 +141,73 @@
      (setq tuareg-find-phrase-beginning-and-regexp
            "\\<\\(and\\)\\>\\|\\<\\(class\\|e\\(?:nd\\|xception\\)\\|let\\|module\\|s\\(?:ig\\|truct\\)\\|type\\)\\>\\|^#[ 	]*[a-z][_a-z]*\\>\\|;;")))
 
+
 ;;; er lang
+
+(defun pnh-ct-results ()
+  (interactive)
+  (let* ((default-directory (locate-dominating-file default-directory "logs"))
+         (runs (directory-files "logs" t "ct_run\.c"))
+         (runs (reverse (sort runs 'string<))))
+    (browse-url-of-file (concat (first runs) "/index.html"))))
+
+;; therefore erlang.el version on marmalade is too old to be usable
+(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.13/emacs/")
+(autoload 'erlang-mode "erlang" "erlang" t)
 
 (add-to-list 'ido-ignore-files ".beam")
 
-(add-to-list 'load-path "/home/phil/src/erlmode/")
-(autoload 'erlang-mode "erlmode-start" nil t)
-
-(add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode)) ; srsly?
 (add-to-list 'auto-mode-alist '("^rebar.config$" . erlang-mode))
 
 (add-hook 'erlang-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 (add-hook 'erlang-mode-hook 'pnh-paredit-no-space)
 (add-hook 'erlang-mode-hook 'paredit-mode)
-(add-hook 'erlang-mode-hook (lambda ()
-                              (idle-highlight-mode -1)))
+(add-hook 'erlang-mode-hook (lambda () (idle-highlight-mode -1)))
 
-(eval-after-load 'erlmode
-  '(setq erlang-indent-level 4))
-
-(eval-after-load 'erlang-mode
+(eval-after-load 'erlang
   '(progn
+     (setq erlang-indent-level 4)
      (define-key erlang-mode-map "{" 'paredit-open-curly)
      (define-key erlang-mode-map "}" 'paredit-close-curly)
      (define-key erlang-mode-map "[" 'paredit-open-bracket)
      (define-key erlang-mode-map "]" 'paredit-close-bracket)
-     (define-key erlang-mode-map (kbd "C-M-h") 'backward-kill-word)))
+     (define-key erlang-mode-map (kbd "C-M-h") 'backward-kill-word)
+     (define-key erlang-mode-map (kbd "RET")
+       'reindent-then-newline-and-indent)))
 
-;; needs a lot of work
-;; (add-hook 'erlang-mode-hook 'edts-mode)
-;; (add-to-list 'load-path "/home/phil/src/edts")
-;; (autoload 'edts-shell "edts-start" "erlang" t)
+;; erlmode is on hold for now
+;; (add-to-list 'load-path "/home/phil/src/erlmode/")
+;; (autoload 'erlang-mode "erlmode-start" nil t)
+
+;; ... but edts needs a lot of work
+(add-to-list 'load-path (expand-file-name "~/src/edts/elisp/edts"))
+(autoload 'edts-mode "edts" "erlang development tool suite" t)
+(add-hook 'erlang-mode-hook 'edts-mode)
+
+(setq edts-root-directory (expand-file-name "~/src/edts"))
+
+;; monkeypatch around completion for now
+(eval-after-load 'edts-shell
+  '(defun edts-shell-maybe-toggle-completion (last-output)))
+
+;; requires my fork, plus manual installation of eproject+path-utils
+
+
+;;; forth
+
+(autoload 'forth-mode "../gforth/gforth.el" nil t) ; /usr/share/emacs/site-lisp
+(add-to-list 'auto-mode-alist '("\\.fs$" . forth-mode))
+
+;; for some reason idle-highlight and whitespace-mode screw up forth font-lock
+(add-hook 'forth-mode-hook (defun pnh-forth-hook ()
+                             (hl-line-mode 1)
+                             (pnh-paredit-no-space)
+                             (paredit-mode 1)
+                             (page-break-lines-mode 1)
+                             (my-kill-word-key)))
+
+;; (setq forth-mode-hook (cdr forth-mode-hook))
+
+(eval-after-load 'cc-mode
+  '(define-key c-mode-map (kbd "C-c C-k") 'compile))

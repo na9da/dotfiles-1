@@ -108,6 +108,21 @@
      (set-face-foreground 'magit-diff-add "green4")
      (set-face-foreground 'magit-diff-del "red3")))
 
+;; what's the deal, org? headers should be bold.
+(eval-after-load 'org
+  '(progn (set-face-attribute 'org-level-1 nil :weight 'bold)
+          (set-face-attribute 'org-level-2 nil :weight 'bold)
+          (set-face-attribute 'org-level-3 nil :weight 'bold)
+          (set-face-attribute 'org-level-4 nil :weight 'bold)
+          (font-lock-add-keywords
+           nil
+           '(("\(\+begin_src\)"
+              (0 (progn (compose-region (match-beginning 1) (match-end 1) ?¦)
+                        nil)))
+             ("\(\+end_src\)"
+              (0 (progn (compose-region (match-beginning 1) (match-end 1) ?¦)
+                        nil)))))))
+
 ;; Display ido results vertically, rather than horizontally
 (setq ido-decorations '("\n-> " "" "\n   " "\n   ..." "[" "]"
                         " [No match]" " [Matched]" " [Not readable]"

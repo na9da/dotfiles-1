@@ -18,4 +18,4 @@ main = xmonad $ gnomeConfig
        -- gnome's launcher is crappy compared to dmenu
        `additionalKeys` [ ((mod4Mask, xK_r), spawn "dmenu_run") ]
        -- let this fall through to xbindkeys
-       `removeKeysP` ["M-m"]
+       `removeKeysP` ["M-m", "M-Tab"]

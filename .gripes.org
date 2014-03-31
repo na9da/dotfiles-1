@@ -106,6 +106,7 @@
     - syntax actually not so bad (for a non-homoiconic language)
     - very little use of higher-order functions for an FP language
     - no partial application or function composition -> sad panda
+    - not having ocaml/elixir's |> operator is unfortunate
     - having two distinct string types is annoying
       - especially when the "bad" type is more convenient
     - no question marks or exclaimation points allowed in atoms/function names

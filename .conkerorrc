@@ -103,15 +103,6 @@ interactive("readability_arc90",
                 document.getElementsByTagName('head')[0].appendChild(_readability_print_css)
             });
 
-define_key(content_buffer_normal_keymap, "z", "readability_arc90");
-
-if ('@hyperstruct.net/mozlab/mozrepl;1' in Cc) {
-    var mozrepl = Cc['@hyperstruct.net/mozlab/mozrepl;1']
-        .getService(Ci.nsIMozRepl);
-    if (! mozrepl.isActive())
-        mozrepl.start(4242);
-}
-
 // add favicons
 require("favicon.js");
 add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);

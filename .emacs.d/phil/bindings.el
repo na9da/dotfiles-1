@@ -39,3 +39,9 @@
   '(progn
      (define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
      (define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp)))
+
+;; atreus bindings
+(global-set-key (kbd "C-x '") 'delete-other-windows)
+(global-set-key (kbd "C-x ,") 'split-window-below)
+(global-set-key (kbd "C-x .") 'split-window-right)
+(global-set-key (kbd "C-x l") 'delete-window)
