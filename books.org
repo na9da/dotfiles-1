@@ -1,9 +1,6 @@
 * Books for sale
   All books $10 unless otherwise noted. Shoot me an email; technomancy@gmail.com
 ** Programming
- - ANSI Common Lisp by Paul Graham (autographed) ($15)
- - Paradigms of Artificial Intelligence Programming by Peter Norvig
- - Enterprise Integration Patterns by Hohpe and Woolf (hardback)
  - Prolog Programming for Artificial Intelligence by Ivan Bratko
  - The Ruby Way (2nd edition) by Hal Fulton
  - Introduction to Object-Oriented Programming and Smalltalk by Pinson and Weiner
