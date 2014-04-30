@@ -1,0 +1,28 @@
+* Books for sale
+  All books $10 unless otherwise noted. Shoot me an email; technomancy@gmail.com
+* Programming
+** ANSI Common Lisp by Paul Graham (autographed)
+** Enterprise Integration Patterns by Hohpe and Woolf (hardback)
+** Prolog Programming for Artificial Intelligence by Ivan Bratko
+** The Ruby Way (2nd edition) by Hal Fulton
+** Introduction to Object-Oriented Programming and Smalltalk by Pinson and Weiner
+** Jabber Developer's Handbook by Moore and Wright ($5)
+** The Virtual Reality Primer by Casey Larijani ($5)
+* 20th Century Tech History
+** Where Wizards Stay Up Late by Katie Hafneer and Matthew Lyon (hardback)
+** Weaving the Web by Tim Berners-Lee (hardback)
+** Free as in Freedom by Sam Williams (hardback)
+** Dark Hero of the Information Age: in Search of Norbert Weiner by Conway & Seligman
+** The Cathedral and the Bazaar by Eric Raymond ($5)
+** Travels in Computerland by Ben Ross Schneider Jr. ($5)
+** The Lady Tasting Tea by David Salsburg ($5)
+* Misc
+** Secrets and Lies by Bruce Schneier
+** MAKE Electronics by Charles Platt
+** Hackers and Painters by Paul Graham (hardback)
+** I am a Strange Loop by Douglas Hofstadter
+** The Mind's I by Douglas Hofstadter and Daniel Dennett
+** The Blue Bottle Craft of Coffee by James Freeman, et al (hardback)
+** Code and other Laws of Cyberspace by Lawrence Lessig (hardback) ($5)
+** Mind Hacks by Stafford and Webb ($5)
+** Best Software Writing ed Joel Spolsky ($5)
