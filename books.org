@@ -1,6 +1,9 @@
 * Books for sale
   All books $10 unless otherwise noted, plus $5 for shipping within the US. Shoot me an email; technomancy@gmail.com
 ** Programming
+ - The Little Schemer by Daniel Friedman and Matthias Fellisen ($15)
+ - The Mythical Man Month by Frederick Brooks Jr. ($15)
+ - Principles of Compiler Design by Aho and Ullman (dragon book) (hardback)
  - The Ruby Way (2nd edition) by Hal Fulton
  - Introduction to Object-Oriented Programming and Smalltalk by Pinson and Weiner
  - Jabber Developer's Handbook by Moore and Wright ($5)
@@ -9,6 +12,9 @@
  - Weaving the Web by Tim Berners-Lee (hardback)
  - Free as in Freedom by Sam Williams (hardback)
  - Technomanifestos (hardback) by Adam Brate
+ - The Soul of a New Machine by Tracy Kidder (hardback)
+ - The Cuckoo's Egg by Clifford Stoll (hardback)
+ - Microserfs by Douglas Coupland (hardback)
  - Dark Hero of the Information Age: in Search of Norbert Weiner by Conway & Seligman
  - The Cathedral and the Bazaar by Eric Raymond ($5)
  - Travels in Computerland by Ben Ross Schneider Jr. ($5)
@@ -18,6 +24,7 @@
  - MAKE Electronics by Charles Platt
  - Robot Builder's Bonanza 3rd Edition by McComb and Predko
  - Presentation Zen by Garr Reynolds
+ - Quantum Theory: a very Short Introduction by John Polkinghorne ($5)
  - Pragmatic Thinking and Learning by Andy Hunt
  - Don't Make Me Think 2nd Edition by Steve Krug
  - Hackers and Painters by Paul Graham (hardback)
