@@ -54,8 +54,6 @@
   one stir
   10s press
   40s total
-* conkerer
-  - focus arbitrary DOM node: * * ;
 * custom-theme clear
   (apply 'disable-theme custom-enabled-themes)
 * bitlbee/hipchat:

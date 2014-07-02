@@ -45,9 +45,6 @@
    - silently discards input in closed query buffers
 *** mu4e
     - doesn't honor .authinfo.gpg
-    - silly bindings (M-RET to follow links??)
-    - threads are sorted by first message, not last message
-      - https://github.com/djcb/mu/issues/164
     - every operation in overview updates message window if present
       - fixable with advice
 ** mbsync
@@ -55,6 +52,10 @@
    - refuses to create maildir; must manually mkdir
    - no secure password storage
    - no cert pinning
+** keysnail
+   - haven't figured out how to fully-dotfileize it yet
+   - hinting isn't link-text based
+     - can't look before you leap
 ** conkeror
    - it isn't emacs
    - after six months of usage its history starts slowing down completion

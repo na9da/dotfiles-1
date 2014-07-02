@@ -13,9 +13,10 @@ setxkbmap -option ctrl:nocaps
 xrdb ~/.Xdefaults
 unclutter -idle 1 &
 dunst -nb "#000000" &
+xcompmgr -c -f -D 1 &
 
 # progs
-conkeror &
+firefox &
 
 # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=643028
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
@@ -25,7 +26,5 @@ gnome-settings-daemon &
 gnome-power-manager &
 gnome-screensaver & # for the lock-screen
 nautilus --no-default-window & # handles mounting of volumes
-
-pidgin & # until I get bitlbee fixed with hosted.im
 
 exec xmonad
