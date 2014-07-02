@@ -28,9 +28,11 @@ imagemagick
 laptop-mode-tools
 libavahi-compat-libdnssd-dev
 libavahi-compat-libdnssd1
+libbz2-dev
 libdbus-ruby
 libevent-dev
 libfaad2
+libgcrypt11-dev
 libghc6-xmonad-contrib-dev
 libgmime-2.6-dev
 libnotify-bin
@@ -89,6 +91,8 @@ uuid
 vidalia
 vlc
 vorbis-tools
+wicd
+wicd-cli
 wireless-tools
 wmctrl
 x11-xserver-utils

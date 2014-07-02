@@ -22,7 +22,6 @@
 (xbindkey '(shift F12) "notify-send \"$(uptime | cut -f 5 -d :)\"")
 (xbindkey '(mod1 shift F12) "killall dunst; dunst -nb \"#000000\"")
 
-
 ;;; network
 
 (xbindkey '(mod4 mod1 n) "ery-net")
@@ -38,6 +37,6 @@
 (xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak; ctrl-fix")
 (xbindkey '(mod4 s) "scrot")
 (xbindkey '(mod4 shift s) "scrot -s")
-(xbindkey '(mod4 f) "toggle-fbpanel")
+(xbindkey '(mod4 d) "dmenu_run")
 
 (xbindkey '(mod4 m) "emacs")

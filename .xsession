@@ -9,9 +9,6 @@ xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 8 2
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 8 1
 setxkbmap -option ctrl:nocaps
 
-xmodmap -e "keycode 127 = XF86AudioLowerVolume"
-xmodmap -e "keycode 78 = XF86AudioRaiseVolume"
-
 # utilities
 xrdb ~/.Xdefaults
 unclutter -idle 1 &
@@ -24,8 +21,6 @@ conkeror &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 # gnome: the good parts
-fbpanel &
-nm-applet &
 gnome-settings-daemon &
 gnome-power-manager &
 gnome-screensaver & # for the lock-screen
