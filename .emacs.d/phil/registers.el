@@ -5,3 +5,5 @@
 (set-register ?k '(file . "~/.ssh/known_hosts"))
 (set-register ?m '(file . "~/.xmonad/xmonad.hs"))
 (set-register ?p '(file . "~/.lein/profiles.clj"))
+(set-register ?k '(file . "~/.keysnail.js"))
+(set-register ?d '(file . "~/.dotfiles/dwm/config.h"))

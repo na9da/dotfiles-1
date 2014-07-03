@@ -85,6 +85,7 @@
 (defun tables () (interactive) (insert "（╯°□°）╯︵ ┻━┻"))
 (defun mu () (interactive) (insert "無"))
 (defun rectification () (interactive) (insert "正名"))
+(defun caruso () (interactive) (insert "( •_•) ( -_-)~⌐■-■ (⌐■_■)>"))
 
 (when (and window-system (>= emacs-major-version 23))
   (let ((fontset (face-attribute 'default :fontset))

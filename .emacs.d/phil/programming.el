@@ -152,7 +152,7 @@
     (browse-url-of-file (concat (first runs) "/index.html"))))
 
 ;; therefore erlang.el version on marmalade is too old to be usable
-(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.13/emacs/")
+(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.14/emacs/")
 (autoload 'erlang-mode "erlang" "erlang" t)
 
 (add-to-list 'ido-ignore-files ".beam")
@@ -181,17 +181,24 @@
 ;; (autoload 'erlang-mode "erlmode-start" nil t)
 
 ;; ... but edts needs a lot of work
-(add-to-list 'load-path (expand-file-name "~/src/edts/elisp/edts"))
-(autoload 'edts-mode "edts" "erlang development tool suite" t)
-(add-hook 'erlang-mode-hook 'edts-mode)
+;; (add-to-list 'load-path (expand-file-name "~/src/edts/elisp/edts"))
+;; (autoload 'edts-mode "edts" "erlang development tool suite" t)
+;; (add-hook 'erlang-mode-hook 'edts-mode)
 
-(setq edts-root-directory (expand-file-name "~/src/edts"))
+;; (setq edts-root-directory (expand-file-name "~/src/edts"))
 
-;; monkeypatch around completion for now
-(eval-after-load 'edts-shell
-  '(defun edts-shell-maybe-toggle-completion (last-output)))
-
+;; ;; monkeypatch around completion for now
+;; (eval-after-load 'edts-shell
+;;   '(defun edts-shell-maybe-toggle-completion (last-output)))
 ;; requires my fork, plus manual installation of eproject+path-utils
+
+;; heck let's try distel, just for completeness sake:
+
+(add-to-list 'load-path "~/src/distel/elisp")
+(eval-after-load 'erlang
+  '(progn (require 'distel)
+          (distel-setup)))
+
 
 
 ;;; forth
@@ -205,7 +212,8 @@
                              (pnh-paredit-no-space)
                              (paredit-mode 1)
                              (page-break-lines-mode 1)
-                             (my-kill-word-key)))
+                             (my-kill-word-key)
+                             (define-key forth-mode-map (kbd "C-c C-k") 'compile)))
 
 ;; (setq forth-mode-hook (cdr forth-mode-hook))
 

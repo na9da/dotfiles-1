@@ -34,6 +34,9 @@
                   (shell-command (format "rake post POST=%s"
                                          (car (split-string (buffer-name)
                                                             "\\."))))))
+
+(global-set-key (kbd "C-c w") 'winner-undo)
+
 (eval-after-load 'paredit
   ;; need a binding that works in the terminal
   '(progn

@@ -25,6 +25,7 @@
       smtpmail-smtp-service 587
       user-mail-address "phil@hagelb.org"
       user-full-name  "Phil Hagelberg"
+      mu4e-compose-signature-auto-include nil
       message-kill-buffer-on-exit t)
 
 (add-hook 'mu4e-compose-mode-hook 'mml-secure-sign)
@@ -33,14 +34,3 @@
                                     (require 'epa)
                                     (when (not (featurep 'chorts))
                                       (load-file "~/.chorts/chorts.el.gpg"))))
-
-(eval-after-load 'mu4e-headers
-  '(defun mu4e-headers-mark-and-next (mark)
-    "Set mark MARK on the message at point or on all messages in the
-region if there is a region, then move to the next message."
-    (interactive)
-    (mu4e-mark-set mark)
-    (forward-line)
-    ;; ugh; no!
-    ;; (mu4e-headers-next)
-    ))

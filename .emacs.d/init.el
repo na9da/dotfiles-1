@@ -4,8 +4,7 @@
 
 (require 'cl)
 
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "conkeror"
+(setq browse-url-browser-function 'browse-url-default-browser
       custom-file (expand-file-name "~/.emacs.d/custom.el")
       ispell-extra-args '("--keyboard=dvorak")
       ido-use-virtual-buffers t
@@ -16,6 +15,7 @@
       twittering-username "technomancy"
       epa-armor t
       visible-bell t
+      tls-checktrust 'ask
       inhibit-startup-message t)
 
 (when window-system
@@ -28,12 +28,8 @@
 (when (not (require 'package nil t))
   (require 'package "package-23.el"))
 
-(package-initialize)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
-
-(when (null package-archive-contents)
-  (package-refresh-contents))
 
 (defvar my-packages '(better-defaults clojure-mode paredit
                                       idle-highlight-mode ;; ido-ubiquitous
@@ -42,6 +38,7 @@
                                       markdown-mode yaml-mode page-break-lines
                                       scpaste diminish smex))
 
+(package-initialize)
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
@@ -62,6 +59,8 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (column-number-mode t)
+
+(winner-mode)
 
 (when (file-exists-p "~/src/floobits/floobits.el")
   (autoload 'floobits-join-workspace "~/src/floobits/floobits.el" nil t))
