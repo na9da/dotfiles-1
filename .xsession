@@ -28,4 +28,4 @@ gnome-power-manager &
 gnome-screensaver & # for the lock-screen
 nautilus --no-default-window & # handles mounting of volumes
 
-exec xmonad
+exec dwm
