@@ -25,6 +25,7 @@ gnutls-bin
 gsfonts-x11
 htop
 imagemagick
+isync
 laptop-mode-tools
 libavahi-compat-libdnssd-dev
 libavahi-compat-libdnssd1
@@ -40,7 +41,6 @@ libxapian-dev
 libxml2-dev
 libxslt1-dev
 lsof
-mbsync
 molly-guard
 mosh
 mpc
