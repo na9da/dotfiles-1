@@ -14,6 +14,7 @@ xrdb ~/.Xdefaults
 unclutter -idle 1 &
 dunst -nb "#000000" &
 xcompmgr -c -f -D 1 &
+xbindkeys &
 
 # progs
 firefox &

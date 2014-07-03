@@ -32,11 +32,11 @@
 
 ;;; utilities
 
-(xbindkey '(mod4 d) "gnome-display-properties")
 (xbindkey '(mod4 F11) "setxkbmap -layout us; ctrl-fix")
 (xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak; ctrl-fix")
 (xbindkey '(mod4 s) "scrot")
 (xbindkey '(mod4 shift s) "scrot -s")
-(xbindkey '(mod4 d) "dmenu_run")
+(xbindkey '(mod4 shift d) "dmenu_run")
 
-(xbindkey '(mod4 m) "emacs")
+(xbindkey '(mod4 c) "chromium")
+(xbindkey '(mod4 e) "emacs")
