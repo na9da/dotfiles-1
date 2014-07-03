@@ -25,11 +25,6 @@
        - actual fix
          - file /usr/share/dbus-1/services/org.freedesktop.Notifications.service
          - Exec=/usr/lib/notification-daemon/notification-daemon
-** nix
-   - ships proprietary crap by default
-     - to find non-flash firefox: nix-env -qaP firefox | grep -v plugins
-     - guix probably fixes this
-   - package searching is really stupid
 ** Emacs
 *** elisp
    - lisp-2 is awful
@@ -56,24 +51,6 @@
    - haven't figured out how to fully-dotfileize it yet
    - hinting isn't link-text based
      - can't look before you leap
-** conkeror
-   - it isn't emacs
-   - after six months of usage its history starts slowing down completion
-   - some race conditions around focus and page loads
-** ghi
-   - coloring doesn't work inside Emacs
-   - listing breaks with TERM=dumb
-   - doesn't provide an actual git repo to operate upon
-** network-manager
-   - CLI refuses to connect to new access points
-   - stores known access points in gconf super-nested XML files
-     - cross-references credentials using nonsense made-up gconf numeric ID
-       - gross gross gross
-       - also stupid
-         - and dumb
-   - look into replacing with wpa_supplicant
-     http://www.cyber.com.au/~twb/snarf/wifi.txt
-     http://ww.telent.net/2013/6/29/networkmanager_no_more
 ** clojure
    - Namespaces are not actually values or first-class referrable
    - nil is everywhere and causes bugs that are difficult to find the source

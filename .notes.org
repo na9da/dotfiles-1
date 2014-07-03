@@ -1,15 +1,9 @@
 * json pretty-printing: pipe to python -m json.tool
-* network manager CLI: nmcli con up id "Auto technomancy"
 * redo git author
   git-filter-branch --env-filter "export GIT_AUTHOR_NAME='New name'; export GIT_AUTHOR_EMAIL='New email'" HEAD
-* eshell: cd =foo # matches foo as regex from history
 * raw lisp mode
 ** kill-backward-up-list
 ** move-past-close-and-reindent
-* nix dependency:tree equivalent
-  nix-store -qR --tree /nix/store/[...]
-* install from nixpkgs checkout
-  nix-env -f . -iA leiningen
 * developing against postgres according to pvh:
   Developing software against a daemonized Postgres is bad practice. Do this instead: 
   $ initdb pg; createdb -D pg db; postgres -D pg -p 5555
@@ -17,20 +11,6 @@
   problem: need to recreate /var/run/postgres every time; sucks =\
 * Fixing OpenJDK 7 cacerts annoyance
   http://my.opera.com/karmazilla/blog/how-to-grab-the-certificate-from-a-website-and-import-it-with-java-keytool
-* projects
-** git proxy for github issues
-** clj-stacktrace
-   - merge with longbottom
-   - selective filtering
-** clojure-mode
-   - selective metadata hiding
-** nrepl.el
-   - drawbridge
-   - live-tracing
-   - debug repl
-** lein.el
-** better-defaults
-** surfer-rosa
 * mu4e todo
   - boost the gpg-agent cache expiry period?
   - run mbsync in the background
@@ -74,6 +54,9 @@
   27879_herokai_north
   27879_runtime
   27879_security
+
+  or just
+  channel #27879_remote set nick "Phil Hagelberg"
 * tunes to check out
   - http://ubiktune.com/releases/ubi045-joshua-morse-waveform-3
   - https://www.youtube.com/watch?v=hU54BaDJsKg&list=PL758041D2D82928C7
@@ -89,54 +72,15 @@
   - activating AIN
     - echo cape-bone-iio > /sys/devices/bone_capemgr.8/slots # or capemgr.9?
     - cat /sys/devices/ocp.2/helper.14/AIN1 # etc
-* Headless wifi/DHCP client using WPA2-PSK (or WPA-PSK):
-
-1. apt-get install wpasupplicant
-2. make /etc/network/interfaces look something like this::
-
-     auto lo
-     iface lo inet loopback
-
-     #auto eth0
-     iface eth0 inet dhcp
-
-     auto wlan0
-     iface wlan0 inet manual
-       wpa-roam /etc/wpa_supplicant.conf
-       wpa-roam-default-iface wlan0-default
-
-     iface wlan0-default inet dhcp
-
-3. make /etc/wpa_supplicant.conf look something like this::
-
-     network={
-       ssid="foo"
-       psk="UNPRINTABLE"
-     }
-
-4. as the PSK is clear text, be sure to::
-
-     chown root: /etc/wpa_supplicant.conf
-     chmod 600   /etc/wpa_supplicant.conf
-
-   You may also wish to use wpa_passphrase(8) to hash the SSID and PSK
-   together, making it harder (but not impossible) to convert it back
-   into plain text.
-
-See /usr/share/doc/wpasupplicant/README.Debian.gz for more info.
-
-To debug, try::
-
-    ip link set wlan0 up
-    wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant.conf
-    # wpa_supplicant will run in foreground.  Once it indicates that
-    # it's up, open a second shell and try to talk to the DHCP server
-    # over wlan0:
-    dhclient -v wlan0
-
-To add new ones at like a cafe, you have to do like "wpa_cli scan; sleep 2; wpa_cli scan_results"
-
-http://www.cyber.com.au/~twb/snarf/wifi.txt
 * CLI pull requests: hub pull-request -b avsm:master
 * Alan Kay's reading list
   http://www.squeakland.org/resources/books/readingList.jsp
+* channel ops in freenode, banning
+  /mode #clojure +b *!~ircap@90.174.0.195
+* compression artifact stack traces
+  public void displayText(BufferedImage image, String text, Font font, int x, int y){
+   Graphics2d g = image.createGraphics();
+   g.setFont(font);
+   g.drawString(text, x, y);
+   g.dispose();
+ }

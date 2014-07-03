@@ -15,15 +15,10 @@ fi
 for f in $(ls -a ~/.dotfiles) ; do
     if [ ! -r "$HOME/$f" ] &&
         [ $f != "." ] && [ $f != ".." ] && [ $f != "README.md" ] &&
-        [ "$f" != ".git" ] && [ $f != ".gitignore" ] ; then
+        [ "$f" != ".git" ] && [ $f != ".gitignore" ] && [ $f != "dwm" ]; then
         ln -s "$HOME/.dotfiles/$f" "$HOME/$f"
     fi
 done
-
-mkdir -p $HOME/.config/fbpanel
-if [ ! -r $HOME/.config/fbpanel/default ]; then
-    ln -s $HOME/.dotfiles/.fbpanel $HOME/.config/fbpanel/default
-fi
 
 mkdir -p $HOME/.ssh
 cat $HOME/.sshconfig.d/*.conf > $HOME/.ssh/config
