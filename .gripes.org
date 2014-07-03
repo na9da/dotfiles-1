@@ -51,6 +51,12 @@
    - haven't figured out how to fully-dotfileize it yet
    - hinting isn't link-text based
      - can't look before you leap
+** firefox
+*** remarkably resistant to automation
+    - profile directory can't be given a reasonable name
+    - no way to script extension installation
+*** moving ~/.mozilla out of the way and back again deletes cookies/history
+*** no way to add sane changes via an init file without further extensions
 ** clojure
    - Namespaces are not actually values or first-class referrable
    - nil is everywhere and causes bugs that are difficult to find the source
