@@ -38,5 +38,8 @@
 (xbindkey '(mod4 shift s) "scrot -s")
 (xbindkey '(mod4 shift d) "dmenu_run")
 
+(xbindkey '(mod1 shift F12) "internal-kbd disable")
+(xbindkey '(mod4 shift F12) "internal-kbd enable")
+
 (xbindkey '(mod4 c) "chromium")
 (xbindkey '(mod4 e) "emacs")
