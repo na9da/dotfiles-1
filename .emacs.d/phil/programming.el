@@ -86,6 +86,17 @@
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
 
+(define-key emacs-lisp-mode-map (kbd "C-c e")
+  (defun eval-and-replace ()
+    "Replace the preceding sexp with its value."
+    (interactive)
+    (backward-kill-sexp)
+    (condition-case nil
+        (prin1 (eval (read (current-kill 0)))
+               (current-buffer))
+      (error (message "Invalid expression")
+             (insert (current-kill 0))))))
+
 
 ;;; racket
 
@@ -152,7 +163,7 @@
     (browse-url-of-file (concat (first runs) "/index.html"))))
 
 ;; therefore erlang.el version on marmalade is too old to be usable
-(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.14/emacs/")
+(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.15/emacs/")
 (autoload 'erlang-mode "erlang" "erlang" t)
 
 (add-to-list 'ido-ignore-files ".beam")

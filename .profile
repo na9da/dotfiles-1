@@ -13,7 +13,3 @@ export DEBEMAIL="technomancy@gmail.com"
 export DEBFULLNAME="Phil Hagelberg"
 
 export PROFILE_LOADED=y # horrible horrible hack
-export GHI_NO_COLOR=y
-
-# TODO: don't do this over scp
-# which opam && eval `opam config -env`

@@ -1,6 +1,8 @@
 (eval-after-load 'esh-opt
   '(progn
      (setq eshell-cmpl-cycle-completions nil)
+     (add-hook 'eshell-mode-hook (defun pnh-eshell-term-dumb ()
+                                   (eshell/export "TERM" "dumb")))
 
      (when (not (functionp 'eshell/rgrep))
        (defun eshell/rgrep (&rest args)

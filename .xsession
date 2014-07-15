@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mpg321 ~/bin/init/tardis.mp3 &
+mpg321 -n 50 ~/bin/init/tardis.mp3 &
 source ~/.profile
 
 # key board
@@ -15,6 +15,7 @@ unclutter -idle 1 &
 dunst -nb "#000000" &
 xcompmgr -c -f -D 1 &
 xbindkeys &
+ssh-add &
 
 # progs
 firefox &
@@ -26,6 +27,5 @@ firefox &
 gnome-settings-daemon &
 gnome-power-manager &
 gnome-screensaver & # for the lock-screen
-nautilus --no-default-window & # handles mounting of volumes
 
 exec dwm

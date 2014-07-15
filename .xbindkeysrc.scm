@@ -25,10 +25,6 @@
 ;;; network
 
 (xbindkey '(mod4 mod1 n) "ery-net")
-(xbindkey '(mod4 shift N)
-          "notify-send wifi \"$(nmcli -f SSID dev wifi | grep -v SSID | uniq)\"")
-(xbindkey '(mod4 Control n)
-          "notify-send wifi $(nmcli -f STATE nm | tail -n 1)")
 
 ;;; utilities
 
@@ -41,5 +37,8 @@
 (xbindkey '(mod1 shift F12) "internal-kbd disable")
 (xbindkey '(mod4 shift F12) "internal-kbd enable")
 
+;;; applications
+
 (xbindkey '(mod4 c) "chromium")
 (xbindkey '(mod4 e) "emacs")
+(xbindkey '(mod4 n) "nautilus --no-desktop")

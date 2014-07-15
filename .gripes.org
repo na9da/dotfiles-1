@@ -2,6 +2,7 @@
   - xmonad
     - with an extra display plugged in, libnotify bubbles show offscreen
       - (probably actually a libnotify bug; dunst works fine)
+  - dwm
   - dmenu
   - mpd
   - openssh
@@ -47,6 +48,8 @@
    - refuses to create maildir; must manually mkdir
    - no secure password storage
    - no cert pinning
+** wicd
+   - "automatically connect to this network" does nothing
 ** keysnail
    - haven't figured out how to fully-dotfileize it yet
    - hinting isn't link-text based

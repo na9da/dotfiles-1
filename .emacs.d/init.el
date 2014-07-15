@@ -16,7 +16,8 @@
       epa-armor t
       visible-bell t
       tls-checktrust 'ask
-      inhibit-startup-message t)
+      inhibit-startup-message t
+      uniquify-buffer-name-style 'post-forward)
 
 (when window-system
   (setq scroll-conservatively 1))

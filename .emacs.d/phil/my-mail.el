@@ -15,7 +15,8 @@
       mu4e-get-mail-command "yes | mbsync -q -q -c <(gpg --batch -q -d ~/.chorts/mbsyncrc.gpg) hagelb"
       mu4e-html2text-command "elinks -dump"
       mu4e-headers-leave-behavior 'apply
-      mu4e-show-images t)
+      mu4e-show-images t
+      mu4e-view-show-addresses t)
 
 ;; outgoing
 (setq message-send-mail-function 'smtpmail-send-it
