@@ -2,6 +2,7 @@
   All books $10 unless otherwise noted, plus $5 for shipping within the US. Shoot me an email; technomancy@gmail.com
 ** Programming
  - The Little Schemer by Daniel Friedman and Matthias Fellisen ($15)
+ - The Seasoned Schemer by Daniel Friedman and Matthias Fellisen ($15)
  - The Mythical Man Month by Frederick Brooks Jr. ($15)
  - The Ruby Way (2nd edition) by Hal Fulton
  - Jabber Developer's Handbook by Moore and Wright ($5)
@@ -21,7 +22,6 @@
  - Robot Builder's Bonanza 3rd Edition by McComb and Predko
  - Presentation Zen by Garr Reynolds
  - Quantum Theory: a very Short Introduction by John Polkinghorne ($5)
- - Pragmatic Thinking and Learning by Andy Hunt
  - Don't Make Me Think 2nd Edition by Steve Krug
  - Hackers and Painters by Paul Graham (hardback)
  - I am a Strange Loop by Douglas Hofstadter
@@ -30,3 +30,36 @@
  - Code and other Laws of Cyberspace by Lawrence Lessig (hardback) ($5)
  - Mind Hacks by Stafford and Webb ($5)
  - Best Software Writing ed Joel Spolsky ($5)
+** Science fiction novels
+ - True Names by Vernor Vinge ($5)
+ - A Fire upon the Deep by Vernor Vinge ($5)
+ - A Deepness in the Sky by Vernor Vinge ($5)
+ - Neuromancer by William Gibson ($5)
+ - Count Zero by William Gibson ($5)
+ - Mona Lisa Overdrive by William Gibson ($5)
+ - Pattern Recognition by William Gibson (hardback)
+ - Spook Country by William Gibson (hardback)
+ - Zero History by William Gibson (hardback)
+ - A Once Crowded Sky by Tom King (hardback)
+ - Edison's Conquest of Mars by Garrett Serviss ($5)
+ - The Cyberiad by Stanislaw Lem ($5)
+ - The Man in the High Castle by Philip K Dick ($5)
+ - Flow my Tears, the Policeman Said by Philip K Dick ($5)
+ - Humpty Dumpty in Oakland by Philip K Dick ($5)
+ - The First Men on the Moon by Jules Verne ($5)
+ - The Collector's Book of Science Fiction by H.G. Wells (hardback)
+ - Ilium by Dan Simmons (hardback)
+** Comics / Graphic Novels
+ - Hark! A Vagrant by Kate Beaton (hardback)
+ - Wondermark: Beards of our Forefathers by David Malki! (hardback)
+ - Wondermark: Clever Tricks to Stave off Death by David Malki! (hardback)
+ - Wondermark: Dapper Caps and Pedal Copters by David Malki! (hardback)
+ - Achewood: Worst song, played on Ugliest Guitar by Chris Onstad (hardback)
+ - Achewood: A Home for Sad People by Chris Onstad (hardback)
+ - 300 by Frank Miller (hardback)
+ - 5 Very Good Reasons to Punch a Dolphin in the Mouth by the Oatmeal ($5)
+ - Stardust by Neil Gaiman and Charles Voss
+ - Creature Tech by Doug TenNapel
+ - The League of Extraordinary Gentlemen by Alan Moore
+ - V for Vendetta by Alan Moore
+ - DC Universe Stories of Alan Moore ($5)
