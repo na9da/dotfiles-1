@@ -28,4 +28,4 @@ gnome-settings-daemon &
 gnome-power-manager &
 gnome-screensaver & # for the lock-screen
 
-exec dwm
+exec xmonad

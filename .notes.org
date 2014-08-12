@@ -84,3 +84,5 @@
    g.drawString(text, x, y);
    g.dispose();
  }
+* virtualbox is terrible
+  - VBoxManage setproperty machinefolder $HOME/.vbox-vms

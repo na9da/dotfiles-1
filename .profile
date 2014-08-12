@@ -1,6 +1,8 @@
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 export PATH=$HOME/.gem/ruby/1.9.1/bin:/var/lib/gems/1.9.1/bin:$PATH
 export PATH=/usr/lib/postgresql/9.1/bin:$PATH
+# TODO: looks like this is properly packaged, but only for jessie+?
+export PATH=$PATH:$HOME/src/arduino/hardware/tools/arm-none-eabi/bin/
 
 export CDPATH=.:$HOME/src
 
