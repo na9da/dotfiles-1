@@ -163,7 +163,11 @@
     (browse-url-of-file (concat (first runs) "/index.html"))))
 
 ;; therefore erlang.el version on marmalade is too old to be usable
-(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.15/emacs/")
+(let ((tools (file-expand-wildcards "/usr/lib/erlang/lib/tools-*")))
+  ;; oh yeah, and the path for this isn't even static; super gross.
+  (when (first tools)
+    (add-to-list 'load-path (concat (first tools) "/emacs"))))
+
 (autoload 'erlang-mode "erlang" "erlang" t)
 
 (add-to-list 'ido-ignore-files ".beam")
