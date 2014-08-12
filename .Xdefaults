@@ -2,8 +2,8 @@ emacs.font: Inconsolata-13
 Rxvt*scrollBar: False
 urxvt.font: xft:inconsolata:pixelsize=17,xft:Anonymous Pro for Powerline:pixelsize=17
 urxvt*letterSpace:-1.0
-URxvt.perl-lib: /home/phil/src/urxvt-perls
-URxvt.perl-ext-common: url-select,keyboard-select
+URxvt.perl-lib: /home/phil/.dotfiles/urxvt-perls
+URxvt.perl-ext-common: url-select,keyboard-select,vtwheel
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: firefox
 URxvt.searchable-scrollback: false
