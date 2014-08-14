@@ -4,18 +4,17 @@
 
 (require 'cl)
 
-(setq browse-url-browser-function 'browse-url-default-browser
-      custom-file (expand-file-name "~/.emacs.d/custom.el")
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el")
       ispell-extra-args '("--keyboard=dvorak")
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
       org-default-notes-file "~/.dotfiles/.notes.org"
       org-remember-default-headline 'bottom
       org-completion-use-ido t
-      twittering-username "technomancy"
       epa-armor t
       visible-bell t
       tls-checktrust 'ask
+      el-get-allow-insecure nil
       inhibit-startup-message t
       uniquify-buffer-name-style 'post-forward)
 
@@ -26,23 +25,32 @@
 
 ;; Packages
 
-(when (not (require 'package nil t))
-  (require 'package "package-23.el"))
+(add-to-list 'load-path "~/.emacs.d/el-get")
+(require 'el-get)
+(el-get 'sync '(;; lispy stuff
+                clojure-mode elisp-slime-nav paredit
+                             ;; useful applications
+                             magit htmlize
+                             ;; general fanciness
+                             smex ido-hacks
+                             idle-highlight-mode page-break-lines
+                             ;; misc major modes
+                             markdown-mode yaml-mode))
 
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; TODO: insecure packages
+;; - parenface
+;; - diminish
 
-(defvar my-packages '(better-defaults clojure-mode paredit
-                                      idle-highlight-mode ;; ido-ubiquitous
-                                      find-file-in-project magit
-                                      elisp-slime-nav parenface-plus
-                                      markdown-mode yaml-mode page-break-lines
-                                      scpaste diminish smex))
+;;; from source
 
-(package-initialize)
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+(add-to-list 'load-path "~/src/better-defaults")
+(require 'better-defaults)
+
+(add-to-list 'load-path "~/src/find-file-in-project")
+(require 'find-file-in-project)
+
+;; (add-to-list 'load-path "~/src/scpaste")
+;; (require 'scpaste)
 
 (mapc 'load (directory-files (concat user-emacs-directory user-login-name)
                              t "^[^#].*el$"))
@@ -52,7 +60,7 @@
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 (smex-initialize)
 
-(require 'ido-hacks) ; still not on marmalade uuuugh
+(require 'ido-hacks)
 (ido-hacks-mode)
 
 (global-set-key (kbd "M-x") 'smex) ; has to happen after ido-hacks-mode
@@ -62,9 +70,6 @@
 (column-number-mode t)
 
 (winner-mode)
-
-(when (file-exists-p "~/src/floobits/floobits.el")
-  (autoload 'floobits-join-workspace "~/src/floobits/floobits.el" nil t))
 
 ;; why not?
 (eshell)

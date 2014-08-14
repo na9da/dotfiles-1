@@ -5,6 +5,10 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+(setq visible-bell t
+      tls-checktrust 'ask
+      uniquify-buffer-name-style 'post-forward)
+
 (when (null package-archive-contents)
   (package-refresh-contents))
 
