@@ -13,6 +13,10 @@
        "Change directory to the project's root."
        (eshell/cd (locate-dominating-file default-directory ".git")))
 
+     (defun eshell/browse (file)
+       "Open file in browser"
+       (browse-url-of-file file))
+
      ;; thanks johnw: https://gist.github.com/1198329
      (defun find-grep-in-project (command-args)
        (interactive

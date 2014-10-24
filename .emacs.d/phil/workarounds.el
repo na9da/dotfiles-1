@@ -9,11 +9,16 @@
 
 (delete 'try-expand-dabbrev-from-kill hippie-expand-try-functions-list)
 (delete 'try-expand-line hippie-expand-try-functions-list)
+(delete 'try-expand-list hippie-expand-try-functions-list)
+(delete 'try-complete-file-name-partially hippie-expand-try-functions-list)
+(delete 'try-complete-file-name hippie-expand-try-functions-list)
 
-;; plz not to refresh log buffer when I cherry-pick, mkay?
 (eval-after-load 'magit
   '(ignore-errors
      (setq magit-diff-refine-hunk t)
+     ;; don't be a jerk, magit
+     (define-key git-commit-mode-map (kbd "C-x k") 'git-commit-abort)
+     ;; plz not to refresh log buffer when I cherry-pick, mkay?
      (define-key magit-log-mode-map (kbd "A")
        (lambda ()
          (interactive)

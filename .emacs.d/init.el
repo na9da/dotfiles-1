@@ -34,6 +34,8 @@
                              ;; general fanciness
                              smex ido-hacks
                              idle-highlight-mode page-break-lines
+                             ;; deps
+                             pkg-info htmlize
                              ;; misc major modes
                              markdown-mode yaml-mode))
 
@@ -49,8 +51,8 @@
 (add-to-list 'load-path "~/src/find-file-in-project")
 (require 'find-file-in-project)
 
-;; (add-to-list 'load-path "~/src/scpaste")
-;; (require 'scpaste)
+(add-to-list 'load-path "~/src/scpaste")
+(require 'scpaste)
 
 (mapc 'load (directory-files (concat user-emacs-directory user-login-name)
                              t "^[^#].*el$"))

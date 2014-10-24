@@ -40,6 +40,8 @@
   ;;     (delete-region beginning end)))
   )
 
+(global-set-key (kbd "C-c \\") (lambda () (interactive) (insert "λ")))
+
 
 ;;; ruby
 
@@ -69,8 +71,7 @@
 
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
-(setq inferior-lisp-command "lein repl"
-      cider-repl-popup-stacktraces t)
+(setq inferior-lisp-command "lein repl")
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
@@ -100,24 +101,41 @@
 
 ;;; racket
 
-(add-hook 'scheme-mode-hook 'paredit-mode)
-(setq geiser-active-implementations '(racket))
+;; geiser
+;; (add-hook 'scheme-mode-hook 'paredit-mode)
+;; (setq geiser-active-implementations '(racket)
+;;       geiser-racket-binary '("racket" "-l" "errortrace"))
 
-(eval-after-load 'scheme-mode
-  '(define-key scheme-mode-map (kbd "C-c C-s") 'run-scheme))
+;; let's try racket-mode
+(when (file-directory-p "~/src/racket-mode")
+  (add-to-list 'load-path "~/src/racket-mode")
+  (autoload 'racket-mode "racket-mode" nil t)
 
-(defun chicken-doc (&optional obtain-function)
+  (add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
+  (add-to-list 'auto-mode-alist '("\\.rktd\\'" . racket-mode))
+  (add-hook 'racket-mode-hook 'paredit-mode)
+  (eval-after-load 'racket-mode
+    '(progn (define-key racket-mode-map (kbd "C-c C-k") 'racket-run))))
+
+(autoload 'shr-visit-file "shr" nil t)
+
+;; this is great for docs. TODO: hook into geiser or whatever
+(defun pnh/shr-follow ()
   (interactive)
-  (let ((func (funcall (or obtain-function 'current-word))))
-    (when func
-      (process-send-string (scheme-proc)
-                           (format "(require-library chicken-doc) ,doc %S\n" func))
-      (save-selected-window
-        (select-window (display-buffer (get-buffer scheme-buffer) t))
-        (goto-char (point-max))))))
+  (let ((raw-url (get-text-property (point) 'shr-url)))
+    (if raw-url
+        (if (equal 0 (string-match "https?://" raw-url))
+            (shr-browse-url raw-url)
+          (shr-visit-file (concat default-directory raw-url)))
+      (message "No link under point"))))
 
-(eval-after-load 'scheme-mode
- '(define-key scheme-mode-map (kbd "C-c C-d") 'chicken-doc))
+;; why doesn't shr do this already?
+(defadvice shr-visit-file (after pnh-default-directory activate)
+  (with-current-buffer "*html*"
+    (setq default-directory (file-name-directory file))))
+
+(eval-after-load 'shr-mode
+  '(define-key shr-map (kbd "RET") 'pnh/shr-follow))
 
 
 ;;; ocaml
@@ -173,7 +191,7 @@
 (add-to-list 'ido-ignore-files ".beam")
 
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode)) ; srsly?
-(add-to-list 'auto-mode-alist '("^rebar.config$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("rebar.config$" . erlang-mode))
 
 (add-hook 'erlang-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 (add-hook 'erlang-mode-hook 'pnh-paredit-no-space)
