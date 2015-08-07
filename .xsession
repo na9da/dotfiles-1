@@ -15,10 +15,18 @@ unclutter -idle 1 &
 dunst -nb "#000000" &
 xcompmgr -c -f -D 1 &
 xbindkeys &
-ssh-add &
+# ssh-add &
+
+if [ "$METACITY" != "" ]; then
+    xterm &
+    exec metacity
+fi
 
 # progs
-firefox &
+firefox -P phil-new &
+/usr/bin/firefox -P phil &
+/usr/bin/firefox &
+nautilus --no-default-window &
 
 # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=643028
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
@@ -27,5 +35,9 @@ firefox &
 gnome-settings-daemon &
 gnome-power-manager &
 gnome-screensaver & # for the lock-screen
+
+redshift -l 16:98 &
+
+# autossh -D 8088 -o serveraliveinterval=10 -o serveralivecountmax=3 p
 
 exec xmonad

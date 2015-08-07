@@ -3,6 +3,7 @@ import XMonad.Config.Gnome
 import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig (additionalKeys, removeKeysP)
 import qualified XMonad.StackSet as W
+import XMonad.Actions.PhysicalScreens
 
 main = xmonad $ gnomeConfig
        {
@@ -14,10 +15,13 @@ main = xmonad $ gnomeConfig
        , focusFollowsMouse = False
        -- launching this from xsession doesn't set env correctly
        , startupHook = spawn "killall xbindkeys; xbindkeys"
+       -- , terminal = "urxvt -fn xft:terminus-12:encoding=combined -letsp 0"
        , terminal = "urxvt"
        }
        -- gnome's launcher is crappy compared to dmenu
        `additionalKeys` ([ ((mod4Mask, xK_r), spawn "dmenu_run")
+                           ,((mod4Mask, xK_w), onPrevNeighbour W.view)
+                           ,((mod4Mask, xK_e), onNextNeighbour W.view)
                            ,((mod1Mask, xK_Tab), windows W.focusDown) ] ++
        -- trying to avoid use of super for workspaces
          [((m .|. controlMask, k), windows $ f i)

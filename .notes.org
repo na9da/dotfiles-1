@@ -86,3 +86,15 @@
  }
 * virtualbox is terrible
   - VBoxManage setproperty machinefolder $HOME/.vbox-vms
+* curl with encrypted netrc
+  alias curl="gpg --batch -q -d $HOME/.netrc.gpg | curl --netrc-file /dev/stdin
+* autossh
+  autossh -D 0.0.0.0:8088 -o serveraliveinterval=10 -o serveralivecountmax=3 p
+* re-enable swap
+  sudo mkswap /dev/mapper/enigma-swap_1
+  sudo swapon /dev/mapper/enigma-swap_1
+* SQ1
+  - 2171
+* powermate
+  - killall evrouter; evrouter /dev/input/*
+* new chat server 162.248.141.244

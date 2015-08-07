@@ -54,3 +54,6 @@
 (defalias 'byte-compile-cl-warn 'identity)
 
 (setenv "GHI_NO_COLOR" "y")
+
+;; old cider crashes without this
+(setq clojure--prettify-symbols-alist '())

@@ -1,0 +1,5 @@
+name=$(zenity --entry --name Filename:)
+scrot -s /tmp/$name.png
+scp /tmp/$name.png p:p
+zenity --info --text=http://p.hagelb.org/$name.png
+# push to primary selection somehow

@@ -7,13 +7,10 @@
 (setq mu4e-maildir-shortcuts '(("/INBOX"        . ?i)
                                ("/sent"         . ?s)
                                ("/drafts"       . ?d)
-                               ("/leiningen"    . ?l)
-                               ("/buying"       . ?b)
-                               ("/travel"       . ?t)
-                               ("/old-messages" . ?a))
-      ;; allow for updating mail using 'U' in the main view:
-      mu4e-get-mail-command "yes | mbsync -q -q -c <(gpg --batch -q -d ~/.chorts/mbsyncrc.gpg) hagelb"
-      mu4e-html2text-command "elinks -dump"
+                               ("/INBOX.Archive" . ?a))
+      mu4e-get-mail-command "/home/phil/src/offlineimap/offlineimap.py"
+      mu4e-html2text-command 'mu4e-shr2text
+      mu4e-view-prefer-html t
       mu4e-headers-leave-behavior 'apply
       mu4e-show-images t
       mu4e-view-show-addresses t)
@@ -30,8 +27,15 @@
       message-kill-buffer-on-exit t)
 
 (add-hook 'mu4e-compose-mode-hook 'mml-secure-sign)
+(add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
 
-(add-hook 'mu4e-compose-mode-hook (lambda ()
-                                    (require 'epa)
-                                    (when (not (featurep 'chorts))
-                                      (load-file "~/.chorts/chorts.el.gpg"))))
+(eval-after-load 'mu4e
+  '(define-key mu4e-main-mode-map (kbd "C-r") 'ignore))
+
+(require 'mu4e-contrib)
+
+(add-hook 'mu4e-view-mode-hook
+          (lambda()
+            ;; try to emulate some of the eww key-bindings
+            (local-set-key (kbd "<tab>") 'shr-next-link)
+            (local-set-key (kbd "<backtab>") 'shr-previous-link)))

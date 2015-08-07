@@ -1,0 +1,5 @@
+ACTION=="remove", SUBSYSTEM=="usb", RUN+="echo removedlol >> /tmp/udev-log"
+ACTION=="add",    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="047c", ENV{XAUTHORITY}="/home/phil/.Xauthority", ENV{DISPLAY}=":0", OWNER="phil", RUN+="/home/phil/bin/internal-kbd-disable"
+
+ACTION=="add|remove", ENV{XAUTHORITY}="/home/phil/.Xauthority", ENV{DISPLAY}=":0", OWNER="phil", RUN+="/home/phil/bin/internal-kbd-enable"
+# ACTION=="add",    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="047c", ENV{XAUTHORITY}="/home/phil/.Xauthority", ENV{DISPLAY}=":0", OWNER="phil", RUN+="/home/phil/bin/internal-kbd-disable"

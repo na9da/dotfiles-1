@@ -11,6 +11,12 @@
     - default binding of ctrl-b is stupid
   - gpg
     - refuses to forget cached passphrases on sighup
+  - eshell
+    - high-throughput output is slow
+  - erc
+    - silently discards input in closed query buffers
+  - mu4e
+    - leans heavily on offlineimap or mbsync, neither of which is any good
 * Things that bug me about software I use (a relatively complete list)
 ** Debian Wheezy
    - broken permissions in nm-applet
@@ -29,20 +35,11 @@
 ** Emacs
 *** elisp
    - lisp-2 is awful
-   - no FFI (no browser integration)
+   - no FFI
    - no immutability or referential transparency
    - no useful associative data type, vectors are useless
    - no concurrency
    - find-file-at-point does really stupid things sometimes with tramp
-*** eshell
-   - no tab completion for git branches (but just use magit)
-   - high-throughput output is slow
-*** erc
-   - silently discards input in closed query buffers
-*** mu4e
-    - doesn't honor .authinfo.gpg
-    - every operation in overview updates message window if present
-      - fixable with advice
 ** mbsync
    - no docs
    - refuses to create maildir; must manually mkdir
@@ -75,8 +72,20 @@
    - contains? has a misleading name
 ** racket
    - no docstrings (!!!) docs seem very HTML-centric
+     - racket-mode helps with this sorta
    - no way to consistently reflect on argument names
    - opaque structs are very annoying, absolutely inappropriate for HTTP reqs
+   - multiple return values
+     - I guess this might have made sense before pattern matching was invented?
+   - the immutable? function is usually wrong
+   - internal defines make side-effects easier to hide
+   - failure-result in dict-ref, etc special-cases procedures
+     - (dict-ref d k f) ; what will this return if k is not found?
+       - depends on whether f is a procedure or not! =(
+   - waaaaaay too many macros
+   - keywords are not first-class
+   - package manager pulls in the latest version of libraries, yuck
+     - not bad for pedagogical purposes; terrible for production code
    - hash tables and vectors are quoted by default
      - fixed in rackjure
    - hash tables are not functions
@@ -128,3 +137,31 @@
      - skip_deps defaulting to false for tests is annoying
      - ct task regularly emits no output at all
      - ct task doesn't bother recompiling source even if it's changed
+** ocaml
+   - strings are mutable
+     - mutable!
+   - precedence rules can be bizarre and often unguessable
+     - "just keep spamming with parens till it compiles"
+   - pulling in jane street core makes executable sizes balloon way up
+    - fix is in progress?
+   - no concurrency
+   - opam still defaults to "give me the latest version of this lib"
+   - serialization still requires spoon-feeding the types
+** lua
+   - no arity checks
+   - statement/expression distinction
+   - globals by default
+   - multiple return values
+   - nil is everywhere
+   - tables print opaquely
+   - the repl completely buggers up when you enter expressions
+   - explicit return
+*** my ideal compile-to-lua language:
+    - optionally-disablable arity checks
+    - no statements, implicit return
+    - let ... in
+    - pattern matching
+    - any non-whitespace characters allowed in identifiers
+      - dashes in the middle of identifiers should be allowed
+        - otherwise you're optimizing for obfuscation (subtraction without spaces)
+    - pretty-printer in the repl (lua-repl has this already)

@@ -45,16 +45,6 @@ HISTCONTROL=ignoreboth:erasedups
 
 # currently a tmux bug causes this horrible hack to be necessary.
 # tmux sources .bashrc but not profile for some reason
-if [ "$PROFILE_LOADED" = "" ]; then
-    . $HOME/.profile
-fi
+which lein || . $HOME/.profile
 
 [ -z "$TMUX" ] && export TERM=xterm-256color
-
-# lazy-load this since it's slow
-function cloud () {
-    eval "$(ion-client shell)"
-    cloud $1
-}
-
-export JAVA_CMD=/usr/bin/java

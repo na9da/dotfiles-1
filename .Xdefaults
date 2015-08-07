@@ -1,4 +1,5 @@
 emacs.font: Inconsolata-13
+! emacs.font: Terminus-11
 Rxvt*scrollBar: False
 urxvt.font: xft:inconsolata:pixelsize=17,xft:Anonymous Pro for Powerline:pixelsize=17
 urxvt*letterSpace:-1.0

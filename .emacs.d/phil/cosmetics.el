@@ -19,8 +19,8 @@
 
 (defun zb ()
   (interactive)
-  (unless (package-installed-p 'zenburn-theme)
-    (package-install 'zenburn-theme))
+  ;; (unless (package-installed-p 'zenburn-theme)
+  ;;   (package-install 'zenburn-theme))
   (load-theme 'zenburn)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
@@ -86,6 +86,8 @@
 (defun mu () (interactive) (insert "無"))
 (defun rectification () (interactive) (insert "正名"))
 (defun caruso () (interactive) (insert "( •_•) ( -_-)~⌐■-■ (⌐■_■)>"))
+(defun odin () (interactive) (insert "Hreðjar Óðins"))
+(defun tamade () (interactive) (insert "他妈的"))
 
 (when (and window-system (>= emacs-major-version 23))
   (let ((fontset (face-attribute 'default :fontset))

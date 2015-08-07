@@ -29,11 +29,7 @@
                   (untabify (point-min) (point-max))
                   (indent-region (point-min) (point-max))))
 
-(global-set-key (kbd "C-c b")
-                (defun pnh-blog () (interactive)
-                  (shell-command (format "rake post POST=%s"
-                                         (car (split-string (buffer-name)
-                                                            "\\."))))))
+(global-set-key (kbd "C-c b") 'browse-url-at-point)
 
 (global-set-key (kbd "C-c w") 'winner-undo)
 

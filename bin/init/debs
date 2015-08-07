@@ -85,8 +85,6 @@ unzip
 uuid
 vlc
 vorbis-tools
-wicd
-wicd-cli
 wireless-tools
 wmctrl
 x11-xserver-utils
@@ -97,6 +95,9 @@ xfonts-terminus
 xinit
 xinput
 xmonad
+xul-ext-noscript
+xul-ext-greasemonkey
+xul-ext-toggle-proxy
 xsane
 xsel
 xserver-xorg

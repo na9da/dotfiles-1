@@ -102,7 +102,7 @@
 ;;; racket
 
 ;; geiser
-;; (add-hook 'scheme-mode-hook 'paredit-mode)
+(add-hook 'scheme-mode-hook 'paredit-mode)
 ;; (setq geiser-active-implementations '(racket)
 ;;       geiser-racket-binary '("racket" "-l" "errortrace"))
 
@@ -115,7 +115,10 @@
   (add-to-list 'auto-mode-alist '("\\.rktd\\'" . racket-mode))
   (add-hook 'racket-mode-hook 'paredit-mode)
   (eval-after-load 'racket-mode
-    '(progn (define-key racket-mode-map (kbd "C-c C-k") 'racket-run))))
+    '(progn (define-key racket-mode-map (kbd "C-c C-k") 'racket-run)
+            (define-key racket-mode-map (kbd "C-c C-d") 'racket-describe)
+            (define-key racket-mode-map (kbd "RET")
+              'reindent-then-newline-and-indent))))
 
 (autoload 'shr-visit-file "shr" nil t)
 
@@ -136,6 +139,8 @@
 
 (eval-after-load 'shr-mode
   '(define-key shr-map (kbd "RET") 'pnh/shr-follow))
+
+(add-to-list 'auto-mode-alist '("\\.ms\\'" . scheme-mode))
 
 
 ;;; ocaml
@@ -249,6 +254,43 @@
                              (define-key forth-mode-map (kbd "C-c C-k") 'compile)))
 
 ;; (setq forth-mode-hook (cdr forth-mode-hook))
+
+
+;;; lua
+
+(setq lua-default-application "lua-repl")
+(setenv "LUA_REPL_RLWRAP" "sure") ; suppress rlwrap, which will fail
+
+(add-hook 'lua-mode-hook 'paredit-mode)
+(add-hook 'lua-mode-hook 'pnh-paredit-no-space)
+
+(defun pnh-lua-send-file ()
+  (interactive)
+  (let ((command (format "dofile(\"%s\")" buffer-file-name)))
+    (lua-send-string command)))
+
+(defun pnh-lua-manual ()
+  (interactive)
+  (eww-open-file "/usr/share/doc/lua5.1-doc/doc/manual.html"))
+
+(eval-after-load 'lua-mode
+  '(progn
+     (add-to-list 'compilation-error-regexp-alist
+                  '("^    \\(.+\\.lua\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3))
+     (define-key lua-mode-map (kbd "C-c C-s") 'lua-start-process)
+     (define-key lua-mode-map (kbd "C-c C-r") 'lua-send-region)
+     (define-key lua-mode-map (kbd "C-c C-k") 'pnh-lua-send-file)
+     (define-key lua-mode-map (kbd "C-M-x") 'lua-send-defun)))
+
+;; (defvar _lua-init
+;;   (setq lua-process-init-code
+;;         (concat lua-process-init-code)))
+
+
+;;; C
+
+(add-to-list 'ido-ignore-files ".elf")
+(add-to-list 'ido-ignore-files ".hex")
 
 (eval-after-load 'cc-mode
   '(define-key c-mode-map (kbd "C-c C-k") 'compile))

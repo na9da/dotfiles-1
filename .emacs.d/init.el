@@ -7,7 +7,6 @@
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el")
       ispell-extra-args '("--keyboard=dvorak")
       ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
       org-default-notes-file "~/.dotfiles/.notes.org"
       org-remember-default-headline 'bottom
       org-completion-use-ido t
@@ -16,7 +15,9 @@
       tls-checktrust 'ask
       el-get-allow-insecure nil
       inhibit-startup-message t
-      uniquify-buffer-name-style 'post-forward)
+      uniquify-buffer-name-style 'post-forward
+      browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
 
 (when window-system
   (setq scroll-conservatively 1))
@@ -29,6 +30,8 @@
 (require 'el-get)
 (el-get 'sync '(;; lispy stuff
                 clojure-mode elisp-slime-nav paredit
+                             ;; programmering
+                             lua-mode
                              ;; useful applications
                              magit htmlize
                              ;; general fanciness
