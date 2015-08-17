@@ -26,9 +26,6 @@
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
   (set-face-background 'hl-line "gray17")
-  (eval-after-load 'magit
-    '(progn (set-face-background 'magit-item-highlight "black")
-            (set-face-background 'diff-refine-change "grey10")))
   (set-face-foreground 'eshell-prompt "turquoise"))
 
 (defun tw ()
@@ -40,9 +37,6 @@
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
   (set-face-foreground 'eshell-prompt "turquoise1")
-  (eval-after-load 'magit
-    '(progn (set-face-background 'magit-item-highlight "black")
-            (set-face-background 'diff-refine-change "grey10")))
   (set-face-background 'hl-line "black"))
 
 (defun mk ()
@@ -56,25 +50,19 @@
   (set-face-foreground 'eshell-prompt "turquoise1")
   (set-face-background 'hl-line "black")
   (eval-after-load 'diff-mode
-    '(set-face-background 'diff-refine-change "gray18"))
-  (eval-after-load 'magit
-    '(set-face-background 'magit-item-highlight "black")))
+    '(set-face-background 'diff-refine-change "gray18")))
 
 (defun db ()
   (interactive)
   (load-theme 'deeper-blue)
-  (set-face-background 'hl-line "dark slate gray")
-  (eval-after-load 'magit
-    '(progn (set-face-background 'magit-item-highlight "black"))))
+  (set-face-background 'hl-line "dark slate gray"))
 
 (defun bb ()
   "Black for use with glasstty in -nw"
   (interactive)
   (set-face-background 'vertical-border "bright green")
   (set-face-foreground 'vertical-border "bright green")
-  (set-face-background 'hl-line "black")
-  (eval-after-load 'magit
-    '(set-face-background 'magit-item-highlight "black")))
+  (set-face-background 'hl-line "black"))
 
 (eval-after-load 'hl-line
   '(set-face-background 'hl-line "darkseagreen2"))
@@ -105,12 +93,6 @@
   '(progn
      (set-face-foreground 'diff-added "green4")
      (set-face-foreground 'diff-removed "red3")))
-
-(eval-after-load 'magit
-  '(progn
-     (set-face-background 'magit-item-highlight "white smoke")
-     (set-face-foreground 'magit-diff-add "green4")
-     (set-face-foreground 'magit-diff-del "red3")))
 
 ;; what's the deal, org? headers should be bold.
 (eval-after-load 'org
