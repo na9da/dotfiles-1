@@ -145,9 +145,6 @@
 
 ;;; ocaml
 
-(add-to-list 'ido-ignore-files ".byte")
-(add-to-list 'ido-ignore-files ".native")
-
 (add-hook 'tuareg-mode-hook 'paredit-mode)
 (add-hook 'tuareg-mode-hook 'pnh-paredit-no-space)
 (add-hook 'tuareg-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
@@ -192,8 +189,6 @@
     (add-to-list 'load-path (concat (first tools) "/emacs"))))
 
 (autoload 'erlang-mode "erlang" "erlang" t)
-
-(add-to-list 'ido-ignore-files ".beam")
 
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode)) ; srsly?
 (add-to-list 'auto-mode-alist '("rebar.config$" . erlang-mode))
@@ -288,9 +283,6 @@
 
 
 ;;; C
-
-(add-to-list 'ido-ignore-files ".elf")
-(add-to-list 'ido-ignore-files ".hex")
 
 (eval-after-load 'cc-mode
   '(define-key c-mode-map (kbd "C-c C-k") 'compile))
