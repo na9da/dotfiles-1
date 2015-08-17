@@ -1,34 +1,36 @@
 #!/bin/bash
 
+set -e
+
 if [ "$USER" = "root" ]; then
     echo "can't run as root"
     exit 1
 fi
 
-firefox -CreateProfile phil
+firefox -CreateProfile main
+firefox -CreateProfile proxied
+
+rm ~/.ff ~/.ff-proxied
+
 mkdir -p ~/src
-cd ~/.mozilla/firefox/*phil/
-mkdir -p keysnail
-ln -s ~/.dotfiles/.keysnail-plugins keysnail/plugins
+ln -s ~/.mozilla/firefox/*main/ ~/.ff
+ln -s ~/.mozilla/firefox/*proxied/ ~/.ff-proxied
+ln -s ~/.dotfiles/.ff.js ~/.ff/user.js
+ln -s ~/.dotfiles/.ff-proxied.js ~/.ff/user.js
 
-cd ~/src
-if [ -d "$HOME/src/keysnail" ]; then
-    cd keysnail && git fetch
-else
-    git clone https://github.com/mooz/keysnail.git
-    cd keysnail
-fi
-./createpackage.sh
-firefox keysnail.xpi
-cd ..
+cd /tmp
 
-if [ -d "$HOME/src/https-everywhere" ]; then
-    cd https-everywhere && git fetch && cd ..
-else
-    git clone https://github.com/EFForg/https-everywhere.git
-    cd https-everywhere
-fi
-./makexpi.sh
-firefox pkg/*.xpi
+wget https://github.com/mooz/keysnail/raw/master/keysnail.xpi
+wget https://www.eff.org/files/privacy-badger-latest.xpi
+wget https://www.eff.org/files/https-everywhere-latest.xpi
+wget -O noscript.xpi https://addons.mozilla.org/en-US/firefox/downloads/latest/722/addon-722-latest.xpi?src=noscript.ownsite
 
-# still needs manual "reload plugins" in keysnail plugin manager
+firefox -P main /tmp/keysnail.xpi
+firefox -P main /tmp/privacy-badger-latest.xpi
+firefox -P main /tmp/https-everywhere-latest.xpi
+firefox -P main /tmp/noscript.xpi
+
+firefox -P proxied /tmp/keysnail.xpi
+firefox -P proxied /tmp/privacy-badger-latest.xpi
+firefox -P proxied /tmp/https-everywhere-latest.xpi
+firefox -P proxied /tmp/noscript.xpi
