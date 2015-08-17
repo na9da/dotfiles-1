@@ -76,6 +76,10 @@
 
 (winner-mode)
 
+(eval-after-load 'markdown-mode
+  (progn (add-hook 'markdown-mode 'flyspell-mode)
+         (add-hook 'markdown-mode 'auto-fill-mode)))
+
 ;; why not?
 (eshell)
 ;; graaaaaaah! eshell doesn't respect eval-after-load for some reason:

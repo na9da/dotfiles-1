@@ -157,8 +157,10 @@
    - the repl completely buggers up when you enter expressions
    - explicit return
 *** my ideal compile-to-lua language:
-    - optionally-disablable arity checks
-    - no statements, implicit return
+    - fn keyword creates arity-checked function
+      - within fn, if compiles to and/or
+      - implicit return
+      - give values to do/loops/assignments?
     - let ... in
     - pattern matching
     - any non-whitespace characters allowed in identifiers
