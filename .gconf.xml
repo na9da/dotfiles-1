@@ -141,4 +141,10 @@
       </value>
     </entry>
   </entrylist>
+  <entrylist base="/org/gnome/shell/extensions/net/gfxmonk/shellshape/prefs">
+    <entry>
+      <key>default-layout</key>
+      <value><string>fullscreen</string></value>
+    </entry>
+  </entrylist>
 </gconfentryfile>

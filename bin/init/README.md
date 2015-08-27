@@ -11,6 +11,5 @@ installing from the shell but you still want a GUI.
 # Todo
 
 * evrouter
-* middle-click scroll
-* fix ctrl key
 * fix gtk key theme
+* tmux kills connection to SSH agent

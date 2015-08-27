@@ -1,0 +1,5 @@
+#!/bin/bash
+
+killall evrouter
+rm /tmp/.evrouter:0
+evrouter /dev/input/*

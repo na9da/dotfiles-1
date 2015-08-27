@@ -1,10 +1,13 @@
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 export PATH=$HOME/.gem/ruby/1.9.1/bin:/var/lib/gems/1.9.1/bin:$PATH
 export PATH=/usr/lib/postgresql/9.1/bin:$PATH
-# TODO: looks like this is properly packaged, but only for jessie+?
-export PATH=$PATH:$HOME/src/arduino/hardware/tools/arm-none-eabi/bin/
 
 export CDPATH=.:$HOME/src
+
+export XDG_DESKTOP_DIR=$HOME
+export XDG_DOWNLOAD_DIR=$HOME
+export XDG_DOCUMENTS_DIR=$HOME/docs
+export XDG_MUSIC_DIR=$HOME/music
 
 # plz don't make me sudo
 export GEM_HOME=$HOME/.gem/ruby/1.9.1

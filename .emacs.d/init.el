@@ -26,36 +26,16 @@
 
 ;; Packages
 
-(add-to-list 'load-path "~/.emacs.d/el-get")
-(require 'el-get)
-(el-get 'sync '(;; lispy stuff
-                clojure-mode elisp-slime-nav paredit
-                             ;; programmering
-                             lua-mode
-                             ;; useful applications
-                             magit htmlize
-                             ;; general fanciness
-                             smex ido-hacks
-                             idle-highlight-mode page-break-lines
-                             ;; deps
-                             pkg-info htmlize
-                             ;; misc major modes
-                             markdown-mode yaml-mode))
-
-;; TODO: insecure packages
-;; - parenface
-;; - diminish
-
-;;; from source
-
-(add-to-list 'load-path "~/src/better-defaults")
-(require 'better-defaults)
-
-(add-to-list 'load-path "~/src/find-file-in-project")
-(require 'find-file-in-project)
-
-(add-to-list 'load-path "~/src/scpaste")
-(require 'scpaste)
+(require 'package)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+(package-initialize)
+(dolist (p '(better-defaults paredit find-file-in-project scpaste
+							 zenburn-theme diminish
+							 magit htmlize smex ido-ubiquitous
+							 idle-highlight-mode page-break-lines
+							 lua-mode elisp-slime-nav
+							 markdown-mode))
+  (when (not (package-installed-p p)) (package-install p)))
 
 (mapc 'load (directory-files (concat user-emacs-directory user-login-name)
                              t "^[^#].*el$"))
@@ -63,12 +43,9 @@
 ;; activation
 
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
-(smex-initialize)
+;; (smex-initialize)
 
-(require 'ido-hacks)
-(ido-hacks-mode)
-
-(global-set-key (kbd "M-x") 'smex) ; has to happen after ido-hacks-mode
+;; (global-set-key (kbd "M-x") 'smex) ; has to happen after ido-hacks-mode
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 

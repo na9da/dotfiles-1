@@ -9,8 +9,6 @@
   $ initdb pg; createdb -D pg db; postgres -D pg -p 5555
   Arg, I got too cute trying to run that as a one-liner in Twitter. createdb has to go after postgres starts, and takes a port, not a datadir.
   problem: need to recreate /var/run/postgres every time; sucks =\
-* Fixing OpenJDK 7 cacerts annoyance
-  http://my.opera.com/karmazilla/blog/how-to-grab-the-certificate-from-a-website-and-import-it-with-java-keytool
 * mu4e todo
   - boost the gpg-agent cache expiry period?
   - run mbsync in the background
@@ -36,65 +34,20 @@
   40s total
 * custom-theme clear
   (apply 'disable-theme custom-enabled-themes)
-* bitlbee/hipchat:
-  http://www.phase2technology.com/blog/using-hipchat-through-an-irc-client-with-bitlbee/
-
-  register $PASS
-  account add jabber 27879_293162@chat.hipchat.com '$PASS'
-  account hipchat set nick_source full_name
-  account hipchat on
-  chat add hipchat 27879_heroku@conf.hipchat.com #lounge
-  channel #lounge set nick 'Phil Hagelberg'
-
-  repeat for:
-  27879_linux
-  27879_api
-  27879_build__packaging
-  27879_foundation
-  27879_herokai_north
-  27879_runtime
-  27879_security
-
-  or just
-  channel #27879_remote set nick "Phil Hagelberg"
-* tunes to check out
-  - http://ubiktune.com/releases/ubi045-joshua-morse-waveform-3
-  - https://www.youtube.com/watch?v=hU54BaDJsKg&list=PL758041D2D82928C7
-  - http://binaerpilot.no/ (nordland)
-* seajure routine
-  - mention getting added to the github org
-  - set up cname for syme instance
-* prometheus
-  - model: Cadet NLW302T
-  - volts: 240/208, 60 Hz
-  - Watts: 3000/2250
-  - Amps: 12.5/10.8
-  - activating AIN
-    - echo cape-bone-iio > /sys/devices/bone_capemgr.8/slots # or capemgr.9?
-    - cat /sys/devices/ocp.2/helper.14/AIN1 # etc
 * CLI pull requests: hub pull-request -b avsm:master
 * Alan Kay's reading list
   http://www.squeakland.org/resources/books/readingList.jsp
 * channel ops in freenode, banning
   /mode #clojure +b *!~ircap@90.174.0.195
-* compression artifact stack traces
-  public void displayText(BufferedImage image, String text, Font font, int x, int y){
-   Graphics2d g = image.createGraphics();
-   g.setFont(font);
-   g.drawString(text, x, y);
-   g.dispose();
- }
 * virtualbox is terrible
   - VBoxManage setproperty machinefolder $HOME/.vbox-vms
 * curl with encrypted netrc
   alias curl="gpg --batch -q -d $HOME/.netrc.gpg | curl --netrc-file /dev/stdin
 * autossh
   autossh -D 0.0.0.0:8088 -o serveraliveinterval=10 -o serveralivecountmax=3 p
-* re-enable swap
-  sudo mkswap /dev/mapper/enigma-swap_1
-  sudo swapon /dev/mapper/enigma-swap_1
-* SQ1
-  - 2171
 * powermate
   - killall evrouter; evrouter /dev/input/*
-* new chat server 162.248.141.244
+* ff automation
+  - https://pastebin.mozilla.org/8842908
+* shellshape
+  - https://github.com/gfxmonk/shellshape/issues/48

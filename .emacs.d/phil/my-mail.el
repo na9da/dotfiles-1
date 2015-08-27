@@ -8,8 +8,7 @@
                                ("/sent"         . ?s)
                                ("/drafts"       . ?d)
                                ("/INBOX.Archive" . ?a))
-      mu4e-get-mail-command "/home/phil/src/offlineimap/offlineimap.py"
-      mu4e-html2text-command 'mu4e-shr2text
+      mu4e-get-mail-command "offlineimap"
       mu4e-view-prefer-html t
       mu4e-headers-leave-behavior 'apply
       mu4e-show-images t
@@ -29,10 +28,18 @@
 (add-hook 'mu4e-compose-mode-hook 'mml-secure-sign)
 (add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
 
-(eval-after-load 'mu4e
-  '(define-key mu4e-main-mode-map (kbd "C-r") 'ignore))
+(defun my-render-html-message ()
+  (let ((dom (libxml-parse-html-region (point-min) (point-max))))
+    (erase-buffer)
+    (shr-insert-document dom)
+    (goto-char (point-min))))
 
-(require 'mu4e-contrib)
+(setq mu4e-html2text-command 'my-render-html-message)
+
+(eval-after-load 'mu4e
+  '(progn (require 'mu4e-contrib)
+          ;; (setq mu4e-html2text-command 'mu4e-shr2text)
+          (define-key mu4e-main-mode-map (kbd "C-r") 'ignore)))
 
 (add-hook 'mu4e-view-mode-hook
           (lambda()

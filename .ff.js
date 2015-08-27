@@ -42,11 +42,14 @@ user_pref("browser.pocket.enabled", false);
 user_pref("browser.preferences.inContent", true);
 user_pref("social.enabled", false);
 user_pref("social.remote-install.enabled", false);
-user_pref("font.default.x-western", "Ubuntu Light");
-user_pref("browser.download.dir", "/home/phil");
-user_pref("browser.search.defaultenginename", "DuckDuckGo HTML");
 user_pref("general.warnOnAboutConfig", false);
 user_pref("browser.backspace_action", 1);
+
+// these get mysteriously ignored
+
+user_pref("browser.search.defaultenginename", "DuckDuckGo HTML");
+user_pref("font.default.x-western", "Ubuntu");
+user_pref("browser.download.dir", "/home/phil");
 
 // extensions
 

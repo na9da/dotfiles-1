@@ -15,26 +15,23 @@ unclutter -idle 1 &
 dunst -nb "#000000" &
 xcompmgr -c -f -D 1 &
 xbindkeys &
-# ssh-add &
-
-if [ "$METACITY" != "" ]; then
-    xterm &
-    exec metacity
-fi
+ssh-add &
+srandrd monswitch
 
 # progs
-firefox -P phil-new &
-/usr/bin/firefox -P phil &
-/usr/bin/firefox &
-nautilus --no-default-window &
-
-# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=643028
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+firefox &
+proxiedfox &
+nautilus --no-default-window --force-desktop &
 
 # gnome: the good parts
 gnome-settings-daemon &
 gnome-power-manager &
 gnome-screensaver & # for the lock-screen
+
+# https://bugs.launchpad.net/ubuntu/+source/gnome-settings-daemon/+bug/1238410
+dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+# doesn't actually work
+dconf write /org/gnome/nautilus/preferences/desktop-is-home-dir true
 
 redshift -l 16:98 &
 

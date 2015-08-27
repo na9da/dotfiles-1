@@ -270,8 +270,8 @@
 
 (eval-after-load 'lua-mode
   '(progn
-     (add-to-list 'compilation-error-regexp-alist
-                  '("^    \\(.+\\.lua\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3))
+     ;; (add-to-list 'compilation-error-regexp-alist
+     ;;              '("^    \\(.+\\.lua\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3))
      (define-key lua-mode-map (kbd "C-c C-s") 'lua-start-process)
      (define-key lua-mode-map (kbd "C-c C-r") 'lua-send-region)
      (define-key lua-mode-map (kbd "C-c C-k") 'pnh-lua-send-file)

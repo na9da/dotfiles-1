@@ -10,11 +10,12 @@ fi
 firefox -CreateProfile main
 firefox -CreateProfile proxied
 
-rm ~/.ff ~/.ff-proxied
+rm -f ~/.ff ~/.ff-proxied
 
 mkdir -p ~/src
 ln -s ~/.mozilla/firefox/*main/ ~/.ff
 ln -s ~/.mozilla/firefox/*proxied/ ~/.ff-proxied
+rm -f ~/.ff/user.js ~/.ff-proxied/user.js
 ln -s ~/.dotfiles/.ff.js ~/.ff/user.js
 ln -s ~/.dotfiles/.ff-proxied.js ~/.ff/user.js
 
@@ -30,7 +31,7 @@ firefox -P main /tmp/privacy-badger-latest.xpi
 firefox -P main /tmp/https-everywhere-latest.xpi
 firefox -P main /tmp/noscript.xpi
 
-firefox -P proxied /tmp/keysnail.xpi
-firefox -P proxied /tmp/privacy-badger-latest.xpi
-firefox -P proxied /tmp/https-everywhere-latest.xpi
-firefox -P proxied /tmp/noscript.xpi
+# firefox -P proxied /tmp/keysnail.xpi
+# firefox -P proxied /tmp/privacy-badger-latest.xpi
+# firefox -P proxied /tmp/https-everywhere-latest.xpi
+# firefox -P proxied /tmp/noscript.xpi
