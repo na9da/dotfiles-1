@@ -132,3 +132,8 @@
     (xterm-register-default-colors)))
 
 (setq whitespace-style '(face trailing lines-tail tabs))
+
+(add-to-list 'auto-mode-alist '("\\.msg$" . message-mode))
+
+(eval-after-load 'message-mode
+  (add-hook 'message-mode-hook 'page-break-lines-mode))

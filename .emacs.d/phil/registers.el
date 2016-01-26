@@ -7,3 +7,4 @@
 (set-register ?p '(file . "~/.lein/profiles.clj"))
 (set-register ?k '(file . "~/.keysnail.js"))
 (set-register ?d '(file . "~/.dotfiles/dwm/config.h"))
+(set-register ?l '(file . "~/docs/log.org"))

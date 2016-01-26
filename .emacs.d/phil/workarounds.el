@@ -29,6 +29,7 @@
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 
 (add-hook 'oddmuse-mode-hook
           (lambda ()
@@ -47,7 +48,13 @@
     (dotimes (_ (- 80 col (length prefix) (length postfix))) (insert "u"))
     (insert postfix)))
 
-;; starter kit version has stupid formatting
+(defun pnh-blog ()
+  (interactive)
+  (let ((post-number (first (split-string (buffer-name) "\\."))))
+    (shell-command-to-string (format "rake post POST=%s" post-number))))
+
+(global-set-key (kbd "C-c p") 'pnh-blog)
+
 (defun pnh-insert-date ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time))))

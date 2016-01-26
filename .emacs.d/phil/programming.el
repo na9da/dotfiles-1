@@ -12,6 +12,7 @@
 (setq page-break-lines-char ?-)
 
 (defun pnh-paredit-no-space ()
+  (interactive)
   (set (make-local-variable 'paredit-space-for-delimiter-predicates)
        '((lambda (endp delimiter) nil))))
 
@@ -41,6 +42,40 @@
   )
 
 (global-set-key (kbd "C-c \\") (lambda () (interactive) (insert "λ")))
+
+(defun normal-random (mean dev)
+  (let ((x (+ 1 (sqrt (* -2 (log (random* 1.0))))))
+        (y (/ (cos (* 2 pi (random* 1.0))) 2.0)))
+    (+ mean (* x y dev))))
+
+(defun choose-from (lst) (nth (random (length lst)) lst))
+
+(defun random-name (&optional name syllables)
+  (let* ((common-closed '("b" "c" "d" "f" "g" "h" "k" "l" "m" "n" "p"
+                          "r" "s" "t" "w"))
+         (uncommon-closed '("x" "z" "q" "v" "v" "j" "j" "gg" "ll" "ss" "tt"))
+         (enders '("b" "d" "g" "m" "n" "s" "r" "t"))
+         ;; weight towards common letters
+         (closed (append common-closed common-closed enders uncommon-closed))
+         (vowels '("a" "e" "i" "o" "u" "ie" "ou"))
+         (syllables (or syllables (ceiling (normal-random 2.5 1.5))))
+         (name (or name (concat (upcase (choose-from common-closed))
+                                (choose-from vowels)
+                                (choose-from closed)))))
+    (if (< syllables 3)
+        (concat name (choose-from vowels) (choose-from enders))
+      (random-name (concat name (choose-from vowels) (choose-from closed))
+                   (- syllables 1)))))
+
+(defun insert-random-name (syllables)
+  (interactive "P")
+  (insert (random-name nil syllables) " "))
+
+(defun add-metric ()
+  (interactive)
+  (let ((year (thing-at-point 'number)))
+    (forward-word)
+    (insert (format "/%s" (* (- year 1970) 365 52 7 24 60 60)))))
 
 
 ;;; ruby
@@ -163,7 +198,6 @@
      (define-key tuareg-mode-map (kbd "]") 'paredit-close-square)
      (define-key tuareg-mode-map (kbd "{") 'paredit-open-curly)
      (define-key tuareg-mode-map (kbd "}") 'paredit-close-curly)
-     (define-key tuareg-mode-map (kbd "}") 'paredit-close-curly)
      (define-key tuareg-mode-map (kbd "<backspace>") 'paredit-backward-delete)
      (define-key tuareg-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
      (define-key tuareg-mode-map (kbd "C-c C-k") 'tuareg-eval-buffer)
@@ -259,23 +293,29 @@
 (add-hook 'lua-mode-hook 'paredit-mode)
 (add-hook 'lua-mode-hook 'pnh-paredit-no-space)
 
-(defun pnh-lua-send-file ()
-  (interactive)
-  (let ((command (format "dofile(\"%s\")" buffer-file-name)))
-    (lua-send-string command)))
-
 (defun pnh-lua-manual ()
   (interactive)
   (eww-open-file "/usr/share/doc/lua5.1-doc/doc/manual.html"))
 
+(eval-after-load 'compile
+  '(add-to-list 'compilation-error-regexp-alist
+                '("^    \\(.+\\.lua\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)))
+
 (eval-after-load 'lua-mode
   '(progn
-     ;; (add-to-list 'compilation-error-regexp-alist
-     ;;              '("^    \\(.+\\.lua\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3))
      (define-key lua-mode-map (kbd "C-c C-s") 'lua-start-process)
      (define-key lua-mode-map (kbd "C-c C-r") 'lua-send-region)
-     (define-key lua-mode-map (kbd "C-c C-k") 'pnh-lua-send-file)
-     (define-key lua-mode-map (kbd "C-M-x") 'lua-send-defun)))
+     (define-key lua-mode-map (kbd "C-c C-k") 'lua-send-buffer)
+     (define-key lua-mode-map (kbd "C-M-x") 'lua-send-defun)
+     (define-key lua-mode-map (kbd "[") 'paredit-open-square)
+     (define-key lua-mode-map (kbd "]") 'paredit-close-square)
+     (define-key lua-mode-map (kbd "{") 'paredit-open-curly)
+     (define-key lua-mode-map (kbd "}") 'paredit-close-curly)))
+
+(add-hook 'lua-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+
+(when (functionp 'flymake-lua-load)
+  (add-hook 'lua-mode-hook 'flymake-lua-load))
 
 ;; (defvar _lua-init
 ;;   (setq lua-process-init-code
