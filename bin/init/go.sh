@@ -18,17 +18,11 @@ sed -i "s^mozilla/China_Internet^! mozilla/China_internet^" /etc/ca-certificates
 update-ca-certificates
 
 echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
-echo "Package: systemd-sysv
-Pin: release o=Debian
-Pin-Priority: -1" > /etc/apt/preferences.d/no-systemd
 
 apt-get update && apt-get install -y git zile sudo
 
 if [ "$ME" = "" ]; then
   export ME=phil
-  getent passwd phil || \
-    (export ME=technomancy && getent passwd technomancy || \
-     export ME=vagrant)
 fi
 
 usermod -a -G sudo $ME

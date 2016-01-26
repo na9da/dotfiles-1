@@ -1,6 +1,7 @@
-personal_ws-1.1 en 106 
+personal_ws-1.1 en 120 
 Hagelberg
 runtime
+API
 Leiningen's
 readme
 IRB
@@ -8,11 +9,14 @@ IRC
 SHA
 Evrinid
 Compojure
+thruster
 classpath
 Hong
 config
+Compassio
 baristas
 lucene
+keymap
 clj
 rdoc
 Elisp
@@ -22,8 +26,10 @@ refactorings
 sharded
 Solr
 microcontrollers
-peepcode
+login
 PeepCode
+peepcode
+Bussard
 freenode
 Clojure's
 technomancy
@@ -38,7 +44,7 @@ src
 javascript
 rubygems
 triaged
-REPL
+repl
 emacs
 bcrypt
 Debian
@@ -51,15 +57,19 @@ uncommenting
 Erlang
 dotfiles
 Sonian
+exoplanets
+unreached
 https
 filename
 cromulent
+LuaJIT
 Arduino
 paren
 prerelease
 Radagast
 precate
 Contrib
+Lua
 OCaml
 bootloader
 Kinesis
@@ -76,6 +86,7 @@ buildpack
 rubyist
 plugin
 buildpacks
+PDF
 petabyte
 codebase
 Charis
@@ -86,10 +97,13 @@ filesystem
 Chas
 downloadable
 precompiled
+radians
 Chiang
 hackable
 syslog
 eval
+onboard
+boolean
 paredit
 clojars
 Thinkpad
@@ -97,8 +111,8 @@ ClojureScript
 Matias
 wikipedia
 résumé
-GitHub
 github
+GitHub
 checksum
 Noir
 microcontroller

@@ -12,29 +12,21 @@ setxkbmap -option ctrl:nocaps
 # utilities
 xrdb ~/.Xdefaults
 unclutter -idle 1 &
-dunst -nb "#000000" &
+# dunst -nb "#000000" &
 xcompmgr -c -f -D 1 &
 xbindkeys &
-ssh-add &
-srandrd monswitch
+feh --bg-fill docs/images/rosemary.jpg
 
 # progs
 firefox &
 proxiedfox &
-nautilus --no-default-window --force-desktop &
+thunar --daemon &
 
-# gnome: the good parts
+# I get by with a little help from xfce
 gnome-settings-daemon &
-gnome-power-manager &
+xfce4-power-manager &
 gnome-screensaver & # for the lock-screen
-
-# https://bugs.launchpad.net/ubuntu/+source/gnome-settings-daemon/+bug/1238410
-dconf write /org/gnome/settings-daemon/plugins/cursor/active false
-# doesn't actually work
-dconf write /org/gnome/nautilus/preferences/desktop-is-home-dir true
 
 redshift -l 16:98 &
 
-# autossh -D 8088 -o serveraliveinterval=10 -o serveralivecountmax=3 p
-
-exec xmonad
+ck-launch-session startxfce4

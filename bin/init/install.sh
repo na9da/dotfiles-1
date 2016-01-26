@@ -30,8 +30,6 @@ if [ -f /etc/mpd.conf ]; then
   cp mpd.conf /etc
 fi
 
-sudo -u $ME dconf load /home/$ME/.dotfiles/.dconf.ini
-
 # Other installs
 
 if [ ! -x /home/$ME/bin/lein2 ]; then

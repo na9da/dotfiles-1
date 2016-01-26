@@ -12,6 +12,11 @@ if [ -r $HOME/.profile ] && [ ! -h $HOME/.profile ] ; then
     rm $HOME/.profile # blow away the stock one
 fi
 
+if [ -d $HOME/.config/xfce4 ] ; then
+    rm -rf $HOME/.config/xfce4
+    ln -s "$HOME/.dotfiles/.config-xfce4" "$HOME/.config/xfce4"
+fi
+
 for f in $(ls -a ~/.dotfiles) ; do
     if [ ! -r "$HOME/$f" ] &&
         [ $f != "." ] && [ $f != ".." ] && [ $f != "README.md" ] &&
