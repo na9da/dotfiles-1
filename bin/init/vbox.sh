@@ -1,4 +1,4 @@
-sudo aptitude install virtualbox-ose virtualbox-ose-dkms linux-headers-amd64
+sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') virtualbox
 
 sudo modprobe vboxdrv
 

@@ -1,79 +1,52 @@
-acpi
-acpitool
-apt-show-versions
+# laptop tools
+acpi acpitool laptop-mode-tools
+pm-utils powertop wireless-tools
+
+# system stuff
 aspell-en
-autossh
-avahi-discover
-avahi-utils
-bittorrent
-build-essential
-bsdtar
-chromium
-cryptmount
-cryptsetup
-curl
-cloc
-dunst
+avahi-discover avahi-utils
+build-essential bsdtar curl
+cryptmount cryptsetup gnutls-bin gnupg-agent
+autossh mosh openssh-server
+rlwrap rsync sudo htop lsof molly-guard
+tmux tree unzip uuid zile zip
+
+# applications
 emacs24
-exuberant-ctags
-feh
+chromium
 iceweasel
 gimp
-git
-gmpc
-gnumeric
-gnupg-agent
-gnutls-bin
-gsfonts-x11
-htop
-imagemagick
-isync
-jq
-laptop-mode-tools
-libavahi-compat-libdnssd-dev
-libavahi-compat-libdnssd1
-libbz2-dev
-libevent-dev
-libfaad2
-libgcrypt11-dev
-libgmime-2.6-dev
-libnotify-bin
-libsqlite3-dev
-libssl-dev
-libx11-dev
-libxinerama-dev
-libxml2-dev
-libxslt1-dev
-lsof
-love
-lua5.1
-lua5.1-doc
-molly-guard
-mosh
-mpc
-mpd
-mpg321
-mu4e
-mumble
-nautilus
-ncurses-term
-netcat-openbsd
+gmpc mpd mpc
+gnumeric abiword
 offlineimap
-openssh-server
+mu4e
 pandoc
-pavucontrol
-pm-utils
-powertop
-rlwrap
-rsync
-ruby-full
 rxvt-unicode-256color
+vlc
+
+# dev tools
+love lua5.1 lua5.1-doc
+racket
+ruby-full
+git
+cloc
+jq
+
+# desktop thingies
+xfce4 xfce4-power-manager tumbler
+wmctrl x11-xserver-utils xbindkeys xclip xinput xsel
+dunst
+unclutter
+feh
+pavucontrol
+mpg321 vorbis-tools
+libnotify-bin
 scrot
 suckless-tools
-sudo
 synergy
-tmux
-tree
+
+# fonts
+gsfonts-x11
 fonts-arphic-bkai00mp
 fonts-arphic-bsmi00lp
 fonts-arphic-gbsn00lp
@@ -86,23 +59,12 @@ fonts-liberation
 fonts-opensymbol
 fonts-sil-padauk
 fonts-alee
-unclutter
-unzip
-uuid
-vlc
-vorbis-tools
-wireless-tools
-wmctrl
-x11-xserver-utils
-xbindkeys
-xclip
-xfce4
 xfonts-intl-chinese
 xfonts-terminus
-xinit
-xinput
-xsane
-xsel
-xserver-xorg
-zile
-zip
+
+# deps for building from source
+libwebkit-dev libunique-dev libwebkitgtk-dev lua-filesystem-dev # luakit
+libsqlite3-dev
+libssl-dev
+libx11-dev
+libxml2-dev

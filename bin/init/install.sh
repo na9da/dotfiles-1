@@ -13,7 +13,7 @@ chattr +A /
 
 echo "Installing packages..."
 
-apt-get install -y $(cat debs | tr '\n' ' ')
+apt-get install -y $(cat debs | sed 's:#.*$::g' | tr '\n' ' ')
 
 cp xsession.desktop /usr/share/xsessions/xsession.desktop
 
