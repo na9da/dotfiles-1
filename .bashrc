@@ -2,7 +2,7 @@
 
 # prompt coloring
 # see http://attachr.com/9288 for full-fledged craziness
-if [ `/usr/bin/whoami` = "root" ] ; then
+if [ "$USER" = "root" ] ; then
   # root has a red prompt
   export PS1="\[\033[1;31m\]\u@\h \w \$ \[\033[0m\]"
 elif [ `hostname` = "zuse" -o `hostname` = "enigma" -o `hostname` = "dynabook" ] ; then

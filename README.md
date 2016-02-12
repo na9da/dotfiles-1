@@ -43,10 +43,3 @@ bother to run a panel, but `nm-applet`'s gui is still necessary.)
 Displaying output by these scripts is typically done with
 `notify-send` in scripts like `music-show` and `notify-battery`.
 
-## Manual installations
-
-There are a few programs I need more control over and can't rely on
-getting through apt. [Emacs](http://www.gnu.org/software/emacs/),
-[Leiningen](http://leiningen.org),
-[mu](http://www.djcbsoftware.nl/code/mu/) and
-[Conkeror](http://conkeror.org/) are still built from source.

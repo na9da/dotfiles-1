@@ -14,6 +14,7 @@
       load-prefer-newer t
       visible-bell t
       tls-checktrust 'ask
+      tls-program "gnutls-cli"
       el-get-allow-insecure nil
       inhibit-startup-message t
       uniquify-buffer-name-style 'post-forward
