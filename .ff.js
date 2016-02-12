@@ -1,3 +1,7 @@
+// lol no
+
+user_pref("media.autoplay.enabled", false);
+
 // security
 
 user_pref("media.peerconnection.enabled", false);
