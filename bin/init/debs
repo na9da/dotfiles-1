@@ -58,12 +58,12 @@ fonts-lohit-knda
 fonts-liberation
 fonts-opensymbol
 fonts-sil-padauk
+fonts-sil-gentium
 fonts-alee
 xfonts-intl-chinese
 xfonts-terminus
 
 # deps for building from source
-libwebkit-dev libunique-dev libwebkitgtk-dev lua-filesystem-dev # luakit
 libsqlite3-dev
 libssl-dev
 libx11-dev

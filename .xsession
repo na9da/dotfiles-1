@@ -27,6 +27,6 @@ gnome-settings-daemon &
 xfce4-power-manager &
 gnome-screensaver & # for the lock-screen
 
-redshift -l 16:98 &
+# redshift -l 16:98 &
 
-ck-launch-session startxfce4
+startxfce4

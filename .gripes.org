@@ -140,6 +140,7 @@
 ** ocaml
    - strings are mutable
      - mutable!
+     - possibly fixed in upcoming versions?
    - precedence rules can be bizarre and often unguessable
      - "just keep spamming with parens till it compiles"
    - pulling in jane street core makes executable sizes balloon way up
@@ -167,3 +168,6 @@
       - dashes in the middle of identifiers should be allowed
         - otherwise you're optimizing for obfuscation (subtraction without spaces)
     - pretty-printer in the repl (lua-repl has this already)
+** conkeror
+   - content-policy rules are confusing and badly-documented
+     this might help? https://github.com/thorkill/config-conkeror/blob/master/dot.conkerorrc/200-contentPolicy.js
