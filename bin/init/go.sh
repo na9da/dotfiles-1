@@ -33,8 +33,10 @@ if [ -r /etc/NetworkManager/NetworkManager.conf ]; then
 fi
 
 # Don't wait to boot; just go with the default.
-sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/ /etc/default/grub
-update-grub
+if [ -f /etc/default/grub ]; then
+    sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/ /etc/default/grub
+    update-grub
+fi
 
 # Caps lock is absurd.
 sed -i s/XKBOPTIONS=""/XKBOPTIONS="ctrl:nocaps"/ /etc/default/keyboard

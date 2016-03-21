@@ -1,5 +1,6 @@
 *elc
 /.emacs.d/elpa/
+/.emacs.d/el-get/
 /.emacs.d/.smex-items
 /.emacs.d/abbrev_defs
 /.emacs.d/auto-save-list

@@ -6,7 +6,7 @@ alias saptr sudo aptitude remove $*
 alias sapti sudo aptitude install $*
 alias saptd sudo aptitude update $*
 alias saptc apt-cache search $*
-alias s ssh $*
+alias s ls $*
 alias rtags ctags-exuberant -e --Ruby-kinds=-fFcm -o TAGS -R $*
 alias r rgrep $*
 alias lsz lsz $*
