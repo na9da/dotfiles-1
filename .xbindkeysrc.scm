@@ -19,6 +19,7 @@
 
 (xbindkey '(mod1 F12) "notify-battery")
 (xbindkey '(shift F12) "internal-keyboard disable")
+(xbindkey '(ctrl shift F12) "internal-keyboard disable")
 (xbindkey '(mod1 shift F12) "killall dunst; dunst -nb \"#000000\"")
 
 ;;; network
