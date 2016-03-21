@@ -46,3 +46,5 @@
             ;; try to emulate some of the eww key-bindings
             (local-set-key (kbd "<tab>") 'shr-next-link)
             (local-set-key (kbd "<backtab>") 'shr-previous-link)))
+
+(defalias 'm 'mu4e)
