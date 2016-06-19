@@ -39,6 +39,11 @@ if [ ! -x /home/$ME/bin/lein2 ]; then
     chown $ME /home/$ME/bin/lein2
 fi
 
+# without this, git will ignore .authinfo.gpg
+chmod +x /usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+sudo -u $ME git config --global credential.helper \
+     /usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+
 sudo -u $ME ff.sh
 
 # do not want

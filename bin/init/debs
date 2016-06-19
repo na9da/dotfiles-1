@@ -9,7 +9,7 @@ build-essential bsdtar curl
 cryptmount cryptsetup gnutls-bin gnupg-agent
 autossh mosh openssh-server
 rlwrap rsync sudo htop lsof molly-guard
-tmux tree unzip uuid zile zip
+tmux tree unzip uuid zile zip debsums
 
 # applications
 emacs24

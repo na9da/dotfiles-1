@@ -9,14 +9,6 @@ if [ `whoami` != "root" ] ; then
   exit 1
 fi
 
-rm /usr/share/ca-certificates/mozilla/_ROOT.crt || true
-rm /usr/share/ca-certificates/mozilla/China_Internet_Network_Information_Center_EV_Certificates_Root.crt || true
-
-sed -i "s^mozilla/CNNIC^! mozilla/CNNIC^" /etc/ca-certificates.conf
-sed -i "s^mozilla/China_Internet^! mozilla/China_internet^" /etc/ca-certificates.conf
-
-update-ca-certificates
-
 echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
 
 apt-get update && apt-get install -y git zile sudo
