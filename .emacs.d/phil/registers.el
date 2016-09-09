@@ -4,7 +4,7 @@
 (set-register ?r '(file . "~/.emacs.d/phil/registers.el"))
 (set-register ?k '(file . "~/.ssh/known_hosts"))
 (set-register ?m '(file . "~/.xmonad/xmonad.hs"))
-(set-register ?p '(file . "~/.lein/profiles.clj"))
+(set-register ?p '(file . "~/.polywell/init.lua"))
 (set-register ?k '(file . "~/.keysnail.js"))
 (set-register ?d '(file . "~/.dotfiles/dwm/config.h"))
 (set-register ?l '(file . "~/docs/log.org"))

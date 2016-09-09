@@ -1,4 +1,4 @@
-personal_ws-1.1 en 120 
+personal_ws-1.1 en 126 
 Hagelberg
 runtime
 API
@@ -27,13 +27,14 @@ sharded
 Solr
 microcontrollers
 login
-PeepCode
 peepcode
+PeepCode
 Bussard
 freenode
 Clojure's
 technomancy
 lein
+Minecraft
 Emerick
 clojure
 JVM
@@ -49,6 +50,7 @@ emacs
 bcrypt
 Debian
 Calandria
+CSS
 destructuring
 JRuby
 metadata
@@ -58,6 +60,7 @@ Erlang
 dotfiles
 Sonian
 exoplanets
+polyglottal
 unreached
 https
 filename
@@ -93,14 +96,17 @@ Charis
 TODO
 leiningen
 Zach
+Pinang
 filesystem
 Chas
 downloadable
 precompiled
 radians
 Chiang
+multiverse
 hackable
 syslog
+Papert
 eval
 onboard
 boolean
@@ -111,8 +117,8 @@ ClojureScript
 Matias
 wikipedia
 résumé
-github
 GitHub
+github
 checksum
 Noir
 microcontroller

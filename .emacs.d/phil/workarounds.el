@@ -38,6 +38,8 @@
 
 (setq-default ispell-program-name "aspell")
 
+(add-to-list 'completion-ignored-extensions ".exe")
+
 (defun leathekd-suck-it (suckee)
   "Insert a comment of appropriate length about what can suck it."
   (interactive "MWhat can suck it? ")

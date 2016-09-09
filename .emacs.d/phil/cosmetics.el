@@ -76,6 +76,9 @@
 (defun caruso () (interactive) (insert "( •_•) ( -_-)~⌐■-■ (⌐■_■)>"))
 (defun odin () (interactive) (insert "Hreðjar Óðins"))
 (defun tamade () (interactive) (insert "他妈的"))
+(defun shrug () (interactive) (insert "¯\_(ツ)_/¯"))
+(defun mingalaba () (interactive) (insert "မင်္ဂလာပါ"))
+(defun nigaunla () (interactive) (insert "နေကောင်းလာ"))
 
 (when (and window-system (>= emacs-major-version 23))
   (let ((fontset (face-attribute 'default :fontset))

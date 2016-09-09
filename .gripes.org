@@ -32,6 +32,7 @@
        - actual fix
          - file /usr/share/dbus-1/services/org.freedesktop.Notifications.service
          - Exec=/usr/lib/notification-daemon/notification-daemon
+*** All these are fixed in Jessie
 ** Emacs
 *** elisp
    - lisp-2 is awful
@@ -151,12 +152,15 @@
 ** lua
    - no arity checks
    - statement/expression distinction
+     - explicit return
    - globals by default
-   - multiple return values
+     - fixed by luacheck
    - nil is everywhere
    - tables print opaquely
+     - fixed by lua-repl
    - the repl completely buggers up when you enter expressions
-   - explicit return
+     - fixed by lua-repl
+   - metatables require 5.2 to be useful (to support iteration)
 *** my ideal compile-to-lua language:
     - fn keyword creates arity-checked function
       - within fn, if compiles to and/or
@@ -168,6 +172,3 @@
       - dashes in the middle of identifiers should be allowed
         - otherwise you're optimizing for obfuscation (subtraction without spaces)
     - pretty-printer in the repl (lua-repl has this already)
-** conkeror
-   - content-policy rules are confusing and badly-documented
-     this might help? https://github.com/thorkill/config-conkeror/blob/master/dot.conkerorrc/200-contentPolicy.js

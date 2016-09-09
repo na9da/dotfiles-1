@@ -33,7 +33,7 @@
 (el-get 'sync '(scpaste better-defaults markdown-mode paredit
                         htmlize smex ido-ubiquitous
                         idle-highlight-mode page-break-lines
-                        lua-mode elisp-slime-nav
+                        elisp-slime-nav
                         ))
 
 ;; my own packages:
@@ -44,9 +44,9 @@
 (add-to-list 'load-path "~/src/magit")
 (autoload 'magit-status "magit" nil t)
 
-(add-to-list 'load-path "~/src/web-mode")
-(autoload 'web-mode "web-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'load-path "~/src/lua-mode")
+(autoload 'lua-mode "lua-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
 
 (add-to-list 'load-path "~/src/find-file-in-project")
 (require 'find-file-in-project)
@@ -71,11 +71,11 @@
 (winner-mode)
 
 (eval-after-load 'markdown-mode
-  (progn (add-hook 'markdown-mode 'flyspell-mode)
-         (add-hook 'markdown-mode 'auto-fill-mode)))
+  (progn (add-hook 'markdown-mode-hook 'flyspell-mode)
+         (add-hook 'markdown-mode-hook 'auto-fill-mode)))
 
-(add-hook 'text-mode 'flyspell-mode)
-(add-hook 'text-mode 'auto-fill-mode)
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'text-mode-hook 'auto-fill-mode)
 
 (defun uuid ()
   (interactive)

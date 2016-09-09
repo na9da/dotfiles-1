@@ -40,8 +40,10 @@
         <value type="string" value="vlc"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="kazam"/>
         <value type="string" value="gmpc"/>
         <value type="string" value="thunar"/>
+        <value type="string" value="qjackctl"/>
       </property>
     </property>
     <property name="plugin-7" type="string" value="battery"/>

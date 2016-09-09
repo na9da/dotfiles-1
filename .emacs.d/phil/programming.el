@@ -1,6 +1,7 @@
 ;;; general
 
 (add-hook 'prog-mode-hook 'whitespace-mode)
+(add-hook 'prog-mode-hook 'prettify-symbols-mode)
 (add-hook 'prog-mode-hook 'idle-highlight-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'prog-mode-hook 'page-break-lines-mode)
@@ -8,6 +9,8 @@
                             (font-lock-add-keywords
                              nil `(("\\<\\(FIX\\(ME\\)?\\|TODO\\)"
                                     1 font-lock-warning-face t)))))
+
+(global-set-key (kbd "C-c l") (lambda () (interactive) (insert "λ")))
 
 (setq page-break-lines-char ?-)
 
@@ -120,7 +123,6 @@
 (define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-buffer)
 
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
-(define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
 
 (define-key emacs-lisp-mode-map (kbd "C-c e")
   (defun eval-and-replace ()
@@ -132,6 +134,13 @@
                (current-buffer))
       (error (message "Invalid expression")
              (insert (current-kill 0))))))
+
+
+;;; lisp (mostly for l2l)
+
+(define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
+(add-hook 'lisp-mode-hook 'paredit-mode)
+(define-key lisp-mode-map (kbd "{") 'paredit-open-curly)
 
 
 ;;; racket
@@ -152,6 +161,8 @@
   (eval-after-load 'racket-mode
     '(progn (define-key racket-mode-map (kbd "C-c C-k") 'racket-run)
             (define-key racket-mode-map (kbd "C-c C-d") 'racket-describe)
+            ;; seriously, tab to complete?
+            (define-key racket-mode-map (kbd "TAB") 'indent-for-tab-command)
             (define-key racket-mode-map (kbd "RET")
               'reindent-then-newline-and-indent))))
 
@@ -287,32 +298,55 @@
 
 ;;; lua
 
-(setq lua-default-application "lua-repl")
+(setq lua-default-application "lua-repl"
+      lua-documentation-function 'eww
+      lua-local-require-completions t)
+
 (setenv "LUA_REPL_RLWRAP" "sure") ; suppress rlwrap, which will fail
 
 (add-hook 'lua-mode-hook 'paredit-mode)
 (add-hook 'lua-mode-hook 'pnh-paredit-no-space)
+(add-hook 'lua-mode-hook (defun pnh-lua-prettify ()
+                           (push '("function" . "λ") prettify-symbols-alist)
+                           (push '("<=" . ?≤) prettify-symbols-alist)
+                           (push '(">=" . ?≥) prettify-symbols-alist)))
 
 (defun pnh-lua-manual ()
   (interactive)
   (eww-open-file "/usr/share/doc/lua5.1-doc/doc/manual.html"))
 
-(eval-after-load 'compile
-  '(add-to-list 'compilation-error-regexp-alist
-                '("^    \\(.+\\.lua\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)))
+(defun pnh-love-manual ()
+  (interactive)
+  ;; would be nice to jump to a specific page, but the filenames are garbled
+  (eww-open-file "/home/phil/docs/love-docs/index.html"))
+
+(defun pnh-lua-send-file ()
+  (interactive)
+  (lua-send-string (format "_ = dofile('%s') print('ok')" buffer-file-name)))
 
 (eval-after-load 'lua-mode
   '(progn
-     (define-key lua-mode-map (kbd "C-c C-s") 'lua-start-process)
+     (define-key lua-mode-map (kbd "C-c C-s") 'pnh-lua-repl)
      (define-key lua-mode-map (kbd "C-c C-r") 'lua-send-region)
-     (define-key lua-mode-map (kbd "C-c C-k") 'lua-send-buffer)
+     (define-key lua-mode-map (kbd "C-c C-k") 'pnh-lua-send-file)
      (define-key lua-mode-map (kbd "C-M-x") 'lua-send-defun)
      (define-key lua-mode-map (kbd "[") 'paredit-open-square)
      (define-key lua-mode-map (kbd "]") 'paredit-close-square)
      (define-key lua-mode-map (kbd "{") 'paredit-open-curly)
      (define-key lua-mode-map (kbd "}") 'paredit-close-curly)))
 
-(add-hook 'lua-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+(add-hook 'lua-mode-hook
+          (defun pnh-lua-mode-hook ()
+            (pnh-paredit-no-space)
+            (paredit-mode 1)))
+
+(defun pnh-lua-repl ()
+  (interactive)
+  (lua-start-process)
+  ;; I think this breaks because sending the completion code causes the prompt
+  ;; to print, which throws off the point offset.
+  (make-variable-buffer-local 'completion-at-point-functions)
+  (add-to-list 'completion-at-point-functions 'lua-complete-function))
 
 (when (functionp 'flymake-lua-load)
   (add-hook 'lua-mode-hook 'flymake-lua-load))

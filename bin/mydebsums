@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for d in $(cat bin/init/debs | sed 's:#.*$::g' | tr '\n' ' '); do
+  debsums -a $d  | grep -v OK
+done
