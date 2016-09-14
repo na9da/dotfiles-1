@@ -14,6 +14,7 @@ chattr +A /
 echo "Installing packages..."
 
 apt-get install -y $(cat debs | sed 's:#.*$::g' | tr '\n' ' ')
+apt-get install -t jessie-backports -y $(cat backports | sed 's:#.*$::g' | tr '\n' ' ')
 
 cp xsession.desktop /usr/share/xsessions/xsession.desktop
 

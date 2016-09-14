@@ -10,6 +10,8 @@ if [ `whoami` != "root" ] ; then
 fi
 
 echo "APT::Install-Recommends \"0\";" > /etc/apt/apt.conf.d/50norecommends
+echo "deb http://ftp.debian.org/debian jessie-backports main" > \
+     /etc/apt/sources.list.d/backports.list
 
 apt-get update && apt-get install -y git zile sudo
 
