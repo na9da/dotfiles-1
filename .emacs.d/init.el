@@ -27,9 +27,6 @@
 (load custom-file t)
 
 ;; Packages
-(add-to-list 'load-path "~/src/el-get")
-(require 'el-get)
-
 (el-get 'sync '(scpaste better-defaults markdown-mode paredit
                         htmlize smex ido-ubiquitous
                         idle-highlight-mode page-break-lines
