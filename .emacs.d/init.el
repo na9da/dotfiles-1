@@ -24,10 +24,6 @@
 (when window-system
   (setq scroll-conservatively 1))
 
-;; These ones don't fit the pattern of function-matches-dir-name
-(autoload 'paredit-mode "paredit.el" nil t)
-(autoload 'elisp-slime-nav-mode "elisp-slime-nav.el" nil t)
-
 ;; 3rd-party packages
 (dolist (l (directory-files (concat user-emacs-directory "lib") nil "^[^\.]"))
   (add-to-list 'load-path (concat user-emacs-directory "lib/" l))
@@ -44,6 +40,9 @@
 ;; personal stuff
 (mapc 'load (directory-files (concat user-emacs-directory user-login-name)
                              t "^[^#].*el$"))
+
+(setq custom-theme-load-path
+      (directory-files (concat user-emacs-directory "themes") t "^[^\.]"))
 
 (defun pnh-reinit-libs ()
   (interactive)
