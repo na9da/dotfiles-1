@@ -7,7 +7,7 @@ aspell-en
 avahi-discover avahi-utils
 build-essential bsdtar curl
 cryptmount cryptsetup gnutls-bin gnupg-agent
-autossh mosh openssh-server
+autossh mosh openssh-server ntpdate ntp
 rlwrap rsync sudo htop lsof molly-guard
 tmux tree unzip uuid zile zip debsums
 

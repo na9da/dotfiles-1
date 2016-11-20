@@ -1,5 +1,8 @@
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
+export PATH=$PATH:$HOME/bin/xtensxtensa-esp32-elf/bin/
+export IDF_PATH=$HOME/src/esp-idf
+
 if which psql > /dev/null ; then
     export PATH=/usr/lib/postgresql/9.1/bin:$PATH
 fi

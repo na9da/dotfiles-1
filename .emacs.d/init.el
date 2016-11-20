@@ -48,6 +48,9 @@
 (autoload 'lua-mode "lua-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
 
+(add-to-list 'load-path "~/src/monroe")
+(autoload 'monroe "monroe" nil t)
+
 (add-to-list 'load-path "~/src/find-file-in-project")
 (require 'find-file-in-project)
 (add-to-list 'ffip-patterns "*.lua")

@@ -1,4 +1,4 @@
-personal_ws-1.1 en 126 
+personal_ws-1.1 en 128 
 Hagelberg
 runtime
 API
@@ -49,8 +49,8 @@ repl
 emacs
 bcrypt
 Debian
-Calandria
 CSS
+Calandria
 destructuring
 JRuby
 metadata
@@ -74,6 +74,7 @@ precate
 Contrib
 Lua
 OCaml
+presoldered
 bootloader
 Kinesis
 multiplayer
@@ -92,6 +93,7 @@ buildpacks
 PDF
 petabyte
 codebase
+username
 Charis
 TODO
 leiningen

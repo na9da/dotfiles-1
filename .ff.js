@@ -1,6 +1,7 @@
 // lol no
 
 user_pref("media.autoplay.enabled", false);
+user_pref("dom.min_background_timeout_value", 99999);
 
 // security
 
@@ -14,6 +15,7 @@ user_pref("browser.safebrowsing.enabled", false);
 user_pref("browser.safebrowsing.maleware.enabled", false);
 user_pref("xpinstall.signatures.required", false);
 
+user_pref("security.insecure_password.ui.enabled", true);
 user_pref("accessibility.blockautorefresh", true);
 user_pref("plugins.hide_infobar_for_blocked_plugin", true);
 user_pref("plugins.notifyMissingFlash", false);

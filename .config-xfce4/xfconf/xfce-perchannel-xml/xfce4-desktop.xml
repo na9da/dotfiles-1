@@ -8,10 +8,10 @@
         <property name="color1" type="empty"/>
         <property name="color2" type="empty"/>
         <property name="color-style" type="empty"/>
-        <property name="image-path" type="string" value="/home/phil/docs/images/rosemary.jpg"/>
+        <property name="image-path" type="string" value="/home/phil/docs/images/9and9.jpg"/>
         <property name="image-show" type="empty"/>
-        <property name="last-image" type="empty"/>
-        <property name="last-single-image" type="string" value="/home/phil/docs/images/rosemary.jpg"/>
+        <property name="last-image" type="string" value="/home/phil/docs/images/rosemary.jpg"/>
+        <property name="last-single-image" type="string" value="/home/phil/docs/images/9and9.jpg"/>
       </property>
     </property>
   </property>
