@@ -24,45 +24,44 @@
 (when window-system
   (setq scroll-conservatively 1))
 
+;; These ones don't fit the pattern of function-matches-dir-name
+(autoload 'paredit-mode "paredit.el" nil t)
+(autoload 'elisp-slime-nav-mode "elisp-slime-nav.el" nil t)
+
+;; 3rd-party packages
+(dolist (l (directory-files (concat user-emacs-directory "lib") nil "^[^\.]"))
+  (add-to-list 'load-path (concat user-emacs-directory "lib/" l))
+  (autoload (intern l) (concat l ".el")))
+
+;; For some reason, update-directory-autoloads *always* writes its
+;; paths as relative to user-emacs-directory, so we have to add
+;; this. If we add user-emacs-directory by itself to load-path, Emacs
+;; warns us that we shouldn't do that, so we trick it.
+(add-to-list 'load-path (concat user-emacs-directory "/phil/../"))
+(load (concat user-emacs-directory "autoload.el") t)
 (load custom-file t)
 
-;; Packages
-(el-get 'sync '(scpaste better-defaults markdown-mode paredit
-                        htmlize smex ido-ubiquitous
-                        idle-highlight-mode page-break-lines
-                        elisp-slime-nav
-                        ))
+;; personal stuff
+(mapc 'load (directory-files (concat user-emacs-directory user-login-name)
+                             t "^[^#].*el$"))
 
-;; my own packages:
-;; better-defaults
-;; scpaste
-;; find-file-in-project
+(defun pnh-reinit-libs ()
+  (interactive)
+  (let ((generated-autoload-file (concat user-emacs-directory "autoload.el")))
+    (dolist (d (directory-files (concat user-emacs-directory "lib") t "^[^\.]"))
+    (dolist (f (directory-files d t "\\.el$"))
+      (byte-compile-file f))
+    (update-directory-autoloads d))))
 
-(add-to-list 'load-path "~/src/magit")
-(autoload 'magit-status "magit" nil t)
-
-(add-to-list 'load-path "~/src/lua-mode")
-(autoload 'lua-mode "lua-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
-
-(add-to-list 'load-path "~/src/monroe")
-(autoload 'monroe "monroe" nil t)
-
-(add-to-list 'load-path "~/src/find-file-in-project")
 (require 'find-file-in-project)
 (add-to-list 'ffip-patterns "*.lua")
 (add-to-list 'ffip-patterns "*.md")
 (add-to-list 'ffip-patterns "*.lsp")
 
-(when (load "~/.emacs.d/smex.el" t)
+(when (require 'smex nil t)
   (setq smex-save-file (concat user-emacs-directory ".smex-items"))
   (smex-initialize)
   (global-set-key (kbd "M-x") 'smex))
-
-(mapc 'load (directory-files (concat user-emacs-directory user-login-name)
-                             t "^[^#].*el$"))
-
-;; random modes
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 

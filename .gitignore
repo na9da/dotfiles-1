@@ -35,3 +35,4 @@
 /bin/
 /.emacs.d/ido.last
 /.emacs.d/recentf
+/.emacs.d/autoload.el
