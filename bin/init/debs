@@ -12,9 +12,9 @@ rlwrap rsync sudo htop lsof molly-guard
 tmux tree unzip uuid zile zip debsums
 
 # applications
-emacs24
+emacs
 chromium
-iceweasel
+firefox-esr
 gimp
 gmpc mpd mpc
 gnumeric abiword
@@ -22,15 +22,14 @@ offlineimap
 mu4e
 pandoc
 rxvt-unicode-256color
-vlc
+vlc mpv
 
 # dev tools
-love lua5.1 lua5.1-doc
+love lua5.1 lua5.1-doc luarocks
 racket
 ruby-full
-git
-cloc
-jq
+openjdk-8-jdk-headless
+git cloc jq
 
 # desktop thingies
 xfce4 xfce4-power-manager tumbler

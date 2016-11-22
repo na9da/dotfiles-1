@@ -14,7 +14,7 @@ chattr +A /
 echo "Installing packages..."
 
 apt-get install -y $(cat debs | sed 's:#.*$::g' | tr '\n' ' ')
-apt-get install -t jessie-backports -y $(cat backports | sed 's:#.*$::g' | tr '\n' ' ')
+# apt-get install -t jessie-backports -y $(cat backports | sed 's:#.*$::g' | tr '\n' ' ')
 
 cp xsession.desktop /usr/share/xsessions/xsession.desktop
 
@@ -39,6 +39,12 @@ if [ ! -x /home/$ME/bin/lein2 ]; then
     chmod +x /home/$ME/bin/lein2
     chown $ME /home/$ME/bin/lein2
 fi
+
+for rock in $(cat rocks | sed 's:#.*$::g' | tr '\n' ' '); do
+    if [ "$(luarocks list $rock | grep $rock)" == "" ]; then
+        luarocks install --local $rock
+    fi
+done
 
 # without this, git will ignore .authinfo.gpg
 chmod +x /usr/share/doc/git/contrib/credential/netrc/git-credential-netrc

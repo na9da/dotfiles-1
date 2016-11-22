@@ -1,0 +1,5 @@
+luacheck
+luafilesystem
+luarepl
+luaposix
+lunatest

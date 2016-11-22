@@ -5,25 +5,7 @@ Everything it takes to run a technomancy-approved system.
 ## Basics
 
 Designed to run on [Debian](http://debian.org) systems; would probably
-work with [Ubuntu](http://ubuntu.com) too. Runs
-[XMonad](http://xmonad.org) with a bit of underlying
-[GNOME](http://gnome.org) infrastructure doing the low-level stuff
-it's good at, like power management, lock screen, nautilus to handle
-USB auto-mount, and settings-daemon to set up gpg agent and friends.
-
-Notable additions include:
-
-* [xbindkeys](http://www.nongnu.org/xbindkeys/xbindkeys.html) to
-  support defining all desktop-wide keyboard shortcuts in
-  s-expressions
-* [mpd](http://musicpd.org) to expose music as a service
-* [unclutter](http://packages.debian.org/sid/unclutter) to make the
-  pointer vanish when irrelevant
-* [fbpanel](http://fbpanel.sourceforge.net/) to expose the wifi applet
-  and CPU graphs in a dotfiles-friendly, non-intrusive way
-
-All this stuff is launched from the `.xsession` file, which GDM will
-show as a session option when logging in.
+work with [Ubuntu](http://ubuntu.com) too.
 
 ## Init
 
