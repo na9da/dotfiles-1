@@ -84,7 +84,6 @@
 ;;; ruby
 
 (add-hook 'ruby-mode-hook 'pnh-paredit-no-space)
-(add-hook 'ruby-mode-hook 'paredit-mode)
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
 (eval-after-load 'inf-ruby
@@ -104,14 +103,10 @@
 
 ;;; clojure
 
-(add-to-list 'load-path "~/src/cider")
-(autoload 'cider-jack-in "cider.el" nil t)
-
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-
 (setq inferior-lisp-command "lein repl")
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'monroe-interaction-mode)
 
 
 ;;; elisp

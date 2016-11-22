@@ -2,6 +2,8 @@
 (set-face-foreground 'vertical-border "white")
 (set-face-background 'vertical-border "white")
 
+;; (set-face-background 'magit-item-highlight "light grey")
+
 ;; themes
 
 (defun zb ()
