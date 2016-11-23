@@ -32,17 +32,11 @@ openjdk-8-jdk-headless
 git cloc jq
 
 # desktop thingies
-xfce4 xfce4-power-manager tumbler
+xfce4 xfce4-power-manager tumbler desktop-base thunar-volman xfce4-notifyd
 wmctrl x11-xserver-utils xbindkeys xclip xinput xsel
-dunst
-unclutter
-feh
+unclutter feh scrot suckless-tools synergy libnotify-bin
 pavucontrol
 mpg321 vorbis-tools
-libnotify-bin
-scrot
-suckless-tools
-synergy
 
 # fonts
 gsfonts-x11

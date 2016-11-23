@@ -12,7 +12,6 @@ setxkbmap -option ctrl:nocaps
 # utilities
 xrdb ~/.Xdefaults
 unclutter -idle 1 &
-# dunst -nb "#000000" &
 xcompmgr -c -f -D 1 &
 xbindkeys &
 feh --bg-fill docs/images/9and9.jpg
