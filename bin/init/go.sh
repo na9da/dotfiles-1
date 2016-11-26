@@ -39,7 +39,7 @@ dpkg-reconfigure -phigh console-setup
 # Check repo out
 if [ ! -r /home/$ME/.dotfiles ]; then
   echo "Checking out dotfiles..."
-  sudo -u $ME git clone git://github.com/technomancy/dotfiles.git \
+  sudo -u $ME git clone git@github.com:technomancy/dotfiles.git \
     /home/$ME/.dotfiles
 fi
 
