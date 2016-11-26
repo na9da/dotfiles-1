@@ -44,14 +44,6 @@
 (setq custom-theme-load-path
       (directory-files (concat user-emacs-directory "themes") t "^[^\.]"))
 
-(defun pnh-reinit-libs ()
-  (interactive)
-  (let ((generated-autoload-file (concat user-emacs-directory "autoload.el")))
-    (dolist (d (directory-files (concat user-emacs-directory "lib") t "^[^\.]"))
-    (dolist (f (directory-files d t "\\.el$"))
-      (byte-compile-file f))
-    (update-directory-autoloads d))))
-
 (require 'find-file-in-project)
 (add-to-list 'ffip-patterns "*.lua")
 (add-to-list 'ffip-patterns "*.md")

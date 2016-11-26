@@ -17,7 +17,7 @@ ln -s ~/.mozilla/firefox/*main/ ~/.ff
 ln -s ~/.mozilla/firefox/*proxied/ ~/.ff-proxied
 rm -f ~/.ff/user.js ~/.ff-proxied/user.js
 ln -s ~/.dotfiles/.ff.js ~/.ff/user.js
-ln -s ~/.dotfiles/.ff-proxied.js ~/.ff/user.js
+ln -s ~/.dotfiles/.ff-proxied.js ~/.ff-proxied/user.js
 
 cd /tmp
 

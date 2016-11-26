@@ -42,7 +42,7 @@ fi
 
 for rock in $(cat rocks | sed 's:#.*$::g' | tr '\n' ' '); do
     if [ "$(luarocks list $rock | grep $rock)" == "" ]; then
-        luarocks install --local $rock
+        sudo -iu $ME luarocks install --local $rock
     fi
 done
 
@@ -51,9 +51,8 @@ chmod +x /usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
 sudo -u $ME git config --global credential.helper \
      /usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
 
-sudo -u $ME ff.sh
+sudo -iu $ME /home/$ME/bin/init/ff.sh
 
-# do not want
-apt-get remove gnash gnash-common browser-plugin-gnash || true
+sudo -iu $ME emacs -Q -l /home/$ME/.emacs.d/$ME/bootstrap.el -f pnh-reinit-libs
 
 echo "All done! Happy hacking."
