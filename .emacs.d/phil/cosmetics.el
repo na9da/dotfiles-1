@@ -2,14 +2,10 @@
 (set-face-foreground 'vertical-border "white")
 (set-face-background 'vertical-border "white")
 
-;; (set-face-background 'magit-item-highlight "light grey")
-
 ;; themes
 
 (defun zb ()
   (interactive)
-  ;; (unless (package-installed-p 'zenburn-theme)
-  ;;   (package-install 'zenburn-theme))
   (load-theme 'zenburn)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
@@ -19,8 +15,6 @@
 
 (defun tw ()
   (interactive)
-  (unless (package-installed-p 'twilight-theme)
-    (package-install 'twilight-theme))
   (load-theme 'twilight)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
@@ -30,8 +24,6 @@
 
 (defun mk ()
   (interactive)
-  (unless (package-installed-p 'monokai-theme)
-    (package-install 'monokai-theme))
   (load-theme 'monokai)
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
@@ -100,6 +92,9 @@
              ("\(\+end_src\)"
               (0 (progn (compose-region (match-beginning 1) (match-end 1) ?¦)
                         nil)))))))
+
+(eval-after-load 'magit
+  '(set-face-background 'magit-item-highlight "light grey"))
 
 ;; Display ido results vertically, rather than horizontally
 (setq ido-decorations '("\n-> " "" "\n   " "\n   ..." "[" "]"
