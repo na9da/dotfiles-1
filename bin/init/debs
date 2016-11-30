@@ -1,5 +1,5 @@
 # laptop tools
-acpi acpitool laptop-mode-tools
+acpi acpitool tlp tlp-rdw
 pm-utils powertop wireless-tools
 
 # system stuff

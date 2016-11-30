@@ -8,11 +8,6 @@
            '(F9 . "mpc prev")
            '(F10 . "mpc next")))
 
-;;; notifications
-
-(xbindkey '(mod1 F12) "notify-battery")
-(xbindkey '(mod1 shift F12) "killall dunst; dunst -nb \"#000000\"")
-
 ;;; network
 
 (xbindkey '(mod4 mod1 n) "ery-net")
@@ -33,14 +28,8 @@
 (xbindkey '(mod4 v) "killall evrouter; evrouter /dev/input/*")
 ;; urxvt -fn xft:terminus-10:encoding=combined -letsp 0
 
-(xbindkey '(mod1 shift F12) "internal-kbd disable")
-(xbindkey '(mod4 shift F12) "internal-kbd enable")
-
-;; sometimes left-click button fails; re-route middle-click to it
-(xbindkey 'F12
-          "xinput --set-button-map 'TPPS/2 IBM TrackPoint' 1 2 3 4 5 6")
-(xbindkey '(ctrl F12)
-          "xinput --set-button-map 'TPPS/2 IBM TrackPoint' 1 1 3 4 5 6")
+(xbindkey '(mod1 F12) "internal-kbd disable")
+(xbindkey 'F12 "internal-kbd enable")
 
 ;;; applications
 

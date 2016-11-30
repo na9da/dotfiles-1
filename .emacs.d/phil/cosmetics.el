@@ -94,7 +94,7 @@
                         nil)))))))
 
 (eval-after-load 'magit
-  '(set-face-background 'magit-item-highlight "light grey"))
+  '(set-face-background 'magit-item-highlight "dark grey"))
 
 ;; Display ido results vertically, rather than horizontally
 (setq ido-decorations '("\n-> " "" "\n   " "\n   ..." "[" "]"

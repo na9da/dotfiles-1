@@ -1,5 +1,6 @@
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
+export PATH=$PATH:$HOME/.luarocks/bin
 export PATH=$PATH:$HOME/bin/xtensxtensa-esp32-elf/bin/
 export IDF_PATH=$HOME/src/esp-idf
 

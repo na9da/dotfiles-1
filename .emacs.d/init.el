@@ -60,6 +60,8 @@
 
 (winner-mode)
 
+(ido-ubiquitous-mode t)
+
 (eval-after-load 'markdown-mode
   (progn (add-hook 'markdown-mode-hook 'flyspell-mode)
          (add-hook 'markdown-mode-hook 'auto-fill-mode)))
