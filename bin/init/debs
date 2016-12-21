@@ -29,7 +29,7 @@ love lua5.1 lua5.1-doc luarocks
 racket
 ruby-full
 openjdk-8-jdk-headless
-git cloc jq
+git cloc jq yaml-mode
 
 # desktop thingies
 xfce4 xfce4-power-manager tumbler desktop-base thunar-volman xfce4-notifyd
