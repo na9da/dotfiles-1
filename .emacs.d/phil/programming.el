@@ -108,6 +108,32 @@
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'monroe-interaction-mode)
 
+(defun pnh-monroe-run ()
+  (interactive)
+  (monroe-eval-buffer)
+  (monroe-input-sender (get-buffer-process monroe-repl-buffer) "(-main)"))
+
+(eval-after-load 'monroe
+  '(define-key monroe-interaction-mode-map (kbd "C-x C-j") 'pnh-monroe-run))
+
+;; TODO: echo to minibuffer
+(defun pnh-monroe-eval-sexp ()
+  (interactive)
+  (monroe-eval-buffer)
+  (monroe-input-sender (get-buffer-process monroe-repl-buffer)
+                       (format "%s" (preceding-sexp))))
+
+(eval-after-load 'monroe
+  '(define-key monroe-interaction-mode-map (kbd "C-x C-e") 'pnh-monroe-eval-sexp))
+
+(defun pnh-monroe-scad ()
+  (interactive)
+  (let ((str (format "(spit \"atreus.scad\" (write-scad %s))"
+                     (preceding-sexp))))))
+
+(eval-after-load 'monroe
+  '(define-key monroe-interaction-mode-map (kbd "C-c C-s") 'pnh-monroe-scad))
+
 
 ;;; elisp
 
@@ -313,7 +339,7 @@
 (defun pnh-love-manual ()
   (interactive)
   ;; would be nice to jump to a specific page, but the filenames are garbled
-  (eww-open-file "/home/phil/docs/love-docs/index.html"))
+  (eww-open-file "/home/phil/docs/love-ref.html"))
 
 (defun pnh-lua-send-file ()
   (interactive)

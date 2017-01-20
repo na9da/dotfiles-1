@@ -19,6 +19,7 @@
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
+  (set-face-background 'magit-item-highlight "gray12")
   (set-face-foreground 'eshell-prompt "turquoise1")
   (set-face-background 'hl-line "black"))
 
@@ -53,6 +54,7 @@
 (defun eyeroll () (interactive) (insert "◔_◔"))
 (defun tables () (interactive) (insert "（╯°□°）╯︵ ┻━┻"))
 (defun mu () (interactive) (insert "無"))
+(defun muk () (interactive) (insert "무"))
 (defun rectification () (interactive) (insert "正名"))
 (defun caruso () (interactive) (insert "( •_•) ( -_-)~⌐■-■ (⌐■_■)>"))
 (defun odin () (interactive) (insert "Hreðjar Óðins"))
@@ -60,6 +62,7 @@
 (defun shrug () (interactive) (insert "¯\_(ツ)_/¯"))
 (defun mingalaba () (interactive) (insert "မင်္ဂလာပါ"))
 (defun nigaunla () (interactive) (insert "နေကောင်းလာ"))
+(defun dn () (interactive) (insert "เดือน"))
 
 (when (and window-system (>= emacs-major-version 23))
   (let ((fontset (face-attribute 'default :fontset))

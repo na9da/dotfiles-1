@@ -149,6 +149,8 @@
    - no concurrency
    - opam still defaults to "give me the latest version of this lib"
    - serialization still requires spoon-feeding the types
+** google go
+   - almost everything
 ** lua
    - no arity checks
    - statement/expression distinction

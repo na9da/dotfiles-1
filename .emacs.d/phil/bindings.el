@@ -1,5 +1,3 @@
-(global-set-key (kbd "C-c C-j") 'cider-jack-in)
-
 (global-set-key (kbd "C-c f") 'find-file-in-project)
 
 (add-hook 'prog-mode-hook

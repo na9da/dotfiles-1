@@ -1,5 +1,5 @@
 # laptop tools
-acpi acpitool tlp tlp-rdw
+acpi acpitool tlp tlp-rdw gvfs-backends
 pm-utils powertop wireless-tools
 
 # system stuff
@@ -25,7 +25,7 @@ rxvt-unicode-256color
 vlc mpv
 
 # dev tools
-love lua5.1 lua5.1-doc luarocks
+love lua5.1 lua5.1-doc luarocks lua-filesystem
 racket
 ruby-full
 openjdk-8-jdk-headless

@@ -19,6 +19,7 @@ user_pref("security.insecure_password.ui.enabled", true);
 user_pref("accessibility.blockautorefresh", true);
 user_pref("plugins.hide_infobar_for_blocked_plugin", true);
 user_pref("plugins.notifyMissingFlash", false);
+user_pref("security.ask_for_password", 1);
 
 // perf
 
