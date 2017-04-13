@@ -68,3 +68,5 @@
 
 ;; old cider crashes without this
 (setq clojure--prettify-symbols-alist '())
+
+(add-hook 'visual-line-mode-hook (lambda () (auto-fill-mode -1)))

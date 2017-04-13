@@ -14,4 +14,5 @@ if `mpc playlist` == "" && $?.to_i == 0
   system $0
 else
   `mpc play`
+  system("mpd")
 end

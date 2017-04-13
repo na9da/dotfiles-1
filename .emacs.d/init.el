@@ -18,8 +18,7 @@
       el-get-allow-insecure nil
       inhibit-startup-message t
       uniquify-buffer-name-style 'post-forward
-      browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "firefox")
+      browse-url-browser-function 'browse-url-firefox)
 
 (when window-system
   (setq scroll-conservatively 1))
@@ -34,7 +33,7 @@
 ;; this. If we add user-emacs-directory by itself to load-path, Emacs
 ;; warns us that we shouldn't do that, so we trick it.
 (add-to-list 'load-path (concat user-emacs-directory "/phil/../"))
-(load (concat user-emacs-directory "autoload.el") t)
+(load (concat user-emacs-directory "my-autoload.el") t)
 (load custom-file t)
 
 ;; personal stuff
@@ -47,7 +46,7 @@
 (require 'find-file-in-project)
 (add-to-list 'ffip-patterns "*.lua")
 (add-to-list 'ffip-patterns "*.md")
-(add-to-list 'ffip-patterns "*.lsp")
+(add-to-list 'ffip-patterns "*.lisp")
 
 (when (require 'smex nil t)
   (setq smex-save-file (concat user-emacs-directory ".smex-items"))
@@ -59,6 +58,8 @@
 (column-number-mode t)
 
 (winner-mode)
+
+(ido-ubiquitous-mode t)
 
 (eval-after-load 'markdown-mode
   (progn (add-hook 'markdown-mode-hook 'flyspell-mode)

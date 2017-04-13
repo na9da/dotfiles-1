@@ -1,5 +1,5 @@
 # laptop tools
-acpi acpitool laptop-mode-tools
+acpi acpitool tlp tlp-rdw gvfs-backends
 pm-utils powertop wireless-tools
 
 # system stuff
@@ -15,25 +15,24 @@ tmux tree unzip uuid zile zip debsums
 emacs
 chromium
 firefox-esr
-gimp
+gimp mirage
 gmpc mpd mpc
 gnumeric abiword
-offlineimap
-mu4e
+offlineimap mu4e
 pandoc
 rxvt-unicode-256color
 vlc mpv
 
 # dev tools
-love lua5.1 lua5.1-doc luarocks
+love lua5.1 lua5.1-doc luarocks lua-filesystem
 racket
-ruby-full
+ruby-full rake
 openjdk-8-jdk-headless
 git cloc jq yaml-mode
 
 # desktop thingies
-xfce4 xfce4-power-manager tumbler desktop-base thunar-volman xfce4-notifyd
-wmctrl x11-xserver-utils xbindkeys xclip xinput xsel
+awesome gnome-power-manager gnome-settings-daemon tumbler desktop-base
+thunar thunar-volman wmctrl x11-xserver-utils xbindkeys xclip xinput xsel
 unclutter feh scrot suckless-tools synergy libnotify-bin
 pavucontrol
 mpg321 vorbis-tools

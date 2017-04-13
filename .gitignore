@@ -1,4 +1,3 @@
-*elc
 /.emacs.d/elpa/
 /.emacs.d/el-get/
 /.emacs.d/.smex-items
@@ -35,5 +34,6 @@
 /bin/
 /.emacs.d/ido.last
 /.emacs.d/recentf
-/.emacs.d/autoload.el
-/.emacs.d/autoload.el~
+/.emacs.d/my-autoload.el
+*.elc
+*~
