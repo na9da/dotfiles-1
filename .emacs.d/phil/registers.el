@@ -7,4 +7,4 @@
 (set-register ?p '(file . "~/.polywell/init.lua"))
 
 (set-register ?k '(file . "~/.keysnail.js"))
-(set-register ?l '(file . "~/docs/log.org"))
+(set-register ?a '(file . "~/.awesome.lua"))
