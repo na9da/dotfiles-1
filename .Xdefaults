@@ -1,15 +1,14 @@
-emacs.font: Inconsolata 13
-! emacs.font: Terminus-11
+! emacs.font: Inconsolata 12
+emacs.font: Terminus-10
 emacs.fullscreen: maximized
 
 Rxvt*scrollBar: False
-urxvt.font: xft:inconsolata:pixelsize=17,xft:Anonymous Pro for Powerline:pixelsize=17
-urxvt*letterSpace:-1.0
+urxvt.font: xft:Terminus-11,xft:Anonymous Pro for Powerline:pixelsize=12
 URxvt.perl-lib: /home/phil/.dotfiles/urxvt-perls
 URxvt.perl-ext-common: url-select,keyboard-select,vtwheel
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: iceweasel
+URxvt.url-select.launcher: firefox
 URxvt.searchable-scrollback: false
 URxvt*geometry: 158x47
 
-dmenu.font: xft:inconsolata:pixelsize=17
+dmenu.font: xft:Terminus-12

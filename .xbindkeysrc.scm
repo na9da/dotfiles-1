@@ -28,6 +28,7 @@
 (xbindkey '(mod4 shift s) "scrot -s")
 (xbindkey '(mod4 shift d) "dmenu_run")
 (xbindkey '(mod4 v) "killall evrouter; evrouter /dev/input/*")
+(xbindkey '(mod4 shift Return) "gnome-terminal")
 ;; urxvt -fn xft:terminus-10:encoding=combined -letsp 0
 
 (xbindkey '(mod4 l) "gnome-screensaver-command -l")

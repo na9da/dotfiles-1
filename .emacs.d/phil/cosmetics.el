@@ -11,6 +11,8 @@
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
   (set-face-background 'hl-line "gray17")
+  (eval-after-load 'magit
+    '(set-face-background 'magit-item-highlight "gray12"))
   (set-face-foreground 'eshell-prompt "turquoise"))
 
 (defun tw ()
@@ -19,7 +21,8 @@
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
-  (set-face-background 'magit-item-highlight "gray12")
+  (eval-after-load 'magit
+    '(set-face-background 'magit-item-highlight "gray12"))
   (set-face-foreground 'eshell-prompt "turquoise1")
   (set-face-background 'hl-line "black"))
 
@@ -55,6 +58,8 @@
 (defun tables () (interactive) (insert "（╯°□°）╯︵ ┻━┻"))
 (defun mu () (interactive) (insert "無"))
 (defun muk () (interactive) (insert "무"))
+(defun dn () (interactive) (insert "เดือน"))
+(defun monkey () (interactive) (insert "Nie mój cyrk, nie moje malpy"))
 (defun rectification () (interactive) (insert "正名"))
 (defun caruso () (interactive) (insert "( •_•) ( -_-)~⌐■-■ (⌐■_■)>"))
 (defun odin () (interactive) (insert "Hreðjar Óðins"))
@@ -62,7 +67,6 @@
 (defun shrug () (interactive) (insert "¯\_(ツ)_/¯"))
 (defun mingalaba () (interactive) (insert "မင်္ဂလာပါ"))
 (defun nigaunla () (interactive) (insert "နေကောင်းလာ"))
-(defun dn () (interactive) (insert "เดือน"))
 
 (when (and window-system (>= emacs-major-version 23))
   (let ((fontset (face-attribute 'default :fontset))
@@ -121,7 +125,7 @@
     (load "term/xterm")
     (xterm-register-default-colors)))
 
-(setq whitespace-style '(face trailing lines-tail tabs))
+(setq whitespace-style '(face trailing tabs))
 
 (add-to-list 'auto-mode-alist '("\\.msg$" . message-mode))
 

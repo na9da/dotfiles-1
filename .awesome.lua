@@ -39,7 +39,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-beautiful.get().wallpaper = "/home/phil/docs/images/9and9.jpg"
+
+local util = require("awful.util")
+util.spawn("awsetbg /home/phil/docs/images/9and9.jpg")
 
 -- This is used later as the default terminal and editor to run.
 terminal, editor, editor_cmd = "urxvt", "emacs", "emacs"

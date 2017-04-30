@@ -1,14 +1,7 @@
 #!/bin/bash
 
 HUB_CONFIG_GPG=$HOME/.config/hub.toml.gpg
-export HUB_CONFIG=$(mktemp -t tmp.XXXXXXXX.hub)
+HUB_BIN=$HOME/src/hub/bin/hub
+export HUB_CONFIG=/dev/stdin
 
-function finish {
-  rm -rf "$HUB_CONFIG"
-}
-
-trap finish EXIT
-
-gpg -q -d "${HUB_CONFIG_GPG}" > "${HUB_CONFIG}"
-
-exec "${HOME}/src/hub/bin/hub" $@
+gpg --batch --use-agent -q -d ${HUB_CONFIG_GPG} | ${HUB_BIN} $@

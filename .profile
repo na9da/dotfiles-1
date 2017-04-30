@@ -8,6 +8,9 @@ if which psql > /dev/null ; then
     export PATH=/usr/lib/postgresql/9.1/bin:$PATH
 fi
 
+export GOPATH=$HOME/.derp
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
 if which ruby >/dev/null && which gem >/dev/null; then
     export PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
@@ -27,3 +30,4 @@ export DEBFULLNAME="Phil Hagelberg"
 export PROFILE_LOADED=y # horrible horrible hack
 
 export BUSSARD_RES=1400x800
+export LEIN_FAST_TRAMPOLINE=y

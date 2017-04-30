@@ -34,7 +34,7 @@ git cloc jq yaml-mode
 awesome gnome-power-manager gnome-settings-daemon tumbler desktop-base
 thunar thunar-volman wmctrl x11-xserver-utils xbindkeys xclip xinput xsel
 unclutter feh scrot suckless-tools synergy libnotify-bin
-pavucontrol
+pavucontrol mirage fswebcam
 mpg321 vorbis-tools
 
 # fonts

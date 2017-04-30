@@ -48,3 +48,20 @@ HISTCONTROL=ignoreboth:erasedups
 which lein || . $HOME/.profile
 
 [ -z "$TMUX" ] && export TERM=xterm-256color
+
+picard() {
+        docker run -it --rm \
+                -v /var/run/docker.sock:/var/run/docker.sock \
+                -v $(pwd):$(pwd) \
+                -v ~/.circleci/:/root/.circleci \
+                -v ~/.aws/:/root/.aws \
+                -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+                -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+                -e AWS_SECURITY_TOKEN=${AWS_SECURITY_TOKEN} \
+                -e AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN} \
+                -e AWS_PROFILE=${AWS_PROFILE} \
+                -e AWS_REGION=${AWS_REGION} \
+                --workdir $(pwd) \
+                circleci/picard:latest \
+                picard $@
+}

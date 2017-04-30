@@ -26,12 +26,6 @@ if [ -r /etc/NetworkManager/NetworkManager.conf ]; then
     sed -i s/managed=false/managed=true/ /etc/NetworkManager/NetworkManager.conf
 fi
 
-# Don't wait to boot; just go with the default.
-if [ -f /etc/default/grub ]; then
-    sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/ /etc/default/grub
-    update-grub
-fi
-
 # Caps lock is absurd.
 sed -i s/XKBOPTIONS=""/XKBOPTIONS="ctrl:nocaps"/ /etc/default/keyboard
 dpkg-reconfigure -phigh console-setup

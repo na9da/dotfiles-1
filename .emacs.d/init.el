@@ -36,12 +36,20 @@
 (load (concat user-emacs-directory "my-autoload.el") t)
 (load custom-file t)
 
+(dolist (d (directory-files (concat user-emacs-directory "themes") nil "^[^\.]"))
+  (add-to-list 'custom-theme-load-path
+               (concat user-emacs-directory "themes/" d)))
+
 ;; personal stuff
 (mapc 'load (directory-files (concat user-emacs-directory user-login-name)
                              t "^[^#].*el$"))
 
-(setq custom-theme-load-path
-      (directory-files (concat user-emacs-directory "themes") t "^[^\.]"))
+(add-to-list 'load-path "/home/phil/.emacs.d/lib/ido-ubiquitous")
+(require 'ido-ubiquitous)
+(add-to-list 'load-path "/home/phil/src/s.el")
+(add-to-list 'load-path "/home/phil/src/weechat.el")
+(autoload 'weechat-connect "weechat.el" nil t)
+(eval-after-load 'weechat '(require 'weechat-tracking))
 
 (require 'find-file-in-project)
 (add-to-list 'ffip-patterns "*.lua")
@@ -63,7 +71,7 @@
 
 (eval-after-load 'markdown-mode
   (progn (add-hook 'markdown-mode-hook 'flyspell-mode)
-         (add-hook 'markdown-mode-hook 'auto-fill-mode)))
+         (add-hook 'markdown-mode-hook 'visual-line-mode)))
 
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook 'auto-fill-mode)

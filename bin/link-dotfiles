@@ -17,6 +17,11 @@ if [ -r $HOME/.config/awesome/rc.lua ] && \
     ln -s $HOME/.dotfiles/.awesome.lua $HOME/.config/awesome/rc.lua
 fi
 
+if [ -f $HOME/.config/awesome/rc.lua ] ; then
+    rm $HOME/.config/awesome/rc.lua
+    ln -s $HOME/.dotfiles/awesomerc.lua $HOME/.config/awesome/rc.lua
+fi
+
 for f in $(ls -a ~/.dotfiles) ; do
     if [ ! -r "$HOME/$f" ] &&
         [ $f != "." ] && [ $f != ".." ] && [ $f != "README.md" ] &&

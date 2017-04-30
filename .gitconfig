@@ -16,9 +16,12 @@
     clown = clone
     sta = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
     stu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
 [heroku]
 	remote = heroku
 [core]
 	attributesfile = /home/phil/.gitattributes
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+[url "ssh://git@github.com:"]
+	insteadOf = https://github.com

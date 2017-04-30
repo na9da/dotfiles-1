@@ -1,6 +1,7 @@
 ;;; general
 
-(add-hook 'prog-mode-hook 'whitespace-mode)
+;; ugh have to turn this off
+;; (add-hook 'prog-mode-hook 'whitespace-mode)
 (add-hook 'prog-mode-hook 'prettify-symbols-mode)
 (add-hook 'prog-mode-hook 'idle-highlight-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)
@@ -103,10 +104,31 @@
 
 ;;; clojure
 
-(setq inferior-lisp-command "lein repl")
+(setq inferior-lisp-command "lein repl"
+      monroe-detail-stacktraces t
+      monroe-default-host "localhost:6005"
+      ;; (apply-partially 'replace-regexp-in-string
+      ;;                  "/home/phil/src/circle/" "/circle/")
+      )
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'clojure-mode-hook 'monroe-interaction-mode)
+(add-hook 'clojure-mode-hook 'clojure-enable-monroe)
+
+(defun mc ()
+  (interactive)
+  (let* ((root (locate-dominating-file default-directory ".nrepl-port"))
+         (port (and root (with-temp-buffer
+                           (insert-file-contents (concat root "/" ".nrepl-port"))
+                           (buffer-string)))))
+    (when port
+      (monroe (concat "localhost:" port)))))
+
+(defun pnh-monroe-run ()
+  (interactive)
+  (monroe-eval-buffer)
+  (monroe-input-sender (get-buffer-process monroe-repl-buffer) "(-main)"))
+
+(eval-after-load 'monroe '(define-key monroe-mode-map (kbd "C-c C-j") 'pnh-monroe-run))
 
 (defun pnh-monroe-run ()
   (interactive)
@@ -211,6 +233,8 @@
 
 
 ;;; ocaml
+
+(load "/home/phil/src/tuareg/tuareg-site-file")
 
 (add-hook 'tuareg-mode-hook 'paredit-mode)
 (add-hook 'tuareg-mode-hook 'pnh-paredit-no-space)
@@ -381,3 +405,14 @@
 
 (eval-after-load 'cc-mode
   '(define-key c-mode-map (kbd "C-c C-k") 'compile))
+
+
+;;; google go
+
+(add-to-list 'load-path "/home/phil/src/go-mode.el")
+(require 'go-mode-autoloads)
+
+(add-hook 'go-mode-hook (defun pnh-go-hook ()
+                          (make-variable-buffer-local 'before-save-hook)
+                          (add-hook 'before-save-hook 'gofmt-before-save)
+                          (define-key go-mode-map (kbd "M-.") 'godef-jump)))

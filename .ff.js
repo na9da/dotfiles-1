@@ -67,6 +67,18 @@ user_pref("noscript.firstRunRedirection", false);
 user_pref("extensions.keysnail.plugin.location",
           "/home/phil/.dotfiles/.keysnail-plugins");
 
+// Define keyboard shortcuts for showing and hiding a custom panel.
+var { Hotkey } = require("sdk/hotkeys");
+
+var qr_str = "https://chart.googleapis.com/chart?cht=qr&chl=%s&chs=180x180&choe=UTF-8&chld=L|2"
+
+var showHotKey = Hotkey({
+    combo: "meta-q",
+    onPress: function() {
+        window.location = qr_str % url_escape(window.location);
+    }
+});
+
 // profile-specific bits
 
 // TODO: this crashes silently; woooo

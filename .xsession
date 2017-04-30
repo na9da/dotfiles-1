@@ -16,14 +16,14 @@ setxkbmap dvorak
 
 # utilities
 xrdb ~/.Xdefaults
-unclutter -idle 1 &
+unclutter -idle 3 &
 xcompmgr -c -f -D 1 &
 xbindkeys &
 feh --bg-fill docs/images/9and9.jpg
 
 # progs
 firefox &
-# proxiedfox &
+firefox -P js -noremote &
 thunar --daemon &
 
 # I get by with a little help from xfce
@@ -35,4 +35,4 @@ gsettings set org.gnome.settings-daemon.plugins.cursor active false
 
 # redshift -l 16:98 &
 
-awesome
+exec startxfce4

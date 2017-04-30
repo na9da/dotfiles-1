@@ -52,6 +52,9 @@
    - haven't figured out how to fully-dotfileize it yet
    - hinting isn't link-text based
      - can't look before you leap
+** monroe
+   - error message needs to go in minibuffer
+   - can't have multiple requests at a time (!)
 ** firefox
 *** remarkably resistant to automation
     - profile directory can't be given a reasonable name
