@@ -1,4 +1,4 @@
-personal_ws-1.1 en 129 
+personal_ws-1.1 en 130 
 Hagelberg
 runtime
 API
@@ -27,8 +27,8 @@ sharded
 Solr
 microcontrollers
 login
-PeepCode
 peepcode
+PeepCode
 Bussard
 freenode
 Clojure's
@@ -106,6 +106,7 @@ downloadable
 precompiled
 radians
 Chiang
+CircleCI
 multiverse
 hackable
 syslog
@@ -120,8 +121,8 @@ ClojureScript
 Matias
 wikipedia
 résumé
-github
 GitHub
+github
 checksum
 Noir
 microcontroller

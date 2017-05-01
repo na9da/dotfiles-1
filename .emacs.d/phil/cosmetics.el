@@ -63,6 +63,7 @@
 (defun mingalaba () (interactive) (insert "မင်္ဂလာပါ"))
 (defun nigaunla () (interactive) (insert "နေကောင်းလာ"))
 (defun dn () (interactive) (insert "เดือน"))
+(defun is () (interactive) (insert "إن شاء الله"))
 
 (when (and window-system (>= emacs-major-version 23))
   (let ((fontset (face-attribute 'default :fontset))

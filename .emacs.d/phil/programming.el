@@ -103,7 +103,8 @@
 
 ;;; clojure
 
-(setq inferior-lisp-command "lein repl")
+(setq inferior-lisp-command "lein repl"
+      monroe-detail-stacktraces t)
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'monroe-interaction-mode)
