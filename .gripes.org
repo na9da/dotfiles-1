@@ -33,6 +33,16 @@
          - file /usr/share/dbus-1/services/org.freedesktop.Notifications.service
          - Exec=/usr/lib/notification-daemon/notification-daemon
 *** All these are fixed in Jessie
+** Chrome OS
+   - can't disable internal keyboard inside chromeos, just in crouton
+   - ssh client doesn't support alt-v nor fullscreening properly
+     - mosh client works much better
+   - dev mode defaults to garbage security
+     - easy to fix, but holy smokes what a bad policy
+   - chrome key bindings are cringeworthy
+     - cannot override ctrl-n
+     - ctrl-shift-tab is objectively awful
+     - just use firefox inside crouton
 ** Emacs
 *** elisp
    - lisp-2 is awful
@@ -177,3 +187,19 @@
       - dashes in the middle of identifiers should be allowed
         - otherwise you're optimizing for obfuscation (subtraction without spaces)
     - pretty-printer in the repl (lua-repl has this already)
+* Hardware
+** Thinkpad X301
+   - multiple batteries: system shuts down when one is full and one is empty
+   - screen is very dim
+   - screen is low-res
+   - SSD bay is non-standard shape
+** Thinkpad X260
+   - screen is just rubbish
+     - low-res
+     - dim
+     - bad aspect ratio
+     - I guess there is an option for a high-res screen?
+** Chromebook Pixel 2013
+   - glossy screen (ugh) but super bright and good aspect ratio
+   - keyboard is shallow
+   - battery life is weak

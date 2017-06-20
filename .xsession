@@ -8,6 +8,8 @@ xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 8 2
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 8 1
 
+xmodmap -e "keycode 166 = Prior"
+xmodmap -e "keycode 167 = Next"
 setxkbmap -option ctrl:nocaps
 setxkbmap dvorak
 
@@ -28,11 +30,11 @@ thunar --daemon &
 
 # I get by with a little help from xfce
 gnome-settings-daemon &
-gnome-power-manager &
 gnome-screensaver & # for the lock-screen
+xfce4-power-manager &
 
 gsettings set org.gnome.settings-daemon.plugins.cursor active false
 
 # redshift -l 16:98 &
 
-exec startxfce4
+exec awesome

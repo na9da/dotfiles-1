@@ -1,5 +1,6 @@
 // lol no
 
+user_pref("dom.webnotifications.enabled", false);
 user_pref("media.autoplay.enabled", false);
 user_pref("dom.min_background_timeout_value", 99999);
 

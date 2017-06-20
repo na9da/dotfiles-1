@@ -8,6 +8,9 @@
            '(F9 . "mpc prev")
            '(F10 . "mpc next")))
 
+(xbindkey 'XF86AudioRaiseVolume "amixer -D pulse sset Master 5%+")
+(xbindkey 'XF86AudioLowerVolume "amixer -D pulse sset Master 5%-")
+
 ;;; notifications
 
 (xbindkey '(mod1 F12) "notify-battery")
