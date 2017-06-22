@@ -1,11 +1,11 @@
 ;;; -*- indent-tabs-mode: nil -*-
 ;;; monroe.el --- Yet another client for nREPL
 
-;; Copyright (c) 2014-2016 Sanel Zukan
+;; Copyright (c) 2014-2017 Sanel Zukan
 ;;
 ;; Author: Sanel Zukan <sanelz@gmail.com>
 ;; URL: http://www.github.com/sanel/monroe
-;; Version: 0.3.1
+;; Version: 0.4.0
 ;; Keywords: languages, clojure, nrepl, lisp
 
 ;; This program is free software: you can redistribute it and/or modify
@@ -74,11 +74,22 @@ exception. Otherwise will just behave as standard REPL version."
 (defcustom monroe-old-style-stacktraces nil
   "If set to true, Monroe will try to emit old style Clojure stacktraces
 using 'clojure.stacktrace/print-stack-trace'. This will work on older Clojure versions (e.g. 1.2)
-but will NOT work on ClojureScript. This option assumes 'monroe-detail-stacktraces' is true."
+but will NOT work on ClojureScript. This option assumes 'monroe-detail-stacktraces' is true.
+
+DEPRECATED; use monroe-print-stack-trace-function instead."
   :type 'boolean
   :group 'monroe)
 
-(defvar monroe-version "0.3.0"
+(defcustom monroe-print-stack-trace-function nil
+  "Set to a clojure-side function in order to override stack-trace printing.
+
+Will be called upon error when `monroe-detail-stacktraces' is non-nil.
+
+e.g. 'clojure.stacktrace/print-stack-trace for old-style stack traces."
+  :type 'symbol
+  :group 'monroe)
+
+(defvar monroe-version "0.4.0"
   "The current monroe version.")
 
 (defvar monroe-session nil
@@ -245,7 +256,9 @@ the operations supported by an nREPL endpoint."
          ;; now handle status
          (when status
            (when (and monroe-detail-stacktraces (member "eval-error" status))
-             (monroe-get-stacktrace root-ex ex))
+             (monroe-get-stacktrace))
+           (when (member "eval-error" status)
+             (message root-ex))
            (when (member "interrupted" status)
              (message "Evaluation interrupted."))
            (when (member "need-input" status)
@@ -331,11 +344,20 @@ monroe-repl-buffer."
     str
     default))
 
+(defun monroe-locate-running-nrepl-host ()
+  "Return host of running nREPL server."
+  (let ((dir (locate-dominating-file default-directory ".nrepl-port")))
+    (when dir
+      (with-temp-buffer
+        (insert-file-contents (concat dir ".nrepl-port"))
+        (concat "localhost:" (buffer-string))))))
+
 (defun monroe-strip-protocol (host)
   "Check if protocol was given and strip it."
-  (if (string-match "^nrepl://" host)
-    (substring host 8)
-    host))
+  (let ((host (replace-regexp-in-string "[ \t]" "" host)))
+    (if (string-match "^nrepl://" host)
+        (substring host 8)
+      host)))
 
 (defun monroe-connect (host-and-port)
   "Connect to remote endpoint using provided hostname and port."
@@ -399,15 +421,58 @@ at the top of the file."
 
 (defun monroe-eval-doc (symbol)
   "Internal function to actually ask for symbol documentation via nrepl protocol."
-  (monroe-input-sender (get-buffer-process monroe-repl-buffer) (format "(clojure.repl/doc %s)" symbol)))
-
-(defun monroe-get-stacktrace (root-ex ex)
-  "When error is happened, try to get as much details as possible from last stracktrace."
   (monroe-input-sender
    (get-buffer-process monroe-repl-buffer)
-   (if monroe-old-style-stacktraces
-     "(clojure.stacktrace/print-stack-trace *e)"
-     "(clojure.repl/pst *e)")))
+   (format "(do (require 'clojure.repl) (clojure.repl/doc %s))" symbol)))
+
+(defvar monroe-translate-path-function 'identity
+  "This function is called on all paths returned by `monroe-jump'.
+You can use it to translate paths if you are running an nrepl server remotely or
+inside a container.")
+
+(defun monroe-jump-find-file (file)
+  "Internal function to find a file on the disk or inside a jar."
+  (if (not (string-match "^jar:file:\\(.+\\)!\\(.+\\)" file))
+      (find-file (substring file 5))
+    (let* ((jar (match-string 1 file))
+           (clj (match-string 2 file))
+           (already-open (get-buffer (file-name-nondirectory jar))))
+      (find-file jar)
+      (goto-char (point-min))
+      (search-forward-regexp (concat " " (substring clj 1) "$"))
+      (let ((archive-buffer (current-buffer)))
+        (declare-function archive-extract "arc-mode")
+        (archive-extract)
+        (when (not already-open)
+          (kill-buffer archive-buffer))))))
+
+(defun monroe-eval-jump (ns var)
+  "Internal function to actually ask for var location via nrepl protocol."
+  (monroe-send-eval-string
+   (format "%s" `((juxt (comp str clojure.java.io/resource :file) :line)
+                  (meta ,(if ns `(ns-resolve ',(intern ns) ',(intern var))
+                           `(resolve ',(intern var))))))
+   (lambda (response)
+     (monroe-dbind-response response (id value status)
+       (when (member "done" status)
+         (remhash id monroe-requests))
+       (when value
+         (destructuring-bind (file line)
+             (append (car (read-from-string value)) nil)
+           (monroe-jump-find-file (funcall monroe-translate-path-function file))
+           (when line
+             (goto-char (point-min))
+             (forward-line (1- line)))))))))
+
+(defun monroe-get-stacktrace ()
+  "When error happens, print the stack trace"
+  (let ((pst (or monroe-print-stack-trace-function
+                 (if monroe-old-style-stacktraces
+                     'clojure.stacktrace/print-stack-trace
+                   'clojure.repl/pst))))
+    (monroe-send-eval-string
+     (format "(do (require (symbol (namespace '%s))) (%s *e))" pst pst)
+     (monroe-make-response-handler))))
 
 (defun monroe-describe (symbol)
   "Ask user about symbol and show symbol documentation if found."
@@ -436,6 +501,31 @@ as path can be remote location. For remote paths, use absolute path."
      (get-buffer-process monroe-repl-buffer)
      (format "(clojure.core/load-file \"%s\")" full-path))))
 
+(defun monroe-jump (var)
+  "Jump to definition of var at point."
+  (interactive
+   (list (if (thing-at-point 'symbol)
+             (substring-no-properties (thing-at-point 'symbol))
+           (read-string "Find var: "))))
+  (defvar find-tag-marker-ring) ;; etags.el
+  (require 'etags)
+  (ring-insert find-tag-marker-ring (point-marker))
+  (monroe-eval-jump (and (fboundp 'clojure-find-ns)
+                         (funcall 'clojure-find-ns)) var))
+
+(defun monroe-jump-pop ()
+  "Return point to the position and buffer before running `monroe-jump'."
+  (interactive)
+  (defvar find-tag-marker-ring) ;; etags.el
+  (require 'etags)
+  (let ((marker (ring-remove find-tag-marker-ring 0)))
+    (switch-to-buffer (marker-buffer marker))
+    (goto-char (marker-position marker))))
+
+(defun monroe-switch-to-repl ()
+  (interactive)
+  (switch-to-buffer monroe-repl-buffer))
+
 (defun monroe-extract-keys (htable)
   "Get all keys from hashtable."
   (let (keys)
@@ -458,6 +548,9 @@ as path can be remote location. For remote paths, use absolute path."
     (define-key map "\C-c\C-d" 'monroe-describe)
     (define-key map "\C-c\C-b" 'monroe-interrupt)
     (define-key map "\C-c\C-l" 'monroe-load-file)
+    (define-key map "\M-."     'monroe-jump)
+    (define-key map "\M-,"     'monroe-jump-pop)
+    (define-key map "\C-c\C-z" 'monroe-switch-to-repl)
     map))
 
 ;; keys for interacting inside Monroe REPL buffer
@@ -466,6 +559,7 @@ as path can be remote location. For remote paths, use absolute path."
     (set-keymap-parent map comint-mode-map)
     (define-key map "\C-c\C-d" 'monroe-describe)
     (define-key map "\C-c\C-c" 'monroe-interrupt)
+    (define-key map "\M-."     'monroe-jump)
     map))
 
 ;;; rest
@@ -511,9 +605,10 @@ The following keys are available in `monroe-interaction-mode`:
   "Load monroe by setting up appropriate mode, asking user for
 connection endpoint."
   (interactive
-   (list
-    (read-string (format "Host (default '%s'): " monroe-default-host)
-                 nil nil monroe-default-host)))
+   (let ((host (or (monroe-locate-running-nrepl-host) monroe-default-host)))
+     (list
+      (read-string (format "Host (default '%s'): " host)
+                   nil nil host))))
   (unless (ignore-errors
             (with-current-buffer (get-buffer-create monroe-repl-buffer)
               (prog1
