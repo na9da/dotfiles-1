@@ -2,7 +2,7 @@
 
 (map (lambda (binding) (xbindkey (car binding) (cdr binding)))
      (list '((Shift F5) . "~/bin/music-show")
-           '(F6 . "~/bin/music-random")
+           '((Shift F7) . "~/bin/music-random")
            '(F7 . "~/bin/music-choose")
            '(F8 . "mpc toggle")
            '(F9 . "mpc prev")

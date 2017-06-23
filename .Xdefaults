@@ -1,4 +1,4 @@
-emacs.font: Inconsolata 13
+emacs.font: Anonymous Pro for Powerline
 ! emacs.font: Terminus-11
 emacs.fullscreen: maximized
 
@@ -10,6 +10,5 @@ URxvt.perl-ext-common: url-select,keyboard-select,vtwheel
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: iceweasel
 URxvt.searchable-scrollback: false
-URxvt*geometry: 158x47
 
-dmenu.font: xft:inconsolata:pixelsize=17
+dmenu.font: xft:Anonymous Pro for Powerline:pixelsize=17
