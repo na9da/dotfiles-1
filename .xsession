@@ -8,10 +8,10 @@ xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 8 2
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 8 1
 
+setxkbmap dvorak
+setxkbmap -option ctrl:nocaps
 xmodmap -e "keycode 166 = Prior"
 xmodmap -e "keycode 167 = Next"
-setxkbmap -option ctrl:nocaps
-setxkbmap dvorak
 
 # in case it gets stuck on use this:
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'

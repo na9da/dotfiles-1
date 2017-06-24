@@ -1,4 +1,3 @@
-! emacs.font: Inconsolata 12
 emacs.font: Terminus-10
 emacs.fullscreen: maximized
 
@@ -9,6 +8,5 @@ URxvt.perl-ext-common: url-select,keyboard-select,vtwheel
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: firefox
 URxvt.searchable-scrollback: false
-URxvt*geometry: 158x47
 
 dmenu.font: xft:Terminus-12
