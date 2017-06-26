@@ -25,8 +25,7 @@
 
 ;; 3rd-party packages
 (dolist (l (directory-files (concat user-emacs-directory "lib") nil "^[^\.]"))
-  (add-to-list 'load-path (concat user-emacs-directory "lib/" l))
-  (autoload (intern l) (concat l ".el")))
+  (add-to-list 'load-path (concat user-emacs-directory "lib/" l)))
 
 ;; For some reason, update-directory-autoloads *always* writes its
 ;; paths as relative to user-emacs-directory, so we have to add
@@ -50,21 +49,6 @@
 (add-to-list 'load-path "/home/phil/src/weechat.el")
 (autoload 'weechat-connect "weechat.el" nil t)
 (eval-after-load 'weechat '(require 'weechat-tracking))
-
-(require 'find-file-in-project)
-(add-to-list 'ffip-patterns "*.lua")
-(add-to-list 'ffip-patterns "*.md")
-(add-to-list 'ffip-patterns "*.lisp")
-(add-to-list 'ffip-patterns "*.clj")
-(add-to-list 'ffip-patterns "*.edn")
-(add-to-list 'ffip-patterns "*.log")
-(add-to-list 'ffip-patterns "*.sh")
-(add-to-list 'ffip-patterns "*.sql")
-(add-to-list 'ffip-patterns "*.txt")
-(add-to-list 'ffip-patterns "*.yml")
-(add-to-list 'ffip-patterns "*.xml")
-(add-to-list 'ffip-patterns "*.json")
-(add-to-list 'ffip-patterns "Dockerfile")
 
 (when (require 'smex nil t)
   (setq smex-save-file (concat user-emacs-directory ".smex-items"))

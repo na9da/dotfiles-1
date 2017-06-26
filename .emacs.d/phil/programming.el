@@ -45,6 +45,21 @@
   ;;     (delete-region beginning end)))
   )
 
+(eval-after-load 'find-file-in-project
+  '(progn
+     (add-to-list 'ffip-patterns "*.lua")
+     (add-to-list 'ffip-patterns "*.md")
+     (add-to-list 'ffip-patterns "*.lisp")
+     (add-to-list 'ffip-patterns "*.clj")
+     (add-to-list 'ffip-patterns "*.edn")
+     (add-to-list 'ffip-patterns "*.log")
+     (add-to-list 'ffip-patterns "*.sh")
+     (add-to-list 'ffip-patterns "*.sql")
+     (add-to-list 'ffip-patterns "*.txt")
+     (add-to-list 'ffip-patterns "*.yml")
+     (add-to-list 'ffip-patterns "*.xml")
+     (add-to-list 'ffip-patterns "*.json")))
+
 (global-set-key (kbd "C-c \\") (lambda () (interactive) (insert "λ")))
 
 (defun normal-random (mean dev)
@@ -260,7 +275,7 @@
      (define-key tuareg-mode-map (kbd "C-c C-s") 'utop)
      ;; workaround for tuareg bug: https://forge.ocamlcore.org/tracker/index.php?func=detail&aid=1345&group_id=43&atid=255
      (setq tuareg-find-phrase-beginning-and-regexp
-           "\\<\\(and\\)\\>\\|\\<\\(class\\|e\\(?:nd\\|xception\\)\\|let\\|module\\|s\\(?:ig\\|truct\\)\\|type\\)\\>\\|^#[ 	]*[a-z][_a-z]*\\>\\|;;")))
+           "\\<\\(and\\)\\>\\|\\<\\(class\\|e\\(?:nd\\|xception\\)\\|let\\|module\\|s\\(?:ig\\|truct\\)\\|type\\)\\>\\|^#[  ]*[a-z][_a-z]*\\>\\|;;")))
 
 
 ;;; er lang

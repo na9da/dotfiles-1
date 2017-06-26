@@ -13,7 +13,7 @@ setxkbmap -option ctrl:nocaps
 xmodmap -e "keycode 166 = Prior"
 xmodmap -e "keycode 167 = Next"
 
-# in case it gets stuck on use this:
+# in case caps lock gets stuck on use this:
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'
 
 # utilities
@@ -21,10 +21,9 @@ xrdb ~/.Xdefaults
 unclutter -idle 3 &
 xcompmgr -c -f -D 1 &
 xbindkeys &
-feh --bg-fill docs/images/9and9.jpg
 
 # progs
-firefox &
+firefox -P main -noremote &
 firefox -P js -noremote &
 thunar --daemon &
 

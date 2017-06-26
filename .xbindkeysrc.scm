@@ -24,21 +24,26 @@
 (xbindkey '(mod4 F11) "setxkbmap -layout us; ctrl-fix")
 (xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak; ctrl-fix")
 (xbindkey '(mod4 mod1 F11) "setxkbmap -layout \"th(pat)\"; ctrl-fix")
+(xbindkey 'F11 "setxkbmap -layout dvorak; ctrl-fix")
 
 ;;; utilities
 
 (xbindkey '(mod4 s) "scrot")
 (xbindkey '(mod4 shift s) "scrot -s")
 (xbindkey '(mod4 shift d) "dmenu_run")
+(xbindkey '(mod4 p) "thunar ~/docs/images/p")
 (xbindkey '(mod4 v) "killall evrouter; evrouter /dev/input/*")
 (xbindkey '(mod4 shift Return) "gnome-terminal")
 ;; urxvt -fn xft:terminus-10:encoding=combined -letsp 0
 
 (xbindkey '(mod4 l) "gnome-screensaver-command -l")
 
-(xbindkey '(mod1 shift F12) "internal-kbd disable")
-(xbindkey '(mod4 shift F12) "internal-kbd enable")
+(xbindkey '(mod1 F12) "internal-kbd disable")
+(xbindkey 'F12 "internal-kbd enable")
 
 ;;; applications
 
 (xbindkey '(mod4 e) "emacs")
+(xbindkey '(mod4 f) "firefox")
+(xbindkey '(mod4 Return) "urxvt")
+(xbindkey '(mod4 c) "chromium")

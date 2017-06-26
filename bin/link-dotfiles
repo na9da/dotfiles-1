@@ -2,6 +2,8 @@
 
 set -e
 
+echo "Symlinking dotfiles..."
+
 if [ -r $HOME/.bashrc ] && [ ! -h $HOME/.bashrc ] ; then
     rm $HOME/.bashrc # blow away the stock one
 fi
@@ -10,11 +12,13 @@ if [ -r $HOME/.profile ] && [ ! -h $HOME/.profile ] ; then
     rm $HOME/.profile # blow away the stock one
 fi
 
-if [ -r $HOME/.config/awesome/rc.lua ] && \
-       [ ! -h $HOME/.config/awesome/rc.lua ]; then
-    mkdir -p $HOME/.config/awesome
-    rm $HOME/.config/awesome/rc.lua 2> /dev/null || true
-    ln -s $HOME/.dotfiles/.awesome.lua $HOME/.config/awesome/rc.lua
+mkdir -p $HOME/.config/awesome
+rm $HOME/.config/awesome/rc.lua 2> /dev/null || true
+ln -s $HOME/.dotfiles/.awesome.lua $HOME/.config/awesome/rc.lua
+
+if [ -d $HOME/.config/xfce4 ] ; then
+    rm -rf $HOME/.config/xfce4
+    ln -s "$HOME/.dotfiles/.config-xfce4" "$HOME/.config/xfce4"
 fi
 
 if [ -f $HOME/.config/awesome/rc.lua ] ; then
