@@ -16,7 +16,6 @@
       load-prefer-newer t
       visible-bell t
       tls-checktrust 'ask
-      tls-program "gnutls-cli"
       el-get-allow-insecure nil
       inhibit-startup-message t
       uniquify-buffer-name-style 'post-forward
@@ -50,6 +49,8 @@
 (add-to-list 'ffip-patterns "*.md")
 (add-to-list 'ffip-patterns "*.lisp")
 (add-to-list 'ffip-patterns "*.clj")
+(add-to-list 'ffip-patterns "*.cljs")
+(add-to-list 'ffip-patterns "*.cljc")
 (add-to-list 'ffip-patterns "*.edn")
 (add-to-list 'ffip-patterns "*.log")
 (add-to-list 'ffip-patterns "*.sh")

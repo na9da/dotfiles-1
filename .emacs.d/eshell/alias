@@ -1,31 +1,32 @@
-alias be bundle exec $*
-alias c curl $*
-alias emacs find-file $1
-alias f find $*
-alias g git $*
-alias gb git branch $*
-alias gbv git branch -v $*
-alias gco git checkout $*
-alias gdum git commit --allow-empty -m dummy
-alias gerp grep $*
-alias glt git log -n 10
-alias gph git push heroku master
-alias gphf git push --force heroku master
-alias gst git status
-alias gsu git submodule update --init --recursive
-alias h heroku $*
-alias haix heroku sudo apps:info -xa $*
-alias l ls $*
-alias la ls -a $*
-alias lh ls -l -h $*
-alias ll ls -l $*
-alias lsz lsz $*
-alias r rgrep $*
-alias rtags ctags-exuberant -e --Ruby-kinds=-fFcm -o TAGS -R $*
-alias s ls $*
-alias saptc apt-cache search $*
-alias saptd sudo aptitude update $*
-alias sapti sudo aptitude install $*
-alias saptr sudo aptitude remove $*
-alias sapts apt-cache show $*
+alias 1111 echo 1 $*
 alias top proced
+alias sapts apt-cache show $*
+alias saptr sudo aptitude remove $*
+alias sapti sudo aptitude install $*
+alias saptd sudo aptitude update $*
+alias saptc apt-cache search $*
+alias s ls $*
+alias rtags ctags-exuberant -e --Ruby-kinds=-fFcm -o TAGS -R $*
+alias r rgrep $*
+alias lsz lsz $*
+alias ll ls -l $*
+alias lh ls -l -h $*
+alias la ls -a $*
+alias l ls $*
+alias haix heroku sudo apps:info -xa $*
+alias h heroku $*
+alias gsu git submodule update --init --recursive
+alias gst git status
+alias gphf git push --force heroku master
+alias gph git push heroku master
+alias glt git log -n 10
+alias gerp grep $*
+alias gdum git commit --allow-empty -m dummy
+alias gco git checkout $*
+alias gbv git branch -v $*
+alias gb git branch $*
+alias g git $*
+alias f find $*
+alias emacs find-file $1
+alias c curl $*
+alias be bundle exec $*

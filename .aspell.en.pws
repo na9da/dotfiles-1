@@ -1,4 +1,4 @@
-personal_ws-1.1 en 130 
+personal_ws-1.1 en 132 
 Hagelberg
 runtime
 API
@@ -20,6 +20,7 @@ keymap
 clj
 rdoc
 Elisp
+incentivized
 Evri
 HyperCard
 refactorings
@@ -126,6 +127,7 @@ github
 checksum
 Noir
 microcontroller
+RabbitMQ
 caffeinated
 parens
 http
