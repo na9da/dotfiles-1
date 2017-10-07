@@ -2,6 +2,8 @@
 
 ;; Random stuff
 
+(package-initialize)
+
 (require 'cl)
 
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el")
@@ -88,3 +90,8 @@
 (with-current-buffer "*eshell*" (setq pcomplete-cycle-completions nil))
 (set-face-foreground 'eshell-prompt "turquoise")
 (put 'upcase-region 'disabled nil)
+
+;; Mitigate Bug#28350 (security) in Emacs 25.2 and earlier.
+(eval-after-load "enriched"
+  '(defun enriched-decode-display-prop (start end &optional param)
+     (list start end)))
