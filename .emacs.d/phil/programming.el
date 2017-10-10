@@ -165,28 +165,22 @@
 (define-key lisp-mode-map (kbd "{") 'paredit-open-curly)
 
 
-;;; racket
+;;; racket and scheme
 
 ;; geiser
 (add-hook 'scheme-mode-hook 'paredit-mode)
+
 ;; (setq geiser-active-implementations '(racket)
 ;;       geiser-racket-binary '("racket" "-l" "errortrace"))
 
-;; let's try racket-mode
-(when (file-directory-p "~/src/racket-mode")
-  (add-to-list 'load-path "~/src/racket-mode")
-  (autoload 'racket-mode "racket-mode" nil t)
-
-  (add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
-  (add-to-list 'auto-mode-alist '("\\.rktd\\'" . racket-mode))
-  (add-hook 'racket-mode-hook 'paredit-mode)
-  (eval-after-load 'racket-mode
-    '(progn (define-key racket-mode-map (kbd "C-c C-k") 'racket-run)
-            (define-key racket-mode-map (kbd "C-c C-d") 'racket-describe)
-            ;; seriously, tab to complete?
-            (define-key racket-mode-map (kbd "TAB") 'indent-for-tab-command)
-            (define-key racket-mode-map (kbd "RET")
-              'reindent-then-newline-and-indent))))
+(add-hook 'racket-mode-hook 'paredit-mode)
+(eval-after-load 'racket-mode
+  '(progn (define-key racket-mode-map (kbd "C-c C-k") 'racket-run)
+          (define-key racket-mode-map (kbd "C-c C-d") 'racket-describe)
+          (define-key racket-mode-map (kbd "{") 'paredit-open-curly)
+          (define-key racket-mode-map (kbd "}") 'paredit-close-curly)
+          (define-key racket-mode-map (kbd "RET")
+            'reindent-then-newline-and-indent)))
 
 (autoload 'shr-visit-file "shr" nil t)
 
@@ -208,6 +202,7 @@
 (eval-after-load 'shr-mode
   '(define-key shr-map (kbd "RET") 'pnh/shr-follow))
 
+;; microscheme
 (add-to-list 'auto-mode-alist '("\\.ms\\'" . scheme-mode))
 
 
@@ -314,8 +309,6 @@
                              (page-break-lines-mode 1)
                              (my-kill-word-key)
                              (define-key forth-mode-map (kbd "C-c C-k") 'compile)))
-
-;; (setq forth-mode-hook (cdr forth-mode-hook))
 
 
 ;;; lua
