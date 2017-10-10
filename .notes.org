@@ -9,22 +9,8 @@
   $ initdb pg; createdb -D pg db; postgres -D pg -p 5555
   Arg, I got too cute trying to run that as a one-liner in Twitter. createdb has to go after postgres starts, and takes a port, not a datadir.
   problem: need to recreate /var/run/postgres every time; sucks =\
-* mu4e todo
-  - boost the gpg-agent cache expiry period?
-  - run mbsync in the background
-* backups
-** TS drive: december 2011
-** chunky backup: music/documents december 2012
-** photos
-   - 2008 on seagate
-   - 2011 on TS drive
-** seagate backup
-   - music
-   - src
 * ssh agent reset
   export SSH_AUTH_SOCK=$(ls -t1 `find /tmp/ -uid $UID -path \*ssh\* -type s 2> /dev/null`|head -1)
-* font showcase
-  http://hellohappy.org/beautiful-web-type/
 * aeropress tips from Seattle Coffee Works
   200g water @ 205f
   19g coffee
@@ -39,8 +25,6 @@
   http://www.squeakland.org/resources/books/readingList.jsp
 * channel ops in freenode, banning
   /mode #clojure +b *!~ircap@90.174.0.195
-* virtualbox is terrible
-  - VBoxManage setproperty machinefolder $HOME/.vbox-vms
 * curl with encrypted netrc
   alias curl="gpg --batch -q -d $HOME/.netrc.gpg | curl --netrc-file /dev/stdin
 * autossh
@@ -49,6 +33,4 @@
   - killall evrouter; evrouter /dev/input/*
 * ff automation
   - https://pastebin.mozilla.org/8842908
-* shellshape
-  - https://github.com/gfxmonk/shellshape/issues/48
 
