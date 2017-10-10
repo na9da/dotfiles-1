@@ -10,24 +10,35 @@
 
   (add-hook 'exwm-manage-finish-hook
             (defun pnh-exwm-manage-hook ()
-              (when (string= exwm-class-name "URxvt")
-                ;; doesn't work
+              (when (or (string= exwm-class-name "URxvt")
+                        (string= exwm-class-name "love"))
                 (exwm-input-release-keyboard))
               (when (string-match "Firefox" exwm-class-name)
                 (exwm-layout-hide-mode-line))))
 
   (exwm-enable-ido-workaround)
 
+  (dolist (k '(("s-l" "gnome-screensaver-command -l")
+               ("s-v" "killall evrouter; evrouter /dev/input/*")
+               ("s-s" "scrot")
+               ("s-S-s" "scrot -s")
+               ("<f7>" "music-choose")
+               ("S-<f7>" "music-random")
+               ("<f8>" "mpc toggle")
+               ("<f10>" "mpc next")
+               ("<XF86AudioLowerVolume>" "amixer sset Master 5%-")
+               ("<XF86AudioRaiseVolume>" "amixer sset Master 5%+")))
+    (global-set-key (kbd (car k)) (lambda () (interactive)
+                                    (save-window-excursion
+                                      (shell-command (concat (cadr k) " &"))))))
+
   (when window-system
     (global-set-key (kbd "C-x m")
-                    (defun pnh-eshell-per-workspace ()
-                      (interactive)
-                      (let ((name (format "*eshell %s*"
-                                          exwm-workspace-current-index)))
-                        (if (get-buffer name)
-                            (switch-to-buffer name)
-                          (eshell t)
-                          (rename-buffer name))))))
+                    (defun pnh-eshell-per-workspace (n)
+                      (interactive "p")
+                      (eshell (+ (case n (4 10) (16 20) (64 30) (t 0))
+                                 exwm-workspace-current-index))))
+    (server-start))
 
   ;; todo:
 
