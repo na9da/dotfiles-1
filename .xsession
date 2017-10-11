@@ -23,7 +23,6 @@ xcompmgr -c -f -D 1 &
 xbindkeys &
 
 # progs
-firefox -P main -noremote &
 firefox -P js -noremote &
 thunar --daemon &
 
@@ -35,5 +34,7 @@ xfce4-power-manager &
 gsettings set org.gnome.settings-daemon.plugins.cursor active false
 
 # redshift -l 16:98 &
+
+feh --bg-fill ~/docs/nang-yuan.jpg
 
 exec awesome

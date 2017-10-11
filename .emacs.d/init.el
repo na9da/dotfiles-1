@@ -39,11 +39,14 @@
   (add-to-list 'custom-theme-load-path
                (concat user-emacs-directory "themes/" d)))
 
+(add-to-list 'load-path (concat user-emacs-directory user-login-name))
+
 ;; personal stuff
 (mapc 'load (directory-files (concat user-emacs-directory user-login-name)
                              t "^[^#].*el$"))
 
 (add-to-list 'load-path "/home/phil/.emacs.d/lib/ido-ubiquitous")
+(add-to-list 'load-path "/home/phil/.emacs.d/lib/magit")
 (require 'ido-ubiquitous)
 (add-to-list 'load-path "/home/phil/src/s.el")
 (add-to-list 'load-path "/home/phil/src/weechat.el")
@@ -72,7 +75,8 @@
 
 (defun uuid ()
   (interactive)
-  (insert (shell-command-to-string "uuid -v 4")))
+  (insert (shell-command-to-string "uuid -v 4"))
+  (delete-backward-char 1))
 
 ;; why not?
 (eshell)

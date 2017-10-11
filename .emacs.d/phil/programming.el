@@ -47,6 +47,7 @@
 
 (eval-after-load 'find-file-in-project
   '(progn
+     (add-to-list 'ffip-patterns "*.cljs")
      (add-to-list 'ffip-patterns "*.lua")
      (add-to-list 'ffip-patterns "*.md")
      (add-to-list 'ffip-patterns "*.lisp")

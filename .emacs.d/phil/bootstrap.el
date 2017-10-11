@@ -1,6 +1,6 @@
 (defun pnh-reinit-libs ()
   (interactive)
-  (let ((generated-autoload-file (concat user-emacs-directory "my-autoload.el"))
+  (let ((generated-autoload-file (concat user-emacs-directory "/" user-login-name "/my-autoload.el"))
         (default-directory (concat user-emacs-directory "lib")))
     (dolist (d (directory-files (concat user-emacs-directory "lib") t "^[^\.]"))
       (dolist (f (directory-files d t "\\.el$"))

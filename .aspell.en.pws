@@ -1,4 +1,4 @@
-personal_ws-1.1 en 130 
+personal_ws-1.1 en 134 
 Hagelberg
 runtime
 API
@@ -90,6 +90,7 @@ bytecode
 heroku
 buildpack
 rubyist
+metaprogramming
 plugin
 buildpacks
 PDF
@@ -102,6 +103,7 @@ TODO
 leiningen
 Zach
 Pinang
+Zuora
 filesystem
 Chas
 downloadable

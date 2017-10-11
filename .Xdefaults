@@ -1,4 +1,4 @@
-emacs.font: Terminus-10
+emacs.font: Terminus-11
 emacs.fullscreen: maximized
 
 Rxvt*scrollBar: False
