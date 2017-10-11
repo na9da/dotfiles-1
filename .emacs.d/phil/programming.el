@@ -172,6 +172,55 @@
 (eval-after-load 'monroe
   '(define-key monroe-interaction-mode-map (kbd "C-c C-s") 'pnh-monroe-scad))
 
+(add-to-list 'load-path "~/src/cider")
+(autoload 'cider-connect "cider.el" nil t)
+
+(defun pnh-find-usages ()
+  "Dear clj-refactor; I am not installing 17 packages just to get find-usages."
+  (interactive)
+  (let* ((symbol (cider-symbol-at-point))
+         (ns (cider-current-ns))
+         (file (funcall cider-to-nrepl-filename-function (buffer-file-name)))
+         (line (line-number-at-pos))
+         (column (1+ (current-column)))
+         (dir (locate-dominating-file default-directory "project.clj"))
+         (find-symbol-request
+          (list "op" "find-symbol"
+                "ns" ns "name" symbol
+                "dir" dir "file" file
+                "line" line "column" column
+                "ignore-errors" "true")))
+    (let* ((resp (cider-nrepl-send-sync-request find-symbol-request))
+           (status (nrepl-dict-get resp "status"))
+           (occurrences (nrepl-dict-get resp "occurrence")))
+      (when (string= "done" (car status))
+        ;; ugh the return value is in edn; that's useless to us
+        (let* ((code (format "%s" `(for [o [,occurrences]]
+                                        (interleave (keys o) (vals o)))))
+               (resp2 (cider-nrepl-send-sync-request
+                       (list "op" "eval"
+                             "code" code))))
+          (when (string= "done" (car (nrepl-dict-get resp2 "status")))
+            (switch-to-buffer "*find-usages*")
+            (let (buffer-read-only)
+              (delete-region (point-min) (point-max))
+              (insert "Usages of " ns "/" symbol
+                      "\n\n-----------------------------\n")
+              (dolist (hit (car (read-from-string
+                                 (nrepl-dict-get resp2 "value"))))
+                (insert (plist-get hit :match) " | "
+                        (plist-get hit :file) ":"
+                        (format "%s" (plist-get hit :line-beg))
+                        "\n\n")))
+            (local-set-key (kbd "RET") 'pnh-jump-to-usage)))))))
+
+(defun pnh-jump-to-usage ()
+  (interactive)
+  )
+
+(eval-after-load 'cider
+  '(define-key cider-mode-map (kbd "M-'") 'pnh-find-usages))
+
 
 ;;; elisp
 
