@@ -8,33 +8,20 @@ xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 8 2
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Middle Button Emulation" 8 1
 
-setxkbmap dvorak
-setxkbmap -option ctrl:nocaps
+# obviously
+setxkbmap -option ctrl:nocaps dvorak
+
+# the "prev page" and "next page" keys near the arrows should be pgup/pgdown
 xmodmap -e "keycode 166 = Prior"
 xmodmap -e "keycode 167 = Next"
 
-# in case caps lock gets stuck on use this:
-# python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'
-
 # utilities
 xrdb ~/.Xdefaults
-unclutter -idle 3 &
-xcompmgr -c -f -D 1 &
-xbindkeys &
+unclutter -idle 1 &
 
-# progs
-firefox -P js -noremote &
-thunar --daemon &
-
-# I get by with a little help from xfce
+# I get by with a little help from gnome/xfce
 gnome-settings-daemon &
 gnome-screensaver & # for the lock-screen
 xfce4-power-manager &
 
-gsettings set org.gnome.settings-daemon.plugins.cursor active false
-
-# redshift -l 16:98 &
-
-feh --bg-fill ~/docs/nang-yuan.jpg
-
-exec awesome
+exec emacs

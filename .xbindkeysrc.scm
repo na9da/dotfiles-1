@@ -8,23 +8,14 @@
            '(F9 . "mpc prev")
            '(F10 . "mpc next")))
 
-(xbindkey 'XF86AudioRaiseVolume "amixer -D pulse sset Master 5%+")
-(xbindkey 'XF86AudioLowerVolume "amixer -D pulse sset Master 5%-")
-
-;;; notifications
-
-(xbindkey '(mod1 F12) "notify-battery")
-
-;;; network
-
-(xbindkey '(mod4 mod1 n) "ery-net")
+(xbindkey 'XF86AudioRaiseVolume "amixer sset Master 5%+")
+(xbindkey 'XF86AudioLowerVolume "amixer sset Master 5%-")
 
 ;;; layouts
 
-(xbindkey '(mod4 F11) "setxkbmap -layout us; ctrl-fix")
-(xbindkey '(mod4 shift F11) "setxkbmap -layout dvorak; ctrl-fix")
-(xbindkey '(mod4 mod1 F11) "setxkbmap -layout \"th(pat)\"; ctrl-fix")
-(xbindkey 'F11 "setxkbmap -layout dvorak; ctrl-fix")
+(xbindkey 'F12 "setxkbmap -layout dvorak; ctrl-fix")
+(xbindkey '(mod1 F12) "setxkbmap -layout disabled")
+(xbindkey '(mod4 F12) "setxkbmap -layout us; ctrl-fix")
 
 ;;; utilities
 
@@ -38,9 +29,6 @@
 ;; urxvt -fn xft:terminus-10:encoding=combined -letsp 0
 
 (xbindkey '(mod4 l) "gnome-screensaver-command -l")
-
-(xbindkey '(mod1 F12) "internal-kbd disable")
-(xbindkey 'F12 "internal-kbd enable")
 
 ;;; applications
 

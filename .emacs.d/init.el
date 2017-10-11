@@ -2,6 +2,8 @@
 
 ;; Random stuff
 
+(package-initialize)
+
 (require 'cl)
 
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el")
@@ -14,7 +16,6 @@
       load-prefer-newer t
       visible-bell t
       tls-checktrust 'ask
-      tls-program "gnutls-cli"
       el-get-allow-insecure nil
       inhibit-startup-message t
       uniquify-buffer-name-style 'post-forward
@@ -44,14 +45,6 @@
 ;; personal stuff
 (mapc 'load (directory-files (concat user-emacs-directory user-login-name)
                              t "^[^#].*el$"))
-
-(add-to-list 'load-path "/home/phil/.emacs.d/lib/ido-ubiquitous")
-(add-to-list 'load-path "/home/phil/.emacs.d/lib/magit")
-(require 'ido-ubiquitous)
-(add-to-list 'load-path "/home/phil/src/s.el")
-(add-to-list 'load-path "/home/phil/src/weechat.el")
-(autoload 'weechat-connect "weechat.el" nil t)
-(eval-after-load 'weechat '(require 'weechat-tracking))
 
 (when (require 'smex nil t)
   (setq smex-save-file (concat user-emacs-directory ".smex-items"))
@@ -84,3 +77,8 @@
 (with-current-buffer "*eshell*" (setq pcomplete-cycle-completions nil))
 (set-face-foreground 'eshell-prompt "turquoise")
 (put 'upcase-region 'disabled nil)
+
+;; Mitigate Bug#28350 (security) in Emacs 25.2 and earlier.
+(eval-after-load "enriched"
+  '(defun enriched-decode-display-prop (start end &optional param)
+     (list start end)))

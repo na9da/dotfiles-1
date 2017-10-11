@@ -20,6 +20,7 @@ keymap
 clj
 rdoc
 Elisp
+incentivized
 Evri
 HyperCard
 refactorings
@@ -130,6 +131,7 @@ github
 checksum
 Noir
 microcontroller
+RabbitMQ
 caffeinated
 parens
 http
