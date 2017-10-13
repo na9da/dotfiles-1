@@ -34,3 +34,15 @@
 * ff automation
   - https://pastebin.mozilla.org/8842908
 
+* ff 57 extensiopocalypse
+** saka-key
+   - https://addons.mozilla.org/en-US/firefox/addon/saka-key/
+   - have to turn off binding to "physical" keys
+** https-everywhere
+   - still needs manual install
+   - https://www.eff.org/files/https-everywhere-test/https-everywhere-latest.xpi
+** noscript
+   - no webextension yet
+   - using ublock origin for now
+     - turn on "advanced user"
+

@@ -1,12 +1,16 @@
 ;; -*- lexical-binding: t -*-
-(when (require 'exwm nil t)
+(when (and window-system (require 'exwm nil t))
   (require 'exwm-config)
   (exwm-config-default)
 
-  (setq exwm-workspace-number 9)
+  (setq exwm-workspace-number 9
+        exwm-workspace-show-all-buffers t
+        exwm-layout-show-all-buffers t)
 
   (require 'exwm-systemtray)
   (exwm-systemtray-enable)
+  (display-time-mode 1)
+  (setq display-time-string-forms '((format-time-string "%H:%M" now)))
 
   (add-hook 'exwm-manage-finish-hook
             (defun pnh-exwm-manage-hook ()
@@ -22,44 +26,62 @@
                ("s-v" "killall evrouter; evrouter /dev/input/*")
                ("s-s" "scrot")
                ("s-S-s" "scrot -s")
-               ("<f7>" "music-choose")
+               ("s-<return>" "urxvt")
                ("S-<f7>" "music-random")
                ("<f8>" "mpc toggle")
                ("<f10>" "mpc next")
-               ("<XF86AudioLowerVolume>" "amixer sset Master 5%-")
-               ("<XF86AudioRaiseVolume>" "amixer sset Master 5%+")))
-    (global-set-key (kbd (car k)) (lambda () (interactive)
-                                    (save-window-excursion
-                                      (shell-command (concat (cadr k) " &"))))))
+               ("<XF86AudioLowerVolume>"
+                "amixer sset Master 5%-")
+               ("<XF86AudioRaiseVolume>"
+                "amixer set Master unmute; amixer sset Master 5%+")))
+    (let ((f (lambda () (interactive)
+               (save-window-excursion
+                 (start-process-shell-command (cadr k) nil (cadr k))))))
+      (exwm-input-set-key (kbd (car k)) f)))
 
-  (when window-system
-    (global-set-key (kbd "C-x m")
-                    (defun pnh-eshell-per-workspace (n)
-                      (interactive "p")
-                      (eshell (+ (case n (4 10) (16 20) (64 30) (t 0))
-                                 exwm-workspace-current-index))))
-    (server-start))
+  (exwm-input-set-key (kbd "<f7>") 'pnh-music-choose)
 
-  ;; todo:
+  (defun pnh-run (command)
+    (interactive (list (read-shell-command "$ ")))
+    (start-process-shell-command command nil command))
+  (define-key exwm-mode-map (kbd "C-x s-m") 'pnh-run)
+  (global-set-key (kbd "C-x s-m") 'pnh-run)
 
-  ;; * switch to char-mode in urxvt
+  (exwm-input-set-simulation-keys
+   (mapcar (lambda (c) (cons (kbd (car c)) (cdr c)))
+           `(("C-b" . left)
+             ("C-f" . right)
+             ("C-p" . up)
+             ("C-n" . down)
+             ("C-a" . home)
+             ("C-e" . end)
+             ("M-v" . prior)
+             ("C-v" . next)
+             ("C-d" . delete)
+             ("C-m" . return)
+             ("C-i" . tab)
+             ("C-g" . escape)
+             ("C-s" . ?\C-f)
+             ("C-y" . ?\C-v)
+             ("M-w" . ?\C-c)
+             ("M-<" . C-home)
+             ("M->" . C-end)
+             ("C-M-h" . C-backspace))))
 
-  ;; (require 'exwm-randr)
-  ;; (setq exwm-randr-workspace-output-plist '(0 "VGA1"))
-  ;; (add-hook 'exwm-randr-screen-change-hook
-  ;;           (lambda ()
-  ;;             (start-process-shell-command
-  ;;              "xrandr" nil "xrandr --output VGA1 --left-of LVDS1 --auto")))
-  ;; (exwm-randr-enable)
+  (when (string= system-name "alto")
+    (require 'exwm-randr)
+    (setq exwm-randr-workspace-output-plist '(2 "eDP-1" 3 "DP-1" 1 "HDMI-2"
+                                                4 "DP-1" 5 "DP-1" 6 "DP-1"
+                                                7 "eDP-1" 8 "eDP-1" 9 "eDP-1"
+                                                0 "HDMI-2"))
+    (add-hook 'exwm-randr-screen-change-hook
+              (lambda ()
+                (start-process-shell-command "xrandr" nil "~/bin/rotated")))
+    (exwm-randr-enable))
 
-  ;; cheat sheet:
-  ;; * C-c C-k: switch to char-mode
-  ;; * C-c C-q: send next key literally
-  ;; * C-c C-t C-f: toggle floating
-  ;; * C-c C-t C-m: toggle modeline
-
-  ;; * C-x ^: enlarge window vertically
-  ;; * C-x }: enlarge window horizontally
-
-  ;; * s-r: reset all
-  )
+  (global-set-key (kbd "C-x m")
+                  (defun pnh-eshell-per-workspace (n)
+                    (interactive "p")
+                    (eshell (+ (case n (4 10) (16 20) (64 30) (t 0))
+                               exwm-workspace-current-index))))
+  (server-start))

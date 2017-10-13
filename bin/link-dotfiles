@@ -10,13 +10,6 @@ if [ -r $HOME/.profile ] && [ ! -h $HOME/.profile ] ; then
     rm $HOME/.profile # blow away the stock one
 fi
 
-if [ -r $HOME/.config/awesome/rc.lua ] && \
-       [ ! -h $HOME/.config/awesome/rc.lua ]; then
-    mkdir -p $HOME/.config/awesome
-    rm $HOME/.config/awesome/rc.lua 2> /dev/null || true
-    ln -s $HOME/.dotfiles/.awesome.lua $HOME/.config/awesome/rc.lua
-fi
-
 for f in $(ls -a ~/.dotfiles) ; do
     if [ ! -r "$HOME/$f" ] &&
         [ $f != "." ] && [ $f != ".." ] && [ $f != "README.md" ] &&
