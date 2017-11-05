@@ -47,4 +47,12 @@
             (local-set-key (kbd "<tab>") 'shr-next-link)
             (local-set-key (kbd "<backtab>") 'shr-previous-link)))
 
+(when (require 'smtpmail-async nil t)
+  (setq send-mail-function 'async-smtpmail-send-it
+        message-send-mail-function
+        (lambda ()
+          (smtpmail-send-it)
+          (setq message-send-mail-function
+                'async-smtpmail-send-it))))
+
 (defalias 'm 'mu4e)

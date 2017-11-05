@@ -70,3 +70,8 @@
 (setq clojure--prettify-symbols-alist '())
 
 (add-hook 'visual-line-mode-hook (lambda () (auto-fill-mode -1)))
+
+(defun pnh-prime-gpg ()
+  (interactive)
+  (start-process-shell-command "prime-gpg" nil
+                               "gpg --output /tmp/h -sab --yes /etc/hosts"))

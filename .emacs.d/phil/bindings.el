@@ -23,9 +23,9 @@
 
 (global-set-key (kbd "C-c n")
                 (defun pnh-cleanup-buffer () (interactive)
-                  (delete-trailing-whitespace)
-                  (untabify (point-min) (point-max))
-                  (indent-region (point-min) (point-max))))
+                       (delete-trailing-whitespace)
+                       (untabify (point-min) (point-max))
+                       (indent-region (point-min) (point-max))))
 
 (global-set-key (kbd "C-c b") 'browse-url-at-point)
 
@@ -42,3 +42,20 @@
 (global-set-key (kbd "C-x ,") 'split-window-below)
 (global-set-key (kbd "C-x .") 'split-window-right)
 (global-set-key (kbd "C-x l") 'delete-window)
+
+(defun pnh-music-read ()
+  (interactive)
+  (let* ((lines (with-temp-buffer
+                  (insert-file "~/music/.dirs")
+                  (buffer-substring-no-properties 1 (point-max))))
+         (dirs (split-string lines "\n")))
+    (ido-completing-read "Play: " dirs nil t)))
+
+(defun pnh-music-choose ()
+  (interactive)
+  (save-window-excursion
+    (start-process-shell-command "*mpc*" nil
+                                 (format "mpc clear; mpc add %s; mpc play"
+                                         (pnh-music-read)))))
+
+(global-set-key (kbd "<f7>") 'pnh-music-choose)

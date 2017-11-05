@@ -18,35 +18,9 @@
   - mu4e
     - leans heavily on offlineimap or mbsync, neither of which is any good
 * Things that bug me about software I use (a relatively complete list)
-** Debian Wheezy
-   - broken permissions in nm-applet
-     http://bugs.debian.org/643028
-   - need to teach network-manager it's OK to use device that was used for installation
-     - sed -i s/managed=false/managed=true/ /etc/NetworkManager/NetworkManager.conf
-     - improvement over squeeze at least
-     - (32) Not authorized to control networking.
-   - adding an additional keyboard doesn't honor caps->ctrl mod
-   - libnotify broken outside gnome
-     - claimed to be fixed, but isn't
-       - http://bugs.debian.org/636435
-       - actual fix
-         - file /usr/share/dbus-1/services/org.freedesktop.Notifications.service
-         - Exec=/usr/lib/notification-daemon/notification-daemon
-*** All these are fixed in Jessie
-** Chrome OS
-   - can't disable internal keyboard inside chromeos, just in crouton
-   - ssh client doesn't support alt-v nor fullscreening properly
-     - mosh client works much better
-   - dev mode defaults to garbage security
-     - easy to fix, but holy smokes what a bad policy
-   - chrome key bindings are cringeworthy
-     - cannot override ctrl-n
-     - ctrl-shift-tab is objectively awful
-     - just use firefox inside crouton
 ** Emacs
 *** elisp
    - lisp-2 is awful
-   - no FFI
    - no immutability or referential transparency
    - no useful associative data type, vectors are useless
    - no concurrency
@@ -56,12 +30,10 @@
    - refuses to create maildir; must manually mkdir
    - no secure password storage
    - no cert pinning
+** offlineimap
+   - no secure password storage
 ** wicd
    - "automatically connect to this network" does nothing
-** keysnail
-   - haven't figured out how to fully-dotfileize it yet
-   - hinting isn't link-text based
-     - can't look before you leap
 ** firefox
 *** remarkably resistant to automation
     - profile directory can't be given a reasonable name
@@ -86,9 +58,9 @@
      - racket-mode helps with this sorta
    - no way to consistently reflect on argument names
    - opaque structs are very annoying, absolutely inappropriate for HTTP reqs
+     - widely acknowledged that this was a mistake
    - multiple return values
      - I guess this might have made sense before pattern matching was invented?
-   - the immutable? function is usually wrong
    - internal defines make side-effects easier to hide
    - failure-result in dict-ref, etc special-cases procedures
      - (dict-ref d k f) ; what will this return if k is not found?
@@ -105,9 +77,8 @@
      - rackjure!
    - no general-purpose equality predicate, but a lot better than CL/elisp
      - rackjure!
-   - geiser
-     - autodoc lists every argument as _
-     - really easy to wedge it by launching a blocking server
+   - racket-mode
+     - doesn't do proper async network comms
 ** erlang
 *** core language
     - syntax actually not so bad (for a non-homoiconic language)
@@ -186,9 +157,8 @@
     - pretty-printer in the repl (lua-repl has this already)
 * Hardware
 ** Thinkpad X301
-   - multiple batteries: system shuts down when one is full and one is empty
-   - screen is very dim
-   - screen is low-res
+   - screen is kinda dim (250 nits)
+   - screen is low-res-ish (but higher than some new models)
    - SSD bay is non-standard shape
 ** Thinkpad X260
    - screen is just rubbish
@@ -199,4 +169,4 @@
 ** Chromebook Pixel 2013
    - glossy screen (ugh) but super bright and good aspect ratio
    - keyboard is shallow
-   - battery life is weak
+   - battery life is weak; pixel 2 fixes this
