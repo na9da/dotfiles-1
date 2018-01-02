@@ -50,3 +50,5 @@
      - *$script in "my filters"
 * weechat
   - /mouse disable
+* love2d debs
+  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=815170

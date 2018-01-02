@@ -38,3 +38,4 @@
 *.elc
 *~
 /.emacs.d/smex-items
+/.emacs.d/network-security.data

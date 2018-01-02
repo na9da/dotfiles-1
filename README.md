@@ -12,16 +12,12 @@ work with [Ubuntu](http://ubuntu.com) too.
 Installation and bootstrapping of dotfiles is handled by the
 `bin/init/go.sh` script. This script should be idempotent.
 
-## Utilities
+## Emacs
 
-For things that need to be accessible outside Emacs, going through
-[dmenu](http://tools.suckless.org/dmenu/) is preferred. It's used as a
-frontend for queueing music (`music-choose`), opening books
-(`dbook.rb`), and connecting to wifi access points (`ery-net`), though
-for the latter it's only useful for connecting to known access points
-due to a very annoying bug in NetworkManager. (Otherwise we wouldn't
-bother to run a panel, but `nm-applet`'s gui is still necessary.)
+Some Emacs packages are installed thru apt and some vendored in
+`.emacs.d/lib`. Use `M-x pnh-reinit-libs` to byte-compile and autoload
+the vendored ones.
 
-Displaying output by these scripts is typically done with
-`notify-send` in scripts like `music-show` and `notify-battery`.
+## Usage
 
+I use [EXWM](https://technomancy.us/185) because ... it's the best?
