@@ -124,27 +124,4 @@
       </value>
     </entry>
   </entrylist>
-  <!-- let me keep running when I close my lid plz -->
-  <entrylist base="/apps/gnome-power-manager/buttons">
-    <entry>
-      <key>lid_ac</key>
-      <schema_key>/schemas/apps/gnome-power-manager/buttons/lid_ac</schema_key>
-      <value>
-        <string>blank</string>
-      </value>
-    </entry>
-    <entry>
-      <key>lid_battery</key>
-      <schema_key>/schemas/apps/gnome-power-manager/buttons/lid_battery</schema_key>
-      <value>
-        <string>blank</string>
-      </value>
-    </entry>
-  </entrylist>
-  <entrylist base="/org/gnome/shell/extensions/net/gfxmonk/shellshape/prefs">
-    <entry>
-      <key>default-layout</key>
-      <value><string>fullscreen</string></value>
-    </entry>
-  </entrylist>
 </gconfentryfile>
