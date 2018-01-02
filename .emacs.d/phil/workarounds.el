@@ -18,6 +18,19 @@
      (setq magit-diff-refine-hunk t)
      ;; don't be a jerk, magit
      (define-key git-commit-mode-map (kbd "C-x k") 'git-commit-abort)
+     ;; don't use popups unless I ask (only tested against magit 1.2.1)
+     (define-key magit-mode-map (kbd "P")
+       (lambda (query)
+         (interactive "p")
+         (if (= 1 query)
+             (magit-key-mode-popup-pushing)
+           (magit-push))))
+     (define-key magit-mode-map (kbd "F")
+       (lambda (query)
+         (interactive "p")
+         (if (= 1 query)
+             (magit-pull)
+           (magit-key-mode-popup-pulling))))
      ;; plz not to refresh log buffer when I cherry-pick, mkay?
      (define-key magit-log-mode-map (kbd "A")
        (lambda ()
@@ -74,4 +87,4 @@
 (defun pnh-prime-gpg ()
   (interactive)
   (start-process-shell-command "prime-gpg" nil
-                               "gpg --output /tmp/h -sab --yes /etc/hosts"))
+                               "gpg --output /dev/null -sab --yes /etc/hosts"))

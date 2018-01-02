@@ -37,3 +37,4 @@
 /.emacs.d/my-autoload.el
 *.elc
 *~
+/.emacs.d/smex-items

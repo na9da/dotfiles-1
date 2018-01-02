@@ -62,7 +62,6 @@
 (add-to-list 'ffip-patterns "Dockerfile")
 
 (when (require 'smex nil t)
-  (setq smex-save-file (concat user-emacs-directory ".smex-items"))
   (smex-initialize)
   (global-set-key (kbd "M-x") 'smex))
 

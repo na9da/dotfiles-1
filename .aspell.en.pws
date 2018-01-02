@@ -1,4 +1,4 @@
-personal_ws-1.1 en 132 
+personal_ws-1.1 en 133 
 Hagelberg
 runtime
 API
@@ -14,6 +14,7 @@ classpath
 Hong
 config
 Compassio
+fediverse
 baristas
 lucene
 keymap
@@ -28,8 +29,8 @@ sharded
 Solr
 microcontrollers
 login
-peepcode
 PeepCode
+peepcode
 Bussard
 freenode
 Clojure's
@@ -122,8 +123,8 @@ ClojureScript
 Matias
 wikipedia
 résumé
-GitHub
 github
+GitHub
 checksum
 Noir
 microcontroller

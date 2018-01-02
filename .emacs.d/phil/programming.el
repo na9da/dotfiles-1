@@ -139,7 +139,6 @@
 ;;; elisp
 
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 
 (define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-buffer)

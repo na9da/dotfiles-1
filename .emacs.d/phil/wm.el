@@ -10,7 +10,8 @@
   (require 'exwm-systemtray)
   (exwm-systemtray-enable)
   (display-time-mode 1)
-  (setq display-time-string-forms '((format-time-string "%H:%M" now)))
+  (display-battery-mode 1)
+  (setq display-time-string-forms '((format-time-string "%H:%M " now)))
 
   (add-hook 'exwm-manage-finish-hook
             (defun pnh-exwm-manage-hook ()

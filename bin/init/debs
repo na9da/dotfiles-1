@@ -3,7 +3,7 @@ acpi acpitool tlp tlp-rdw gvfs-backends
 pm-utils powertop wireless-tools
 
 # system stuff
-aspell-en
+debian-security-support aspell-en
 avahi-discover avahi-utils
 build-essential bsdtar curl
 cryptmount cryptsetup gnutls-bin gnupg-agent
@@ -24,6 +24,8 @@ rxvt-unicode-256color
 vlc mpv
 
 # dev tools
+emacs-goodies-el elpa-smex
+yaml-mode elpa-markdown-mode elpa-paredit elpa-ido-ubiquitous
 love lua5.1 lua5.1-doc luarocks lua-filesystem
 racket
 ruby-full rake
