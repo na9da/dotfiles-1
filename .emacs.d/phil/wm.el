@@ -18,7 +18,10 @@
               (when (or (string= exwm-class-name "URxvt")
                         (string= exwm-class-name "love"))
                 (exwm-input-release-keyboard))
+              (when (string-match "Chromium" exwm-class-name)
+                (exwm-layout-hide-mode-line))
               (when (string-match "Firefox" exwm-class-name)
+                (setq ido-make-buffer-list-hook 'pnh-trim-non-ff)
                 (exwm-layout-hide-mode-line))))
 
   (exwm-enable-ido-workaround)
@@ -85,4 +88,5 @@
                     (interactive "p")
                     (eshell (+ (case n (4 10) (16 20) (64 30) (t 0))
                                exwm-workspace-current-index))))
+
   (server-start))

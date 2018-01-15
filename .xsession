@@ -20,7 +20,6 @@ unclutter -idle 1 &
 # I get by with a little help from gnome/xfce
 gnome-settings-daemon & # fonts and stuff
 gnome-screensaver & # for the lock-screen
-xfce4-power-manager &
 
 if [ $XFCE != "" ]; then
     exec startxfce4
