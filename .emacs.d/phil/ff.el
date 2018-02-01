@@ -1,8 +1,10 @@
+;;; -*- lexical-binding: t -*-
 (when (and window-system (require 'exwm nil t))
+
+  ;; an ido-make-buffer-list-hook to make C-x b only show browser buffers
   (defun pnh-trim-non-ff ()
     (delete-if-not (lambda (name)
-                     (or (string-match "- Mozilla Firefox$" name)
-                         (string-match "Chromium" name)))
+                     (string-match "- Mozilla Firefox$" name))
                    ido-temp-list))
 
   (add-hook 'exwm-update-title-hook
@@ -10,36 +12,18 @@
               (when (string-match "Firefox" exwm-class-name)
                 (exwm-workspace-rename-buffer exwm-title))))
 
-  (exwm-input-set-key (kbd "s-i")
-                      (defun pnh-icosahedron ()
-                        (interactive)
-                        (browse-url "https://icosahedron.website")))
-
-  (exwm-input-set-key (kbd "s-d")
-                      (defun pnh-ff-search ()
-                        (interactive)
-                        (browse-url
-                         (format "https://duckduckgo.com/html?q=%s"
-                                 (read-string "Search: ")))))
-
-  (exwm-input-set-key (kbd "s-g")
-                      (defun pnh-ff-gsearch ()
-                        (interactive)
-                        (browse-url
-                         (format "https://google.com/search?q=%s"
-                                 (read-string "Terms: ")))))
-
-  (exwm-input-set-key (kbd "s-w")
-                      (defun pnh-ff-wp-search ()
-                        (interactive)
-                        (browse-url
-                         (format "https://en.wikipedia.org/w/index.php?search=%s"
-                                 (read-string "Wikipedia: ")))))
-
-  (exwm-input-set-key (kbd "s-n")
-                      (defun pnh-ff ()
-                        (interactive)
-                        (browse-url (read-string "URL: "))))
+  (dolist (s '(("s-i" "https://icosahedron.website")
+               ("s-d" "https://duckduckgo.com/html?q=%s" "Search: ")
+               ("s-g" "https://google.com/search?q=%s" "Search: ")
+               ("s-c" "https://circleci.com/gh/%s/%s" "User: " "Repo: ")
+               ("s-w" "https://en.wikipedia.org/w/index.php?search=%s"
+                "Wikipedia: ")
+               ("s-b" "https://lobste.rs")
+               ("s-n" "%s" "URL: ")))
+    (exwm-input-set-key (kbd (car s))
+                        (lambda () (interactive)
+                          (browse-url (apply 'format (cadr s)
+                                             (mapcar 'read-string (cddr s)))))))
 
   (exwm-input-set-key (kbd "s-e") 'eww)
 

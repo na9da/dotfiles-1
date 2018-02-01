@@ -32,7 +32,7 @@
 ;; Set `scpaste-http-destination' and `scpaste-scp-destination' to
 ;; appropriate values, and add this to your Emacs config:
 
-;; (setq scpaste-http-destination "http://p.hagelb.org"
+;; (setq scpaste-http-destination "https://p.hagelb.org"
 ;;       scpaste-scp-destination "p.hagelb.org:p.hagelb.org")
 
 ;; If you have a different keyfile, you can set that, too:
@@ -48,7 +48,7 @@
 ;; Optionally you can set the displayed name for the footer and where
 ;; it should link to:
 ;; (setq scpaste-user-name "Technomancy"
-;;       scpaste-user-address "http://technomancy.us/")
+;;       scpaste-user-address "https://technomancy.us/")
 
 ;;; Usage
 
@@ -102,7 +102,7 @@
   "The ssh program to use when running remote shell commands.")
 
 (defvar scpaste-http-destination
-  "http://p.hagelb.org"
+  "https://p.hagelb.org"
   "Publicly-accessible (via HTTP) location for pasted files.")
 
 (defvar scpaste-scp-destination
@@ -135,7 +135,7 @@ Corresponds to ssh’s `-i` option Example: \"~/.ssh/id.pub\"")
             (if scpaste-user-address
                 (concat "<a href='" scpaste-user-address "'>" user "</a>")
               user))
-          " using <a href='http://p.hagelb.org'>scpaste</a> at %s. "
+          " using <a href='https://p.hagelb.org'>scpaste</a> at %s. "
           (cadr (current-time-zone)) ". (<a href='%s'>original</a>)</p>"))
 
 

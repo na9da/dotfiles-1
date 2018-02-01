@@ -9,7 +9,7 @@ urxvt*letterSpace:-1.0
 URxvt.perl-lib: /home/phil/.dotfiles/urxvt-perls
 URxvt.perl-ext-common: url-select,keyboard-select,vtwheel
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: firefox
+URxvt.url-select.launcher: firefox -new-window
 URxvt.searchable-scrollback: false
 
 dmenu.font: xft:Anonymous Pro for Powerline:pixelsize=17

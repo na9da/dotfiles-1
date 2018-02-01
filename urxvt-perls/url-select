@@ -117,6 +117,9 @@ sub key_press {
 	} elsif ($keysym == 0xff0d || $char eq 'o') {
 		$self->exec_async(@{$self->{browser}}, ${$self->{found}[$self->{n}]}[4]);
 		deactivate($self) unless $char eq 'o';
+	} elsif ($char eq 'c') {
+		$self->exec_async("chromium", ${$self->{found}[$self->{n}]}[4]);
+		deactivate($self) unless $char eq 'o';
 	} elsif ($char eq 'y') {
 		my $found = $self->{found}[$self->{n}];
 		$self->selection_beg(${$found}[0], ${$found}[1]);

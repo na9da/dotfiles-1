@@ -21,7 +21,7 @@
               (when (string-match "Chromium" exwm-class-name)
                 (exwm-layout-hide-mode-line))
               (when (string-match "Firefox" exwm-class-name)
-                (setq ido-make-buffer-list-hook 'pnh-trim-non-ff)
+                ;; (setq ido-make-buffer-list-hook 'pnh-trim-non-ff)
                 (exwm-layout-hide-mode-line))))
 
   (exwm-enable-ido-workaround)

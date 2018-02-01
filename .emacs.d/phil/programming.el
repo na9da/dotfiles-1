@@ -84,7 +84,7 @@
 ;;; ruby
 
 (add-hook 'ruby-mode-hook 'pnh-paredit-no-space)
-(add-hook 'ruby-mode-hook 'inf-ruby-keys)
+;; (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
 (eval-after-load 'inf-ruby
   '(add-to-list 'inf-ruby-implementations '("bundler" . "bundle console")))

@@ -56,3 +56,5 @@
                 'async-smtpmail-send-it))))
 
 (defalias 'm 'mu4e)
+
+(setq browse-url-firefox-arguments '("-new-window"))

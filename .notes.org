@@ -34,21 +34,11 @@
 * ff automation
   - https://pastebin.mozilla.org/8842908
   - manually turn off stupid separate search bar
-* ff 57 extensiopocalypse
-** saka-key
-   - https://addons.mozilla.org/en-US/firefox/addon/saka-key/
-   - have to turn off binding to "physical" keys
-   - increase scroll step
-   - add "e" binding for following links
-** https-everywhere
-   - still needs manual install
-   - https://www.eff.org/files/https-everywhere-test/https-everywhere-latest.xpi
-** noscript
-   - no webextension yet
-   - using ublock origin for now
-     - turn on "advanced user"
-     - *$script in "my filters"
 * weechat
   - /mouse disable
 * love2d debs
   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=815170
+* orthography
+** แทกโนมันซี or แทกโนเมนซี
+** टेक्नोमन्सि
+** 튝노앤시
