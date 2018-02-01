@@ -1,0 +1,12 @@
+[submodule "web-extensions/saka-key"]
+	path = web-extensions/saka-key
+	url = https://github.com/lusakasa/saka-key
+[submodule "web-extensions/https-everywhere"]
+	path = web-extensions/https-everywhere
+	url = https://github.com/EFForg/https-everywhere
+[submodule "web-extensions/ublock"]
+	path = web-extensions/ublock
+	url = https://github.com/gorhill/uBlock
+[submodule "web-extensions/url-tracking-stripper"]
+	path = web-extensions/url-tracking-stripper
+	url = https://github.com/newhouse/url-tracking-stripper
