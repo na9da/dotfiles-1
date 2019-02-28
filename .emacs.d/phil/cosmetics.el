@@ -10,6 +10,7 @@
   (set-face-background 'vertical-border "black")
   (set-face-foreground 'vertical-border "black")
   (require 'hl-line)
+  (set-face-background 'magit-item-highlight "gray12")
   (set-face-background 'hl-line "gray17")
   (set-face-foreground 'eshell-prompt "turquoise"))
 
@@ -67,6 +68,8 @@
 (defun wat () (interactive) (insert "วัด"))
 (defun is () (interactive) (insert "إن شاء الله"))
 (defun monkey () (interactive) (insert "Nie mój cyrk, nie moje malpy"))
+(defun dukes () (interactive) (insert "(ง'̀-'́)ง"))
+;; แทกโนมันซี
 
 (when (and window-system (>= emacs-major-version 23))
   (let ((fontset (face-attribute 'default :fontset))
@@ -123,11 +126,9 @@
     '(set-face-foreground paren-face "magenta"))
   (when (string= "fbterm" (getenv "TERM"))
     (load "term/xterm")
-    (xterm-register-default-colors)))
+    (terminal-init-xterm)
+    (tty-set-up-initial-frame-faces)))
 
 (setq whitespace-style '(face trailing lines-tail tabs))
 
 (add-to-list 'auto-mode-alist '("\\.msg$" . message-mode))
-
-(eval-after-load 'message-mode
-  (add-hook 'message-mode-hook 'page-break-lines-mode))

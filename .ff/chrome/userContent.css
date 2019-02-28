@@ -1,0 +1,80 @@
+@-moz-document domain(icosahedron.website) {
+    .columns-area { overflow-x: visible !important; }
+    .column { width: 600px !important; }
+    img.emojione { display: none !important; }
+
+    /* .column, */
+    /* .drawer { */
+    /*     flex: 0 1 auto !important; */
+    /*     width: 100% !important; */
+    /*     padding: 0; */
+    /* } */
+
+    /* .columns-area { */
+    /*     flex-direction: column !important; */
+    /* } */
+
+    /* .search__input, */
+    /* .autosuggest-textarea__textarea { */
+    /*     font-size: 16px; */
+    /* } */
+
+    /* .tabs-bar, */
+    /* .search { */
+    /*     will-change: margin-top; */
+    /*     transition: margin-top 400ms 100ms; */
+    /* } */
+
+    /* .navigation-bar { */
+    /*     will-change: padding-bottom; */
+    /*     transition: padding-bottom 400ms 100ms; */
+    /* } */
+
+    /* .navigation-bar { */
+    /*     & > a:first-child { */
+    /*         will-change: margin-top, margin-left, width; */
+    /*         transition: margin-top 400ms 100ms, margin-left 400ms (400ms + 100ms); */
+    /*     } */
+
+    /*     & > .navigation-bar__profile-edit { */
+    /*         will-change: margin-top; */
+    /*         transition: margin-top 400ms 100ms; */
+    /*     } */
+
+    /*     & > .icon-button { */
+    /*         will-change: opacity; */
+    /*         transition: opacity 400ms 100ms; */
+    /*     } */
+    /* } */
+
+    /* .is-composing { */
+    /*     .tabs-bar, */
+    /*     .search { */
+    /*         margin-top: -50px; */
+    /*     } */
+
+    /*     .navigation-bar { */
+    /*         padding-bottom: 0; */
+
+    /*         & > a:first-child { */
+    /*             margin-top: -50px; */
+    /*             margin-left: -40px; */
+    /*         } */
+
+    /*         .navigation-bar__profile { */
+    /*             padding-top: 2px; */
+    /*         } */
+
+    /*         .navigation-bar__profile-edit { */
+    /*             position: absolute; */
+    /*             margin-top: -50px; */
+    /*         } */
+
+    /*         .icon-button { */
+    /*             pointer-events: auto; */
+    /*             opacity: 1; */
+    /*         } */
+    /*     } */
+    /* } */
+
+}

@@ -24,5 +24,5 @@ gnome-screensaver & # for the lock-screen
 if [ $XFCE != "" ]; then
     exec startxfce4
 else
-    exec emacs
+    exec emacs --debug-init
 fi

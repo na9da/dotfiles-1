@@ -22,3 +22,8 @@
 	attributesfile = /home/phil/.gitattributes
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+[sendemail]
+    smtpencryption = tls
+    smtpserver = smtp.gmail.com
+    smtpuser = phil@hagelb.org
+    smtpserverport = 587

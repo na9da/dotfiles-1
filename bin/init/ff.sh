@@ -7,12 +7,16 @@ if [ "$USER" = "root" ]; then
     exit 1
 fi
 
-firefox -CreateProfile main
+cd /tmp
+wget -O /tmp/ff-dev.tar.bz2 "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US"
 
-rm -f ~/.ff
+cd ~/bin/
+tar -C /tmp xjf /tmp/ff-dev.tar.bz2
+mv ~/tmp/firefox ~/bin/firefox-dev-edition
 
-mkdir -p ~/src
-ln -s ~/.mozilla/firefox/*main/ ~/.ff
-rm -f ~/.ff/user.js
-ln -s ~/.dotfiles/.ff.js ~/.ff/user.js
+# afaict no way to automate install of these
+firefox https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
+firefox https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/
+firefox https://addons.mozilla.org/en-US/firefox/addon/surfingkeys_ff/
 
+# manually: turn on "hard mode" ublock

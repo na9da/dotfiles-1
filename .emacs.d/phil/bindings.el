@@ -1,4 +1,4 @@
-(global-set-key (kbd "C-c f") 'find-file-in-project)
+(global-set-key (kbd "C-c f") 'project-find-file)
 
 (add-hook 'prog-mode-hook
           (defun my-kill-word-key ()
@@ -37,7 +37,7 @@
      (define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
      (define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp)))
 
-;; atreus bindings
+;; atreus dvorak bindings
 (global-set-key (kbd "C-x '") 'delete-other-windows)
 (global-set-key (kbd "C-x ,") 'split-window-below)
 (global-set-key (kbd "C-x .") 'split-window-right)
@@ -59,3 +59,10 @@
                                          (pnh-music-read)))))
 
 (global-set-key (kbd "<f7>") 'pnh-music-choose)
+
+(global-set-key (kbd "M-<f12>")
+                (defun pnh-time ()
+                  (interactive)
+                  (let ((fmt "%Y-%m-%d %H:%M:%S"))
+                    (message (concat (format-time-string fmt nil t)
+                                     " / " (format-time-string fmt))))))

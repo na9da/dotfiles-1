@@ -1,11 +1,11 @@
 # laptop tools
 acpi acpitool tlp tlp-rdw gvfs-backends
-pm-utils powertop wireless-tools
+pm-utils powertop wireless-tools tp-smapi-dkms
 
 # system stuff
 debian-security-support aspell-en
-avahi-discover avahi-utils
-build-essential bsdtar curl
+avahi-discover avahi-utils entr
+build-essential bsdtar curl ed
 cryptmount cryptsetup gnutls-bin gnupg-agent
 autossh mosh openssh-server ntpdate ntp
 rlwrap rsync sudo htop lsof molly-guard
@@ -17,7 +17,7 @@ chromium
 firefox-esr
 gimp mirage
 gmpc mpd mpc
-gnumeric abiword
+gnumeric
 offlineimap mu4e
 pandoc
 rxvt-unicode-256color
@@ -30,11 +30,11 @@ love lua5.1 lua5.1-doc luarocks lua-filesystem
 racket
 ruby-full rake
 openjdk-8-jdk-headless
-git cloc jq yaml-mode
+git git-email cloc jq
 
 # desktop thingies
 awesome gnome-power-manager gnome-settings-daemon tumbler desktop-base
-thunar thunar-volman wmctrl x11-xserver-utils xbindkeys xclip xinput xsel
+thunar thunar-volman wmctrl x11-xserver-utils xdotool xclip xinput xsel
 unclutter feh scrot suckless-tools synergy libnotify-bin
 pavucontrol
 mpg321 vorbis-tools

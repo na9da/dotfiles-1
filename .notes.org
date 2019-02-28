@@ -31,14 +31,52 @@
   autossh -D 0.0.0.0:8088 -o serveraliveinterval=10 -o serveralivecountmax=3 p
 * powermate
   - killall evrouter; evrouter /dev/input/*
-* ff automation
-  - https://pastebin.mozilla.org/8842908
-  - manually turn off stupid separate search bar
 * weechat
   - /mouse disable
+  - /window splith, /window merge
+  - https://weechat.org/scripts/source/go.py.html/
 * love2d debs
   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=815170
 * orthography
-** แทกโนมันซี or แทกโนเมนซี
+** แทกโนมันซี
 ** टेक्नोमन्सि
 ** 튝노앤시
+* preventing USB autosuspend issues:
+  device descriptor read/64, error -71
+  echo -1 >/sys/module/usbcore/parameters/autosuspend
+* linux headers
+  - sudo apt-get install linux-headers-$(uname -r)
+* battery discharge control
+  http://www.thinkwiki.org/wiki/Tp_smapi For Thinkpad X301
+* line numbering
+  awk '{print NR  "   " $s}'
+* code.technomancy.us
+** migrated
+  - fennel-mode
+  - polywell
+  - bussard
+  - exo-encounter-667
+  - pengbot
+  - liquid-runner
+  - fennel-lang.org (from GH)
+  - dotfiles (from GH)
+  - atreus (from GH)
+  - scpaste (from GH)
+  - circleci.el (from GH)
+  - better-defaults (from GH)
+** to migrate
+  - leiningen (infeasible to move off GitHub ATM)
+  - leiningen.org
+** maybe care?
+  - cardinality?
+  - smolforth
+  - jeejah
+  - find-file-in-project
+** other tasks
+   - update existing links
+   - move issues?
+   - cert renewal: sudo certbot certonly -a webroot --webroot-path=/var/www/html -d code.technomancy.us
+* todo
+** jeff's gofundme: https://www.caringbridge.org/visit/jeffrichards2
+** look for emily and philip's baby registry
+** Mom and Dad's gifts

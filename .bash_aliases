@@ -39,6 +39,3 @@ alias gb="git branch"
 alias gco="git checkout"
 alias glt="git log -n 10"
 alias gsu="git submodule update --init --recursive"
-
-# rubby!
-alias be="bundle exec"

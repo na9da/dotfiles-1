@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# xclip refuses to function in input mode unless it's set to verbose.
+
+exec /usr/bin/xclip -verbose $@

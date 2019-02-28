@@ -9,7 +9,6 @@
                                ("/drafts"       . ?d)
                                ("/INBOX.Archive" . ?a))
       mu4e-get-mail-command "offlineimap"
-      mu4e-view-prefer-html t
       mu4e-headers-leave-behavior 'apply
       mu4e-show-images t
       mu4e-view-show-addresses t)
@@ -57,4 +56,6 @@
 
 (defalias 'm 'mu4e)
 
-(setq browse-url-firefox-arguments '("-new-window"))
+(defun pnh-apply-patch ()
+  (interactive)
+  (mu4e-action-git-apply-mbox (mu4e-message-at-point)))

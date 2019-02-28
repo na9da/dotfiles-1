@@ -1,7 +1,8 @@
-personal_ws-1.1 en 133 
+personal_ws-1.1 en 142 
 Hagelberg
 runtime
 API
+Gaiden
 Leiningen's
 readme
 IRB
@@ -13,6 +14,7 @@ thruster
 classpath
 Hong
 config
+swappable
 Compassio
 fediverse
 baristas
@@ -21,6 +23,7 @@ keymap
 clj
 rdoc
 Elisp
+arity
 incentivized
 Evri
 HyperCard
@@ -29,15 +32,18 @@ sharded
 Solr
 microcontrollers
 login
-PeepCode
 peepcode
+PeepCode
+namespaced
 Bussard
 freenode
 Clojure's
 technomancy
 lein
+globals
 Minecraft
 Emerick
+coroutines
 clojure
 JVM
 Songkran
@@ -111,6 +117,7 @@ Chiang
 CircleCI
 multiverse
 hackable
+Neuromancer
 syslog
 Papert
 eval
@@ -121,14 +128,16 @@ clojars
 Thinkpad
 ClojureScript
 Matias
+destructure
 wikipedia
 résumé
-github
 GitHub
+github
 checksum
 Noir
 microcontroller
 RabbitMQ
 caffeinated
+coroutine
 parens
 http

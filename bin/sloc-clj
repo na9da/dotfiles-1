@@ -1,2 +1,0 @@
-#!/bin/bash
-find $1 -name "*clj" | xargs cat > /tmp/sloc.lisp && sloccount /tmp/sloc.lisp

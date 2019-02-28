@@ -14,7 +14,6 @@ chattr +A /
 echo "Installing packages..."
 
 apt-get install -y $(cat debs | sed 's:#.*$::g' | tr '\n' ' ')
-# apt-get install -t jessie-backports -y $(cat backports | sed 's:#.*$::g' | tr '\n' ' ')
 
 cp xsession.desktop /usr/share/xsessions/xsession.desktop
 
@@ -25,11 +24,11 @@ rm -rf /home/$ME/Desktop /home/$ME/Documents /home/$ME/Music \
 
 ln -s /home/$ME/ /home/$ME/Desktop # what exactly is the point?
 
-if [ -f /etc/mpd.conf ]; then
-  mkdir /home/$ME/.mpd
-  chown $ME /home/$ME/.mpd
-  cp mpd.conf /etc
-fi
+# if [ -f /etc/mpd.conf ]; then
+#   mkdir /home/$ME/.mpd
+#   chown $ME /home/$ME/.mpd
+#   cp mpd.conf /etc
+# fi
 
 # Other installs
 

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+$HOME/bin/firefox-dev-edition/firefox --profile $HOME/.ff $@

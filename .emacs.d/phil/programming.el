@@ -4,7 +4,7 @@
 (add-hook 'prog-mode-hook 'prettify-symbols-mode)
 (add-hook 'prog-mode-hook 'idle-highlight-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)
-(add-hook 'prog-mode-hook 'page-break-lines-mode)
+;; (add-hook 'prog-mode-hook 'page-break-lines-mode)
 (add-hook 'prog-mode-hook (defun pnh-add-watchwords ()
                             (font-lock-add-keywords
                              nil `(("\\<\\(FIX\\(ME\\)?\\|TODO\\)"
@@ -103,8 +103,7 @@
 
 ;;; clojure
 
-(setq inferior-lisp-command "lein repl"
-      monroe-detail-stacktraces t)
+(setq monroe-detail-stacktraces t)
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'monroe-interaction-mode)
@@ -157,11 +156,19 @@
              (insert (current-kill 0))))))
 
 
-;;; lisp (mostly for l2l)
+;;; general lisp
 
 (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
 (add-hook 'lisp-mode-hook 'paredit-mode)
 (define-key lisp-mode-map (kbd "{") 'paredit-open-curly)
+(define-key lisp-mode-map (kbd "}") 'paredit-close-curly)
+
+
+;;; fennel
+
+(autoload 'fennel-mode "~/src/fennel-mode/fennel-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.fnl\\'" . fennel-mode))
+(defun love () (interactive) (run-lisp "love ."))
 
 
 ;;; racket and scheme
@@ -243,11 +250,10 @@
          (runs (reverse (sort runs 'string<))))
     (browse-url-of-file (concat (first runs) "/index.html"))))
 
-;; therefore erlang.el version on marmalade is too old to be usable
-(let ((tools (file-expand-wildcards "/usr/lib/erlang/lib/tools-*")))
-  ;; oh yeah, and the path for this isn't even static; super gross.
-  (when (first tools)
-    (add-to-list 'load-path (concat (first tools) "/emacs"))))
+;; (let ((tools (file-expand-wildcards "/usr/lib/erlang/lib/tools-*")))
+;;   ;; oh yeah, and the path for this isn't even static; super gross.
+;;   (when (first tools)
+;;    (add-to-list 'load-path (concat (first tools) "/emacs"))))
 
 (autoload 'erlang-mode "erlang" "erlang" t)
 
@@ -288,10 +294,10 @@
 
 ;; heck let's try distel, just for completeness sake:
 
-(add-to-list 'load-path "~/src/distel/elisp")
-(eval-after-load 'erlang
-  '(progn (require 'distel)
-          (distel-setup)))
+;; (add-to-list 'load-path "~/src/distel/elisp")
+;; (eval-after-load 'erlang
+;;   '(progn (require 'distel)
+;;           (distel-setup)))
 
 
 
@@ -327,12 +333,13 @@
 
 (defun pnh-lua-manual ()
   (interactive)
-  (eww-open-file "/usr/share/doc/lua5.1-doc/doc/manual.html"))
+  (eww-open-file "/usr/share/doc/lua5.1-doc/doc/manual.html")
+  (rename-buffer "*lua-manual*"))
 
 (defun pnh-love-manual ()
   (interactive)
-  ;; would be nice to jump to a specific page, but the filenames are garbled
-  (eww-open-file "/home/phil/docs/love-ref.html"))
+  (eww-open-file "/home/phil/docs/love-ref.html")
+  (rename-buffer "*love-manual*"))
 
 (defun pnh-lua-send-file ()
   (interactive)

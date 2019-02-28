@@ -8,6 +8,7 @@
 /.emacs.d/eshell/history
 /.emacs.d/eshell/lastdir
 /.emacs.d/elpa/archives
+/.emacs.d/image-dired/
 /.emacs.d/mail
 /.emacs.d/news
 /.emacs.d/places

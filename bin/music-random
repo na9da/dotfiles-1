@@ -1,16 +1,18 @@
 #!/usr/bin/env ruby
 
+require "securerandom"
+
 system "music-dirs"
 
 dirs = File.read(ENV["HOME"] + "/music/.dirs").split("\n")
 
-dir = dirs[(rand * dirs.length).to_i]
+dir = dirs[(SecureRandom.random_number * dirs.length).to_i]
 `mpc clear`
-`mpc add #{dir}`
+`mpc add \"#{dir}\"`
 
 if `mpc playlist` == "" && $?.to_i == 0
   system $0
 else
   `mpc play`
-  system("mpd")
+  system("mpc")
 end

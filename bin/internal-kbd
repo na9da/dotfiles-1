@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$1" = "" ]; then
-    1=enable
+if [ "$1" = "off" ]; then
+    xinput disable $(xinput list | grep Translated | sed -r 's/.*id=([0-9]+).*/\1/')
+else
+    xinput enable $(xinput list | grep Translated | sed -r 's/.*id=([0-9]+).*/\1/')
 fi
-
-xinput $1 $(xinput list | grep Translated | sed -r 's/.*id=([0-9]+).*/\1/')
