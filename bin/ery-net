@@ -1,4 +1,4 @@
 #!/bin/bash
 
 wicd-cli --wireless -n $(wicd-cli --wireless -l | tail -n +2 | \
-    cut -f 4 -d "	" |  sort -u | dmenu -i)
+    cut -f 4 -d "	" |  sort -u | rofi -dmenu -i)

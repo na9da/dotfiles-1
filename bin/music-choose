@@ -12,7 +12,7 @@ if [ ! -f "$list_file" ]; then
 fi
 
 # Ask the user
-chosen=`cat $list_file | dmenu -i`
+chosen=`cat $list_file | rofi -dmenu`
 
 # Add it to mpd
 if [ "$chosen" != "" ]; then

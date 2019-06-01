@@ -35,7 +35,7 @@ git git-email cloc jq
 # desktop thingies
 awesome gnome-power-manager gnome-settings-daemon tumbler desktop-base
 thunar thunar-volman wmctrl x11-xserver-utils xdotool xclip xinput xsel
-unclutter feh scrot suckless-tools synergy libnotify-bin
+unclutter feh scrot rofi synergy libnotify-bin
 pavucontrol
 mpg321 vorbis-tools
 
