@@ -170,6 +170,18 @@
 (add-to-list 'auto-mode-alist '("\\.fnl\\'" . fennel-mode))
 (defun love () (interactive) (run-lisp "love ."))
 
+(defun fennel-check-format ()
+  (interactive)
+  (let* ((b (current-buffer))
+         (cmd (format "FENNEL_PATH=/home/phil/src/fnlfmt/?.fnl fnlfmt %s"
+                      buffer-file-name)))
+    (message cmd)
+    (with-current-buffer (get-buffer-create "*fnlfmt*")
+      (fennel-mode)
+      (delete-region (point-min) (point-max))
+      (insert (shell-command-to-string cmd))
+      (ediff-buffers (current-buffer) b))))
+
 
 ;;; racket and scheme
 
@@ -299,6 +311,7 @@
 ;;   '(progn (require 'distel)
 ;;           (distel-setup)))
 
+(add-hook 'elixir-mode-hook 'pnh-paredit-no-space)
 
 
 ;;; forth

@@ -14,27 +14,20 @@
   (display-battery-mode 1)
   (setq display-time-string-forms '((format-time-string "%H:%M " now)))
 
-  (add-hook 'exwm-manage-finish-hook
-            (defun pnh-exwm-manage-hook ()
-              (when (string-match "Chromium" exwm-class-name)
-                (exwm-workspace-move-window 1)
-                (exwm-layout-hide-mode-line))
-              (when (string-match "Firefox" exwm-class-name)
-                (exwm-workspace-move-window 0)
-                (exwm-layout-hide-mode-line))))
-
-  (exwm-enable-ido-workaround)
+  ;; removed in newer versions
+  (when (functionp 'exwm-enable-ido-workaround)
+    (exwm-enable-ido-workaround))
 
   (dolist (k '(("s-l" "gnome-screensaver-command -l")
                ("s-v" "killall evrouter; evrouter /dev/input/*")
                ("s-s" "scrot")
-               ("s-c" "chromium about:blank")
                ("s-S-s" "scrot -s")
                ("s-<return>" "urxvt")
                ("S-<f7>" "music-random")
                ("<f7>" "music-choose")
                ("<f8>" "mpc toggle")
                ("<f10>" "mpc next")
+               ("s-c" "urxvt -title home -e ssh -t code.technomancy.us tmux a")
                ("<XF86AudioLowerVolume>"
                 "amixer sset Master 5%-")
                ("<XF86AudioRaiseVolume>"
@@ -87,11 +80,17 @@
   ;; (exwm-randr--refresh)
   ;; (setq exwm-randr-workspace-output-plist '(0 "HDMI-1"))
   (if (string= system-name "alto")
-    (setq exwm-randr-workspace-output-plist '(2 "eDP-1" 3 "DP-1" 1 "VGA-1"
-                                                4 "DP-1" 5 "DP-1" 6 "DP-1"
-                                                7 "eDP-1" 8 "eDP-1" 9 "eDP-1"
-                                                0 "VGA-1"))
-    (setq exwm-randr-workspace-output-plist '(0 "VGA-1")))
+      (setq exwm-randr-workspace-output-plist '(1 "eDP-1" 2 "eDP-1" 3 "eDP-1"
+                                                  4 "eDP-1" 5 "eDP-1" 6 "eDP-1"
+                                                  7 "eDP-1" 8 "eDP-1" 9 "eDP-1"
+                                                  0 "DP-1"))
+    (let ((a "LVDS-1")
+          (sec "HDMI-1"))
+      (setq exwm-randr-workspace-output-plist `(1 ,sec 2 ,a 3 ,a
+                                                  4 ,a 5 ,a
+                                                  6 ,a 7 ,a
+                                                  8 ,sec
+                                                  9 ,a 0 ,a))))
   (exwm-randr-enable)
 
   (global-set-key (kbd "C-x m")

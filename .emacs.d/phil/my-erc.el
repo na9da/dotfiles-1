@@ -6,7 +6,7 @@
       erc-track-exclude-types '("324" "329" "332" "333" "353" "477" "MODE"
                                 "JOIN" "PART" "QUIT" "NICK")
       erc-lurker-threshold-time 3600
-      erc-track-priority-faces-only t
+      erc-track-priority-faces-only 'all
       erc-join-buffer 'bury
       erc-autojoin-timing :ident
       erc-flood-protect nil

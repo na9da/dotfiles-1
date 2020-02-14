@@ -38,7 +38,9 @@
 (eval-after-load 'mu4e
   '(progn (require 'mu4e-contrib)
           ;; (setq mu4e-html2text-command 'mu4e-shr2text)
-          (define-key mu4e-main-mode-map (kbd "C-r") 'ignore)))
+          (define-key mu4e-main-mode-map (kbd "C-r") 'ignore)
+          (add-to-list 'mu4e-view-actions
+                       '("apply git patch" . mu4e-action-git-apply-patch))))
 
 (add-hook 'mu4e-view-mode-hook
           (lambda()
@@ -59,3 +61,4 @@
 (defun pnh-apply-patch ()
   (interactive)
   (mu4e-action-git-apply-mbox (mu4e-message-at-point)))
+
