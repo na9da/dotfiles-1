@@ -27,3 +27,4 @@
     smtpserver = smtp.gmail.com
     smtpuser = phil@hagelb.org
     smtpserverport = 587
+    annotate = yes

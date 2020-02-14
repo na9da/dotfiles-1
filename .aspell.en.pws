@@ -1,4 +1,4 @@
-personal_ws-1.1 en 142 
+personal_ws-1.1 en 143 
 Hagelberg
 runtime
 API
@@ -32,8 +32,8 @@ sharded
 Solr
 microcontrollers
 login
-peepcode
 PeepCode
+peepcode
 namespaced
 Bussard
 freenode
@@ -56,6 +56,7 @@ triaged
 repl
 emacs
 bcrypt
+Sri
 Debian
 CSS
 Calandria
@@ -131,8 +132,8 @@ Matias
 destructure
 wikipedia
 résumé
-GitHub
 github
+GitHub
 checksum
 Noir
 microcontroller

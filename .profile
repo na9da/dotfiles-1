@@ -5,6 +5,7 @@ export CDPATH=.:$HOME/src
 
 export XDG_DESKTOP_DIR=$HOME
 export XDG_DOWNLOAD_DIR=$HOME
+export XDG_CONFIG_DIR=$HOME
 export XDG_DOCUMENTS_DIR=$HOME/docs
 export XDG_MUSIC_DIR=$HOME/music
 

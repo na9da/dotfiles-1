@@ -40,7 +40,7 @@
 * orthography
 ** แทกโนมันซี
 ** टेक्नोमन्सि
-** 튝노앤시
+** 튝노맨시
 * preventing USB autosuspend issues:
   device descriptor read/64, error -71
   echo -1 >/sys/module/usbcore/parameters/autosuspend
@@ -76,7 +76,3 @@
    - update existing links
    - move issues?
    - cert renewal: sudo certbot certonly -a webroot --webroot-path=/var/www/html -d code.technomancy.us
-* todo
-** jeff's gofundme: https://www.caringbridge.org/visit/jeffrichards2
-** look for emily and philip's baby registry
-** Mom and Dad's gifts

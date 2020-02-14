@@ -144,7 +144,7 @@
    - tables print opaquely
      - fixed by lua-repl
    - the repl completely buggers up when you enter expressions
-     - fixed by lua-repl
+     - fixed by lua-repl and 5.3
    - metatables require 5.2 to be useful (to support iteration)
 *** my ideal compile-to-lua language:
     - fn keyword creates arity-checked function
