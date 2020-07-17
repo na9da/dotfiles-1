@@ -1,5 +1,7 @@
 # Technomancy Dotfiles
 
+Moved to [Sourcehut](https://git.sr.ht/~technomancy/dotfiles)
+
 Everything it takes to run a technomancy-approved system.
 
 ## Basics
